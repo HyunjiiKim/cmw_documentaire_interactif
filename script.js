@@ -14,7 +14,8 @@ document.body.appendChild(renderer.domElement);
 
 // Load the map texture
 const textureLoader = new THREE.TextureLoader();
-textureLoader.load('assets/texture/map.png', (texture) => {
+    textureLoader.load('./assets/texture/map.png', (texture) => {
+    console.log("Map texture loaded");
     // Get the texture dimensions
     const textureWidth = texture.image.width;
     const textureHeight = texture.image.height;
@@ -51,7 +52,7 @@ textureLoader.load('assets/texture/map.png', (texture) => {
     scene.add(mapPlane);
 
     // Load the avatar texture
-    textureLoader.load('assets/avatar/avatar.png', (avatarTexture) => {
+    textureLoader.load('./assets/avatar/avatar.png', (avatarTexture) => {
         // Create a plane geometry for the avatar and apply the texture
         const avatarGeometry = new THREE.PlaneGeometry(1, 1);
         const avatarMaterial = new THREE.MeshBasicMaterial({ map: avatarTexture, transparent: true });
@@ -82,9 +83,38 @@ textureLoader.load('assets/texture/map.png', (texture) => {
             }
         });
 
+        let targetPosition = new THREE.Vector3();
+        let isMoving = false;
+        
+        document.addEventListener('click', (event) => {
+            const mouse = new THREE.Vector2();
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            const raycaster = new THREE.Raycaster();
+            raycaster.setFromCamera(mouse, camera);
+
+            const intersects = raycaster.intersectObject(mapPlane);
+
+            if (intersects.length > 0) {
+                targetPosition.copy(intersects[0].point);
+                isMoving = true;
+            }
+        });
+
         // Render the scene
         function animate() {
             requestAnimationFrame(animate);
+
+            if(isMoving){
+                const moveSpeed = 0.1;
+                avatar.position.lerp(targetPosition, moveSpeed);
+
+                if(avatar.position.distanceTo(targetPosition) < 0.1){
+                    avatar.position.copy(targetPosition);
+                    isMoving = false;
+                }
+            }
             renderer.render(scene, camera);
         }
         animate();
