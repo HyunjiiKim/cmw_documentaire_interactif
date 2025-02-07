@@ -1,9 +1,17 @@
 /* page default styles */
 .page{
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+
+body{
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #000;
 }
 
 /* Background Color */
@@ -186,4 +194,38 @@ button {
 
 .flex-basis-0 {
   flex-basis: 0;
+}
+
+
+/* Flex Gap */
+.flex-gap-0 {
+  gap: 0;
+}
+
+.flex-gap-1 {
+  gap: 0.25rem;
+}
+
+.flex-gap-2 {
+  gap: 0.5rem;
+}
+
+.flex-gap-3 {
+  gap: 0.75rem;
+}
+
+.flex-gap-4 {
+  gap: 1rem;
+}
+
+.flex-gap-5 {
+  gap: 1.25rem;
+}
+
+.flex-gap-6 {
+  gap: 1.5rem;
+}
+
+.flex-gap-7 {
+  gap: 2rem;
 }

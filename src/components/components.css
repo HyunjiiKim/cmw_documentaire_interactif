@@ -1,0 +1,34 @@
+/* Button */
+
+.btn_M{
+    width: 360px;
+    height: 90px;
+    background-color: #d9d9d9;
+    border-radius: 12px;
+    border: none;
+}
+
+@media screen and (max-width: 768px) {
+    .btn_M {
+      width: 100%;
+      min-width: 120px;
+      height: 90px;
+    }
+  }
+
+/* Switch */
+
+#language-switch {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+}
+
+#language-switch select{
+    background-color: #d9d9d9;
+    border-radius: 12px;
+    border: none;
+    padding: 0.5rem;
+    font-size: 24px;
+}

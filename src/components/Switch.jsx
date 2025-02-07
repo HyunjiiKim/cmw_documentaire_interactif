@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 
+import "./components.css";
+
 const LanguageSwitch = () => {
   const { i18n } = useTranslation();
 
@@ -24,7 +26,7 @@ const LanguageSwitch = () => {
   };
 
   return (
-    <div>
+    <div id="language-switch">
         <select onChange={changeLanguage} value={currentLang}>
         {sortedLanguages.map((lang) => (
             <option key={lang.code} value={lang.code}>

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js";
+import * as THREE from "three";
 
-import MapTiles from '../assets/map.png';
-import Avatar from '../assets/avatar.png';
+import MapTiles from "../assets/map.png";
+import Avatar from "../assets/avatar.png";
 
 const Map = () => {
   const mountRef = useRef(null);
@@ -37,6 +37,8 @@ const Map = () => {
 
     // Load textures
     const textureLoader = new THREE.TextureLoader();
+    let mapMaterial;
+
     textureLoader.load(MapTiles, (texture) => {
       // Create a plane geometry for the map
       const textureWidth = texture.image.width;
@@ -52,13 +54,15 @@ const Map = () => {
         textureWidth / 100,
         textureHeight / 100
       );
-      const mapMaterial = new THREE.MeshBasicMaterial({ map: texture });
+      mapMaterial = new THREE.MeshBasicMaterial({ map: texture });
       const mapPlane = new THREE.Mesh(mapGeometry, mapMaterial);
       scene.add(mapPlane);
 
       // Load avatar texture
       textureLoader.load(Avatar, (avatarTexture) => {
-        const avatarGeometry = new THREE.PlaneGeometry(1, 1);
+        const avatarWidth = avatarTexture.image.width / 400;
+        const avatarHeight = avatarTexture.image.height / 400;
+        const avatarGeometry = new THREE.PlaneGeometry(avatarWidth, avatarHeight);
         const avatarMaterial = new THREE.MeshBasicMaterial({
           map: avatarTexture,
           transparent: true
@@ -66,7 +70,8 @@ const Map = () => {
         const avatar = new THREE.Mesh(avatarGeometry, avatarMaterial);
 
         // Set initial position
-        avatar.position.set(0, 0, 0.1);
+        const mapHeight = textureHeight / 100;
+        avatar.position.set(0, -mapHeight / 2 + avatarHeight / 2, 0.1); 
         scene.add(avatar);
 
         // Handle keyboard movement
@@ -88,6 +93,8 @@ const Map = () => {
             default:
               break;
           }
+          // Update camera position to follow the avatar
+          camera.position.set(avatar.position.x, avatar.position.y, camera.position.z);
         });
 
         // Handle click-to-move
@@ -124,6 +131,9 @@ const Map = () => {
             }
           }
 
+          // Update camera position to follow the avatar
+          camera.position.set(avatar.position.x, avatar.position.y, camera.position.z);
+
           renderer.render(scene, camera);
         }
         animate();
@@ -139,5 +149,5 @@ const Map = () => {
 
   return <div ref={mountRef} style={{ width: "100%", height: "100%" }} />;
 };
-
+ 
 export default Map;

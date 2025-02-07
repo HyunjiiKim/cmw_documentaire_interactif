@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import Button from "../components/Button";
 import LanguageSwitch from "../components/Switch";
 
+import "./style.css";
+
 const Home = () => {
 
     const { t, i18n } = useTranslation();
@@ -12,9 +14,9 @@ const Home = () => {
     };
 
     return (
-        <div className="page bg-black text-white">
+        <div id="home" className="page bg-black text-white">
             <LanguageSwitch />
-            <div className="btn-group">
+            <div className="btn-group flex flex-gap-6">
                 <Button children={t("home.btn_watch")} />
                 <Button children={t("home.btn_discover")} onClick={RedirectMap}/>
             </div>
