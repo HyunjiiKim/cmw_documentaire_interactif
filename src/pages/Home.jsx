@@ -13,11 +13,15 @@ const Home = () => {
         window.location.href = "/map";
     };
 
+    const WatchLink = () => {
+        window.location.href = "https://drive.google.com/file/d/1XguOEkB4gP1sOMVU4b8Ja0XG_YwALjZt/view?usp=sharing";
+    };
+
     return (
         <div id="home" className="page bg-black text-white">
             <LanguageSwitch />
             <div id="btn-group" className="">
-                <Button children={t("home.btn_watch")} />
+                <Button children={t("home.btn_watch")} onClick={WatchLink} />
                 <Button children={t("home.btn_discover")} onClick={RedirectMap}/>
             </div>
            
