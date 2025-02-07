@@ -16,7 +16,7 @@ const Home = () => {
     return (
         <div id="home" className="page bg-black text-white">
             <LanguageSwitch />
-            <div className="btn-group flex flex-gap-6">
+            <div id="btn-group" className="">
                 <Button children={t("home.btn_watch")} />
                 <Button children={t("home.btn_discover")} onClick={RedirectMap}/>
             </div>
