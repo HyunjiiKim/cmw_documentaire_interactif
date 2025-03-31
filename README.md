@@ -1,8 +1,14 @@
-# React + Vite
+# README - Developer Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## List of References
+<ul>
+  <li><a href="https://phaser.io/examples/v3.85.0/scenes/view/send-to-back">Send to Back</a>: We can use this approach as inspiration to create a transition layer—using the z-index property—to effectively compare the current and previous graphics.</li>
+</ul>
 
-Currently, two official plugins are available:
+## Mini game idea
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<ul>
+  <li><a href="https://phaser.io/examples/v3.85.0/games/view/card-memory">Card Memory</a></li>
+  <li><a href="https://phaser.io/examples/v3.85.0/games/view/emoji-match">Emoji Match</a></li>
+  <li><a href="https://phaser.io/examples/v3.85.0/games/view/sliding-puzzle">Sliding Puzzle</a></li>
+</ul>
