@@ -6,4 +6,12 @@ const Button = ({ children, onClick }) => {
     );
 };
 
+export const InfoBtn = () => {
+    return(
+        <>
+            <i className="bi bi-exclamation-circle"></i>
+        </>
+    )
+}
+
 export default Button;
