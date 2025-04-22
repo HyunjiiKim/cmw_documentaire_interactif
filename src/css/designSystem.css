@@ -1,0 +1,70 @@
+/* Font */
+.font-opensans {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.font-anton {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-oswald-regular {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-oswald-light {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-oswald-semibold {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* background-color */
+.bg-primary {
+  background-color: #1e1e1e;
+}
+
+.bg-secondary {
+  background-color: #282828cc;
+}
+
+/* text-color */
+.text-primary .text-white {
+  color: #ffffff;
+}
+
+.text-primary .text-gray {
+  color: #e3e3df;
+}
+
+.text-primary .text-gold {
+  color: #bf9d63;
+}
+
+.text-primary .text-brown {
+  color: #7c6853;
+}
+
+/* border-color */
+.border-primary {
+  color: #ffffff;
+}
+
+.border-secondary {
+  color: #00000025;
+}
