@@ -13,24 +13,9 @@
   font-style: normal;
 }
 
-.font-oswald-regular {
+.font-oswald {
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.font-oswald-light {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.font-oswald-semibold {
-  font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
   font-style: normal;
 }
 
@@ -39,32 +24,70 @@
   background-color: #1e1e1e;
 }
 
-.bg-secondary {
+.black {
   background-color: #282828cc;
 }
 
 /* text-color */
-.text-primary .text-white {
+.white2 {
   color: #ffffff;
 }
 
-.text-primary .text-gray {
+.secondary2 {
   color: #e3e3df;
 }
 
-.text-primary .text-gold {
+.primary1 {
   color: #bf9d63;
 }
 
-.text-primary .text-brown {
+.tertiary1 {
   color: #7c6853;
 }
 
 /* border-color */
 .border-primary {
-  color: #ffffff;
+  border-color: #ffffff;
 }
 
-.border-secondary {
-  color: #00000025;
+/* Typo */
+.heading-lg /*Head title - Index*/ {
+  font-family: var(--font-anton);
+  font-size: 45px;
+  text-transform: uppercase;
+}
+
+.header-md /*Subsection*/ {
+  font-family: var(--font-anton);
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.header-sm /*Head title - Banner*/ {
+  font-family: var(--font-anton);
+  font-size: 15px;
+}
+
+.body-lg /*Subtitle*/ {
+  font-family: var(--font-oswald);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.body-md /*Text*/ {
+  font-family: var(--font-oswald);
+  font-size: 9px;
+  font-weight: 300;
+}
+
+.logo {
+  font-family: var(--font-opensans);
+  font-size: 10px;
+}
+
+.cta {
+  font-family: var(--font-oswald);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
