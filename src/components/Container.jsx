@@ -1,7 +1,7 @@
-export const ImageContainer = ( src, alt ) => {
+export const ImageContainer = ( {src, alt} ) => {
     return(
         <>
-            <img src={src} alt={alt} />
+            <img src={src} alt={alt} className="size-full h-auto" />
         </>
     )
 }

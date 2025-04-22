@@ -5,4 +5,6 @@ const View = () => {
       <p>This is the view page.</p>
     </div>
   );
-}
+};
+
+export default View;
