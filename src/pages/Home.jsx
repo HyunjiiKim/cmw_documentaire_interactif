@@ -1,8 +1,6 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 import HorizontalScroller from '../components/HorizontalScroller';
-import Button from '../components/Button';
-import LanguageSwitch from '../components/Switch';
 
 import './style.css';
 
