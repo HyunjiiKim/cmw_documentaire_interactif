@@ -1,8 +1,8 @@
 const Map = () => {
     return (
         <div className="map">
-        <h1>Map</h1>
-        <p>This is the map page.</p>
+            <h1>Map</h1>
+            <p>This is the map page.</p>
         </div>
     );
 }

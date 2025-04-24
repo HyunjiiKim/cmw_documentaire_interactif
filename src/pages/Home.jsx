@@ -1,34 +1,51 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import HorizontalScroller from '../components/HorizontalScroller';
+import Button from "../components/Button";
 
 import './style.css';
 
 const Home = () => {
 
-    const { t } = useTranslation();
-        // mock data
-        const imgdata = [
-            {
-                id: 0,
-                src: "https://picsum.photos/500/800",
-                alt: "first image"
-            },
-            {
-                id: 1,
-                src: "https://picsum.photos/600/400",
-                alt: "second image"
-            }, 
-            {
-                id: 2,
-                src: "https://picsum.photos/200/400",
-                alt: "third image"
-            }
-        ];
+    const { t } = useTranslation("contents");
+    const { t: t2 } = useTranslation("general");
+    const [showChoice, setShowChoice] = useState(false);
+
+    function openShowChoices(){
+        setShowChoice(true);
+    };
 
     return (
-        <div id='home'>
-            <HorizontalScroller data={imgdata} />
+        <div id='home' className="flex flex-col">
+            <main>
+                {!showChoice 
+                ?
+                <div className="flex flex-col">
+                    <h1>Mémoire Captive</h1>
+                    <Button
+                        textColor="text-white"
+                        backgroundColor="bg-black"
+                        onClick={openShowChoices}
+                        label={t2("start")}
+                    />
+                </div>
+                : 
+                <div className="flex gap-20">
+                    <Button
+                       textColor="text-white"
+                       backgroundColor="bg-black"
+                       onClick={()=>console.log("click left")}
+                       label={t2("watch")}
+                    />
+                    <Button
+                      textColor="text-white"
+                      backgroundColor="bg-black"
+                      onClick={()=>console.log("click right")}
+                      label='test'
+                    />
+                </div>
+                }
+            </main>
         </div>
     );
 };

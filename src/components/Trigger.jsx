@@ -1,7 +1,9 @@
+import { ImageContainer } from "./Container";
+
 export const Trigger = () => {
     return(
-        <>
-            <h2>Trigger</h2>
-        </>
+        <div className="flex-col">
+            <ImageContainer />
+        </div>
     )
 }
