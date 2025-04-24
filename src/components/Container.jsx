@@ -6,7 +6,7 @@ export const ImageContainer = ({ src, alt }) => {
   );
 };
 
-export const FlagContainer = ({ src, alt, code }) => {
+export const FlagContainer = ({ src, alt }) => {
   return (
     <>
       <img src={src} alt={alt} className="" />

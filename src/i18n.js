@@ -15,6 +15,7 @@ i18n
     backend: {
       loadPath: "/locals/{{lng}}/{{ns}}.json",
     },
+    ns: ["general", "nav", "contents"],
     detection: {
       order: ["navigator", "htmlTag", "cookie", "localStorage", "path", "subdomain"],
       caches: ["localStorage", "cookie"],
