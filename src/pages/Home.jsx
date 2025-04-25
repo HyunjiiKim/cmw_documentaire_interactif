@@ -6,26 +6,6 @@ import Button from "../components/Button";
 import "./style.css";
 
 const Home = () => {
-  const { t } = useTranslation();
-  // mock data
-  const imgdata = [
-    {
-      id: 0,
-      src: "https://picsum.photos/500/800",
-      alt: "first image",
-    },
-    {
-      id: 1,
-      src: "https://picsum.photos/600/400",
-      alt: "second image",
-    },
-    {
-      id: 2,
-      src: "https://picsum.photos/200/400",
-      alt: "third image",
-    },
-  ];
-
 
     const { t } = useTranslation("contents");
     const { t: t2 } = useTranslation("general");

@@ -1,8 +1,12 @@
 import { useTranslation } from "react-i18next";
 
-import "./components.css";
-import "./Container.jsx";
 import { FlagContainer } from "./Container.jsx";
+
+import FlagUK from "../assets/img/flag_FR.png";
+import FlagKR from "../assets/img/flag_KR.png";
+import FlagFR from "../assets/img/flag_UK.png";
+
+import "./components.css";
 
 const LanguageSwitch = () => {
   const { i18n } = useTranslation();
@@ -14,17 +18,17 @@ const LanguageSwitch = () => {
     {
       code: "en",
       label: "English",
-      img: "src/assets/img/Flag_of_the_United_Kingdom_(3-5).svg.png",
+      img: FlagUK,
     },
     {
       code: "ko",
       label: "한국어",
-      img: "src/assets/img/Flag_of_South_Korea.svg.png",
+      img: FlagKR,
     },
     {
       code: "fr",
       label: "Français",
-      img: "src/assets/img/Flag_of_France.svg.png",
+      img: FlagFR,
     },
   ];
 
@@ -35,39 +39,36 @@ const LanguageSwitch = () => {
     return 0;
   });
 
+  // language change handler (mobile)
   const changeLanguage = (event) => {
     i18n.changeLanguage(event.target.value);
   };
 
+  // language change handler (desktop)
+  const changeLanguageDesktop = (code) => () => i18n.changeLanguage(code);
+
+
   return (
-    <div id="language-switch">
-      <div id="mobile">
+    <div id="language-switch" className="absolute top-0 right-0">
+      <div id="mobile" className="sm:hidden">
         <select onChange={changeLanguage} value={currentLang}>
           {sortedLanguages.map((lang) => (
             <option key={lang.code} value={lang.code}>
-              {lang.img}
               {lang.label}
             </option>
           ))}
         </select>
       </div>
-
-      <div id="desktop" class="flex flex-row gap-3">
-        <img
-          key="fr"
-          src="src\assets\img\Flag_of_France.svg.png"
-          alt="French flag"
-        ></img>
-        <img
-          key="en"
-          src="src\assets\img\Flag_of_the_United_Kingdom_(3-5).svg.png"
-          alt="English flag"
-        ></img>
-        <img
-          key="ko"
-          src="src\assets\img\Flag_of_South_Korea.svg.png"
-          alt="Korean flag"
-        ></img>
+      <div id="desktop" className="max-md:hidden flex flex-row gap-3">
+        {languages.map(({ code, img, label })=> (
+          <FlagContainer
+            key={code}
+            src={img}
+            alt={label}
+            onClick={changeLanguageDesktop(code)}
+            isActive={currentLang === code}
+          />
+        ))}
       </div>
     </div>
   );
