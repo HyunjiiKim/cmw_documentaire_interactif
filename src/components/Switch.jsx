@@ -49,8 +49,8 @@ const LanguageSwitch = () => {
 
 
   return (
-    <div id="language-switch" className="absolute top-0 right-0">
-      <div id="mobile" className="sm:hidden">
+    <div id="language-switch" className="absolute top-10 right-10">
+      <div id="mobile" className="md:hidden">
         <select onChange={changeLanguage} value={currentLang}>
           {sortedLanguages.map((lang) => (
             <option key={lang.code} value={lang.code}>
