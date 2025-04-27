@@ -16,7 +16,7 @@ export const NavBar = ({ whichPage }) => {
     }
 
     return(
-        <div id="nav" className="w-screen">
+        <div id="nav" className="w-200">
             <div id="collapsible" className="md:hidden">
                 <i className="bi bi-list" />
                 <div id="hiddenNav"></div>

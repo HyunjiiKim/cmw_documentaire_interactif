@@ -1,10 +1,11 @@
 import { useTranslation } from "react-i18next";
 
 import { FlagContainer } from "./Container.jsx";
+import { InfoBtn } from "./Button.jsx";
 
-import FlagUK from "../assets/img/flag_FR.png";
+import FlagUK from "../assets/img/flag_UK.png";
 import FlagKR from "../assets/img/flag_KR.png";
-import FlagFR from "../assets/img/flag_UK.png";
+import FlagFR from "../assets/img/flag_FR.png";
 
 import "./components.css";
 
@@ -69,6 +70,7 @@ const LanguageSwitch = () => {
             isActive={currentLang === code}
           />
         ))}
+        <InfoBtn />
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-export const ImageContainer = ({ src, alt }) => {
+export const ImageContainer = ({ src, alt, width, height }) => {
   return (
-    <>
-      <img src={src} alt={alt} className="size-full h-auto" />
-    </>
+    <div className={`w-${width} h-${height} object-cover`}>
+      <img src={src} alt={alt} />
+    </div>
   );
 };
 
