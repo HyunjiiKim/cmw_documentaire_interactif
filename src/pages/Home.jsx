@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import Button from "../components/Button";
+import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 
 import "./style.css";
@@ -21,7 +21,7 @@ const Home = () => {
             <main>
                 {!showChoice 
                 ?
-                <div className="flex flex-col font-sans">
+                <div className="flex flex-col font-sans ">
                     <h1>Mémoire Captive</h1>
                     <Button
                         textColor="text-white"

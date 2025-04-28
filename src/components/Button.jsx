@@ -50,8 +50,8 @@ export const InfoBtn = () => {
 
 export const ArrowBtn = ({ isLeft, color }) => {
     return(
-        <div className={`bg-${color} cursor-pointer`}>
-            <i className={`bi bi-arrow-${isLeft ? "left" : "right"}`}></i>
+        <div className={`bg-${color} cursor-pointer aspect-squre w-40`}>
+            <i className={`h1 text-white bi bi-chevron-${isLeft ? "left" : "right"}`}></i>
         </div>
     )
 }
