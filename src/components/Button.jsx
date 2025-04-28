@@ -48,4 +48,12 @@ export const InfoBtn = () => {
     )
 }
 
+export const ArrowBtn = () => {
+  return (
+    <div className="cursor-pointer">
+      <i className="bi bi-chevron-left text-white h1" />
+    </div>
+  );
+};
+
 export default Button;
