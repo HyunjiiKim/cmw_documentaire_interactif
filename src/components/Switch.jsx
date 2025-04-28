@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { FlagContainer } from "./Container.jsx";
 import { InfoBtn } from "./Button.jsx";
+import { SoundBtn } from "./Button.jsx";
 
 import FlagUK from "../assets/img/flag_UK.png";
 import FlagKR from "../assets/img/flag_KR.png";
@@ -48,7 +49,6 @@ const LanguageSwitch = () => {
   // language change handler (desktop)
   const changeLanguageDesktop = (code) => () => i18n.changeLanguage(code);
 
-
   return (
     <div id="language-switch" className="absolute top-10 right-10">
       <div id="mobile" className="md:hidden">
@@ -61,7 +61,8 @@ const LanguageSwitch = () => {
         </select>
       </div>
       <div id="desktop" className="max-md:hidden flex flex-row gap-3">
-        {languages.map(({ code, img, label })=> (
+        <SoundBtn />
+        {languages.map(({ code, img, label }) => (
           <FlagContainer
             key={code}
             src={img}

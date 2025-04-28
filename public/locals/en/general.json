@@ -1,5 +1,8 @@
 {
-    "start": "Start",
-    "watch": "Watch Documentary",
-    "map": "Explore the map"
+  "title": "Captive Memories",
+  "subtitle": "The legacy of the Geoje prison camp",
+  "presentation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ligula sapien, gravida at vehicula nec, mollis at magna. Aenean egestas risus enim, nam posuere elementum venenatis. Praesent nisl justo, egestas at pulvinar ut, porta ac augue. Quisque at cursus dolor, quis convallis augue. Donec cursus vitae ex in maximus.",
+  "start": "Start",
+  "watch": "Watch Documentary",
+  "map": "Explore the map"
 }
