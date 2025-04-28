@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button, { ArrowBtn } from "../components/Button";
-import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 
 import "./style.css";
@@ -17,20 +16,28 @@ const Home = () => {
   }
 
   return (
-    <div id="home" className="flex flex-col">
+    <div
+      id="home"
+      className="flex flex-col bg-[url(src/assets/img/background.png)] bg-cover"
+    >
       <main>
         {!showChoice ? (
-          <div className="flex flex-col px-[100px] py-[50px]">
-            <h1 className="font-sans uppercase text-[95px] text-white">
-              {t2("title")}
-            </h1>
-            <h2 className="font-body text-[21px] text-white">
-              {t2("subtitle")}
-            </h2>
-            <p className="font-body font-light text-[20px] text-white">
-              {t2("presentation")}
-            </p>
-            <Button onClick={openShowChoices} label={t2("start")} />
+          <div className="flex px-[100px] py-[50px]">
+            <div className="col w-[537px] flex-none">
+              <img src="src\assets\img\presentation.jpg"></img>
+            </div>
+            <div className="col">
+              <h1 className="font-sans uppercase text-[95px] text-white">
+                {t2("title")}
+              </h1>
+              <h2 className="font-body text-[21px] text-white">
+                {t2("subtitle")}
+              </h2>
+              <p className="font-body font-light text-[20px] text-white">
+                {t2("presentation")}
+              </p>
+              <Button onClick={openShowChoices} label={t2("start")} />
+            </div>
           </div>
         ) : (
           <div className="flex gap-10 items-center m-auto">

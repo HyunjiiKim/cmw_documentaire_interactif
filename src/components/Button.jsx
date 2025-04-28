@@ -38,7 +38,7 @@ const Button = ({ intent, size, custom, label, onClick }) => {
 
 export const InfoBtn = () => {
   return (
-    <div className="group border-2 rounded-full border-white aspect-square w-10 flex items-center text-center justify-center cursor-pointer relative">
+    <div className="group border-2 rounded-full border-white aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative">
       <p className="text-white">i</p>
       <div className="hidden group-hover:block absolute top-5 right-5 bg-orange-200 p-10 rounded-sm">
         test
@@ -48,10 +48,9 @@ export const InfoBtn = () => {
 };
 
 export const SoundBtn = () => {
-  // L'icon Bootstrap ne s'affiche pas
   return (
-    <div className="group w-10 flex bg-primary items-center text-center justify-center cursor-pointer relative">
-      <i className="bi bi-soundwave text-white"></i>
+    <div className="cursor-pointer">
+      <i className="bi bi-soundwave text-white text-[40px] flex items-center text-center justify-center align-middle"></i>
     </div>
   );
 };
