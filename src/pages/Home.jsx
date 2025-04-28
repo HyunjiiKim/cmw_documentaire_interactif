@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Button, { ArrowBtn } from "../components/Button";
+import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 
 import "./style.css";

@@ -56,11 +56,12 @@ export const SoundBtn = () => {
   );
 };
 
-export const ArrowBtn = () => {
-  // L'icon Bootstrap ne s'affiche pas
+export const ArrowBtn = ({ isLeft, color }) => {
   return (
-    <div className="cursor-pointer">
-      <i className="bi bi-chevron-left text-white h1" />
+    <div className={`bg-${color} cursor-pointer aspect-squre w-40`}>
+      <i
+        className={`h1 text-white bi bi-chevron-${isLeft ? "left" : "right"}`}
+      ></i>
     </div>
   );
 };
