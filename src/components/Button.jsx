@@ -8,7 +8,7 @@ const buttonVariants = cva(
     variants: {
       intent: {
         primary:
-          "bg-primary-1 text-white font-body font-semibold uppercase text-[20px]",
+          "bg-primary-1 text-white font-body font-semibold uppercase text-[20px] mt-[18px] hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm hover:text-shadow-black",
         secondary: "bg-secondary-1 text-white",
         ghost: "bg-transparent text-primary-1",
       },

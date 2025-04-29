@@ -50,7 +50,7 @@ const LanguageSwitch = () => {
   const changeLanguageDesktop = (code) => () => i18n.changeLanguage(code);
 
   return (
-    <div id="language-switch" className="absolute top-10 right-10">
+    <div id="language-switch" className="absolute top-10 right-10 mr-[100px]">
       <div id="mobile" className="md:hidden">
         <select onChange={changeLanguage} value={currentLang}>
           {sortedLanguages.map((lang) => (

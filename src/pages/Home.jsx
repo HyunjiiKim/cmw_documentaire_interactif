@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
+import { Logo } from "../components/Logo";
 
 import "./style.css";
 
@@ -22,18 +23,22 @@ const Home = () => {
     >
       <main>
         {!showChoice ? (
-          <div className="flex px-[100px] py-[50px]">
-            <div className="col w-[537px] flex-none">
-              <img src="src\assets\img\presentation.jpg" className=""></img>
+          <div className="flex px-[140px] py-[60px]">
+            <div className="relative col w-[537px] flex-none mr-[35px] mt-[50px]">
+              <Logo />
+              <img
+                src="src\assets\img\presentation.jpg"
+                className="border-2 border-white"
+              ></img>
             </div>
-            <div className="col">
-              <h1 className="font-sans uppercase text-[95px] text-white">
+            <div className="col content-center">
+              <h1 className="font-sans uppercase text-[95px] text-white leading-none">
                 {t2("title")}
               </h1>
               <h2 className="font-body text-[21px] text-white">
                 {t2("subtitle")}
               </h2>
-              <p className="font-body font-light text-[20px] text-white">
+              <p className="font-body font-light text-[20px] text-white mt-[30px]">
                 {t2("presentation")}
               </p>
               <Button onClick={openShowChoices} label={t2("start")} />
