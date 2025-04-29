@@ -4,7 +4,7 @@ import { FlagContainer } from "./Container.jsx";
 import { InfoBtn } from "./Button.jsx";
 import { SoundBtn } from "./Button.jsx";
 
-import FlagUK from "../assets/img/flag_UK.png";
+import FlagUS from "../assets/img/flag_US.png";
 import FlagKR from "../assets/img/flag_KR.png";
 import FlagFR from "../assets/img/flag_FR.png";
 
@@ -20,7 +20,7 @@ const LanguageSwitch = () => {
     {
       code: "en",
       label: "English",
-      img: FlagUK,
+      img: FlagUS,
     },
     {
       code: "ko",

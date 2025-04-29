@@ -24,7 +24,7 @@ const Home = () => {
         {!showChoice ? (
           <div className="flex px-[100px] py-[50px]">
             <div className="col w-[537px] flex-none">
-              <img src="src\assets\img\presentation.jpg"></img>
+              <img src="src\assets\img\presentation.jpg" className=""></img>
             </div>
             <div className="col">
               <h1 className="font-sans uppercase text-[95px] text-white">
