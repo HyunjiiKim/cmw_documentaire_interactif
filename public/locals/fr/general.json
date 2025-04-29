@@ -1,5 +1,8 @@
 {
-  "title": "Mémoires Captives",
+  "title": {
+    "part1": "Mémoires",
+    "part2": "Captives"
+  },
   "subtitle": "L’héritage du camp de prisonniers de Geoje",
   "presentation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ligula sapien, gravida at vehicula nec, mollis at magna. Aenean egestas risus enim, nam posuere elementum venenatis. Praesent nisl justo, egestas at pulvinar ut, porta ac augue. Quisque at cursus dolor, quis convallis augue. Donec cursus vitae ex in maximus.",
   "start": "Commencer",

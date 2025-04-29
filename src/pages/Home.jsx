@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Logo } from "../components/Logo";
+import { Title } from "../components/Text";
 
 import "./style.css";
 
@@ -17,10 +18,7 @@ const Home = () => {
   }
 
   return (
-    <div
-      id="home"
-      className="flex flex-col bg-cover"
-    >
+    <div id="home" className="flex flex-col">
       <main>
         {!showChoice ? (
           <div className="flex px-[140px] py-[60px]">
@@ -32,9 +30,7 @@ const Home = () => {
               ></img>
             </div>
             <div className="col content-center">
-              <h1 className="font-sans uppercase text-[95px] text-white leading-none">
-                {t2("title")}
-              </h1>
+              <Title />
               <h2 className="font-body text-[21px] text-white">
                 {t2("subtitle")}
               </h2>
