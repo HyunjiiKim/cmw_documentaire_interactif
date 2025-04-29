@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div
       id="home"
-      className="flex flex-col bg-[url(src/assets/img/background.png)] bg-cover"
+      className="flex flex-col bg-cover"
     >
       <main>
         {!showChoice ? (
