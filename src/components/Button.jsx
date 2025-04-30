@@ -55,9 +55,12 @@ export const SoundBtn = () => {
   );
 };
 
-export const ArrowBtn = ({ isLeft, color }) => {
+export const ArrowBtn = ({ isLeft, color, onClick }) => {
   return (
-    <div className={`bg-${color} cursor-pointer aspect-squre w-40`}>
+    <div
+      className={`bg-${color} cursor-pointer aspect-squre w-40`}
+      onClick={onClick}
+    >
       <i
         className={`h1 text-white bi bi-chevron-${isLeft ? "left" : "right"}`}
       ></i>

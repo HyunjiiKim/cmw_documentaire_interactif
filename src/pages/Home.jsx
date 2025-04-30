@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Logo } from "../components/Logo";
-import { Title } from "../components/Text";
+import Header from "../components/Header";
 
 import "./style.css";
 
@@ -23,7 +23,7 @@ const Home = () => {
         {!showChoice ? (
           <div className="flex px-[140px] py-[60px]">
             <div className="relative col w-[537px] flex-none mr-[35px] mt-[50px]">
-              <Logo />
+              <Logo intent="primary" size="large" />
               <img
                 src="src\assets\img\presentation.jpg"
                 className="border-2 border-white"
@@ -46,16 +46,23 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div className="flex gap-10 items-center m-auto">
-            <Trigger
-              btnLabel={t2("watch")}
-              btnOnClick={() => confirm("Need a Documentary")}
-            />
-            <Trigger
-              btnLabel={t2("map")}
-              btnOnClick={() => (window.location.href = "/map")}
-            />
-            <ArrowBtn isLeft="true" color="text-primary-2" />
+          <div className="">
+            <Header withText />
+            <div className="flex gap-10 items-center m-auto">
+              <Trigger
+                btnLabel={t2("watch")}
+                btnOnClick={() => confirm("Need a Documentary")}
+              />
+              <Trigger
+                btnLabel={t2("map")}
+                btnOnClick={() => (window.location.href = "/map")}
+              />
+              <ArrowBtn
+                isLeft="true"
+                color="text-primary-2"
+                onClick={() => setShowChoice(false)}
+              />
+            </div>
           </div>
         )}
       </main>
