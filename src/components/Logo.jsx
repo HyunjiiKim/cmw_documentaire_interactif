@@ -10,3 +10,5 @@ export const Logo = () => {
     </>
   );
 };
+
+// Rajouter les différentes variantes du logo, ici il n'y a seulement la version no-text-lg (page d'accueil), il manque la version noText-md et withText-md (présente sur 'Header').

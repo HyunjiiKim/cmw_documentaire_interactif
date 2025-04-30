@@ -30,7 +30,12 @@ const Home = () => {
               ></img>
             </div>
             <div className="col content-center">
-              <Title />
+              <h1 className="font-sans text-[95px] uppercase leading-none text-white ">
+                {t2("title.part1")}
+              </h1>
+              <h1 className="font-sans text-[95px] uppercase leading-none text-primary-2 ">
+                {t2("title.part2")}
+              </h1>
               <h2 className="font-body text-[21px] text-white">
                 {t2("subtitle")}
               </h2>
@@ -50,6 +55,7 @@ const Home = () => {
               btnLabel={t2("map")}
               btnOnClick={() => (window.location.href = "/map")}
             />
+            <ArrowBtn isLeft="true" color="text-primary-2" />
           </div>
         )}
       </main>
