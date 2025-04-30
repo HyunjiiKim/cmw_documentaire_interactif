@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-export const Text = (font, size, color, label) => {
+export const Text = ({ font, size, color, label }) => {
   return (
     <h1 className={`font-${font} text-[${size}] text-${color}`}>{label}</h1>
   );
