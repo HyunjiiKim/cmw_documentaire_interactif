@@ -4,7 +4,7 @@ import { FlagContainer } from "./Container.jsx";
 import { InfoBtn } from "./Button.jsx";
 import { SoundBtn } from "./Button.jsx";
 
-import FlagUK from "../assets/img/flag_UK.png";
+import FlagUS from "../assets/img/flag_US.png";
 import FlagKR from "../assets/img/flag_KR.png";
 import FlagFR from "../assets/img/flag_FR.png";
 
@@ -20,7 +20,7 @@ const LanguageSwitch = () => {
     {
       code: "en",
       label: "English",
-      img: FlagUK,
+      img: FlagUS,
     },
     {
       code: "ko",
@@ -50,8 +50,11 @@ const LanguageSwitch = () => {
   const changeLanguageDesktop = (code) => () => i18n.changeLanguage(code);
 
   return (
-    <div id="language-switch" className="absolute top-10 right-10">
-      <div id="mobile" className="md:hidden">
+    <div
+      id="language-switch"
+      className="absolute top-10 right-10 mr-[100px] mt-[30px]"
+    >
+      <div id="mobile" className="max-sm:hidden md:hidden text-white">
         <select onChange={changeLanguage} value={currentLang}>
           {sortedLanguages.map((lang) => (
             <option key={lang.code} value={lang.code}>

@@ -2,25 +2,25 @@
 
 /* Color */
 @theme {
-  --color-primary-1: #BF9D63;
-  --color-primary-2: #E5C17A;
-  --color-primary-3: #BFA763;
-  --color-secondary-1: #9A938A;
-  --color-secondary-2: #E3E3DF;
-  --color-tertiary-1: #7C6853;
-  --color-tertiary-2: #4E3E3D;
-  --color-tertiary-3: #37261C;
-  --color-accent-1: #7F1B15;
-  --color-accent-2: #6E1722;
-  --color-white-1: #F1E9DA;
+  --color-primary-1: #bf9d63;
+  --color-primary-2: #e5c17a;
+  --color-primary-3: #bfa763;
+  --color-secondary-1: #9a938a;
+  --color-secondary-2: #e3e3df;
+  --color-tertiary-1: #7c6853;
+  --color-tertiary-2: #4e3e3d;
+  --color-tertiary-3: #37261c;
+  --color-accent-1: #7f1b15;
+  --color-accent-2: #6e1722;
+  --color-white-1: #f1e9da;
   --color-black: #282828;
 }
 
 /* Fonts */
 
 @theme {
-    --font-body: "Oswald";
-    --font-sans: "Anton";
+  --font-body: "Oswald";
+  --font-sans: "Anton", "Aggravo";
 }
 
 @font-face {
@@ -63,4 +63,22 @@
   font-family: "Oswald";
   src: url("/fonts/Oswald/static/Oswald-ExtraLight.ttf") format("truetype");
   font-weight: 200;
+}
+
+@font-face {
+  font-family: "Aggravo";
+  src: url("/fonts/Aggravo/Aggravo_L.ttf") format("truetype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Aggravo";
+  src: url("/fonts/Aggravo/Aggravo_M.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Aggravo";
+  src: url("/fonts/Aggravo/Aggravo_B.ttf") format("truetype");
+  font-weight: 700;
 }

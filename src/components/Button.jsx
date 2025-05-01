@@ -3,12 +3,12 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center font-medium cursor-pointer disabled:opacity-50",
+  "inline-flex items-center justify-center cursor-pointer disabled:opacity-50",
   {
     variants: {
       intent: {
         primary:
-          "bg-primary-1 text-white font-body font-semibold uppercase text-[20px]",
+          "bg-primary-1 text-white font-body font-semibold uppercase text-[20px] mt-[18px] hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
         secondary: "bg-secondary-1 text-white",
         ghost: "bg-transparent text-primary-1",
       },
@@ -55,11 +55,16 @@ export const SoundBtn = () => {
   );
 };
 
-export const ArrowBtn = ({ isLeft, color }) => {
+export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
   return (
-    <div className={`bg-${color} cursor-pointer aspect-squre w-40`}>
+    <div
+      className={`bg-${color} cursor-pointer aspect-squre w-40 ${custom}`}
+      onClick={onClick}
+    >
       <i
-        className={`h1 text-white bi bi-chevron-${isLeft ? "left" : "right"}`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
+          isLeft ? "left" : "right"
+        }`}
       ></i>
     </div>
   );
