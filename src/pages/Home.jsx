@@ -7,8 +7,8 @@ import { Logo } from "../components/Logo";
 import Header from "../components/Header";
 import { Blocker } from "../components/Blocker";
 
-import mockImage from "../assets/img/presentation.jpg";
-import mockVideo from "../assets/videos/test.mp4";
+import mockImage from "/assets/img/presentation.jpg";
+import mockVideo from "/assets/videos/test.mp4";
 
 import "./style.css";
 
@@ -30,7 +30,7 @@ const Home = () => {
             <div className="relative col w-[537px] flex-none mr-[35px] mt-[50px]">
               <Logo intent="primary" size="large" />
               <img
-                src="src\assets\img\presentation.jpg"
+                src={mockImage}
                 className="border-2 border-white"
               ></img>
             </div>
