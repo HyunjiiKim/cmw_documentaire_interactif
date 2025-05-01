@@ -2,5 +2,6 @@
   "start": "Commencer",
   "watch": "Visionner le documentaire",
   "map": "Explorer la carte",
-  "Rotate": "Faire pivoter l'écran sur votre appreil"
+  "Rotate": "Faire pivoter l'écran sur votre appreil",
+  "loading": "Veuilliew patienter..."
 }
