@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { ImageContainer } from "./Container";
 
-import mockImage from "../assets/img/presentation.jpg";
+import mockImage from "../assets/img/mockImage.jpg";
 
 export const Trigger = ({ btnLabel, btnOnClick }) => {
   return (
