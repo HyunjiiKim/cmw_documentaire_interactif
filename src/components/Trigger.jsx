@@ -1,12 +1,17 @@
 import Button from "./Button";
 import { ImageContainer } from "./Container";
 
-import mockImage from "../assets/img/flag_US.png";
+import mockImage from "../assets/img/presentation.jpg";
 
 export const Trigger = ({ btnLabel, btnOnClick }) => {
   return (
-    <div className="flex-col w-120 relative cursor-pointer">
-      <ImageContainer src={mockImage} alt="Test pic" width="40" height="30" />
+    <div className="flex-col cursor-pointer">
+      <ImageContainer
+        src={mockImage}
+        alt="Test pic"
+        width="[500px]"
+        height="[400px]"
+      />
       <Button
         textColor="text-white"
         backgroundColor="bg-black"

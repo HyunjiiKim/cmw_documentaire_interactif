@@ -21,7 +21,12 @@
 @theme {
   --font-body: "Oswald";
   --font-sans: "Anton";
-  --font-aggravo: "Aggravo";
+}
+
+@layer base {
+  :lang(ko) {
+    --font-sans: "Aggravo";
+  }
 }
 
 @font-face {

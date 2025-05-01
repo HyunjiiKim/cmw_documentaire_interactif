@@ -46,9 +46,9 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div className="">
+          <div className="h-screen w-full">
             <Header withText />
-            <div className="flex gap-10 items-center m-auto">
+            <div className="flex px-[140px] py-[60px] gap-[55px] justify-center">
               <Trigger
                 btnLabel={t2("watch")}
                 btnOnClick={() => confirm("Need a Documentary")}
@@ -57,12 +57,13 @@ const Home = () => {
                 btnLabel={t2("map")}
                 btnOnClick={() => (window.location.href = "/map")}
               />
-              <ArrowBtn
-                isLeft="true"
-                color="text-primary-2"
-                onClick={() => setShowChoice(false)}
-              />
             </div>
+            <ArrowBtn
+              isLeft="true"
+              color="text-primary-2"
+              onClick={() => setShowChoice(false)}
+              custom="px-[140px] py-[60px]"
+            />
           </div>
         )}
       </main>
