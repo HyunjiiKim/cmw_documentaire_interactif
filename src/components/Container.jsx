@@ -6,7 +6,7 @@ export const ImageContainer = ({ src, alt, width, height, custom }) => {
   );
 };
 
-export const VideoContainer = ({ img, src, alt, width, height, custom }) => {
+export const VideoContainer = ({ src, alt, width, height, custom }) => {
   const videos = document.querySelectorAll("video");
 
   videos.forEach((video) => {

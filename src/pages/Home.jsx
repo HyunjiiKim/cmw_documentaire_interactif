@@ -14,7 +14,7 @@ import "./style.css";
 const Home = () => {
   const { t } = useTranslation("contents");
   const { t: t2 } = useTranslation("home");
-  const { t: t3 } = useTranslation("general")
+  const { t: t3 } = useTranslation("general");
   const [showChoice, setShowChoice] = useState(false);
 
   function openShowChoices() {
@@ -52,16 +52,22 @@ const Home = () => {
         ) : (
           <div className="m-0">
             <Header withText />
-            <div id="contents" className="flex px-[140px] py-[60px] gap-[55px] justify-center">
+            <div
+              id="contents"
+              className="flex px-[140px] py-[60px] gap-[55px] justify-center"
+            >
               <Trigger
+                src="src/assets/vid/test.mp4"
+                label="Test video"
                 btnLabel={t3("watch")}
                 btnOnClick={() => confirm("Need a Documentary")}
-                imgSrc={mockImage}
               />
               <Trigger
+                isImg="true"
+                src="src\assets\img\mockImage.png"
+                label="Test picture"
                 btnLabel={t3("map")}
                 btnOnClick={() => alert(t2("notAvailable"))}
-                imgSrc={mockImage}
               />
             </div>
             <ArrowBtn
@@ -75,7 +81,7 @@ const Home = () => {
       </main>
       <Blocker />
     </div>
-    );
-  };
+  );
+};
 
 export default Home;
