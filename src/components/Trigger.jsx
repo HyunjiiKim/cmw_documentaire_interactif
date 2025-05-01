@@ -1,23 +1,34 @@
 import Button from "./Button";
-import { ImageContainer } from "./Container";
+import { ImageContainer, VideoContainer } from "./Container";
 
-import mockImage from "../assets/img/mockImage.jpg";
-
-export const Trigger = ({ btnLabel, btnOnClick }) => {
+export const Trigger = ({ img, src, alt, btnLabel, btnOnClick }) => {
   return (
-    <div className="flex-col cursor-pointer">
-      <ImageContainer
-        src={mockImage}
-        alt="Test pic"
-        width="[500px]"
-        height="[400px]"
-      />
+    <div className="relative flex flex-col cursor-pointer">
+      {
+        (img = "true" ? (
+          <ImageContainer
+            src={src}
+            alt={alt}
+            width="lg"
+            height="auto"
+            custom="grayscale-100 opacity-50 hover:opacity-100"
+          />
+        ) : (
+          <VideoContainer
+            src={src}
+            alt={alt}
+            width="lg"
+            height="auto"
+            custom="grayscale-100 opacity-50 hover:opacity-100"
+          />
+        ))
+      }
       <Button
         textColor="text-white"
         backgroundColor="bg-black"
         onClick={btnOnClick}
         label={btnLabel}
-        custom="absolute"
+        custom="self-center absolute top-50"
       />
     </div>
   );

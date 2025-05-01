@@ -30,7 +30,7 @@ const Home = () => {
               ></img>
             </div>
             <div className="col content-center">
-              <h1 className="font-sans text-[95px] uppercase leading-none text-white ">
+              <h1 className="font-sans text-[95px] uppercase leading-none text-white">
                 {t2("title.part1")}
               </h1>
               <h1 className="font-sans text-[95px] uppercase leading-none text-primary-2 ">
@@ -46,14 +46,20 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div className="h-screen w-full">
+          <div className="h-screen w-full m-0">
             <Header withText />
-            <div className="flex px-[140px] py-[60px] gap-[55px] justify-center">
+            <div className="flex justify-center px-[120px] py-[60px] gap-[55px]">
               <Trigger
+                img="false"
+                src="src\assets\vid\test.mp4"
+                alt="Test gif"
                 btnLabel={t2("watch")}
                 btnOnClick={() => confirm("Need a Documentary")}
               />
               <Trigger
+                img="true"
+                src="src\assets\img\mockImage.png"
+                alt="Test picture"
                 btnLabel={t2("map")}
                 btnOnClick={() => (window.location.href = "/map")}
               />
@@ -62,7 +68,7 @@ const Home = () => {
               isLeft="true"
               color="text-primary-2"
               onClick={() => setShowChoice(false)}
-              custom="px-[140px] py-[60px]"
+              custom="absolute bottom-25 px-[120px]"
             />
           </div>
         )}

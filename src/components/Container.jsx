@@ -1,9 +1,31 @@
-export const ImageContainer = ({ src, alt, width, height }) => {
+export const ImageContainer = ({ src, alt, width, height, custom }) => {
   return (
-    <div
-      className={`w-${width} h-${height} saturate-0 border-[2px] border-white`}
-    >
-      <img src={src} alt={alt} />
+    <div className={`w-${width} h-${height} border-[2px] border-white`}>
+      <img src={src} alt={alt} className={`${custom}`} />
+    </div>
+  );
+};
+
+export const VideoContainer = ({ img, src, alt, width, height, custom }) => {
+  const videos = document.querySelectorAll("video");
+
+  videos.forEach((video) => {
+    video.addEventListener("mouseover", function () {
+      this.play();
+    });
+
+    video.addEventListener("mouseout", function () {
+      this.pause();
+    });
+  });
+
+  return (
+    <div className={`w-${width} h-${height} border-[2px] border-white`}>
+      <video
+        src={src}
+        alt={alt}
+        className={`w-${width} h-100 ${custom}`}
+      ></video>
     </div>
   );
 };
