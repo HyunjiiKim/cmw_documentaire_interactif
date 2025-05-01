@@ -3,22 +3,18 @@ import { ImageContainer, VideoContainer } from "./Container";
 
 export const Trigger = ({ isImg, src, alt, btnLabel, btnOnClick }) => {
   return (
-    <div className="relative flex flex-col cursor-pointer">
+    <div className="relative flex items-center justify-center cursor-pointer">
       {
-        (isImg = "true" ? (
+        (isImg ? (
           <ImageContainer
             src={src}
             alt={alt}
-            width="lg"
-            height="auto"
             custom="grayscale-100 opacity-50 hover:opacity-100"
           />
         ) : (
           <VideoContainer
             src={src}
             alt={alt}
-            width="lg"
-            height="auto"
             custom="grayscale-100 opacity-50 hover:opacity-100"
           />
         ))
@@ -28,7 +24,7 @@ export const Trigger = ({ isImg, src, alt, btnLabel, btnOnClick }) => {
         backgroundColor="bg-black"
         onClick={btnOnClick}
         label={btnLabel}
-        custom="absolute translate-x-full"
+        custom="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
       />
     </div>
   );

@@ -50,7 +50,7 @@ export const InfoBtn = () => {
 export const SoundBtn = () => {
   return (
     <div className="cursor-pointer">
-      <i className="bi bi-soundwave text-white text-[40px] flex items-center text-center justify-center align-middle"></i>
+      <i className="bi bi-soundwave text-white hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle"></i>
     </div>
   );
 };

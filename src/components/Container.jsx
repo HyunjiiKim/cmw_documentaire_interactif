@@ -1,34 +1,68 @@
-export const ImageContainer = ({ src, alt, width, height, custom }) => {
+import { useEffect, useRef } from "react";
+import { cva } from "class-variance-authority";
+
+const ContainerVariants = cva(
+  "border-2 border-white",
+  {
+    variants: {
+      intent: {
+        default: "",
+        hoverZoom: "transition-transform duration-300 hover:scale-105",
+      },
+      size: {
+        sm: "w-24 h-24",
+        md: "w-48 h-48",
+        lg: "w-96 h-96",
+        full: "w-full h-auto",
+      },
+      border: {
+        white: "border-white",
+        gray: "border-gray-300",
+        none: "border-none",
+      },
+    },
+    defaultVariants: {
+      intent: "default",
+      size: "lg",
+      border: "white",
+    },
+  }
+);
+
+export const ImageContainer = ({ src, alt, intent, size, border, custom }) => {
   return (
-    <div className={`w-${width} h-${height} border-[2px] border-white`}>
-      <img src={src} alt={alt} className={`${custom}`} />
+    <div className={`${ContainerVariants({ intent, size, border })} ${custom}`}>
+      <img src={src} alt={alt} className="w-full h-full object-cover" />
     </div>
   );
 };
 
-export const VideoContainer = ({ src, alt, width, height, custom }) => {
-  const videos = document.querySelectorAll("video");
+export const VideoContainer = ({ src, intent, size, border, custom = "",}) => {
+  const videoRef = useRef(null);
 
-  videos.forEach((video) => {
-    video.addEventListener("mouseover", function () {
-      this.play();
-    });
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
-    video.addEventListener("mouseout", function () {
-      this.pause();
-    });
-  });
+    const handleMouseOver = () => video.play();
+    const handleMouseOut = () => video.pause();
+
+    video.addEventListener("mouseover", handleMouseOver);
+    video.addEventListener("mouseout", handleMouseOut);
+
+    return () => {
+      video.removeEventListener("mouseover", handleMouseOver);
+      video.removeEventListener("mouseout", handleMouseOut);
+    };
+  }, []);
 
   return (
-    <div className={`w-${width} h-${height} border-[2px] border-white`}>
-      <video
-        src={src}
-        alt={alt}
-        className={`w-${width} h-100 ${custom}`}
-      ></video>
+    <div className={`${ContainerVariants({ intent, size, border })} ${custom}`}>
+      <video ref={videoRef} src={src} className="w-full h-full object-cover" />
     </div>
   );
 };
+
 
 export const FlagContainer = ({ src, alt, onClick, isActive }) => {
   return (
@@ -38,7 +72,7 @@ export const FlagContainer = ({ src, alt, onClick, isActive }) => {
         alt={alt}
         onClick={onClick}
         className={`w-10 h-10 rounded-full cursor-pointer border-2 border-[#d9d9d9] object-cover
-         saturate-0 hover:saturate-100 ${isActive ? "saturate-100" : ""}`}
+         saturate-0 hover:saturate-100 hover:scale-120 ${isActive ? "saturate-100" : ""}`}
       />
     </>
   );
