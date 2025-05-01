@@ -33,8 +33,8 @@ const Home = () => {
                 className="border-2 border-white"
               ></img>
             </div>
-            <div className="flex flex-col content-center">
-              <h1 className="font-sans text-[95px] uppercase leading-none text-white ">
+            <div className="col content-center">
+              <h1 className="font-sans text-[95px] uppercase leading-none text-white">
                 {t2("title.part1")}
               </h1>
               <h1 className="font-sans text-[95px] uppercase leading-none text-primary-2 ">
@@ -50,7 +50,7 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div className="">
+          <div className="m-0">
             <Header withText />
             <div id="contents" className="flex px-[140px] py-[60px] gap-[55px] justify-center">
               <Trigger
@@ -68,14 +68,14 @@ const Home = () => {
               isLeft="true"
               color="text-primary-2"
               onClick={() => setShowChoice(false)}
-              custom="px-[140px] py-[60px]"
+              custom="absolute bottom-25 px-[120px]"
             />
           </div>
         )}
       </main>
       <Blocker />
     </div>
-  );
-};
+    );
+  };
 
 export default Home;

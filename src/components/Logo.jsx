@@ -7,7 +7,7 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const logoVariants = cva(
-  "cursor-pointer text-white border-1 border-white bg-primary-1 rotate-90 w-fit",
+  "cursor-pointer font-body text-white border-1 border-white bg-primary-1 rotate-90 w-fit",
   {
     variants: {
       intent: {
@@ -48,9 +48,7 @@ export const Logo = ({ intent, size, withText }) => {
               {t("title.part2")}
             </p>
           </div>
-          <p className="text-white font-body">
-            L’héritage du camp de prisonniers de Geoje
-          </p>
+          <p className="text-white font-body">{t("subtitle")}</p>
         </div>
       ) : (
         <></>

@@ -1,15 +1,28 @@
 import Button from "./Button";
-import { ImageContainer } from "./Container";
+import { ImageContainer, VideoContainer } from "./Container";
 
-export const Trigger = ({ btnLabel, btnOnClick, imgSrc }) => {
+export const Trigger = ({ isImg, src, alt, btnLabel, btnOnClick }) => {
   return (
-    <div className="flex-col cursor-pointer relative">
-      <ImageContainer
-        src={imgSrc}
-        alt={btnLabel}
-        width="[500px]"
-        height="[400px]"
-      />
+    <div className="relative flex flex-col cursor-pointer">
+      {
+        (isImg = "true" ? (
+          <ImageContainer
+            src={src}
+            alt={alt}
+            width="lg"
+            height="auto"
+            custom="grayscale-100 opacity-50 hover:opacity-100"
+          />
+        ) : (
+          <VideoContainer
+            src={src}
+            alt={alt}
+            width="lg"
+            height="auto"
+            custom="grayscale-100 opacity-50 hover:opacity-100"
+          />
+        ))
+      }
       <Button
         textColor="text-white"
         backgroundColor="bg-black"
