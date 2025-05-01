@@ -5,12 +5,16 @@ import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Logo } from "../components/Logo";
 import Header from "../components/Header";
+import { Blocker } from "../components/Blocker";
+
+import mockImage from "../assets/img/presentation.jpg";
 
 import "./style.css";
 
 const Home = () => {
   const { t } = useTranslation("contents");
-  const { t: t2 } = useTranslation("general");
+  const { t: t2 } = useTranslation("home");
+  const { t: t3 } = useTranslation("general")
   const [showChoice, setShowChoice] = useState(false);
 
   function openShowChoices() {
@@ -19,9 +23,9 @@ const Home = () => {
 
   return (
     <div id="home" className="flex flex-col">
-      <main>
+      <main className="max-sm:hidden">
         {!showChoice ? (
-          <div className="flex px-[140px] py-[60px]">
+          <div className="flex items-center px-[140px] py-[60px] max-md:flex-col">
             <div className="relative col w-[537px] flex-none mr-[35px] mt-[50px]">
               <Logo intent="primary" size="large" />
               <img
@@ -29,7 +33,7 @@ const Home = () => {
                 className="border-2 border-white"
               ></img>
             </div>
-            <div className="col content-center">
+            <div className="flex flex-col content-center">
               <h1 className="font-sans text-[95px] uppercase leading-none text-white ">
                 {t2("title.part1")}
               </h1>
@@ -42,20 +46,22 @@ const Home = () => {
               <p className="font-body font-light text-[20px] text-white mt-[30px]">
                 {t2("presentation")}
               </p>
-              <Button onClick={openShowChoices} label={t2("start")} />
+              <Button onClick={openShowChoices} label={t3("start")} />
             </div>
           </div>
         ) : (
-          <div className="h-screen w-full">
+          <div className="">
             <Header withText />
-            <div className="flex px-[140px] py-[60px] gap-[55px] justify-center">
+            <div id="contents" className="flex px-[140px] py-[60px] gap-[55px] justify-center">
               <Trigger
-                btnLabel={t2("watch")}
+                btnLabel={t3("watch")}
                 btnOnClick={() => confirm("Need a Documentary")}
+                imgSrc={mockImage}
               />
               <Trigger
-                btnLabel={t2("map")}
-                btnOnClick={() => (window.location.href = "/map")}
+                btnLabel={t3("map")}
+                btnOnClick={() => alert(t2("notAvailable"))}
+                imgSrc={mockImage}
               />
             </div>
             <ArrowBtn
@@ -67,6 +73,7 @@ const Home = () => {
           </div>
         )}
       </main>
+      <Blocker />
     </div>
   );
 };

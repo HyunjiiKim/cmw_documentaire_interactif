@@ -28,10 +28,10 @@ const logoVariants = cva(
 );
 
 export const Logo = ({ intent, size, withText }) => {
-  const { t } = useTranslation("general");
+  const { t } = useTranslation("home");
 
   return (
-    <div className="flex">
+    <div className="flex items-center">
       <div
         onClick={() => (window.location.href = "/")}
         className={twMerge(logoVariants({ intent, size }))}
