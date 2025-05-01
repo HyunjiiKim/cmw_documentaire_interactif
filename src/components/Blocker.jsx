@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import BlockerImage from "../assets/icons/rotatePhone.png";
+import BlockerImage from "/assets/icons/rotatePhone.png";
 
 export const Blocker = () => {
     const { t } = useTranslation("general")
