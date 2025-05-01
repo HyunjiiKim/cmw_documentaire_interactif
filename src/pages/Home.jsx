@@ -8,13 +8,14 @@ import Header from "../components/Header";
 import { Blocker } from "../components/Blocker";
 
 import mockImage from "../assets/img/presentation.jpg";
+import mockVideo from "../assets/videos/test.mp4";
 
 import "./style.css";
 
 const Home = () => {
   const { t } = useTranslation("contents");
   const { t: t2 } = useTranslation("home");
-  const { t: t3 } = useTranslation("general")
+  const { t: t3 } = useTranslation("general");
   const [showChoice, setShowChoice] = useState(false);
 
   function openShowChoices() {
@@ -25,7 +26,7 @@ const Home = () => {
     <div id="home" className="flex flex-col">
       <main className="max-sm:hidden">
         {!showChoice ? (
-          <div className="flex items-center px-[140px] py-[60px] max-md:flex-col">
+          <div className="flex items-center px-[140px] py-[60px] max-md:flex-col max-md:items-start">
             <div className="relative col w-[537px] flex-none mr-[35px] mt-[50px]">
               <Logo intent="primary" size="large" />
               <img
@@ -50,22 +51,28 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div className="m-0">
+          <div className="flex flex-col justify-start">
             <Header withText />
-            <div id="contents" className="flex px-[140px] py-[60px] gap-[55px] justify-center">
+            <div
+              id="contents"
+              className="flex px-[140px] py-[60px] gap-[55px] justify-center"
+            >
               <Trigger
+                isImg={false}
+                src={mockVideo}
                 btnLabel={t3("watch")}
                 btnOnClick={() => confirm("Need a Documentary")}
-                imgSrc={mockImage}
               />
               <Trigger
+                isImg={true}
+                src={mockImage}
+                alt={t3("map")}
                 btnLabel={t3("map")}
                 btnOnClick={() => alert(t2("notAvailable"))}
-                imgSrc={mockImage}
               />
             </div>
             <ArrowBtn
-              isLeft="true"
+              isLeft={true}
               color="text-primary-2"
               onClick={() => setShowChoice(false)}
               custom="absolute bottom-25 px-[120px]"
@@ -75,7 +82,7 @@ const Home = () => {
       </main>
       <Blocker />
     </div>
-    );
-  };
+  );
+};
 
 export default Home;
