@@ -3,13 +3,12 @@ import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center cursor-pointer disabled:opacity-50",
+  "inline-flex items-center justify-center cursor-pointer disabled:opacity-50 bg-primary-1 text-white font-body font-semibold uppercase text-[20px] hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
   {
     variants: {
       intent: {
-        primary:
-          "bg-primary-1 text-white font-body font-semibold uppercase text-[20px] mt-[18px] hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
-        secondary: "bg-secondary-1 text-white",
+        primary: "mt-[18px]",
+        secondary: "",
         ghost: "bg-transparent text-primary-1",
       },
       size: {

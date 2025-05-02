@@ -1,4 +1,4 @@
-// Rajouter les différentes variantes du logo, ici il n'y a seulement la version no-text-lg (page d'accueil), 
+// Rajouter les différentes variantes du logo, ici il n'y a seulement la version no-text-lg (page d'accueil),
 // il manque la version noText-md et withText-md (présente sur 'Header').
 
 import { useTranslation } from "react-i18next";
@@ -32,7 +32,11 @@ export const Logo = ({ intent, size, withText }) => {
   const { t } = useTranslation("home");
 
   return (
-    <div className={`flex items-center cursor-pointer ${ withText ? "hover:scale-120" : ""}`}>
+    <div
+      className={`flex items-center cursor-pointer ${
+        withText ? "hover:scale-120" : ""
+      }`}
+    >
       <div
         onClick={() => (window.location.href = "/")}
         className={twMerge(logoVariants({ intent, size }))}
@@ -41,7 +45,7 @@ export const Logo = ({ intent, size, withText }) => {
       </div>
       {withText ? (
         <div id="contextContainer">
-          <div className="flex gap-2">
+          <div className="flex gap-1">
             <p className="text-white uppercase font-sans text-[25px]">
               {t("title.part1")}
             </p>

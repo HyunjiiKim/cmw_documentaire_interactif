@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "en",
-    supportedLngs: ['en', 'ko', 'fr'],
+    supportedLngs: ["en", "ko", "fr"],
     nonExplicitSupportedLngs: true,
     debug: false,
     backend: {
@@ -17,15 +17,19 @@ i18n
     },
     ns: ["general", "nav", "contents", "home"],
     detection: {
-      order: ["navigator", "htmlTag", "cookie", "localStorage", "path", "subdomain"],
+      order: [
+        "navigator",
+        "htmlTag",
+        "cookie",
+        "localStorage",
+        "path",
+        "subdomain",
+      ],
       caches: ["localStorage", "cookie"],
     },
     interpolation: {
       escapeValue: false,
     },
-    react:{
-      useSuspense: false,
-    }
   });
 
 export default i18n;

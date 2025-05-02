@@ -7,8 +7,9 @@ import { Logo } from "../components/Logo";
 import Header from "../components/Header";
 import { Blocker } from "../components/Blocker";
 
-import mockImage from "https://geoje.mastercmw.com/assets/img/mockImage.png";
-import mockVideo from "https://geoje.mastercmw.com/assets/videos/test.mp4";
+import mockImage from "/assets/img/presentation.jpg";
+import mockMap from "/assets/img/mockImage.png";
+import mockVideo from "/assets/videos/test.mp4";
 
 import "./style.css";
 
@@ -38,10 +39,10 @@ const Home = () => {
               <h1 className="font-sans text-[95px] uppercase leading-none text-primary-2 ">
                 {t2("title.part2")}
               </h1>
-              <h2 className="font-body text-[21px] text-white">
+              <h2 className="font-body text-[21px] text-white mt-[0.3em]">
                 {t2("subtitle")}
               </h2>
-              <p className="font-body font-light text-[20px] text-white mt-[30px]">
+              <p className="font-body font-light text-[20px] text-white mt-[1.5em]">
                 {t2("presentation")}
               </p>
               <Button onClick={openShowChoices} label={t3("start")} />
@@ -50,6 +51,7 @@ const Home = () => {
         ) : (
           <div className="flex flex-col justify-start">
             <Header withText />
+
             <div
               id="contents"
               className="flex px-[140px] py-[60px] gap-[55px] justify-center"
@@ -58,16 +60,16 @@ const Home = () => {
                 isImg={false}
                 src={mockVideo}
                 btnLabel={t3("watch")}
-                btnOnClick={() => confirm("Need a Documentary")}
+                btnOnClick={() => (window.location.href = "/documentary")}
               />
               <Trigger
                 isImg={true}
-                src={mockImage}
-                alt={t3("map")}
+                src={mockMap}
                 btnLabel={t3("map")}
-                btnOnClick={() => alert(t2("notAvailable"))}
+                btnOnClick={() => (window.location.href = "/map")}
               />
             </div>
+
             <ArrowBtn
               isLeft={true}
               color="text-primary-2"

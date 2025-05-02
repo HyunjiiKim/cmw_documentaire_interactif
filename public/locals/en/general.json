@@ -3,5 +3,6 @@
   "watch": "Watch Documentary",
   "map": "Explore the map",
   "Rotate": "Rotate your phone",
-  "loading": "Please wait..."
+  "loading": "Please wait...",
+  "notAvailable": "This content will be available soon."
 }
