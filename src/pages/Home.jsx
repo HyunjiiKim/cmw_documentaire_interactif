@@ -7,8 +7,8 @@ import { Logo } from "../components/Logo";
 import Header from "../components/Header";
 import { Blocker } from "../components/Blocker";
 
-import mockImage from "/assets/img/presentation.jpg";
-import mockVideo from "/assets/videos/test.mp4";
+import mockImage from "https://geoje.mastercmw.com/assets/img/mockImage.png";
+import mockVideo from "https://geoje.mastercmw.com/assets/videos/test.mp4";
 
 import "./style.css";
 
@@ -29,10 +29,7 @@ const Home = () => {
           <div className="flex items-center px-[140px] py-[60px] max-md:flex-col max-md:items-start">
             <div className="relative col w-[537px] flex-none mr-[35px] mt-[50px]">
               <Logo intent="primary" size="large" />
-              <img
-                src={mockImage}
-                className="border-2 border-white"
-              ></img>
+              <img src={mockImage} className="border-2 border-white"></img>
             </div>
             <div className="col content-center">
               <h1 className="font-sans text-[95px] uppercase leading-none text-white">
