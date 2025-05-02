@@ -1,13 +1,15 @@
 import React from "react";
+import { useState } from "react";
+import { useRef } from "react";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center cursor-pointer disabled:opacity-50 bg-primary-1 text-white font-body font-semibold uppercase text-[20px] hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
+  "inline-flex items-center justify-center cursor-pointer disabled:opacity-50 bg-primary-1 text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
   {
     variants: {
       intent: {
-        primary: "mt-[18px]",
+        primary: "mt-[2.5em]",
         secondary: "",
         ghost: "bg-transparent text-primary-1",
       },
@@ -37,7 +39,7 @@ const Button = ({ intent, size, custom, label, onClick }) => {
 
 export const InfoBtn = () => {
   return (
-    <div className="group border-2 rounded-full border-white aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative">
+    <div className="group border-2 rounded-full border-white aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative hover:scale-120">
       <p className="text-white">i</p>
       <div className="hidden group-hover:block absolute top-5 right-5 bg-orange-200 p-10 rounded-sm">
         test
@@ -47,9 +49,29 @@ export const InfoBtn = () => {
 };
 
 export const SoundBtn = () => {
+  const [isSilent, setIsSilent] = useState(false);
+  var sounds = document.getElementsByTagName("video");
+
+  function handleSound() {
+    if (isSilent == false) {
+      setIsSilent(true);
+      sounds.muted = true;
+      console.log(sounds);
+    } else {
+      setIsSilent(false);
+      sounds.muted = false;
+      console.log(sounds);
+    }
+  }
+  // Need to work on muting sounds- does not work yet
+
   return (
-    <div className="cursor-pointer">
-      <i className="bi bi-soundwave text-white hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle"></i>
+    <div className="cursor-pointer" onClick={handleSound}>
+      <i
+        className={`bi bi-${
+          isSilent ? "three-dots" : "soundwave"
+        } text-white hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle`}
+      ></i>
     </div>
   );
 };

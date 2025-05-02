@@ -26,10 +26,10 @@ const ContainerVariants = cva("border-2 border-white", {
   },
 });
 
-export const ImageContainer = ({ src, intent, size, border, custom }) => {
+export const ImageContainer = ({ alt, src, intent, size, border, custom }) => {
   return (
     <div className={`${ContainerVariants({ intent, size, border })} ${custom}`}>
-      <img src={src} className="size-full object-cover" />
+      <img src={src} alt={alt} className="size-full object-cover" />
     </div>
   );
 };

@@ -33,17 +33,20 @@ const Home = () => {
               <img src={mockImage} className="border-2 border-white"></img>
             </div>
             <div className="col content-center">
-              <h1 className="font-sans text-[95px] uppercase leading-none text-white">
+              <h1 className="font-sans text-9xl uppercase leading-none text-white">
                 {t2("title.part1")}
               </h1>
-              <h1 className="font-sans text-[95px] uppercase leading-none text-primary-2 ">
+              <h1 className="font-sans text-9xl uppercase leading-none text-primary-2 ">
                 {t2("title.part2")}
               </h1>
-              <h2 className="font-body text-[21px] text-white mt-[0.3em]">
+              <h2 className="font-body text-2xl text-white mt-[0.3em]">
                 {t2("subtitle")}
               </h2>
-              <p className="font-body font-light text-[20px] text-white mt-[1.5em]">
-                {t2("presentation")}
+              <p className="font-body font-light text-xl text-white mt-[1.5em]">
+                {t2("presentation.part1")}
+              </p>
+              <p className="font-body font-light text-xl text-white mt-[0.5em]">
+                {t2("presentation.part2")}
               </p>
               <Button onClick={openShowChoices} label={t3("start")} />
             </div>

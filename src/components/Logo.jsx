@@ -32,11 +32,7 @@ export const Logo = ({ intent, size, withText }) => {
   const { t } = useTranslation("home");
 
   return (
-    <div
-      className={`flex items-center cursor-pointer ${
-        withText ? "hover:scale-120" : ""
-      }`}
-    >
+    <div className={`flex items-center cursor-pointer`}>
       <div
         onClick={() => (window.location.href = "/")}
         className={twMerge(logoVariants({ intent, size }))}
