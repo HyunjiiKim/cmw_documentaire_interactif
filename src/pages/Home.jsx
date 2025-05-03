@@ -28,11 +28,11 @@ const Home = () => {
       <main className="max-sm:hidden">
         {!showChoice ? (
           <div className="flex items-center px-[140px] py-[60px] max-md:flex-col max-md:items-start">
-            <div className="relative col w-[537px] flex-none mr-[35px] mt-[50px]">
+            <div className="relative col w-[537px] flex-none mr-[35px] mt-[120px]">
               <Logo intent="primary" size="large" />
               <img src={mockImage} className="border-2 border-white"></img>
             </div>
-            <div className="col content-center">
+            <div className="col content-center"> {/* pourquoi y a-t-il des classes qui servent à rien ? */}
               <h1 className="font-sans text-9xl uppercase leading-none text-white">
                 {t2("title.part1")}
               </h1>
@@ -52,12 +52,11 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col justify-start">
+          <div className="flex flex-col justify-start max-w-[1200px] mr-auto ml-auto">
             <Header withText />
-
             <div
               id="contents"
-              className="flex px-[140px] py-[60px] gap-[55px] justify-center"
+              className="flex py-[60px] w-full justify-between"
             >
               <Trigger
                 isImg={false}
@@ -72,12 +71,11 @@ const Home = () => {
                 btnOnClick={() => (window.location.href = "/map")}
               />
             </div>
-
             <ArrowBtn
               isLeft={true}
               color="text-primary-2"
               onClick={() => setShowChoice(false)}
-              custom="absolute bottom-25 px-[120px]"
+              custom=""
             />
           </div>
         )}

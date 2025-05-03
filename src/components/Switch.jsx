@@ -52,7 +52,7 @@ const LanguageSwitch = () => {
   return (
     <div
       id="language-switch"
-      className="absolute top-10 right-10 mr-[100px] mt-[30px]"
+      className="absolute top-10 right-10 mr-[30px] mt-[30px]"
     >
       <div id="mobile" className="max-sm:hidden md:hidden text-white">
         <select onChange={changeLanguage} value={currentLang}>

@@ -8,11 +8,10 @@ const Documentary = () => {
   const { t: t2 } = useTranslation("documentary");
 
   return (
-    <div id="documentary" className="flex flex-col">
+    <div id="documentary" className="flex flex-col max-w-[1200px] mr-auto ml-auto">
       <Header withText={true} />
-
       <main>
-        <div className="px-[120px] py-[60px] h-screen w-full">
+        <div className="py-[60px] h-screen w-full">
           <h1 className="font-sans text-[95px] uppercase leading-none text-white">
             {t2("documentary")}
           </h1>
@@ -25,7 +24,7 @@ const Documentary = () => {
           isLeft={true}
           color="text-primary-2"
           onClick={() => (window.location.href = "/")}
-          custom="absolute bottom-25 px-[120px]"
+          custom="absolute bottom-25"
         />
       </main>
     </div>
