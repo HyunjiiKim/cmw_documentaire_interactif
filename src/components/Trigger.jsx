@@ -3,7 +3,7 @@ import { ImageContainer, VideoContainer } from "./Container";
 
 export const Trigger = ({ isImg, src, alt, btnLabel, btnOnClick }) => {
   return (
-    <div className="relative flex items-center justify-center cursor-pointer">
+    <div className="relative flex items-center justify-center cursor-pointer" onClick={btnOnClick}>
       {isImg ? (
         <ImageContainer
           src={src}
