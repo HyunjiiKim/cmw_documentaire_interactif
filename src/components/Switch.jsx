@@ -10,7 +10,7 @@ import FlagFR from "/assets/img/flag_FR.png";
 
 import "./components.css";
 
-const LanguageSwitch = () => {
+const LanguageSwitch = (color) => {
   const { i18n } = useTranslation();
 
   const languageCode = i18n.language.split("-")[0];
@@ -61,7 +61,7 @@ const LanguageSwitch = () => {
         </select>
       </div>
       <div id="desktop" className="max-md:hidden flex flex-row gap-3">
-        <SoundBtn />
+        <SoundBtn color={color} />
         {languages.map(({ code, img, label }) => (
           <FlagContainer
             key={code}
@@ -69,6 +69,7 @@ const LanguageSwitch = () => {
             alt={label}
             onClick={changeLanguageDesktop(code)}
             isActive={currentLang === code}
+            color={color}
           />
         ))}
         <InfoBtn />

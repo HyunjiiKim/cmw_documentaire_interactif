@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import LanguageSwitch from "../components/Switch";
 import Header from "../components/Header";
 import Button, { ArrowBtn } from "../components/Button";
 
@@ -13,14 +14,18 @@ const Map = () => {
 
   const [showMap, setShowMap] = useState(false);
   const closeMap = () => {
-    setShowMap(false)
-  }
+    setShowMap(false);
+  };
 
   return (
     <div id="pageMap">
-      { !showMap ? 
-      ( <div id="showMap" className="flex flex-col mr-auto ml-auto max-w-[1200px]">
+      {!showMap ? (
+        <div
+          id="showMap"
+          className="flex flex-col mr-auto ml-auto max-w-[1200px]"
+        >
           <Header withText={true} />
+          <LanguageSwitch color="white" />
           <main>
             <div className="mt-[200px] size-full">
               <h1 className="font-sans text-8xl uppercase leading-none text-white">
@@ -40,12 +45,11 @@ const Map = () => {
               custom="absolute bottom-25"
             />
           </main>
-        </div>)
-      :  <Intro
-            onClick={closeMap}
-          /> }
+        </div>
+      ) : (
+        <Intro onClick={closeMap} />
+      )}
     </div>
- 
   );
 };
 
