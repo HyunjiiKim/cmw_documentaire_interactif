@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
@@ -77,10 +77,19 @@ export const SoundBtn = () => {
 };
 
 export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
+
+  const navigate = useNavigate();
+  const navigateRef = useRef(navigate);
+  // default onClick : return to the previous page
+  const goBack = () => {
+    navigateRef.current(-1); 
+  };
+
+
   return (
     <div
       className={`bg-${color} cursor-pointer aspect-squre w-40 ${custom}`}
-      onClick={onClick}
+      onClick={ !onClick ? goBack : onClick }
     >
       <i
         className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
