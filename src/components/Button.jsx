@@ -82,7 +82,7 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
   const navigateRef = useRef(navigate);
   // default onClick : return to the previous page
   const goBack = () => {
-    navigateRef.current(-1); 
+    navigateRef.current(-1);
   };
 
 

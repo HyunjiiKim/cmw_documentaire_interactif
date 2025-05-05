@@ -12,6 +12,9 @@ const Map = () => {
   const { t: t3 } = useTranslation("contents");
 
   const [showMap, setShowMap] = useState(false);
+  const closeMap = () => {
+    setShowMap(false)
+  }
 
   return (
     <div id="pageMap">
@@ -33,13 +36,14 @@ const Map = () => {
             </div>
             <ArrowBtn
               isLeft={true}
-              onClick={() => setShowMap(false)}
               color="text-primary-2"
               custom="absolute bottom-25"
             />
           </main>
         </div>)
-      :  <Intro /> }
+      :  <Intro
+            onClick={closeMap}
+          /> }
     </div>
  
   );

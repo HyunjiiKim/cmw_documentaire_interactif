@@ -7,7 +7,7 @@ import HorizontalScroller from "../../components/HorizontalScroller";
 
 import mockMap from "/assets/img/mockImage.png";
 
-const Intro = () => {
+const Intro = ({ onClick }) => {
   const { t } = useTranslation("general");
   const { t: t2 } = useTranslation("contents");
 
@@ -41,7 +41,7 @@ const Intro = () => {
         <ArrowBtn
           isLeft={true}
           color="text-primary-2"
-          onClick={() => (window.location.href = "/map")}
+          onClick={onClick}
           custom="absolute bottom-25"
         />
       </main>

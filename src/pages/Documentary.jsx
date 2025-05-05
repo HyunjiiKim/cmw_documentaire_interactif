@@ -26,8 +26,6 @@ const Documentary = () => {
         <ArrowBtn
           isLeft={true}
           color="text-primary-2"
-          onClick={() => (window.location.href = "/")}
-          // Faire en sorte que BackBtn retourne à la page avec showChoice(true)
           custom="absolute bottom-25"
         />
       </main>
