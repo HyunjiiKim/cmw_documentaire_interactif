@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { useRef } from "react";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
@@ -50,6 +49,7 @@ export const InfoBtn = () => {
 
 export const SoundBtn = () => {
   const [isSilent, setIsSilent] = useState(false);
+  // Need to find a way to useState(false) when the site first load, then if the user change the state it's kept this way until they change it again
   var sounds = document.getElementsByTagName("video");
 
   function handleSound() {

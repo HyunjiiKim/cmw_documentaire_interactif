@@ -8,14 +8,17 @@ const Documentary = () => {
   const { t: t2 } = useTranslation("documentary");
 
   return (
-    <div id="documentary" className="flex flex-col max-w-[1200px] mr-auto ml-auto">
+    <div
+      id="documentary"
+      className="flex flex-col max-w-[1200px] mr-auto ml-auto"
+    >
       <Header withText={true} />
       <main>
-        <div className="py-[60px] h-screen w-full">
-          <h1 className="font-sans text-[95px] uppercase leading-none text-white">
+        <div className="mt-[200px] size-full">
+          <h1 className="font-sans text-8xl uppercase leading-none text-white">
             {t2("documentary")}
           </h1>
-          <p className="font-body font-light text-[20px] text-white mt-[30px]">
+          <p className="font-body font-light text-xl text-white mt-[1.5em]">
             {t("notAvailable")}
           </p>
         </div>
@@ -24,6 +27,7 @@ const Documentary = () => {
           isLeft={true}
           color="text-primary-2"
           onClick={() => (window.location.href = "/")}
+          // Faire en sorte que BackBtn retourne à la page avec showChoice(true)
           custom="absolute bottom-25"
         />
       </main>

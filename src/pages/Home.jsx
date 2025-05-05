@@ -7,7 +7,7 @@ import { Logo } from "../components/Logo";
 import Header from "../components/Header";
 import { Blocker } from "../components/Blocker";
 
-import mockImage from "/assets/img/presentation.jpg";
+import defaultImage from "/assets/img/presentation.jpg";
 import mockMap from "/assets/img/mockImage.png";
 import mockVideo from "/assets/videos/test.mp4";
 
@@ -27,12 +27,12 @@ const Home = () => {
     <div id="home" className="flex flex-col">
       <main className="max-sm:hidden">
         {!showChoice ? (
-          <div className="flex items-center px-[140px] py-[60px] max-md:flex-col max-md:items-start">
-            <div className="relative col w-[537px] flex-none mr-[35px] mt-[120px]">
+          <div className="flex items-center px-[140px] mt-[120px] max-md:flex-col max-md:items-start">
+            <div className="relative w-lg flex-none mr-[35px]">
               <Logo intent="primary" size="large" />
-              <img src={mockImage} className="border-2 border-white"></img>
+              <img src={defaultImage} className="border-2 border-white"></img>
             </div>
-            <div className="col content-center"> {/* pourquoi y a-t-il des classes qui servent à rien ? */}
+            <div>
               <h1 className="font-sans text-9xl uppercase leading-none text-white">
                 {t2("title.part1")}
               </h1>
@@ -52,20 +52,22 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col justify-start max-w-[1200px] mr-auto ml-auto">
+          <div className="flex flex-col justify-start px-[140px] mr-auto ml-auto">
             <Header withText />
             <div
               id="contents"
-              className="flex py-[60px] w-full justify-between"
+              className="flex justify-center mt-[200px] gap-10"
             >
               <Trigger
                 isImg={false}
+                isMultiple={true}
                 src={mockVideo}
                 btnLabel={t3("watch")}
                 btnOnClick={() => (window.location.href = "/documentary")}
               />
               <Trigger
                 isImg={true}
+                isMultiple={true}
                 src={mockMap}
                 btnLabel={t3("map")}
                 btnOnClick={() => (window.location.href = "/map")}
@@ -75,7 +77,7 @@ const Home = () => {
               isLeft={true}
               color="text-primary-2"
               onClick={() => setShowChoice(false)}
-              custom=""
+              custom="absolute bottom-20"
             />
           </div>
         )}

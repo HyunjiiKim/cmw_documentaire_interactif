@@ -1,19 +1,32 @@
 import Button from "./Button";
 import { ImageContainer, VideoContainer } from "./Container";
 
-export const Trigger = ({ isImg, src, alt, btnLabel, btnOnClick }) => {
+export const Trigger = ({
+  isImg,
+  isMultiple,
+  src,
+  alt,
+  btnLabel,
+  btnOnClick,
+  size,
+}) => {
   return (
-    <div className="relative flex items-center justify-center cursor-pointer" onClick={btnOnClick}>
+    <div
+      className={`relative cursor-pointer ${isMultiple ? "w-1/2" : "w-fit"}`}
+      onClick={btnOnClick}
+    >
       {isImg ? (
         <ImageContainer
           src={src}
           alt={alt}
+          size={size}
           custom="grayscale-100 opacity-50 hover:opacity-100"
         />
       ) : (
         <VideoContainer
           src={src}
           alt={alt}
+          size={size}
           custom="grayscale-100 opacity-50 hover:opacity-100"
         />
       )}
@@ -27,3 +40,5 @@ export const Trigger = ({ isImg, src, alt, btnLabel, btnOnClick }) => {
     </div>
   );
 };
+
+// Faire en sorte que le hover du bouton entraîne le hover de l'image/vidéo et vice-versa

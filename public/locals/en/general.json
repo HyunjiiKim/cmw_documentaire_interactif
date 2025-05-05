@@ -1,8 +1,9 @@
 {
   "start": "Start",
-  "watch": "Watch Documentary",
+  "watch": "Watch documentary",
   "map": "Explore the map",
   "Rotate": "Rotate your phone",
   "loading": "Please wait...",
-  "notAvailable": "This content will be available soon."
+  "notAvailable": "This content will be available soon.",
+  "rewatch": "See the video again"
 }
