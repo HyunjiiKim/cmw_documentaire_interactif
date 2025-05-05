@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import LanguageSwitch from "../components/Switch";
 import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Logo } from "../components/Logo";
@@ -25,6 +26,7 @@ const Home = () => {
 
   return (
     <div id="home" className="flex flex-col">
+      <LanguageSwitch color="white" />
       <main className="max-sm:hidden">
         {!showChoice ? (
           <div className="flex items-center px-[140px] mt-[120px] max-md:flex-col max-md:items-start">

@@ -36,10 +36,14 @@ const Button = ({ intent, size, custom, label, onClick }) => {
   );
 };
 
-export const InfoBtn = () => {
+export const InfoBtn = (color) => {
   return (
-    <div className="group border-2 rounded-full border-white aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative hover:scale-120">
-      <p className="text-white">i</p>
+    <div
+      className={`group border-2 rounded-full border-${(color = "white"
+        ? "secondary-1"
+        : "black")} aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative hover:scale-120`}
+    >
+      <p className={`text-${(color = "white" ? "secondary-1" : "black")}`}>i</p>
       <div className="hidden group-hover:block absolute top-5 right-5 bg-orange-200 p-10 rounded-sm">
         test
       </div>
@@ -47,7 +51,7 @@ export const InfoBtn = () => {
   );
 };
 
-export const SoundBtn = () => {
+export const SoundBtn = (color) => {
   const [isSilent, setIsSilent] = useState(false);
   // Need to find a way to useState(false) when the site first load, then if the user change the state it's kept this way until they change it again
   var sounds = document.getElementsByTagName("video");
@@ -70,14 +74,15 @@ export const SoundBtn = () => {
       <i
         className={`bi bi-${
           isSilent ? "three-dots" : "soundwave"
-        } text-white hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle`}
+        } text-${(color = "white"
+          ? "secondary-1"
+          : "black")} hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle`}
       ></i>
     </div>
   );
 };
 
 export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
-
   const navigate = useNavigate();
   const navigateRef = useRef(navigate);
   // default onClick : return to the previous page
@@ -85,11 +90,10 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
     navigateRef.current(-1);
   };
 
-
   return (
     <div
       className={`bg-${color} cursor-pointer aspect-squre w-40 ${custom}`}
-      onClick={ !onClick ? goBack : onClick }
+      onClick={!onClick ? goBack : onClick}
     >
       <i
         className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
