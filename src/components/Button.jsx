@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
+import { useTranslation } from "react-i18next";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center cursor-pointer disabled:opacity-50 bg-primary-1 text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
@@ -36,18 +37,18 @@ const Button = ({ intent, size, custom, label, onClick }) => {
   );
 };
 
-export const InfoBtn = (color) => {
+export const InfoBtn = () => {
   return (
-    <div className="group border-2 rounded-full border-secondary-1 aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative hover:scale-120">
+    <div className="group border-2 rounded-full border-secondary-1 aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative hover:scale-120 hover:after:w-0 hover:after:h-0 hover:after:border-r-10 hover:after:border-r-transparent hover:after:border-l-10  hover:after:border-l-transparent hover:after:border-b-10 hover:after:border-b-white hover:after:absolute hover:after:top-12 hover:after:left-1/2 hover:after:-translate-x-1/2">
       <p className="text-secondary-1">i</p>
-      <div className="hidden group-hover:block absolute top-5 right-5 bg-orange-200 p-10 rounded-sm">
-        test
+      <div className="hidden group-hover:block absolute top-14 bg-white text-sm p-5 w-max font-body">
+        Test
       </div>
     </div>
   );
 };
 
-export const SoundBtn = (color) => {
+export const SoundBtn = () => {
   const [isSilent, setIsSilent] = useState(false);
   // Need to find a way to useState(false) when the site first load, then if the user change the state it's kept this way until they change it again
   var sounds = document.getElementsByTagName("video");
@@ -72,6 +73,23 @@ export const SoundBtn = (color) => {
           isSilent ? "volume-mute-fill" : "soundwave"
         } text-secondary-1 hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle`}
       ></i>
+    </div>
+  );
+};
+
+export const WatchBtn = ({ href }) => {
+  const { t } = useTranslation("general");
+
+  return (
+    <div
+      className="group cursor-pointer z-10 flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hover:scale-120 hover:after:w-0 hover:after:h-0 hover:after:border-r-10 hover:after:border-r-transparent hover:after:border-l-10  hover:after:border-l-transparent hover:after:border-t-10 hover:after:border-t-white hover:after:absolute hover:after:bottom-13 hover:after:left-1/2 hover:after:-translate-x-1/2"
+      onClick={() => (window.location.href = href)}
+    >
+      <i className="bi bi-soundwave text-white text-[50px] flex items-center text-center justify-center align-middle"></i>
+      <i className="bi bi-soundwave text-black text-[50px] flex items-center text-center justify-center align-middle"></i>
+      <div className="hidden group-hover:block absolute bottom-15 left-1/2 -translate-x-1/2 bg-white text-sm p-5 w-max font-body">
+        {t("rewatch")}
+      </div>
     </div>
   );
 };

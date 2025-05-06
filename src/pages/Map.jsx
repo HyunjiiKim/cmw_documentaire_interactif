@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import Header from "../components/Header";
 import Button, { ArrowBtn } from "../components/Button";
 
 import Intro from "./contents/intro";
@@ -18,10 +19,8 @@ const Map = () => {
   return (
     <div id="pageMap">
       {!showMap ? (
-        <div
-          id="showMap"
-          className="flex flex-col mr-auto ml-auto max-w-[1200px]"
-        >
+        <div id="showMap" className="flex flex-col mr-auto ml-auto px-[140px]">
+          <Header withText />
           <main>
             <div className="mt-[200px] size-full">
               <h1 className="font-sans text-8xl uppercase leading-none text-white">

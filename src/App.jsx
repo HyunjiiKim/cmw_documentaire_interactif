@@ -8,7 +8,6 @@ import View from "./pages/View";
 import Documentary from "./pages/Documentary";
 
 // components
-import Header from "./components/Header";
 import LanguageSwitch from "./components/Switch";
 
 import "./App.css";
@@ -22,7 +21,6 @@ function App() {
         <Route path="/documentary" element={<Documentary />} />
         <Route path="/view/:id" element={<View />} />
       </Routes>
-      <Header withText />
       <LanguageSwitch className="z-10" />
     </Router>
   );

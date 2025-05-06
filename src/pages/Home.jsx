@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import Header from "../components/Header";
 import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Logo } from "../components/Logo";
@@ -23,7 +24,7 @@ const Home = () => {
   }
 
   return (
-    <div id="home" className="flex flex-col">
+    <div id="home" className="z-10 flex flex-col">
       <main className="max-sm:hidden">
         {!showChoice ? (
           <div className="flex items-center px-[140px] mt-[120px] max-md:flex-col max-md:items-start">
@@ -52,6 +53,7 @@ const Home = () => {
           </div>
         ) : (
           <div className="flex flex-col justify-start px-[140px] mr-auto ml-auto">
+            <Header withText />
             <div
               id="contents"
               className="flex justify-center mt-[200px] gap-10"

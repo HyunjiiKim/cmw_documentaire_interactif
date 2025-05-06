@@ -4,7 +4,7 @@ const Header = ({ withText }) => {
   return (
     <div
       id="header"
-      className="w-full ml-auto mr-auto flex justify-between absolute top-15 px-[140px]"
+      className="w-full ml-auto mr-auto flex justify-between absolute top-15"
     >
       <Logo intent="secondary" size="medium" withText={withText} />
     </div>
