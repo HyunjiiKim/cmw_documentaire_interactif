@@ -1,9 +1,11 @@
 {
-    "title": {
-        "part1": "Mémoires",
-        "part2": "Captives"
-      },
-      "subtitle": "L’héritage du camp de prisonniers de Geoje",
-      "presentation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ligula sapien, gravida at vehicula nec, mollis at magna. Aenean egestas risus enim, nam posuere elementum venenatis. Praesent nisl justo, egestas at pulvinar ut, porta ac augue. Quisque at cursus dolor, quis convallis augue. Donec cursus vitae ex in maximus.",
-      "notAvailable": "La carte sera disponible."
+  "title": {
+    "part1": "Mémoires",
+    "part2": "Captives"
+  },
+  "subtitle": "L’héritage du camp de prisonniers de Geoje",
+  "presentation": {
+    "part1": "Dans le récit de la guerre de Corée,  conflit largement documenté, subsiste une réalité souvent oubliée : celle des camps de prisonniers. Aujourd’hui, l'île de Geoje accueille l’un d’entre eux sous la forme d’un parc historique. Un lieu de mémoire témoignant de vie alors suspendu entre incertitude, espoir et fidélité à leurs idéaux.",
+    "part2": "Cette représentation d’une réalité soulève encore aujourd’hui de nombreuses interrogations : Comment la raconter ? Que reste-t-il de ces mémoires enfouies ? Quel est le travail effectué au sein de ce parc historique, symbole d’une époque troublée qui laisse encore ses traces dans le présent."
+  }
 }

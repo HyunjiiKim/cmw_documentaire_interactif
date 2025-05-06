@@ -1,26 +1,54 @@
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import LanguageSwitch from "../components/Switch";
 import Header from "../components/Header";
-import { ArrowBtn } from "../components/Button";
+import Button, { ArrowBtn } from "../components/Button";
+
+import Intro from "./contents/intro";
 
 const Map = () => {
+  const { t } = useTranslation("general");
+  const { t: t2 } = useTranslation("map");
+  const { t: t3 } = useTranslation("contents");
+
+  const [showMap, setShowMap] = useState(false);
+  const closeMap = () => {
+    setShowMap(false);
+  };
+
   return (
-    <div id="map" className="flex flex-col">
-      <Header withText={true} />
-      <main>
-        <div className="px-[120px] py-[60px] h-screen w-full">
-          <h1 className="font-sans text-[95px] uppercase leading-none text-white">
-            Map
-          </h1>
-          <p className="font-body font-light text-[20px] text-white mt-[30px]">
-            This is the map page. We'll be working on it in France!
-          </p>
+    <div id="pageMap">
+      {!showMap ? (
+        <div
+          id="showMap"
+          className="flex flex-col mr-auto ml-auto max-w-[1200px]"
+        >
+          <Header withText={true} />
+          <LanguageSwitch color="white" />
+          <main>
+            <div className="mt-[200px] size-full">
+              <h1 className="font-sans text-8xl uppercase leading-none text-white">
+                {t2("map")}
+              </h1>
+              <p className="font-body font-light text-xl text-white mt-[1.5em]">
+                {t("notAvailable")}
+              </p>
+              <Button
+                onClick={() => setShowMap(true)}
+                label={t3("intro.title")}
+              />
+            </div>
+            <ArrowBtn
+              isLeft={true}
+              color="text-primary-2"
+              custom="absolute bottom-25"
+            />
+          </main>
         </div>
-        <ArrowBtn
-          isLeft="true"
-          color="text-primary-2"
-          onClick={() => (window.location.href = "/")}
-          custom="absolute bottom-25 px-[120px]"
-        />
-      </main>
+      ) : (
+        <Intro onClick={closeMap} />
+      )}
     </div>
   );
 };

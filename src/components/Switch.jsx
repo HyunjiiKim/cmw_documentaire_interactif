@@ -10,7 +10,7 @@ import FlagFR from "/assets/img/flag_FR.png";
 
 import "./components.css";
 
-const LanguageSwitch = () => {
+const LanguageSwitch = (color) => {
   const { i18n } = useTranslation();
 
   const languageCode = i18n.language.split("-")[0];
@@ -50,10 +50,7 @@ const LanguageSwitch = () => {
   const changeLanguageDesktop = (code) => () => i18n.changeLanguage(code);
 
   return (
-    <div
-      id="language-switch"
-      className="absolute top-10 right-10 mr-[100px] mt-[30px]"
-    >
+    <div id="language-switch" className="absolute top-18 right-34">
       <div id="mobile" className="max-sm:hidden md:hidden text-white">
         <select onChange={changeLanguage} value={currentLang}>
           {sortedLanguages.map((lang) => (
@@ -64,7 +61,7 @@ const LanguageSwitch = () => {
         </select>
       </div>
       <div id="desktop" className="max-md:hidden flex flex-row gap-3">
-        <SoundBtn />
+        <SoundBtn color={color} />
         {languages.map(({ code, img, label }) => (
           <FlagContainer
             key={code}
@@ -72,6 +69,7 @@ const LanguageSwitch = () => {
             alt={label}
             onClick={changeLanguageDesktop(code)}
             isActive={currentLang === code}
+            color={color}
           />
         ))}
         <InfoBtn />
@@ -81,3 +79,5 @@ const LanguageSwitch = () => {
 };
 
 export default LanguageSwitch;
+
+// Keep the language unless the user change it accross all pages

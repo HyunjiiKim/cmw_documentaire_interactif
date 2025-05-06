@@ -2,6 +2,8 @@
   "start": "Commencer",
   "watch": "Visionner le documentaire",
   "map": "Explorer la carte",
-  "Rotate": "Faire pivoter l'écran sur votre appreil",
-  "loading": "Veuilliew patienter..."
+  "Rotate": "Faire pivoter l'écran sur votre appareil",
+  "loading": "Veuillez patienter...",
+  "notAvailable": "Ce contenu sera bientôt disponible.",
+  "rewatch": "Revoir la vidéo"
 }
