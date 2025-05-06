@@ -8,7 +8,7 @@ import { Logo } from "../components/Logo";
 import { Blocker } from "../components/Blocker";
 
 import defaultImage from "/assets/img/presentation.jpg";
-import mockMap from "/assets/img/mockImage.png";
+import mockMap from "/assets/img/mockImage.jpg";
 import mockVideo from "/assets/videos/test.mp4";
 
 import "./style.css";

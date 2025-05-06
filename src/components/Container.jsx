@@ -6,9 +6,10 @@ const ContainerVariants = cva("border-2 border-white", {
     intent: {
       default: "",
       hoverZoom: "transition-transform duration-300 hover:scale-105",
+      gallery: "overflow-hidden",
     },
     size: {
-      sm: "w-24 h-24",
+      sm: "w-fit h-50",
       md: "w-130 h-80",
       lg: "w-auto h-110",
       full: "w-full h-auto",

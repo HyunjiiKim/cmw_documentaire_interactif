@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 import { useTranslation } from "react-i18next";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center cursor-pointer disabled:opacity-50 bg-primary-1 text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
+  "cursor-pointer shadow-md/25 disabled:opacity-50 bg-primary-1 text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
   {
     variants: {
       intent: {
@@ -38,11 +38,13 @@ const Button = ({ intent, size, custom, label, onClick }) => {
 };
 
 export const InfoBtn = () => {
+  const { t } = useTranslation("general");
+
   return (
     <div className="group border-2 rounded-full border-secondary-1 aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative hover:scale-120 hover:after:w-0 hover:after:h-0 hover:after:border-r-10 hover:after:border-r-transparent hover:after:border-l-10  hover:after:border-l-transparent hover:after:border-b-10 hover:after:border-b-white hover:after:absolute hover:after:top-12 hover:after:left-1/2 hover:after:-translate-x-1/2">
       <p className="text-secondary-1">i</p>
       <div className="hidden group-hover:block absolute top-14 bg-white text-sm p-5 w-max font-body">
-        Test
+        {t("notAvailable")}
       </div>
     </div>
   );
