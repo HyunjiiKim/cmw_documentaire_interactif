@@ -9,7 +9,7 @@ const ContainerVariants = cva("border-2 border-white", {
     },
     size: {
       sm: "w-24 h-24",
-      md: "w-lg h-auto",
+      md: "w-130 h-80",
       lg: "w-auto h-110",
       full: "w-full h-auto",
     },

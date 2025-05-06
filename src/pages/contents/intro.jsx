@@ -13,12 +13,12 @@ const Intro = ({ onClick }) => {
 
   const img = [
     {
-      key: 1,
+      id: 1,
       src: "/assets/img/mockImage.png",
       alt: "Mockup img 1",
     },
     {
-      key: 2,
+      id: 2,
       src: "/assets/img/presentation.jpg",
       alt: "Mockup img 2",
     },
@@ -50,6 +50,7 @@ const Intro = ({ onClick }) => {
               btnOnClick={() => (window.location.href = "/map")}
               size="md"
             />
+            <HorizontalScroller data={img} />
           </div>
         </div>
         <ArrowBtn
