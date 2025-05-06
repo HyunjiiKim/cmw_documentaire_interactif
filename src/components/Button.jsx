@@ -38,12 +38,8 @@ const Button = ({ intent, size, custom, label, onClick }) => {
 
 export const InfoBtn = (color) => {
   return (
-    <div
-      className={`group border-2 rounded-full border-${(color = "white"
-        ? "secondary-1"
-        : "black")} aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative hover:scale-120`}
-    >
-      <p className={`text-${(color = "white" ? "secondary-1" : "black")}`}>i</p>
+    <div className="group border-2 rounded-full border-secondary-1 aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative hover:scale-120">
+      <p className="text-secondary-1">i</p>
       <div className="hidden group-hover:block absolute top-5 right-5 bg-orange-200 p-10 rounded-sm">
         test
       </div>
@@ -73,10 +69,8 @@ export const SoundBtn = (color) => {
     <div className="cursor-pointer" onClick={handleSound}>
       <i
         className={`bi bi-${
-          isSilent ? "three-dots" : "soundwave"
-        } text-${(color = "white"
-          ? "secondary-1"
-          : "black")} hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle`}
+          isSilent ? "volume-mute-fill" : "soundwave"
+        } text-secondary-1 hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle`}
       ></i>
     </div>
   );

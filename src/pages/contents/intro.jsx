@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 
-import Header from "../../components/Header.jsx";
 import { ArrowBtn } from "../../components/Button";
 import { Trigger } from "../../components/Trigger";
 import HorizontalScroller from "../../components/HorizontalScroller";
@@ -13,8 +12,8 @@ const Intro = ({ onClick }) => {
 
   return (
     <div id="intro" className="flex flex-col mr-auto ml-auto px-[140px]">
-      <Header withText={true} />
       <main>
+        <div className="bg-white-1 h-screen w-1/2 absolute top-0 right-0"></div>
         <div className="flex items-center mt-[200px]">
           <div className="w-1/2">
             <h2 className="font-sans text-5xl uppercase leading-none text-white">
@@ -27,7 +26,6 @@ const Intro = ({ onClick }) => {
               {t2("intro.para1")}
             </p>
           </div>
-          <div className="bg-white-1 h-screen w-1/2 absolute top-0 right-0"></div>
           <div className="w-1/2 grid justify-end">
             <Trigger
               isImg={true}
@@ -42,7 +40,7 @@ const Intro = ({ onClick }) => {
           isLeft={true}
           color="text-primary-2"
           onClick={onClick}
-          custom="absolute bottom-25"
+          custom="absolute bottom-20"
         />
       </main>
     </div>
