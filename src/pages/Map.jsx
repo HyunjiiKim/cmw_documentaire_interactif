@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import LanguageSwitch from "../components/Switch";
 import Header from "../components/Header";
 import Button, { ArrowBtn } from "../components/Button";
 
@@ -20,12 +19,8 @@ const Map = () => {
   return (
     <div id="pageMap">
       {!showMap ? (
-        <div
-          id="showMap"
-          className="flex flex-col mr-auto ml-auto max-w-[1200px]"
-        >
-          <Header withText={true} />
-          <LanguageSwitch color="white" />
+        <div id="showMap" className="flex flex-col mr-auto ml-auto px-[140px]">
+          <Header withText />
           <main>
             <div className="mt-[200px] size-full">
               <h1 className="font-sans text-8xl uppercase leading-none text-white">
@@ -42,7 +37,7 @@ const Map = () => {
             <ArrowBtn
               isLeft={true}
               color="text-primary-2"
-              custom="absolute bottom-25"
+              custom="absolute bottom-20"
             />
           </main>
         </div>

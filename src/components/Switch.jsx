@@ -4,13 +4,13 @@ import { FlagContainer } from "./Container.jsx";
 import { InfoBtn } from "./Button.jsx";
 import { SoundBtn } from "./Button.jsx";
 
-import FlagUS from "/assets/img/flag_US.png";
-import FlagKR from "/assets/img/flag_KR.png";
-import FlagFR from "/assets/img/flag_FR.png";
+import FlagUS from "/assets/img/flag_US.jpg";
+import FlagKR from "/assets/img/flag_KR.jpg";
+import FlagFR from "/assets/img/flag_FR.jpg";
 
 import "./components.css";
 
-const LanguageSwitch = (color) => {
+const LanguageSwitch = () => {
   const { i18n } = useTranslation();
 
   const languageCode = i18n.language.split("-")[0];
@@ -61,7 +61,7 @@ const LanguageSwitch = (color) => {
         </select>
       </div>
       <div id="desktop" className="max-md:hidden flex flex-row gap-3">
-        <SoundBtn color={color} />
+        <SoundBtn />
         {languages.map(({ code, img, label }) => (
           <FlagContainer
             key={code}
@@ -69,7 +69,6 @@ const LanguageSwitch = (color) => {
             alt={label}
             onClick={changeLanguageDesktop(code)}
             isActive={currentLang === code}
-            color={color}
           />
         ))}
         <InfoBtn />

@@ -2,31 +2,24 @@ import { useTranslation } from "react-i18next";
 
 import Header from "../components/Header";
 import { ArrowBtn } from "../components/Button";
+import { VimeoPlayer } from "../components/VideoPlayer";
 
 const Documentary = () => {
   const { t } = useTranslation("general");
   const { t: t2 } = useTranslation("documentary");
 
   return (
-    <div
-      id="documentary"
-      className="flex flex-col max-w-[1200px] mr-auto ml-auto"
-    >
-      <Header withText={true} />
+    <div id="documentary" className="flex flex-col px-[140px] mr-auto ml-auto">
+      <Header withText />
       <main>
-        <div className="mt-[200px] size-full">
-          <h1 className="font-sans text-8xl uppercase leading-none text-white">
-            {t2("documentary")}
-          </h1>
-          <p className="font-body font-light text-xl text-white mt-[1.5em]">
-            {t("notAvailable")}
-          </p>
+        <div className="mt-[150px] size-full flex justify-center">
+          <VimeoPlayer videoId="334548226" />
         </div>
 
         <ArrowBtn
           isLeft={true}
           color="text-primary-2"
-          custom="absolute bottom-25"
+          custom="absolute bottom-20"
         />
       </main>
     </div>

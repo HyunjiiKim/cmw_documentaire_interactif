@@ -6,10 +6,11 @@ const ContainerVariants = cva("border-2 border-white", {
     intent: {
       default: "",
       hoverZoom: "transition-transform duration-300 hover:scale-105",
+      gallery: "overflow-hidden",
     },
     size: {
-      sm: "w-24 h-24",
-      md: "w-lg h-auto",
+      sm: "w-fit h-50",
+      md: "w-130 h-80",
       lg: "w-auto h-110",
       full: "w-full h-auto",
     },
@@ -60,15 +61,14 @@ export const VideoContainer = ({ src, intent, size, border, custom = "" }) => {
   );
 };
 
-export const FlagContainer = ({ src, alt, onClick, isActive, color }) => {
+export const FlagContainer = ({ src, alt, onClick, isActive }) => {
   return (
     <>
       <img
         src={src}
         alt={alt}
         onClick={onClick}
-        className={`w-10 h-10 rounded-full cursor-pointer border-2 border-${(color =
-          "white" ? "secondary-1" : "black")} object-cover
+        className={`w-10 h-10 rounded-full cursor-pointer border-2 border-secondary-1 object-cover
          saturate-0 hover:saturate-100 hover:scale-120 ${
            isActive ? "saturate-100" : ""
          }`}

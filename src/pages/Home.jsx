@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import LanguageSwitch from "../components/Switch";
+import Header from "../components/Header";
 import Button, { ArrowBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Logo } from "../components/Logo";
-import Header from "../components/Header";
 import { Blocker } from "../components/Blocker";
 
 import defaultImage from "/assets/img/presentation.jpg";
-import mockMap from "/assets/img/mockImage.png";
+import mockMap from "/assets/img/mockImage.jpg";
 import mockVideo from "/assets/videos/test.mp4";
 
 import "./style.css";
@@ -25,8 +24,7 @@ const Home = () => {
   }
 
   return (
-    <div id="home" className="flex flex-col">
-      <LanguageSwitch color="white" />
+    <div id="home" className="z-10 flex flex-col">
       <main className="max-sm:hidden">
         {!showChoice ? (
           <div className="flex items-center px-[140px] mt-[120px] max-md:flex-col max-md:items-start">

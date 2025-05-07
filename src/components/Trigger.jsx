@@ -12,7 +12,9 @@ export const Trigger = ({
 }) => {
   return (
     <div
-      className={`relative cursor-pointer ${isMultiple ? "w-1/2" : "w-fit"}`}
+      className={`relative cursor-pointer h-fit ${
+        isMultiple ? "w-1/2" : "w-fit"
+      } shadow-md/25`}
       onClick={btnOnClick}
     >
       {isImg ? (
@@ -20,7 +22,9 @@ export const Trigger = ({
           src={src}
           alt={alt}
           size={size}
-          custom="grayscale-100 opacity-50 hover:opacity-100"
+          custom={`grayscale-100 ${
+            isMultiple ? "opacity-50 hover:opacity-75" : "opacity-75"
+          }`}
         />
       ) : (
         <VideoContainer
