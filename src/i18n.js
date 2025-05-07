@@ -15,7 +15,7 @@ i18n
     backend: {
       loadPath: "/locals/{{lng}}/{{ns}}.json",
     },
-    ns: ["general", "nav", "contents", "home"],
+    ns: ["general", "nav", "contents", "home", "map", "documentary"],
     detection: {
       order: [
         "navigator",
@@ -29,6 +29,9 @@ i18n
     },
     interpolation: {
       escapeValue: false,
+    },
+    react: {
+      useSuspense: true,
     },
   });
 
