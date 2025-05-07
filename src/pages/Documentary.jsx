@@ -13,7 +13,7 @@ const Documentary = () => {
       <Header withText />
       <main>
         <div className="mt-[150px] size-full flex justify-center">
-          <VimeoPlayer videoId="334548226" />
+          <VimeoPlayer videoId="1082043684" />
         </div>
 
         <ArrowBtn
