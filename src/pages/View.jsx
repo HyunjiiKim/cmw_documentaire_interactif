@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import { ArrowBtn } from "../components/Button";
 import Content from "../components/Content.jsx";
 import { NavBar } from "../components/NavBar";
 
