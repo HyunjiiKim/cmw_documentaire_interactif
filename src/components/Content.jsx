@@ -1,11 +1,9 @@
-import Header from "./Header";
 
-const Content = () => {
+const Content = ({ children }) => {
   return (
-    <>
-      <Header withText={true} />
-    </>
+    <article className="prose lg:prose-xl mx-auto">
+      {children}
+    </article>
   );
 };
-
 export default Content;

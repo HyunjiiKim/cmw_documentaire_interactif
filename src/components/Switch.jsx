@@ -50,7 +50,7 @@ const LanguageSwitch = () => {
   const changeLanguageDesktop = (code) => () => i18n.changeLanguage(code);
 
   return (
-    <div id="language-switch" className="absolute top-18 right-34">
+    <div id="language-switch">
       <div id="mobile" className="max-sm:hidden md:hidden text-white">
         <select onChange={changeLanguage} value={currentLang}>
           {sortedLanguages.map((lang) => (
@@ -78,5 +78,3 @@ const LanguageSwitch = () => {
 };
 
 export default LanguageSwitch;
-
-// Keep the language unless the user change it accross all pages

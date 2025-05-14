@@ -1,16 +1,11 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 
-import Header from "../components/Header";
-import Button, { ArrowBtn } from "../components/Button";
+import { ArrowBtn } from "../components/Button";
 
 import Intro from "./contents/intro";
+import GraphicMap from "../Map/GraphicMap";
 
 const Map = () => {
-  const { t } = useTranslation("general");
-  const { t: t2 } = useTranslation("map");
-  const { t: t3 } = useTranslation("contents");
-
   const [showMap, setShowMap] = useState(false);
   const closeMap = () => {
     setShowMap(false);
@@ -20,20 +15,8 @@ const Map = () => {
     <div id="pageMap">
       {!showMap ? (
         <div id="showMap" className="flex flex-col mr-auto ml-auto px-[140px]">
-          <Header withText />
-          <main>
-            <div className="mt-[200px] size-full">
-              <h1 className="font-sans text-8xl uppercase leading-none text-white">
-                {t2("map")}
-              </h1>
-              <p className="font-body font-light text-xl text-white mt-[1.5em]">
-                {t("notAvailable")}
-              </p>
-              <Button
-                onClick={() => setShowMap(true)}
-                label={t3("intro.title")}
-              />
-            </div>
+          <main className="mt-50">
+            <GraphicMap />
             <ArrowBtn
               isLeft={true}
               color="text-primary-2"
