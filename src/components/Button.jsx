@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 import { useTranslation } from "react-i18next";
@@ -51,29 +51,89 @@ export const InfoBtn = () => {
 };
 
 export const SoundBtn = () => {
-  const [isSilent, setIsSilent] = useState(false);
-  // Need to find a way to useState(false) when the site first load, then if the user change the state it's kept this way until they change it again
-  var sounds = document.getElementsByTagName("video");
+
+  const [isSilent, setIsSilent] = useState(() => {
+    const savedMuteState = localStorage.getItem('siteMuted');
+    return savedMuteState ? JSON.parse(savedMuteState) : false;
+  });
+
+  // Function to apply mute/unmute to all relevant elements
+  const applyMuteState = useCallback((muted) => {
+    // Mute/unmute <video> elements
+    const videos = document.getElementsByTagName("video");
+    for (let i = 0; i < videos.length; i++) {
+      videos[i].muted = muted;
+    }
+
+    // Mute/unmute <audio> elements
+    const audios = document.getElementsByTagName("audio");
+    for (let i = 0; i < audios.length; i++) {
+      audios[i].muted = muted;
+    }
+
+    const iframes = document.getElementsByTagName("iframe");
+    for (let i = 0; i < iframes.length; i++) {
+      const iframe = iframes[i];
+      try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc) {
+          const iframeVideos = iframeDoc.getElementsByTagName("video");
+          for (let j = 0; j < iframeVideos.length; j++) {
+            iframeVideos[j].muted = muted;
+          }
+          const iframeAudios = iframeDoc.getElementsByTagName("audio");
+          for (let j = 0; j < iframeAudios.length; j++) {
+            iframeAudios[j].muted = muted;
+          }
+        }
+      } catch (error) {
+        console.warn("Could not access iframe content for muting (likely cross-origin):", iframe, error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    applyMuteState(isSilent);
+    localStorage.setItem('siteMuted', JSON.stringify(isSilent));
+  }, [isSilent, applyMuteState]);
+
+  useEffect(() => {
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          // Re-apply mute state if new media elements are added
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeName === 'VIDEO' || node.nodeName === 'AUDIO' ||
+                (node.getElementsByTagName && (node.getElementsByTagName('video').length > 0 || node.getElementsByTagName('audio').length > 0))) {
+              applyMuteState(isSilent);
+              return;
+            }
+          });
+        }
+      }
+    });
+
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    return () => {
+      observer.disconnect();
+    };
+  }, [isSilent, applyMuteState]);
+
 
   function handleSound() {
-    if (isSilent == false) {
-      setIsSilent(true);
-      sounds.muted = true;
-      console.log(sounds);
-    } else {
-      setIsSilent(false);
-      sounds.muted = false;
-      console.log(sounds);
-    }
+    setIsSilent(prevIsSilent => !prevIsSilent);
   }
-  // Need to work on muting sounds- does not work yet
 
   return (
-    <div className="cursor-pointer" onClick={handleSound}>
+    <div className="cursor-pointer" onClick={handleSound} title={isSilent ? "Unmute all sounds" : "Mute all sounds"}>
       <i
         className={`bi bi-${
           isSilent ? "volume-mute-fill" : "soundwave"
         } text-secondary-1 hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle`}
+        aria-label={isSilent ? "Unmute sounds" : "Mute sounds"}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleSound(); }}
       ></i>
     </div>
   );
