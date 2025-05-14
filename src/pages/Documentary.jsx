@@ -8,9 +8,9 @@ const Documentary = () => {
   const { t: t2 } = useTranslation("documentary");
 
   return (
-    <div id="documentary" className="flex flex-col px-[140px] mr-auto ml-auto">
+    <div id="documentary" className="flex flex-col mr-auto ml-auto">
       <main>
-        <div className="mt-[150px] size-full flex justify-center">
+        <div className="mt-20 size-full flex justify-center">
           <VimeoPlayer videoId="1082043684" />
         </div>
 

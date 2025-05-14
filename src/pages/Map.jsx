@@ -14,8 +14,8 @@ const Map = () => {
   return (
     <div id="pageMap">
       {!showMap ? (
-        <div id="showMap" className="flex flex-col mr-auto ml-auto px-[140px]">
-          <main className="mt-50">
+        <div id="showMap" className="flex flex-col mr-auto ml-auto">
+          <main>
             <GraphicMap />
             <ArrowBtn
               isLeft={true}

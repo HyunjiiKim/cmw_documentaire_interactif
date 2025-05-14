@@ -26,8 +26,8 @@ export const NavBar = ({ whichPage }) => {
     },
     {
       id: 4,
-      pathname: "ch2",
-      name: t2("ch2.title"),
+      pathname: "ch3",
+      name: t2("ch3.title"),
     },
   ];
 

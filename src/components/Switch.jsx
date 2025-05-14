@@ -47,7 +47,10 @@ const LanguageSwitch = () => {
   };
 
   // language change handler (desktop)
-  const changeLanguageDesktop = (code) => () => i18n.changeLanguage(code);
+  const changeLanguageDesktop = (code) => () => {
+    localStorage.setItem("myLang", code);
+    i18n.changeLanguage(code);
+  };
 
   return (
     <div id="language-switch">

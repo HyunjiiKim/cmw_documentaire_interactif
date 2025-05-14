@@ -3,12 +3,14 @@ import { initReactI18next } from "react-i18next";
 import HttpBackend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 
+const lang = localStorage.getItem("myLang");
+
 i18n
   .use(LanguageDetector)
   .use(HttpBackend)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
+    fallbackLng: lang || "en",
     supportedLngs: ["en", "ko", "fr"],
     nonExplicitSupportedLngs: true,
     debug: false,

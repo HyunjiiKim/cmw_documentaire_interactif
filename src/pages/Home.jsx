@@ -12,6 +12,7 @@ import mockMap from "/assets/img/mockImage.jpg";
 import mockVideo from "/assets/videos/test.mp4";
 
 import "./style.css";
+import LanguageSwitch from "../components/Switch";
 
 const Home = () => {
   const { t } = useTranslation("contents");
@@ -27,7 +28,10 @@ const Home = () => {
     <div id="home" className="z-10 flex flex-col">
       <main className="max-sm:hidden">
         {!showChoice ? (
-          <div className="flex items-center px-[140px] mt-[120px] max-md:flex-col max-md:items-start">
+          <div className="flex items-center mt-[120px] max-md:flex-col max-md:items-start">
+            <div className="z-50 flex absolute top-0 right-[140px] mt-10 ml-auto mr-auto">
+              <LanguageSwitch />
+            </div>
             <div className="relative w-lg flex-none mr-[35px]">
               <Logo intent="primary" size="large" />
               <img src={defaultImage} className="border-2 border-white"></img>
@@ -52,12 +56,9 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col justify-start px-[140px] mr-auto ml-auto">
+          <div className="flex flex-col justify-start mr-auto ml-auto">
             <Header withText />
-            <div
-              id="contents"
-              className="flex justify-center mt-10 gap-10"
-            >
+            <div id="contents" className="flex justify-center mt-30 gap-10">
               <Trigger
                 isImg={false}
                 isMultiple={true}

@@ -16,6 +16,16 @@ const allViewContents = {
     para1Key: "ch1.para1",
     images: [],
   },
+  ch2: {
+    titleKey: "ch2.title",
+    para1Key: "ch2.para1",
+    images: [],
+  },
+  ch3: {
+    titleKey: "ch3.title",
+    para1Key: "ch3.para1",
+    images: [],
+  },
 };
 
 const View = () => {
@@ -30,7 +40,7 @@ const View = () => {
   const para1 = tContent(currentItemData.para1Key);
 
   return (
-    <div id="view" className="container mx-auto p-4">
+    <div id="view" className="flex flex-col mt-20 mr-auto ml-auto">
       <NavBar whichPage={title} />
       <div className="my-8">
         <Content>
