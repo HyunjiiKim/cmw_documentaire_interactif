@@ -1,44 +1,54 @@
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import Header from "../components/Header";
+import Content from "../components/Content.jsx";
 import { NavBar } from "../components/NavBar";
-import { ArrowBtn } from "../components/Button";
+
+const allViewContents = {
+  intro: {
+    titleKey: "intro.title",
+    para1Key: "intro.para1",
+    images: [],
+  },
+  ch1: {
+    titleKey: "ch1.title",
+    para1Key: "ch1.para1",
+    images: [],
+  },
+};
 
 const View = () => {
-  const { t } = useTranslation("general");
-  const { t: t2 } = useTranslation("contents");
+  const { t: tContent } = useTranslation("contents");
 
-  const contents = {
-    intro: {
-      title: t2("intro.title"),
-      para1: t2("intro.para1"),
-    },
-    ch1: {
-      title: t2("ch1.title"),
-    },
-  };
+  const { id } = useParams();
 
-  // contentHandler: Switch Contents
+  const currentItemData = allViewContents[id];
+
+  // children for Content
+  const title = tContent(currentItemData.titleKey);
+  const para1 = tContent(currentItemData.para1Key);
 
   return (
-    <div id="view" className="flex flex-col mr-auto ml-auto px-[140px]">
-      <Header withText={true} />
-      <main>
-        <div className="flex mt-[200px]">
-          <h1>{contents.title}</h1>
-          <NavBar whichPage={contents.id} />
-        </div>
-      </main>
-      <ArrowBtn
-        isLeft={true}
-        color="text-primary-2"
-        custom="absolute bottom-35"
-      />
-      <ArrowBtn
-        isLeft={false}
-        color="text-primary-2"
-        custom="absolute bottom-20"
-      />
+    <div id="view" className="container mx-auto p-4">
+      <NavBar whichPage={title} />
+      <div className="my-8">
+        <Content>
+          <h1 className="text-4xl font-bold mb-6 text-center">{title}</h1>
+          <p className="text-lg mb-4 leading-relaxed">{para1}</p>
+        </Content>
+      </div>
+      <div className="flex">
+        <ArrowBtn
+          isLeft={true}
+          color="text-primary-2"
+          custom="absolute bottom-35"
+        />
+        <ArrowBtn
+          isLeft={false}
+          color="text-primary-2"
+          custom="absolute bottom-20"
+        />
+      </div>
     </div>
   );
 };

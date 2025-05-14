@@ -8,20 +8,20 @@ import View from "./pages/View";
 import Documentary from "./pages/Documentary";
 
 // components
-import LanguageSwitch from "./components/Switch";
+import Header from "./components/Header";
 
 import "./App.css";
 
 function App() {
   return (
     <Router>
+      { location.pathname !== "/" && <Header withText={true} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<Map />} />
         <Route path="/documentary" element={<Documentary />} />
         <Route path="/view/:id" element={<View />} />
       </Routes>
-      <LanguageSwitch className="z-10" />
     </Router>
   );
 }

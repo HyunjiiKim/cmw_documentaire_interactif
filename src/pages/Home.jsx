@@ -56,7 +56,7 @@ const Home = () => {
             <Header withText />
             <div
               id="contents"
-              className="flex justify-center mt-[200px] gap-10"
+              className="flex justify-center mt-10 gap-10"
             >
               <Trigger
                 isImg={false}
