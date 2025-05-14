@@ -29,10 +29,16 @@ const Map = () => {
               <p className="font-body font-light text-xl text-white mt-[1.5em]">
                 {t("notAvailable")}
               </p>
-              <Button
-                onClick={() => setShowMap(true)}
-                label={t3("intro.title")}
-              />
+              <div className="flex gap-3">
+                <Button
+                  onClick={() => setShowMap(true)}
+                  label={t3("intro.title")}
+                />
+                <Button
+                  onClick={() => (window.location.href = "/view/ch1")}
+                  label={t3("ch1.title")}
+                />
+              </div>
             </div>
             <ArrowBtn
               isLeft={true}

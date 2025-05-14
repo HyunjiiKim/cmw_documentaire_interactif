@@ -1,39 +1,33 @@
 import { useTranslation } from "react-i18next";
 
-import Content from "../components/Content.jsx";
-import HorizontalScroller from "../components/HorizontalScroller";
+import Header from "../components/Header";
 import { NavBar } from "../components/NavBar";
 
 const View = () => {
   const { t } = useTranslation("general");
   const { t: t2 } = useTranslation("contents");
 
-  // mock data
   const contents = {
     intro: {
       title: t2("intro.title"),
       para1: t2("intro.para1"),
-      img: [
-        {
-          src: "https://picsum.photos/200/400",
-          alt: "Image 1 of intro",
-        },
-      ],
+    },
+    ch1: {
+      title: t2("ch1.title"),
     },
   };
 
   // contentHandler: Switch Contents
 
   return (
-    <div id="view">
-      <Content />
-      <NavBar whichPage={contents.name} />
-      <div className="flex justify-between items-center gap-20">
-        <HorizontalScroller data={contents.img} />
-        <div>
+    <div id="view" className="flex flex-col mr-auto ml-auto px-[140px]">
+      <Header withText={true} />
+      <main>
+        <div className="flex mt-[200px]">
           <h1>{contents.title}</h1>
+          <NavBar whichPage={contents.id} />
         </div>
-      </div>
+      </main>
     </div>
   );
 };
