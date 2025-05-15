@@ -45,7 +45,7 @@ export const NavBar = ({ whichPage }) => {
       >
         {nav.map((item) => (
           <div
-            className={`uppercase ${
+            className={`uppercase font-body ${
               pathName == `/view/${item.pathname}`
                 ? "text-primary-2"
                 : "cursor-pointer"

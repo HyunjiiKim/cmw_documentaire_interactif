@@ -13,17 +13,17 @@ i18n
     fallbackLng: lang || "en",
     supportedLngs: ["en", "ko", "fr"],
     nonExplicitSupportedLngs: true,
-    debug: false,
+    debug: false, //Set to true for dev debug (process.env.NODE_ENV === 'development')
     backend: {
       loadPath: "/locals/{{lng}}/{{ns}}.json",
     },
     ns: ["general", "nav", "contents", "home", "map", "documentary"],
     detection: {
       order: [
+        "localStorage",
+        "cookie",
         "navigator",
         "htmlTag",
-        "cookie",
-        "localStorage",
         "path",
         "subdomain",
       ],
