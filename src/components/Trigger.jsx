@@ -12,7 +12,7 @@ export const Trigger = ({
 }) => {
   return (
     <div
-      className={`relative cursor-pointer h-fit ${
+      className={`relative cursor-pointer h-full ${
         isMultiple ? "w-1/2" : "w-fit"
       } shadow-md/25`}
       onClick={btnOnClick}

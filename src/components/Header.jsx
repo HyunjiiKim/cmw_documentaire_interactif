@@ -5,7 +5,7 @@ const Header = ({ withText }) => {
   return (
     <div
       id="header"
-      className="z-50 w-full sticky top-10 flex ml-auto mr-auto justify-between"
+      className="z-50 w-full sticky flex pb-10 ml-auto mr-auto justify-between"
     >
       <Logo intent="secondary" size="medium" withText={withText} />
       <LanguageSwitch />

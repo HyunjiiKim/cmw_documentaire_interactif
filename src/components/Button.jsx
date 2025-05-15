@@ -5,12 +5,12 @@ import { twMerge } from "tailwind-merge";
 import { useTranslation } from "react-i18next";
 
 const buttonVariants = cva(
-  "cursor-pointer shadow-md/25 disabled:opacity-50 bg-primary-1 text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
+  "cursor-pointer shadow-md/25 disabled:opacity-50 w-fit text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
   {
     variants: {
       intent: {
-        primary: "mt-[2.5em]",
-        secondary: "",
+        primary: "mt-[2.5em] bg-transparent border-white border-1",
+        secondary: "bg-transparent border-white border-1",
         ghost: "bg-transparent text-primary-1",
       },
       size: {
@@ -41,9 +41,17 @@ export const InfoBtn = () => {
   const { t } = useTranslation("general");
 
   return (
-    <div className="group border-2 rounded-full border-secondary-1 aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative hover:scale-120 hover:after:w-0 hover:after:h-0 hover:after:border-r-10 hover:after:border-r-transparent hover:after:border-l-10  hover:after:border-l-transparent hover:after:border-b-10 hover:after:border-b-white hover:after:absolute hover:after:top-12 hover:after:left-1/2 hover:after:-translate-x-1/2">
+    <div
+      className="group border-2 rounded-full border-secondary-1 aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative
+    
+    hover:scale-120 hover:after:w-0 hover:after:h-0 
+    
+    hover:after:border-t-10 hover:after:border-t-transparent hover:after:border-b-10  hover:after:border-b-transparent hover:after:border-l-10 hover:after:border-l-white 
+    
+    hover:after:absolute hover:after:right-11 hover:after:-translate-x-1/2"
+    >
       <p className="text-secondary-1">i</p>
-      <div className="hidden group-hover:block absolute top-14 bg-white text-sm p-5 w-max font-body">
+      <div className="hidden group-hover:block absolute right-14 bg-white text-sm p-5 w-max font-body">
         {t("notAvailable")}
       </div>
     </div>
@@ -51,9 +59,8 @@ export const InfoBtn = () => {
 };
 
 export const SoundBtn = () => {
-
   const [isSilent, setIsSilent] = useState(() => {
-    const savedMuteState = localStorage.getItem('siteMuted');
+    const savedMuteState = localStorage.getItem("siteMuted");
     return savedMuteState ? JSON.parse(savedMuteState) : false;
   });
 
@@ -75,7 +82,8 @@ export const SoundBtn = () => {
     for (let i = 0; i < iframes.length; i++) {
       const iframe = iframes[i];
       try {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDoc) {
           const iframeVideos = iframeDoc.getElementsByTagName("video");
           for (let j = 0; j < iframeVideos.length; j++) {
@@ -87,24 +95,33 @@ export const SoundBtn = () => {
           }
         }
       } catch (error) {
-        console.warn("Could not access iframe content for muting (likely cross-origin):", iframe, error);
+        console.warn(
+          "Could not access iframe content for muting (likely cross-origin):",
+          iframe,
+          error
+        );
       }
     }
   }, []);
 
   useEffect(() => {
     applyMuteState(isSilent);
-    localStorage.setItem('siteMuted', JSON.stringify(isSilent));
+    localStorage.setItem("siteMuted", JSON.stringify(isSilent));
   }, [isSilent, applyMuteState]);
 
   useEffect(() => {
     const observer = new MutationObserver((mutationsList) => {
       for (const mutation of mutationsList) {
-        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+        if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
           // Re-apply mute state if new media elements are added
-          mutation.addedNodes.forEach(node => {
-            if (node.nodeName === 'VIDEO' || node.nodeName === 'AUDIO' ||
-                (node.getElementsByTagName && (node.getElementsByTagName('video').length > 0 || node.getElementsByTagName('audio').length > 0))) {
+          mutation.addedNodes.forEach((node) => {
+            if (
+              node.nodeName === "VIDEO" ||
+              node.nodeName === "AUDIO" ||
+              (node.getElementsByTagName &&
+                (node.getElementsByTagName("video").length > 0 ||
+                  node.getElementsByTagName("audio").length > 0))
+            ) {
               applyMuteState(isSilent);
               return;
             }
@@ -113,19 +130,25 @@ export const SoundBtn = () => {
       }
     });
 
-    observer.observe(document.documentElement, { childList: true, subtree: true });
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
     return () => {
       observer.disconnect();
     };
   }, [isSilent, applyMuteState]);
 
-
   function handleSound() {
-    setIsSilent(prevIsSilent => !prevIsSilent);
+    setIsSilent((prevIsSilent) => !prevIsSilent);
   }
 
   return (
-    <div className="cursor-pointer" onClick={handleSound} title={isSilent ? "Unmute all sounds" : "Mute all sounds"}>
+    <div
+      className="cursor-pointer"
+      onClick={handleSound}
+      title={isSilent ? "Unmute all sounds" : "Mute all sounds"}
+    >
       <i
         className={`bi bi-${
           isSilent ? "volume-mute-fill" : "soundwave"
@@ -133,7 +156,9 @@ export const SoundBtn = () => {
         aria-label={isSilent ? "Unmute sounds" : "Mute sounds"}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleSound(); }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") handleSound();
+        }}
       ></i>
     </div>
   );

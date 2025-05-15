@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { cva } from "class-variance-authority";
 
-const ContainerVariants = cva("border-2 border-white", {
+const ContainerVariants = cva("", {
   variants: {
     intent: {
       default: "",
@@ -11,7 +11,7 @@ const ContainerVariants = cva("border-2 border-white", {
     size: {
       sm: "w-fit h-50",
       md: "w-130 h-80",
-      lg: "w-auto h-110",
+      lg: "w-auto h-full",
       full: "w-full h-auto",
     },
     border: {

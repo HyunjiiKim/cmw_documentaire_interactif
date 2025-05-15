@@ -29,5 +29,5 @@ export const VimeoPlayer = ({ videoId, onEnded }) => {
     return () => player.destroy();
   }, [videoId, onEnded]);
 
-  return <div ref={container} className="aspect-video h-160" />;
+  return <div ref={container} className="aspect-video h-135" />;
 };

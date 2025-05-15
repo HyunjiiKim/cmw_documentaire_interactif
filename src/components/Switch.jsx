@@ -74,7 +74,6 @@ const LanguageSwitch = () => {
             isActive={currentLang === code}
           />
         ))}
-        <InfoBtn />
       </div>
     </div>
   );
