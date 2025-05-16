@@ -58,11 +58,4 @@ const GraphicMap = () => {
   );
 };
 
-// It's good practice to define prop types, especially if sharing this component
-// import PropTypes from 'prop-types';
-// GraphicMap.propTypes = {
-//     width: PropTypes.number,
-//     height: PropTypes.number,
-// };
-
 export default GraphicMap;
