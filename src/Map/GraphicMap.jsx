@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Phaser from "phaser";
 import { useNavigate } from "react-router-dom";
-import { MapScene } from "./MapScene"; // Ensure this path is correct
+import { MapScene } from "./MapScene.js";
 
 const GraphicMap = () => {
   const phaserGameRef = useRef(null);
@@ -16,10 +16,16 @@ const GraphicMap = () => {
     const phaserConfig = {
       type: Phaser.AUTO,
       parent: gameContainerRef.current,
-      width: 1200,
-      height: 800,
-      scene: [MapScene],
-      backgroundColor: "transparent",
+      width: window.innerWidth,
+      height: window.innerHeight,
+      pixelArt: true,
+      physics: {
+        default: "arcade",
+        arcade: {
+          debug: false,
+        },
+      },
+      scene: [MapScene]
     };
 
     phaserGameRef.current = new Phaser.Game(phaserConfig);
