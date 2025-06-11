@@ -51,22 +51,35 @@ export const ButtonWithIcon = ({ intent, size, custom, label, onClick }) => {
 
 export const InfoBtn = () => {
   const { t } = useTranslation("general");
+  const [showInfo, setShowInfo] = useState(false);
+
+  function openShowInfo() {
+    setShowInfo(true);
+  }
 
   return (
-    <div
-      className="group border-2 rounded-full border-secondary-1 aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative
+    <>
+      <div
+        className="group border-2 rounded-full border-white aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative
     
     hover:scale-120 hover:after:w-0 hover:after:h-0 
     
     hover:after:border-t-10 hover:after:border-t-transparent hover:after:border-b-10  hover:after:border-b-transparent hover:after:border-l-10 hover:after:border-l-white 
     
     hover:after:absolute hover:after:right-11 hover:after:-translate-x-1/2"
-    >
-      <p className="text-secondary-1">i</p>
-      <div className="hidden group-hover:block absolute right-14 bg-white text-sm p-5 w-max font-body">
-        {t("notAvailable")}
+      >
+        <p className="text-white">i</p>
+        <div className="hidden group-hover:block absolute right-14 bg-white text-sm p-5 w-max font-body">
+          {t("notAvailable")}
+        </div>
       </div>
-    </div>
+      {!showInfo ? (
+        <div className="hidden"></div>
+      ) : (
+        <div className=""></div>
+      )
+      )}
+    </>
   );
 };
 

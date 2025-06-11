@@ -16,7 +16,7 @@ const Charging = () => {
       <main className="max-sm:hidden h-full">
         <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
           <div id="header" className="flex justify-end">
-            <LanguageSwitch />
+            <LanguageSwitch position />
           </div>
           <div className="flex h-full justify-center">
             <div id="quote" className="w-3xl content-center">
@@ -42,7 +42,10 @@ const Charging = () => {
               </div>
             </div>
           </div>
-          <Indicator label={t2("loading")} />
+          <div className="flex justify-between">
+            <Indicator label={t2("loading")} />
+            <InfoBtn />
+          </div>
         </div>
       </main>
     </div>

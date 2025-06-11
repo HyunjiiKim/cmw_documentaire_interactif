@@ -10,7 +10,7 @@ import FlagFR from "/assets/img/flag_FR.jpg";
 
 import "./components.css";
 
-const LanguageSwitch = () => {
+const LanguageSwitch = (position) => {
   const { i18n } = useTranslation();
 
   const languageCode = i18n.language.split("-")[0];
@@ -63,7 +63,12 @@ const LanguageSwitch = () => {
           ))}
         </select>
       </div>
-      <div id="desktop" className="max-md:hidden flex flex-row gap-3">
+      <div
+        id="desktop"
+        className={`max-md:hidden flex ${
+          position ? "flex-row" : "flex-col"
+        } gap-3`}
+      >
         {languages.map(({ code, img, label }) => (
           <FlagContainer
             key={code}
