@@ -46,3 +46,21 @@ export const Trigger = ({
 };
 
 // Faire en sorte que le hover du bouton entraîne le hover de l'image/vidéo et vice-versa
+
+export const ReviewTrigger = ({content}) => {
+  // content should be an object with properties
+  if(typeof content === "object"){
+    return(
+      <div id="reviewTrigger" className="flex">
+        <div id="TextContainer" className="flex flex-col">
+        </div>
+        <div id="imgContainer">
+          <img src={img} alt={text.title} />
+        </div>
+      </div>
+    )
+  }
+  return(
+    console.error("Error: Content is not an onject")
+  )
+}

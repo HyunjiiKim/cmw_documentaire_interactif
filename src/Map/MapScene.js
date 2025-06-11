@@ -1,48 +1,48 @@
-import Phaser from "phaser";
+import Phaser, { Tilemaps } from "phaser";
 
 const mapElementsData = [
   {
     id: "intro",
-    x: 300,
-    y: 200,
-    asset: "buildingElement",
+    x: window.innerWidth/2,
+    y: window.innerHeight-200,
+    asset: "introBefore",
     name: "intro",
-    targetWidth: 200,
+    targetWidth: 150,
     path: "/view/intro",
-    hover: { alpha: 0.7, yOffset: -5, scaleFactor: 1.15, tint: 0xffefc4 },
+    hover: { asset:"introAfter", alpha: 0.7, yOffset: -5, scaleFactor: 1, tint: 0xffefc4 },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },
   {
     id: "ch1",
-    x: 550,
-    y: 300,
-    asset: "buildingElement",
+    x: window.innerWidth/2,
+    y: window.innerHeight/2,
+    asset: "chapter1Before",
     name: "ch1",
     targetWidth: 200,
     path: "/view/ch1",
-    hover: { alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
+    hover: { asset: "chapter1After", alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },
   {
     id: "ch2",
-    x: 320,
-    y: 500,
-    asset: "buildingElement",
+    x: window.innerWidth/4,
+    y: window.innerHeight/2,
+    asset: "chapter2Before",
     name: "ch2",
-    targetWidth: 200,
+    targetWidth: 400,
     path: "/view/ch2",
-    hover: { alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
+    hover: { asset: "chapter2After", alpha: 0.7, yOffset: -8, scaleFactor: 1, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },
   {
     id: "ch3",
-    x: 780,
-    y: 600,
-    asset: "buildingElement",
+    x: window.innerWidth-200,
+    y: window.innerHeight/2,
+    asset: "chapter3Before",
     name: "ch3",
-    targetWidth: 200,
+    targetWidth: window.innerWidth/6,
     path: "/view/ch3",
-    hover: { alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
+    hover: { asset: "chapter3After", alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },
 ];
@@ -55,26 +55,45 @@ export class MapScene extends Phaser.Scene {
     this.infoText = null;
   }
 
+  // image files load 
+
   preload() {
+    // tile set
     this.load.image("mapBackground", "/assets/img/mapBg.png");
-    this.load.image("buildingElement", "/assets/img/Building.png");
+    this.load.image("tileset", "/assets/img/tileset.png")
+    // introduction graphic elements
+    this.load.image("introBefore", "/assets/img/introBefore.png");
+    this.load.image("introAfter", "/assets/img/introAfter.png");
+    // chpater1 graphic elements
+    this.load.image("chapter1Before", "/assets/img/ch1Before.png");
+    this.load.image("chapter1After", "/assets/img/ch1After.png");
+    // chapter2 graphic elements
+    this.load.image("chapter2Before", "/assets/img/ch2Before.png");
+    this.load.image("chapter2After", "/assets/img/ch2After.png");
+    // chapter3 graphic elements
+    this.load.image("chapter3Before", "/assets/img/ch3Before.png");
+    this.load.image("chapter3After", "/assets/img/ch3After.png")
+
   }
 
   create() {
+
     // Add background image, centered
     this.add.image(
       this.cameras.main.centerX,
       this.cameras.main.centerY,
-      "mapBackground"
+      "tileset"
     );
 
     // Iterate over the data to create each map element (building)
     mapElementsData.forEach((data) => {
+      // default information
       let element;
-      let baseScale = 1; // Default scale if targetWidth isn"t applicable
+      let baseScale = 1;
 
       // Create sprite for the building
       element = this.add.sprite(data.x, data.y, data.asset).setInteractive();
+
       element.originalTint = element.tintTopLeft; // Store original tint (usually 0xffffff for no tint)
       element.originalY = data.y; // Store original Y for yOffset transitions
 
@@ -121,8 +140,11 @@ export class MapScene extends Phaser.Scene {
   }
 
   setupElementTransitions(element, config, currentBaseScale) {
-    // currentBaseScale is the scale applied in create() (derived from targetWidth or initialScale)
     const restingScale = currentBaseScale;
+    const hoverProps = config.hover || {};
+
+    element.restingTexture = config.asset;
+    if (hoverProps.asset) element.hoverTexture = hoverProps.asset;
 
     element.on("pointerover", () => {
       this.game.canvas.style.cursor = "pointer";
@@ -135,9 +157,10 @@ export class MapScene extends Phaser.Scene {
         .setOrigin(0.5, 1)
         .setVisible(true);
 
-      const hoverProps = config.hover || {};
+
       const tweenConfig = {}; // Properties to tween will be added here
       let applyTween = false;
+
 
       // Apply hover effects defined in config
       if (hoverProps.scaleFactor !== undefined) {
@@ -166,6 +189,8 @@ export class MapScene extends Phaser.Scene {
           ...tweenConfig, // Spread the properties to tween (scale, alpha, y)
         });
       }
+
+      if (element.hoverTexture) element.setTexture(element.hoverTexture);
     });
 
     element.on("pointerout", () => {
@@ -211,13 +236,14 @@ export class MapScene extends Phaser.Scene {
           ...tweenConfig,
         });
       }
+
+      element.setTexture(element.restingTexture);
     });
 
     // Handle click (pointerdown) event for navigation
     element.on("pointerdown", () => {
       console.log(
-        `Phaser: Clicked on "${config.name || config.id}". Path: "${
-          config.path
+        `Phaser: Clicked on "${config.name || config.id}". Path: "${config.path
         }"`
       );
       if (config.path) {
@@ -231,5 +257,5 @@ export class MapScene extends Phaser.Scene {
     });
   }
 
-  update() {}
+  update() { }
 }

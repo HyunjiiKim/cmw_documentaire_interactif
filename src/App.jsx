@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState } from "react";
 
 // pages
 import Charging from "./pages/Charging";
@@ -10,21 +9,22 @@ import Documentary from "./pages/Documentary";
 
 // components
 import Header from "./components/Header";
+import { HorizontalNav } from "./components/NavBar";
 
 import "./App.css";
 
 function App() {
   return (
     <Router>
-      {location.pathname !== "/" && <Header withText={true} />}
+      {location.pathname !== "/" && <HorizontalNav />}
       <Routes>
-        <Route path="/" element={<Charging />} />
-        <Route path="/home" element={<Home />} />
+        {/* { location.pathname !== "/" && <Header withText={true} />} */}
+        <Route path="/" element={<Home />} />
         <Route path="/map" element={<Map />} />
         <Route path="/documentary" element={<Documentary />} />
         <Route path="/view/:id" element={<View />} />
       </Routes>
-    </Router>
+    </Router >
   );
 }
 

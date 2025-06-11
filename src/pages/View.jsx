@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { ArrowBtn } from "../components/Button";
 import Content from "../components/Content.jsx";
-import { NavBar } from "../components/NavBar";
+import { NavBar, TopNav } from "../components/NavBar";
 
 const allViewContents = {
   intro: {
@@ -39,25 +39,22 @@ const View = () => {
   const title = tContent(currentItemData.titleKey);
   const para1 = tContent(currentItemData.para1Key);
 
+  // extract the end of path (3 characters from the end)
+  function extractLastThreeChars(path){
+    if(typeof path === 'string'){
+      let pathLength=path.length;
+      let extractedChars = path.slice(pathLength-3,pathLength);
+      return extractedChars
+    }
+  }
+
   return (
-    <div id="view" className="flex flex-col mt-20 mr-auto ml-auto">
-      <NavBar whichPage={title} />
-      <div className="my-8">
-        <Content>
-          <h1 className="text-4xl font-bold mb-6 text-center">{title}</h1>
-          <p className="text-lg mb-4 leading-relaxed">{para1}</p>
-        </Content>
-      </div>
-      <div className="flex">
-        <ArrowBtn
-          isLeft={true}
-          color="text-primary-2"
-          custom="absolute bottom-35"
-        />
-        <ArrowBtn
-          isLeft={false}
-          color="text-primary-2"
-          custom="absolute bottom-20"
+    <div id="view" className="flex flex-col mt-10 ml-[120px]">
+      {/* <NavBar whichPage={title} /> */}
+      <TopNav />
+      <div className="my-8 px-4">
+        <Content
+          chapter={extractLastThreeChars(location.pathname)}
         />
       </div>
     </div>
