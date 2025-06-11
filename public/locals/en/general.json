@@ -1,7 +1,12 @@
 {
+  "name":{
+    "pre": "captive",
+    "post": "memory"
+  },
   "start": "Start",
   "watch": "Watch documentary",
   "map": "Explore the map",
+  "returnToMap": "return to the map",
   "Rotate": "Rotate your phone",
   "loading": "Please wait...",
   "notAvailable": "This content will be available soon.",
