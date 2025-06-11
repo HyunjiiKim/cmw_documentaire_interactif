@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+import Phaser, { Tilemaps } from "phaser";
 
 const mapElementsData = [
   {
@@ -7,7 +7,7 @@ const mapElementsData = [
     y: window.innerHeight-200,
     asset: "introBefore",
     name: "intro",
-    targetWidth: 200,
+    targetWidth: 150,
     path: "/view/intro",
     hover: { asset:"introAfter", alpha: 0.7, yOffset: -5, scaleFactor: 1, tint: 0xffefc4 },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
@@ -18,7 +18,7 @@ const mapElementsData = [
     y: window.innerHeight/2,
     asset: "chapter1Before",
     name: "ch1",
-    targetWidth: 400,
+    targetWidth: 200,
     path: "/view/ch1",
     hover: { asset: "chapter1After", alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
@@ -26,7 +26,7 @@ const mapElementsData = [
   {
     id: "ch2",
     x: window.innerWidth/4,
-    y: 500,
+    y: window.innerHeight/2,
     asset: "chapter2Before",
     name: "ch2",
     targetWidth: 400,
@@ -36,11 +36,11 @@ const mapElementsData = [
   },
   {
     id: "ch3",
-    x: window.innerWidth-400,
-    y: 600,
+    x: window.innerWidth-200,
+    y: window.innerHeight/2,
     asset: "chapter3Before",
     name: "ch3",
-    targetWidth: 400,
+    targetWidth: window.innerWidth/6,
     path: "/view/ch3",
     hover: { asset: "chapter3After", alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
@@ -60,6 +60,7 @@ export class MapScene extends Phaser.Scene {
   preload() {
     // tile set
     this.load.image("mapBackground", "/assets/img/mapBg.png");
+    this.load.image("tileset", "/assets/img/tileset.png")
     // introduction graphic elements
     this.load.image("introBefore", "/assets/img/introBefore.png");
     this.load.image("introAfter", "/assets/img/introAfter.png");
@@ -76,11 +77,12 @@ export class MapScene extends Phaser.Scene {
   }
 
   create() {
+
     // Add background image, centered
     this.add.image(
       this.cameras.main.centerX,
       this.cameras.main.centerY,
-      "mapBackground"
+      "tileset"
     );
 
     // Iterate over the data to create each map element (building)

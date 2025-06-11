@@ -1,7 +1,12 @@
 {
+  "name":{
+    "pre": "mémoire",
+    "post": "captive"
+  },
   "start": "Commencer",
   "watch": "Visionner le documentaire",
   "map": "Explorer la carte",
+  "returnToMap": "retour à la carte",
   "Rotate": "Faire pivoter l'écran sur votre appareil",
   "loading": "Veuillez patienter...",
   "notAvailable": "Ce contenu sera bientôt disponible.",
