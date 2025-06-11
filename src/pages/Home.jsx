@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Header from "../components/Header";
+import LanguageSwitch from "../components/Switch";
 import Button, { ArrowBtn, InfoBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Logo } from "../components/Logo";
 import { Blocker } from "../components/Blocker";
-import Universities from "../components/Universities";
 
 import defaultImage from "/assets/img/presentation.jpg";
 import mockMap from "/assets/img/mockImage.jpg";
@@ -14,7 +14,6 @@ import teaserIntro from "/assets/videos/Introduction.mp4";
 import gifHome from "/assets/videos/pageaccueil.mov";
 
 import "./style.css";
-import LanguageSwitch from "../components/Switch";
 
 const Home = () => {
   const { t } = useTranslation("contents");
@@ -39,37 +38,22 @@ const Home = () => {
                 className="opacity-30 size-full object-cover"
               />
             </div>
-            <div id="homeHeader" className="z-50 flex justify-between">
-              <Logo intent="primary" size="large" />
-              <LanguageSwitch />
-            </div>
             <div
               id="homeContent"
-              className="z-30 flex flex-col text-center text-shadow-md mr-auto ml-auto"
+              className="z-30 h-full text-center content-center text-shadow-md mr-auto ml-auto"
             >
               <h1 className="flex justify-center font-sans text-7xl uppercase leading-none gap-4">
                 <span className="text-white">{t2("title.part1")}</span>
                 <span className="text-primary-2">{t2("title.part2")}</span>
               </h1>
-              <h2 className="font-sans text-2xl uppercase text-white mt-[0.3em]">
+              <h2 className="font-body text-2xl uppercase text-white mt-[0.3em]">
                 {t2("subtitle")}
               </h2>
-              <p className="font-body font-light text-xl text-white mt-[1.5em] w-200">
-                {t2("presentation.part1")}
-                <br />
-                {t2("presentation.part2")}
-              </p>
-              <Button
-                onClick={openShowChoices}
-                label={t3("start")}
-                custom="mr-auto ml-auto"
-              />
             </div>
             <div
               id="homeFooter"
               className="z-50 flex justify-between items-center"
             >
-              <Universities />
               <InfoBtn />
             </div>
           </div>

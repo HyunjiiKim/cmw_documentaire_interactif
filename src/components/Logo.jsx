@@ -14,7 +14,7 @@ const logoVariants = cva(
       intent: {
         primary: "p-[15px] text-shadow-lg",
         secondary: "p-[7px] mr-[7px] h-fit",
-        tertiary: "",
+        tertiary: "p-[7px] mr-[7px] h-fit bg-transparent",
       },
       size: {
         medium: "text-[20px]",

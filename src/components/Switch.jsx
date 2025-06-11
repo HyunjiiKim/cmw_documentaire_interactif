@@ -64,7 +64,6 @@ const LanguageSwitch = () => {
         </select>
       </div>
       <div id="desktop" className="max-md:hidden flex flex-row gap-3">
-        <SoundBtn />
         {languages.map(({ code, img, label }) => (
           <FlagContainer
             key={code}

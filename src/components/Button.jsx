@@ -5,16 +5,16 @@ import { twMerge } from "tailwind-merge";
 import { useTranslation } from "react-i18next";
 
 const buttonVariants = cva(
-  "cursor-pointer shadow-md/25 disabled:opacity-50 w-fit text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
+  "cursor-pointer shadow-md/25 disabled:opacity-50 w-fit bg-transparent text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
   {
     variants: {
       intent: {
-        primary: "mt-[2.5em] bg-transparent border-white border-1",
-        secondary: "bg-transparent border-white border-1",
-        ghost: "bg-transparent text-primary-1",
+        primary: "mt-[2.5em] border-white border-1",
+        secondary: "border-white border-1",
+        ghost: "mt-[2.5em] underline",
       },
       size: {
-        small: "px-3 py-1 text-sm",
+        small: "px-[20px] py-[10px] text-sm",
         medium: "px-[30px] py-[10px] text-base",
         large: "px-6 py-3 text-lg",
       },
@@ -33,6 +33,18 @@ const Button = ({ intent, size, custom, label, onClick }) => {
       onClick={onClick}
     >
       {label}
+    </button>
+  );
+};
+
+export const ButtonWithIcon = ({ intent, size, custom, label, onClick }) => {
+  return (
+    <button
+      className={twMerge(buttonVariants({ intent, size }), custom)}
+      onClick={onClick}
+    >
+      {label}
+      <img src="../assets/icons/sound.png" className="h-5" />
     </button>
   );
 };
@@ -145,21 +157,11 @@ export const SoundBtn = () => {
 
   return (
     <div
-      className="cursor-pointer"
+      className="cursor-pointer flex w-fit"
       onClick={handleSound}
       title={isSilent ? "Unmute all sounds" : "Mute all sounds"}
     >
       {isSilent ? (
-        <i
-          className="bi bi-soundwave text-secondary-1 hover:scale-120 text-[45px] flex items-center text-center justify-center align-middle"
-          aria-label="Mute sounds"
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") handleSound();
-          }}
-        ></i>
-      ) : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="45"
@@ -181,6 +183,17 @@ export const SoundBtn = () => {
             d="M2.5 4.5 L14.5 11.5"
           />
         </svg>
+      ) : (
+        <img
+          src="../assets/icons/sound.png"
+          className="hover:scale-120 h-6 m-auto"
+          aria-label="Mute sounds"
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") handleSound();
+          }}
+        />
       )}
     </div>
   );
