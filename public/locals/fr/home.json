@@ -3,9 +3,13 @@
     "part1": "Mémoires",
     "part2": "Captives"
   },
-  "subtitle": "L’héritage du camp de prisonniers de Geoje",
-  "presentation": {
-    "part1": "Dans le récit de la guerre de Corée,  conflit largement documenté, subsiste une réalité souvent oubliée : celle des camps de prisonniers. Aujourd’hui, l'île de Geoje accueille l’un d’entre eux sous la forme d’un parc historique. Un lieu de mémoire témoignant de vie alors suspendu entre incertitude, espoir et fidélité à leurs idéaux.",
-    "part2": "Cette représentation d’une réalité soulève encore aujourd’hui de nombreuses interrogations : Comment la raconter ? Que reste-t-il de ces mémoires enfouies ? Quel est le travail effectué au sein de ce parc historique, symbole d’une époque troublée qui laisse encore ses traces dans le présent."
+  "subtitle": "L’héritage du camp de prisonniers de l'île de Geoje",
+  "content": {
+    "part1": "En février 1951, l’armée américaine doit prendre en charge des milliers de ",
+    "part1-bis": "prisonniers de guerre.",
+    "subpart1": "Il s’agit principalement de soldats chinois et coréens.",
+    "part2": "Dans la confusion des combats, tout suspect d’alliance avec le Nord ",
+    "part2-bis": "est arrêté.",
+    "subpart2": "L'île de Geoje est choisie pour accueillir le principal lieu de détention. Il regroupera plus de 150000 prisonniers."
   }
 }

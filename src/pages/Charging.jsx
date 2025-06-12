@@ -2,9 +2,11 @@ import { useTranslation } from "react-i18next";
 
 import Button, { InfoBtn, ButtonWithIcon } from "../components/Button";
 import LanguageSwitch from "../components/Switch";
+import { Indicator } from "../components/Indicator";
 
 import "./style.css";
-import { Indicator } from "../components/Indicator";
+
+import gifHome from "/assets/videos/pageaccueil.mov";
 
 const Charging = () => {
   const { t } = useTranslation("contents");
@@ -15,6 +17,14 @@ const Charging = () => {
     <div id="charging" className="z-10 flex flex-col h-full">
       <main className="max-sm:hidden h-full">
         <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <video
+              autoPlay
+              loop
+              src={gifHome}
+              className="opacity-30 size-full object-cover"
+            />
+          </div>
           <div id="header" className="flex justify-end pr-18 pt-18">
             <LanguageSwitch position />
           </div>

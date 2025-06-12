@@ -29,20 +29,18 @@ const Home = () => {
     <div id="home" className="z-10 flex flex-col h-full">
       <main className="max-sm:hidden h-full">
         {!showChoice ? (
-          <div className="max-md:flex-col max-md:items-start h-full flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-full h-full">
-              <video
-                autoPlay
-                loop
-                src={gifHome}
-                className="opacity-30 size-full object-cover"
-              />
+          <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
+            <div className="absolute size-full opacity-50">
+              <img src="../assets/img/homeBackground.jpg" />
+            </div>
+            <div className="z-50 absolute top-18 right-18">
+              <InfoBtn />
             </div>
             <div
-              id="homeContent"
+              id="homeTitle"
               className="z-30 h-full text-center content-center text-shadow-md mr-auto ml-auto"
             >
-              <h1 className="flex justify-center font-sans text-7xl uppercase leading-none gap-4">
+              <h1 className="flex justify-center font-sans text-8xl uppercase leading-none gap-4">
                 <span className="text-white">{t2("title.part1")}</span>
                 <span className="text-primary-2">{t2("title.part2")}</span>
               </h1>
@@ -51,10 +49,31 @@ const Home = () => {
               </h2>
             </div>
             <div
-              id="homeFooter"
-              className="z-50 flex justify-between items-center"
+              id="homeContent"
+              className="z-30 size-full flex flex-col gap-15 text-shadow-md"
             >
-              <InfoBtn />
+              <div id="homeContent1" className="w-xl">
+                <h3 className="text-4xl">
+                  <span className="text-white">{t2("content.part1")}</span>
+                  <span className="text-primary-2">
+                    {t2("content.part1-bis")}
+                  </span>
+                </h3>
+                <p className="text-white font-body text-2xl">
+                  {t2("content.subpart1")}
+                </p>
+              </div>
+              <div id="homeContent2" className="text-right w-2xl justify-end">
+                <h3 className="text-4xl">
+                  <span className="text-white">{t2("content.part2")}</span>
+                  <span className="text-primary-2">
+                    {t2("content.part2-bis")}
+                  </span>
+                </h3>
+                <p className="text-white font-body text-2xl">
+                  {t2("content.subpart2")}
+                </p>
+              </div>
             </div>
           </div>
         ) : (
