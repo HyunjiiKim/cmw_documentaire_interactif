@@ -15,12 +15,12 @@ const Charging = () => {
     <div id="charging" className="z-10 flex flex-col h-full">
       <main className="max-sm:hidden h-full">
         <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
-          <div id="header" className="flex justify-end">
+          <div id="header" className="flex justify-end pr-18 pt-18">
             <LanguageSwitch position />
           </div>
           <div className="flex h-full justify-center">
             <div id="quote" className="w-3xl content-center">
-              <h4 className="font-sans text-white uppercase text-5xl text-center">
+              <h4 className="font-sans text-white uppercase text-5xl text-center leading-15">
                 &#8220;{t2("quote")}&#8221;
               </h4>
               <hr className="text-white text-center w-sm my-5 m-auto" />
@@ -42,7 +42,7 @@ const Charging = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between pb-18 pr-18 pl-10">
             <Indicator label={t2("loading")} />
             <InfoBtn />
           </div>

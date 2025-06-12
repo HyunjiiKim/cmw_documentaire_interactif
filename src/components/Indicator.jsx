@@ -1,3 +1,5 @@
+import { SoundBtn } from "./Button";
+
 export const Indicator = ({ label }) => {
   return (
     <>
@@ -5,9 +7,9 @@ export const Indicator = ({ label }) => {
         <p className="font-body text-white uppercase -rotate-90 -translate-x-7 -translate-y-12 w-fit">
           {label}
         </p>
-        <img src="../assets/icons/sound.png" className="h-5 w-fit" />
+        <SoundBtn />
       </div>
-      <hr className="text-white text-center w-55 -rotate-90 -translate-x-175 -translate-y-2" />
+      <hr className="text-white text-center w-60 -rotate-90 -translate-x-180" />
     </>
   );
 };

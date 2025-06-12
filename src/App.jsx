@@ -19,12 +19,13 @@ function App() {
       {location.pathname !== "/" && <HorizontalNav />}
       <Routes>
         {/* { location.pathname !== "/" && <Header withText={true} />} */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Charging />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/map" element={<Map />} />
         <Route path="/documentary" element={<Documentary />} />
         <Route path="/view/:id" element={<View />} />
       </Routes>
-    </Router >
+    </Router>
   );
 }
 

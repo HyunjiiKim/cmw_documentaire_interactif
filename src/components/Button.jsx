@@ -44,41 +44,19 @@ export const ButtonWithIcon = ({ intent, size, custom, label, onClick }) => {
       onClick={onClick}
     >
       {label}
-      <img src="../assets/icons/sound.png" className="h-5" />
+      <img src="../assets/icons/soundBtn.svg" className="w-5" />
     </button>
   );
 };
 
 export const InfoBtn = () => {
   const { t } = useTranslation("general");
-  const [showInfo, setShowInfo] = useState(false);
-
-  function openShowInfo() {
-    setShowInfo(true);
-  }
 
   return (
     <>
-      <div
-        className="group border-2 rounded-full border-white aspect-square w-10 h-10 text-xs flex items-center text-center justify-center cursor-pointer relative
-    
-    hover:scale-120 hover:after:w-0 hover:after:h-0 
-    
-    hover:after:border-t-10 hover:after:border-t-transparent hover:after:border-b-10  hover:after:border-b-transparent hover:after:border-l-10 hover:after:border-l-white 
-    
-    hover:after:absolute hover:after:right-11 hover:after:-translate-x-1/2"
-      >
-        <p className="text-white">i</p>
-        <div className="hidden group-hover:block absolute right-14 bg-white text-sm p-5 w-max font-body">
-          {t("notAvailable")}
-        </div>
+      <div className="">
+        <img src="../assets/icons/infoBtn.svg" className="w-10 h-10" />
       </div>
-      {!showInfo ? (
-        <div className="hidden"></div>
-      ) : (
-        <div className=""></div>
-      )
-      )}
     </>
   );
 };
@@ -175,31 +153,20 @@ export const SoundBtn = () => {
       title={isSilent ? "Unmute all sounds" : "Mute all sounds"}
     >
       {isSilent ? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="45"
-          height="45"
-          fill="#9a938a"
-          viewBox="0 0 16 16"
-          className="hover:scale-120 text-[40px] flex items-center text-center justify-center align-middle"
-          aria-label="Unmute sounds"
+        <img
+          src="../assets/icons/soundBtnOff.svg" // Need the presence of svgviewer-output.svg to work
+          className="hover:scale-120 w-8 m-auto"
+          aria-label="Mute sounds"
           role="button"
           tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") handleSound();
           }}
-        >
-          <path d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5m-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5m-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5m12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5" />
-          <path
-            stroke="#9a938a"
-            stroke-linecap="round"
-            d="M2.5 4.5 L14.5 11.5"
-          />
-        </svg>
+        />
       ) : (
         <img
-          src="../assets/icons/sound.png"
-          className="hover:scale-120 h-6 m-auto"
+          src="../assets/icons/soundBtn.svg"
+          className="hover:scale-120 w-8 m-auto"
           aria-label="Mute sounds"
           role="button"
           tabIndex={0}
