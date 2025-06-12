@@ -7,8 +7,10 @@ const Header = ({ withText }) => {
     <div id="header" className="z-50 h-full w-fit sticky">
       <div className="h-full flex flex-col pb-10 my-5 justify-between">
         <div className="flex -rotate-90 -translate-x-10 w-fit">
-          <p className="text-white">mémoires.</p>
-          <p className="text-primary-1">captives</p>
+          <p>
+            <span className="text-white">mémoires.</span>
+            <span className="text-primary-1">captives</span>
+          </p>
         </div>
         <Logo intent="tertiary" size="medium" />
         <div className="flex flex-col gap-3">

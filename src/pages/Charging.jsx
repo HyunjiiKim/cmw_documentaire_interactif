@@ -21,6 +21,7 @@ const Charging = () => {
             <video
               autoPlay
               loop
+              muted
               src={gifHome}
               className="opacity-30 size-full object-cover"
             />
@@ -28,7 +29,7 @@ const Charging = () => {
           <div id="header" className="flex justify-end pr-18 pt-18">
             <LanguageSwitch position />
           </div>
-          <div className="flex h-full justify-center">
+          <div className="z-50 flex h-full justify-center">
             <div id="quote" className="w-3xl content-center">
               <h4 className="font-sans text-white uppercase text-5xl text-center leading-15">
                 &#8220;{t2("quote")}&#8221;
@@ -52,9 +53,27 @@ const Charging = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-between pb-18 pr-18 pl-10">
+          <div className="z-50 flex justify-between pb-18 pr-18 pl-10">
             <Indicator label={t2("loading")} />
             <InfoBtn />
+            <div className="hidden z-100 flex flex-col absolute top-50 left-50 right-50 size-fit pt-10 p-20 bg-black border-primary-1 border-1">
+              <img
+                src="../assets/icons/close.svg"
+                className="cursor-pointer self-end w-7 pb-8"
+              />
+              <p className="text-white font-body leading-7">
+                {t3("info.para1")}
+                <br />
+                <br />
+                {t3("info.para2")}
+                <br />
+                <br />
+                {t3("info.para3")}
+                <br />
+                <br />
+                {t3("info.para4")}
+              </p>
+            </div>
           </div>
         </div>
       </main>

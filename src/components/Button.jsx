@@ -54,8 +54,12 @@ export const InfoBtn = () => {
 
   return (
     <>
-      <div className="">
-        <img src="../assets/icons/infoBtn.svg" className="w-10 h-10" />
+      <div className="cursor-pointer">
+        <img
+          src="../assets/icons/infoBtn.svg"
+          className="w-10 h-10 hover:scale-120"
+          onClick=""
+        />
       </div>
     </>
   );
