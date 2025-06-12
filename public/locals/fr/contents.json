@@ -4,7 +4,31 @@
     "subtitle": "Sous-titre"
   },
   "ch1": {
-    "title": "Chapitre 1"
+    "title": "Chapitre 1",
+    "chronology": {
+      "title": "le camp de l'île de geoje - héritage",
+      "contents": {
+        "1": {
+          "title": "DÉBUT DE LA GUERRE DE CORÉE",
+          "description": "Création du camp de prisonniers de Geoje (l’ONU)."
+        },
+        "2": {
+          "title": "TENSIONS INTERNES AU CAMP",
+          "description": "Affrontements entre les pro-et les anti-communistes."
+        },
+        "3": {
+          "title": "LE CAMP DE GEOJE EST EN CRISE",
+          "description": "Le général Dodd est capturé par les prisonniers pro- communistes."
+        },
+        "4": {
+          "title": "FIN DE LA GUERRE DE CORÉE",
+          "description": "Armistice de Panmunjeom et fermeture progressive du camp. "
+        }
+      }
+    },
+    "section3":{
+      "contents": "En 1952, Werner Bischof se rend en Corée pour le compte de l’agence Magnum. À travers son objectif, il capte les cicatrices humaines de la guerre, loin du fracas des combats. Ses photographies du camp de Geoje témoignent d’un regard profondément humaniste, où la dignité des prisonniers transparaît malgré les tensions idéologiques. Entre reportage et poésie visuelle, Bischof raconte un conflit par ses silences."
+    }
   },
   "ch2": {
     "title": "Chapitre 2"

@@ -64,9 +64,12 @@ export const NavBar = ({ whichPage }) => {
 export const HorizontalNav = () => {
   const { t } = useTranslation("general");
   return (
-    <div id="horizontalNav" className="absolute z-10 w-[120px]  h-full border-r border-white py-10 px-4">
+    <div id="horizontalNav" className="fixed z-10 w-[120px]  h-full border-r border-white py-10 px-4">
       <div className="flex flex-col justify-between items-center h-full">
-        <div className="rotate-270 text-white">{t("name.pre")} <strong className="text-primary-1">{t("name.post")}</strong></div>
+        <div className="rotate-270 text-white flex gap-2 mt-8 text-nowrap">
+          <p>{t("name.pre")}</p>
+          <strong className="text-primary-1">{t("name.post")}</strong>
+        </div>
         <div className="rotate-90 text-white p-2 border-white border-1 w-fit">기억</div>
         <LanguageSwitch
           vertical={true}
@@ -95,9 +98,9 @@ export const TopNav = () => {
         <p className="text-xl">-</p>
         <p className="text-xl text-gray-400 font-body">Lorem ipsum</p>
       </div>
-      <div 
-      className="text-white border border-white w-fit uppercase p-2 cursor-pointer"
-      onClick={()=>navigation("/map")}
+      <div
+        className="text-white border border-white w-fit uppercase p-2 cursor-pointer"
+        onClick={() => navigation("/map")}
       >
         {t("returnToMap")}
       </div>
