@@ -51,15 +51,46 @@ export const ButtonWithIcon = ({ intent, size, custom, label, onClick }) => {
 
 export const InfoBtn = () => {
   const { t } = useTranslation("general");
+  const infoSection = document.getElementById("infoSection");
+
+  function openInfoSection() {
+    infoSection.classList.remove("hidden");
+  }
+
+  function closeInfoSection() {
+    infoSection.classList.add("hidden");
+  }
 
   return (
     <>
-      <div className="cursor-pointer">
+      <img
+        src="../assets/icons/infoBtn.svg"
+        className="cursor-pointer w-10 h-10 hover:scale-120"
+        onClick={openInfoSection}
+      />
+      <div
+        id="infoSection"
+        className="hidden z-100 flex flex-col absolute top-50 left-50 right-50 size-fit pt-10 p-20 bg-black border-primary-1 border-1"
+      >
         <img
-          src="../assets/icons/infoBtn.svg"
-          className="w-10 h-10 hover:scale-120"
-          onClick=""
+          src="../assets/icons/close.svg"
+          className="cursor-pointer self-end w-7 pb-8"
+          onClick={closeInfoSection}
         />
+        <p className="text-white font-body leading-7">
+          <p className="text-white font-body leading-7">
+            {t("info.para1")}
+            <br />
+            <br />
+            {t("info.para2")}
+            <br />
+            <br />
+            {t("info.para3")}
+            <br />
+            <br />
+            {t("info.para4")}
+          </p>
+        </p>
       </div>
     </>
   );
