@@ -7,17 +7,16 @@ import View from "./pages/View";
 import Documentary from "./pages/Documentary";
 
 // components
-import Header from "./components/Header";
-import { HorizontalNav } from "./components/NavBar";
+import { HorizontalNav, TopNav } from "./components/NavBar";
 
 import "./App.css";
 
 function App() {
   return (
     <Router>
-      {location.pathname !== "/" && <HorizontalNav />}
+      {location.pathname !== "/" && location.pathname !== "/documentary" && <HorizontalNav />}
+      {location.pathname === "/view/*" || location.pathname.includes("/archives") || location.pathname.includes("/map") && <TopNav />}
       <Routes>
-        {/* { location.pathname !== "/" && <Header withText={true} />} */}
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<Map />} />
         <Route path="/documentary" element={<Documentary />} />

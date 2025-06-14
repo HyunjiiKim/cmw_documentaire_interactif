@@ -58,6 +58,42 @@ export const InfoBtn = () => {
   );
 };
 
+// Trigger Button with Audio File
+export const AudioBtn = ({ audioSrc, label, textColor, bgColor }) => {
+  if (audioSrc) {
+    const audioRef = useRef(new Audio(audioSrc));
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    useEffect(() => {
+      if (isPlaying) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }, [isPlaying]);
+
+    const toggleAudio = () => {
+      setIsPlaying(!isPlaying);
+    };
+  }
+
+  return (
+    <div
+      className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-12 px-12`}
+      onClick={toggleAudio}
+      title={isPlaying ? "Pause audio" : "Play audio"}>
+      <p className="text-lg font-body uppercase">{label}</p>
+      <svg xmlns="http://www.w3.org/2000/svg"
+        width="45"
+        height="45"
+        fill="#9a938a"
+        viewBox="0 0 16 16"
+        aria-label="Unmute sounds" />
+    </div>
+  );
+};
+
+
 export const SoundBtn = () => {
   const [isSilent, setIsSilent] = useState(() => {
     const savedMuteState = localStorage.getItem("siteMuted");
@@ -217,9 +253,8 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
-          isLeft ? "left" : "right"
-        }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
+          }`}
       ></i>
     </div>
   );

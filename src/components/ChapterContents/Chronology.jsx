@@ -28,15 +28,19 @@ export const Chronology = () => {
     ]
 
     return (
-        <div id="chronology" className="flex items-center gap-0 w-fit h-fit">
-            <h3 className="uppercase rotate-270 font-body text-nowrap tracking-widest m-0 p-0 w-fit">{t("ch1.chronology.title")}</h3>
+        <div id="chronology" className="flex items-center gap-10 w-fit min-h-[400px] py-10">
+            <div className="flex items-center justify-center w-5">
+                <span className="uppercase -rotate-90 font-body tracking-widest text-xs text-nowrap">
+                    {t("ch1.chronology.title")}
+                </span>
+            </div>
             <div className="flex">
                 {Contents.map((item, index) => (
                     <div id="chronologyContents" key={index} className="flex flex-col text-white">
                         <h3 className="">{item.year}</h3>
                         <div id="div" className="bg-primary-1 w-[117px] h-[20px]" />
                         <h4>{item.title}</h4>
-                        <p className="font-body">{item.description}</p>
+                        <p className="font-body text-wrap">{item.description}</p>
                     </div>
                 ))}
             </div>
