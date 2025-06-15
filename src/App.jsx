@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       {location.pathname !== "/" && location.pathname !== "/documentary" && <HorizontalNav />}
-      {location.pathname === "/view/*" || location.pathname.includes("/archives") || location.pathname.includes("/map") && <TopNav />}
+      {location.pathname !== "/" && <TopNav />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<Map />} />

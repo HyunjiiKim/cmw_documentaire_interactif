@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+
+import { substringAfter } from "../utils/functions/extractCharacters";
+
 import LanguageSwitch from "./Switch";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
-import extractChars from "../utils/functions/extractCharacters";
 
 export const NavBar = ({ whichPage }) => {
   const { t } = useTranslation("nav");
@@ -67,7 +69,7 @@ export const NavBar = ({ whichPage }) => {
 export const HorizontalNav = () => {
   const { t } = useTranslation("general");
   return (
-    <div id="horizontalNav" className="fixed z-10 w-[120px] h-full border-r border-white py-10 px-4">
+    <div id="horizontalNav" className="fixed z-50 w-[120px] h-full border-r border-white py-10 px-4">
       <div className="flex flex-col justify-between items-center h-full">
         <div className="rotate-270 text-white flex gap-2 mt-8 text-nowrap">
           <p>{t("name.pre")}</p>
@@ -131,7 +133,7 @@ export const TopNav = () => {
   // check current page path and return title, path State
   const [current, setCurrent] = useState({ title: "", chapter: "" });
   useEffect(() => {
-    const path = extractChars(location.pathname, 3);
+    const path = substringAfter(location.pathname, "/view/");
     switch (path) {
       case "intro".includes(path):
         setCurrent({ title: navT("intro"), chapter: "" });
@@ -145,10 +147,10 @@ export const TopNav = () => {
       case "ch3":
         setCurrent({ title: navT("TopNav.3"), chapter: navT("ch3") });
         break;
-      case "conclu".includes(path):
+      case "conclusion":
         setCurrent({ title: navT("conclu"), chapter: "" });
         break;
-      case "archives".includes(path):
+      case "archives":
         setCurrent({ title: navT("TopNav.archive"), chapter: "" });
         break;
       default:
@@ -157,7 +159,7 @@ export const TopNav = () => {
   }, []);
 
   return (
-    <div id="TopNav" className="w-[calc(100%-120px)] z-10 ml-[120px] bg-black fixed  border-b-1 border-white px-4">
+    <div id="TopNav" className="w-[calc(100%-120px)] z-10 ml-[120px] bg-black fixed  border-b-1 border-white px-4 z-50">
       <div className="w-full flex justify-between items-center">
         <div className="flex items-center text-white gap-2 font-sans">
           <div id="menuBurger" className="cursor-pointer">
@@ -190,11 +192,11 @@ export const TopNav = () => {
                     <div>
                       <h1 className="uppercase text-[30px]">{item.title}</h1>
                       {window.location.pathname === item.path &&
-                      (
-                        <> 
-                       <hr className="w-[80%] border-primary-1 border-2" />
-                        </>
-                      )}
+                        (
+                          <>
+                            <hr className="w-[80%] border-primary-1 border-2" />
+                          </>
+                        )}
                     </div>
                     <h1 className="font-body font-bold text-[25px] underline">{item.chapter}</h1>
                   </div>

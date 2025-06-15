@@ -2,7 +2,8 @@ import { useTranslation } from "react-i18next";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
-import { VideoContainer, ImageContainer } from "./Container";
+import { Section1 } from "./ChapterContents/Sections";
+import { VimeoPlayer } from "./VideoPlayer";
 
 const Content = ({ chapter }) => {
 
@@ -38,11 +39,13 @@ const Content = ({ chapter }) => {
     },
   ];
 
+
+
   switch (chapter) {
     case "ch1":
       return (
         <div className="flex flex-col text-white gap-10">
-          <div id="section1"></div>
+          <Section1 vimeoId={1082043684} />
           <div id="section2" className="flex flex-col">
             <h1 className="text-primary-1 uppercase">geoje - 1951</h1>
             <Chronology />
@@ -64,8 +67,8 @@ const Content = ({ chapter }) => {
       );
     case "ch2":
       return (
-       <div className="flex flex-col text-white gap-10">
-          <div id="section1"></div>
+        <div className="flex flex-col text-white gap-10">
+          <Section1 vimeoId={1082043684} />
           <div id="section2" className="flex flex-col">
             <h1 className="text-primary-1 uppercase">geoje - 1951</h1>
             <Chronology />
@@ -88,11 +91,29 @@ const Content = ({ chapter }) => {
     case "ch3":
       return (
         <div className="text-white">
-          <p>Chapter 3</p>
+          <Section1 vimeoId={1082043684} />
         </div>
       );
+    case "conclusion":
+      return (
+        <div id="conclusion">
+          <div id="section1" className="flex">
+            <div id="textContainer">
+              <h1>La trace d’un camp</h1>
+ 
+            </div>
+            <div id="vidoeContainer">
+              <VimeoPlayer videoId="1082043684" width="w-[40%]" />
+            </div>
+          </div>
+        </div>
+      )
     default:
-      return null;
+      return (
+        <div id="pageNotFound">
+          Page Not Found
+        </div>
+      );
   }
 }
 
