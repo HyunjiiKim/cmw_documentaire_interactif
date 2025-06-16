@@ -9,12 +9,13 @@ export const Section1 = ({ vimeoId }) => {
 
     const handleVimeoEnded = () => {
         setIsVimeoFinished(true);
+        console.log("video finished")
     };
 
     return (
         <div id="section1" className="relative">
             {/* videoId further update required */}
-            <VimeoPlayer videoId={vimeoId} onEnded={handleVimeoEnded} />
+            <VimeoPlayer videoId={vimeoId} onEnded={handleVimeoEnded} width="w-full" height="h-full" />
             {
                 // if video is finished, these triggers are appeared.
                 isVimeoFinished && (

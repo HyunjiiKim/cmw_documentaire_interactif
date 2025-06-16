@@ -1,9 +1,13 @@
 import { useTranslation } from "react-i18next";
+import { useState, useEffect, useRef } from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
 import { Section1 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
+
+import C2S2 from "/assets/img/ch2sec2.png";
+
 
 const Content = ({ chapter }) => {
 
@@ -40,6 +44,44 @@ const Content = ({ chapter }) => {
   ];
 
 
+  /**
+   * Chapter 2 Triggers & Animations
+   */
+
+  // State to keep track of the currently visible section
+  const [activeSection, setActiveSection] = useState('section1');
+
+  // Refs for each section and the main container
+  const mainRef = useRef(null);
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
+  const section3Ref = useRef(null);
+  const section4Ref = useRef(null);
+
+  // Effect to set up the IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, {
+      root: mainRef.current,
+      threshold: 0.7,
+    });
+  });
+
+  /*
+   * Chapter2 Section2 Content 
+  */
+
+  const ch2s2Texts = [
+    t1("ch2.2.para1"),
+    t1("ch2.2.para2"),
+    t1("ch2.2.para3"),
+    t1("ch2.2.para4"),
+  ];
 
   switch (chapter) {
     case "ch1":
@@ -67,13 +109,15 @@ const Content = ({ chapter }) => {
       );
     case "ch2":
       return (
-        <div className="flex flex-col text-white gap-10">
-          <Section1 vimeoId={1082043684} />
-          <div id="section2" className="flex flex-col">
-            <h1 className="text-primary-1 uppercase">geoje - 1951</h1>
-            <Chronology />
+        <div className="flex flex-col text-white gap-10" ref={mainRef}>
+          <Section1 vimeoId={1082043684} ref={section1Ref} />
+          <div id="section2" ref={section2Ref} className="flex flex-col relative">
+            <img src={C2S2} img="background" className="w-full h-full object-cover" />
+            <div className="z-5 absolute top-10 left-10 font-body max-w-[300px]">
+              {t1("ch2.contents.2")}
+            </div>
           </div>
-          <div id="section3" className="relative">
+          <div id="section3" ref={section3Ref} className="relative">
             <h1 className="text-white-1">WERNER</h1>
             <HorizontalScroller data={imgMockData} />
             <h1 className="text-white-1">BISCHOF</h1>
@@ -81,7 +125,7 @@ const Content = ({ chapter }) => {
               {t1("ch1.section3.contents")}
             </div>
           </div>
-          <div id="section4" className="bg-white-1 px-10 py-10 m-0">
+          <div id="section4" ref={section4Ref} className="bg-white-1 px-10 py-10 m-0">
             <h1 className="text-black text-[50px] text-shadow-lg/20 text-shadow-black uppercase">Le travail de mémoire à Geoje</h1>
             <div id="pageContainer">
             </div>
@@ -100,7 +144,7 @@ const Content = ({ chapter }) => {
           <div id="section1" className="flex">
             <div id="textContainer">
               <h1>La trace d’un camp</h1>
- 
+
             </div>
             <div id="vidoeContainer">
               <VimeoPlayer videoId="1082043684" width="w-[40%]" />
