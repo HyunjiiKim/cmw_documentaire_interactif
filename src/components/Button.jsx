@@ -16,7 +16,7 @@ const buttonVariants = cva(
       size: {
         small: "px-[20px] py-[10px] text-sm",
         medium: "px-[30px] py-[10px] text-base",
-        large: "px-6 py-3 text-lg",
+        large: "px-6 py-3 text-2xl",
       },
     },
     defaultVariants: {
@@ -51,7 +51,9 @@ export const ButtonWithIcon = ({ intent, size, custom, label, onClick }) => {
 
 export const InfoBtn = () => {
   const { t } = useTranslation("general");
-  const infoSection = document.getElementById("infoSection");
+  document.addEventListener("DOMContentLoaded", () => {
+    const infoSection = document.getElementById("infoSection");
+  });
 
   function openInfoSection() {
     infoSection.classList.remove("hidden");
@@ -70,7 +72,7 @@ export const InfoBtn = () => {
       />
       <div
         id="infoSection"
-        className="hidden z-100 flex flex-col absolute top-50 left-50 right-50 size-fit pt-10 p-20 bg-black border-primary-1 border-1"
+        className="hidden z-100 flex flex-col absolute top-50 mr-50 ml-50 size-fit pt-10 p-20 bg-black border-primary-1 border-1"
       >
         <img
           src="../assets/icons/close.svg"
@@ -78,18 +80,18 @@ export const InfoBtn = () => {
           onClick={closeInfoSection}
         />
         <p className="text-white font-body leading-7">
-          <p className="text-white font-body leading-7">
-            {t("info.para1")}
-            <br />
-            <br />
-            {t("info.para2")}
-            <br />
-            <br />
-            {t("info.para3")}
-            <br />
-            <br />
-            {t("info.para4")}
-          </p>
+          {t("info.para1")}
+          <br />
+          <br />
+          {t("info.para2")}
+          <br />
+          <br />
+          {t("info.para3")}
+          <br />
+          <br />
+          {t("info.para4")}
+          <br />
+          {t("info.para5")}
         </p>
       </div>
     </>

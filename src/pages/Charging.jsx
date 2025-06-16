@@ -6,8 +6,6 @@ import { Indicator } from "../components/Indicator";
 
 import "./style.css";
 
-import gifHome from "/assets/videos/pageaccueil.mov";
-
 const Charging = () => {
   const { t } = useTranslation("contents");
   const { t: t2 } = useTranslation("charging");
@@ -18,19 +16,16 @@ const Charging = () => {
       <main className="max-sm:hidden h-full">
         <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
           <div className="absolute top-0 left-0 w-full h-full">
-            <video
-              autoPlay
-              loop
-              muted
-              src={gifHome}
-              className="opacity-30 size-full object-cover"
+            <img
+              src="../assets/videos/page_chargement.gif"
+              className="opacity-70 size-full object-cover"
             />
           </div>
           <div id="header" className="flex justify-end pr-18 pt-18">
             <LanguageSwitch position />
           </div>
           <div className="z-50 flex h-full justify-center">
-            <div id="quote" className="w-3xl content-center">
+            <div id="quote" className="w-200 content-center">
               <h4 className="font-sans text-white uppercase text-5xl text-center leading-15">
                 &#8220;{t2("quote")}&#8221;
               </h4>

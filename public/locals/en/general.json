@@ -1,5 +1,5 @@
 {
-  "name":{
+  "name": {
     "pre": "captive",
     "post": "memory"
   },
@@ -10,5 +10,12 @@
   "Rotate": "Rotate your phone",
   "loading": "Please wait...",
   "notAvailable": "This content will be available soon.",
-  "rewatch": "See the video again"
+  "rewatch": "See the video again",
+  "info": {
+    "para1": "The Master's degree in Web Cultures and Professions from Gustave Eiffel University and the Bachelor's degree in Cinema from Dong-eui University present: Captive Memories: Geoje Island and the Legacy of the Prisoner-of-War Camp.",
+    "para2": "Produced during the 2024–2025 academic year, this documentary retraces the events that took place around and within the Geoje Island prisoner-of-war camp during the Korean War (1950–1953).",
+    "para3": "The result of a collaboration between French students from Gustave Eiffel University and Korean students from Dong-eui University, this documentary is offered to you in two ways. You can watch it in a traditional format, or you can discover it through a specially designed digital environment to guide and immerse you in the history of the camp. By choosing the second option, you will discover a wealth of additional content.",
+    "para4": "Our French students: Camille Dixit, Emma Bréhin, Hyunji Kim, Kerby Anne-Kissy Janvier, Flavie Sallé--Maixent, Léa Spasaro",
+    "para5": "Our Korean students: Mindo Lee,  Yehyeong Lee,  Eunseok Park, Jinseok Hong"
+  }
 }

@@ -3,7 +3,7 @@
     "part1": "Mémoires",
     "part2": "Captives"
   },
-  "subtitle": "L’héritage du camp de prisonniers de l'île de Geoje",
+  "subtitle": "L’île de Geoje et l’héritage du camp de prisonniers",
   "content": {
     "part1": "En février 1951, l’armée américaine doit prendre en charge des milliers de ",
     "part1-bis": "prisonniers de guerre.",
@@ -11,5 +11,12 @@
     "part2": "Dans la confusion des combats, tout suspect d’alliance avec le Nord ",
     "part2-bis": "est arrêté.",
     "subpart2": "L'île de Geoje est choisie pour accueillir le principal lieu de détention. Il regroupera plus de 150000 prisonniers."
+  },
+  "continue": {
+    "date": "1951 - 1953",
+    "title": {
+      "part1": "L’île de Geoje",
+      "part2": "et le camp de prisonniers"
+    }
   }
 }
