@@ -2,19 +2,16 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Header from "../components/Header";
+import LanguageSwitch from "../components/Switch";
 import Button, { ArrowBtn, InfoBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Logo } from "../components/Logo";
 import { Blocker } from "../components/Blocker";
-import Universities from "../components/Universities";
 
-import defaultImage from "/assets/img/presentation.jpg";
 import mockMap from "/assets/img/mockImage.jpg";
 import teaserIntro from "/assets/videos/Introduction.mp4";
-import gifHome from "/assets/videos/pageaccueil.mov";
 
 import "./style.css";
-import LanguageSwitch from "../components/Switch";
 
 const Home = () => {
   const { t } = useTranslation("contents");
@@ -30,52 +27,92 @@ const Home = () => {
     <div id="home" className="z-10 flex flex-col h-full">
       <main className="max-sm:hidden h-full">
         {!showChoice ? (
-          <div className="max-md:flex-col max-md:items-start h-full flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-full h-full">
-              <video
-                autoPlay
-                loop
-                src={gifHome}
-                className="opacity-30 size-full object-cover"
-              />
-            </div>
-            <div id="homeHeader" className="z-50 flex justify-between">
-              <Logo intent="primary" size="large" />
-              <LanguageSwitch />
-            </div>
-            <div
-              id="homeContent"
-              className="z-30 flex flex-col text-center text-shadow-md mr-auto ml-auto"
-            >
-              <h1 className="flex justify-center font-sans text-7xl uppercase leading-none gap-4">
-                <span className="text-white">{t2("title.part1")}</span>
-                <span className="text-primary-2">{t2("title.part2")}</span>
-              </h1>
-              <h2 className="font-sans text-2xl uppercase text-white mt-[0.3em]">
-                {t2("subtitle")}
-              </h2>
-              <p className="font-body font-light text-xl text-white mt-[1.5em] w-200">
-                {t2("presentation.part1")}
-                <br />
-                {t2("presentation.part2")}
-              </p>
-              <Button
-                onClick={openShowChoices}
-                label={t3("start")}
-                custom="mr-auto ml-auto"
-              />
-            </div>
-            <div
-              id="homeFooter"
-              className="z-50 flex justify-between items-center"
-            >
-              <Universities />
+          <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
+            <div className="z-50 fixed top-18 right-18">
               <InfoBtn />
+            </div>
+            <div
+              id="introContent"
+              className="flex flex-col justify-between bg-[url(../assets/img/intro_waitingmedics.jpg)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply"
+            >
+              <div
+                id="homeTitle"
+                className="z-30 h-screen text-center content-center text-shadow-md m-auto pl-30"
+              >
+                <h1 className="flex justify-center font-sans text-8xl uppercase leading-none gap-4">
+                  <span className="text-white">{t2("title.part1")}</span>
+                  <span className="text-primary-2">{t2("title.part2")}</span>
+                </h1>
+                <h2 className="font-body text-2xl uppercase text-white mt-[0.3em]">
+                  {t2("subtitle")}
+                </h2>
+              </div>
+              <div
+                id="homeContent"
+                className="z-30 h-screen ml-50 mr-20 justify-center flex flex-col gap-30 text-shadow-md"
+              >
+                <div id="homeContent1" className="w-xl">
+                  <h3 className="text-4xl">
+                    <span className="text-white">{t2("content.part1")}</span>
+                    <span className="text-primary-2">
+                      {t2("content.part1-bis")}
+                    </span>
+                  </h3>
+                  <p className="text-white font-body text-2xl">
+                    {t2("content.subpart1")}
+                  </p>
+                </div>
+                <div
+                  id="homeContent2"
+                  className="text-right w-2xl justify-end self-end"
+                >
+                  <h3 className="text-4xl">
+                    <span className="text-white">{t2("content.part2")}</span>
+                    <span className="text-primary-2">
+                      {t2("content.part2-bis")}
+                    </span>
+                  </h3>
+                  <p className="text-white font-body text-2xl">
+                    {t2("content.subpart2")}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="continueDocumentary"
+              className="flex flex-col bg-[url(../assets/videos/page_introduction.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply"
+            >
+              <div
+                id="continueContent"
+                className="h-screen content-center text-center"
+              >
+                <p className="font-body uppercase text-4xl text-white">
+                  {t2("continue.date")}
+                </p>
+                <h3 className="font-sans uppercase text-7xl leading-25">
+                  <span className="text-white">
+                    {t2("continue.title.part1")}
+                  </span>
+                  <br />
+                  <span className="text-primary-1">
+                    {t2("continue.title.part2")}
+                  </span>
+                </h3>
+                <Button
+                  onClick={openShowChoices}
+                  label={t3("start")}
+                  custom="mr-auto ml-auto"
+                  size="large"
+                />
+              </div>
             </div>
           </div>
         ) : (
           <div className="flex flex-col h-full">
-            <Header withText />
+            <div className="z-50 fixed top-18 right-18">
+              <InfoBtn />
+            </div>
             <div
               id="contents"
               className="flex absolute top-0 left-0 size-full object-cover"

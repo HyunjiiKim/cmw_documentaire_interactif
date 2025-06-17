@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // pages
+import Charging from "./pages/Charging";
 import Home from "./pages/Home";
 import Map from "./pages/Map";
 import View from "./pages/View";
@@ -22,7 +23,7 @@ function App() {
         <Route path="/documentary" element={<Documentary />} />
         <Route path="/view/:id" element={<View />} />
       </Routes>
-    </Router >
+    </Router>
   );
 }
 

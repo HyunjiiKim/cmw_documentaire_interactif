@@ -50,10 +50,11 @@ export const NavBar = ({ whichPage }) => {
       >
         {nav.map((item) => (
           <div
-            className={`uppercase font-body ${pathName == `/view/${item.pathname}`
-              ? "text-primary-2"
-              : "cursor-pointer"
-              }`}
+            className={`uppercase font-body ${
+              pathName == `/view/${item.pathname}`
+                ? "text-primary-2"
+                : "cursor-pointer"
+            }`}
             onClick={() => (window.location.href = `/view/${item.pathname}`)}
           >
             {t(item.name)}
@@ -82,12 +83,10 @@ export const HorizontalNav = () => {
         />
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 export const TopNav = () => {
-
   const { t } = useTranslation("general");
   const { t: navT } = useTranslation("nav");
   const [show, setShow] = useState(false);
@@ -207,5 +206,5 @@ export const TopNav = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
