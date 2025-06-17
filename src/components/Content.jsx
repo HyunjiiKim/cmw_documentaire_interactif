@@ -7,6 +7,7 @@ import { Section1 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
 
 import C2S2 from "/assets/img/ch2sec2.png";
+import Button from "./Button";
 
 
 const Content = ({ chapter }) => {
@@ -60,6 +61,7 @@ const Content = ({ chapter }) => {
 
   // Effect to set up the IntersectionObserver
   useEffect(() => {
+    const sections = [section1Ref, section2Ref, section3Ref, section4Ref];
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -70,17 +72,50 @@ const Content = ({ chapter }) => {
       root: mainRef.current,
       threshold: 0.7,
     });
-  });
+
+    sections.forEach((section) => {
+      if (section.current) {
+        observer.observe(section.current);
+      };
+    });
+
+    // Cleanup observer on component unmount
+    return () =>
+      sections.forEach((section) => {
+        if (section.current) {
+          observer.unobserve(section.current);
+        }
+      })
+  }, []);
+
+  // Effect to add/remove scroll blocking based on the active section
+  useEffect(() => {
+    const mainContainer = mainRef.current;
+
+    // handle scroll blocking
+    function handleWheel(evt) {
+      if (activeSection === 'section2' && evt.deltaY > 0) {
+        evt.preventDefault();
+      }
+    };
+
+    mainContainer.removeEventListener('wheel', handleWheel, { passive: false });
+
+    // Cleanup the event listner
+    return () => {
+      mainContainer.removeEventListener('wheel', handleWheel);
+    };
+  }, [activeSection])
 
   /*
    * Chapter2 Section2 Content 
   */
 
   const ch2s2Texts = [
-    t1("ch2.2.para1"),
-    t1("ch2.2.para2"),
-    t1("ch2.2.para3"),
-    t1("ch2.2.para4"),
+    t1("ch2.contents.2.para1"),
+    t1("ch2.contents.2.para2"),
+    t1("ch2.contents.2.para3"),
+    t1("ch2.contents.2.para4"),
   ];
 
   switch (chapter) {
@@ -113,9 +148,14 @@ const Content = ({ chapter }) => {
           <Section1 vimeoId={1082043684} ref={section1Ref} />
           <div id="section2" ref={section2Ref} className="flex flex-col relative">
             <img src={C2S2} img="background" className="w-full h-full object-cover" />
-            <div className="z-5 absolute top-10 left-10 font-body max-w-[300px]">
-              {t1("ch2.contents.2")}
+            <div className="z-5 absolute top-10 left-10 font-body max-w-[300px] h-[50%] max-h-[500px] overflow-hidden overscroll-y-scroll first-letter:text-4xl first-letter:font-bold">
+              {ch2s2Texts.map((it, id) => (
+                <div id="textContainer" className="my-5 tracking-widest" key={id}>
+                  {it}
+                </div>
+              ))}
             </div>
+            <Button onClick={() => { section3Ref.current.scrollIntoView({ behavior: 'smooth' }); }} label="Next To 3 Section" />
           </div>
           <div id="section3" ref={section3Ref} className="relative">
             <h1 className="text-white-1">WERNER</h1>
