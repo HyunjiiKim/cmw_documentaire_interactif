@@ -1,14 +1,46 @@
 {
   "intro": {
     "title": "Introduction",
-    "subtitle": "Subtitle",
-    "para1": "Fusce pharetra, turpis sit amet pellentesque scelerisque, mi massa varius purus, in ultricies lorem odio mollis justo. Duis semper vitae arcu vitae blandit. Etiam nunc lectus, rhoncus et odio egestas, scelerisque feugiat lectus. Nunc interdum non mauris ut pharetra. In at tortor lorem. Fusce pharetra, turpis sit amet pellentesque scelerisque, mi massa varius purus, in ultricies lorem odio mollis justo. Fusce pharetra, turpis sit amet pellentesque scelerisque, mi massa varius purus, in ultricies lorem odio mollis justo. Mi massa varius purus, in ultricies lorem odio mollis justo. Sed non aliquam ante. Phasellus ac posuere orci. Curabitur pulvinar, dolor quis tristique ornare, ex augue convallis diam, a accumsan erat orci ac magna. Mauris ac nisi placerat, ullamcorper enim at, volutpat eros. Phasellus efficitur turpis sit amet ex vehicula gravida."
+    "subtitle": "Subtitle"
   },
   "ch1": {
-    "title": "Chapter 1"
+    "title": "Chapter 1",
+    "chronology": {
+      "title": "the geoje island camp - heritage",
+      "contents": {
+        "1": {
+          "title": "BEGINNING OF THE KOREAN WAR",
+          "description": "Creation of the Geoje prisoner-of-war camp (UN)."
+        },
+        "2": {
+          "title": "INTERNAL TENSIONS IN THE CAMP",
+          "description": "Clashes between pro- and anti-communists."
+        },
+        "3": {
+          "title": "THE GEOJE CAMP IS IN CRISIS",
+          "description": "General Dodd is captured by pro-communist prisoners."
+        },
+        "4": {
+          "title": "END OF THE KOREAN WAR",
+          "description": "Panmunjom Armistice and gradual closure of the camp."
+        }
+      }
+    },
+    "section3": {
+      "contents": "In 1952, Werner Bischof traveled to Korea on behalf of the Magnum agency. Through his lens, he captured the human scars of war, far from the roar of combat. His photographs of the Geoje camp reflect a profoundly humanistic perspective, where the dignity of the prisoners shines through despite ideological tensions. Between reportage and visual poetry, Bischof recounts a conflict through its silences."
+    }
   },
   "ch2": {
-    "title": "Chapter 2"
+    "title": "Chapter 2",
+    "contents": {
+      "1": {},
+      "2": {
+        "para1": "With time, the Geoje camp seems to have ceased to be an active site of living memory, becoming instead a heritage space. Transformed into a museum and tourist site, it now attracts visitors who are curious or eager to better understand a part of Korea's past.",
+        "para2": "This former place of confinement and tension is now set up with reconstructions and mannequins, oscillating between the duty of remembrance and the spectacle of trauma. Its \"heritagization\" is, in effect, translated into a visitor trail that incorporates explanatory panels and scenographic displays designed to offer an accessible and engaging interpretation of the past. The visitor is invited to delve back into the troubled period of the Korean War by discovering the daily life and tensions of the Geoje camp.",
+        "para3": "This transformation, however, raises a series of ambiguities, characteristic of the tensions between memory and tourism, between historical transmission and staging. The camp embodies the recent changes in how history is transmitted in societies where media and tourism profoundly influence the ways we access the past. Behind the scenography, a certain way of thinking about, telling, and sharing history is at play.",
+        "para4": "The challenge lies in this delicate balance: how to preserve the duty of remembrance, respect for the victims, and historical depth, while also meeting a touristic and educational demand that often favors immediacy and sensory experience?"
+      }
+    }
   },
   "ch3": {
     "title": "Chapter 3"
