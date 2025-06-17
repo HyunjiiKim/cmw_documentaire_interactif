@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import LanguageSwitch from "./Switch";
 import { useNavigate } from "react-router-dom";
+
+import { substringAfter } from "../utils/functions/extractCharacters";
+
+import LanguageSwitch from "./Switch";
 
 export const NavBar = ({ whichPage }) => {
   const { t } = useTranslation("nav");
@@ -61,13 +64,18 @@ export const NavBar = ({ whichPage }) => {
   );
 };
 
+
+
 export const HorizontalNav = () => {
   const { t } = useTranslation("general");
   return (
-    <div id="horizontalNav" className="absolute z-10 w-[120px]  h-full border-r border-white py-10 px-4">
+    <div id="horizontalNav" className="fixed z-50 w-[120px] h-full border-r border-white py-10 px-4">
       <div className="flex flex-col justify-between items-center h-full">
-        <div className="rotate-270 text-white">{t("name.pre")} <strong className="text-primary-1">{t("name.post")}</strong></div>
-        <div className="rotate-90 text-white p-2 border-white border-1 w-fit">기억</div>
+        <div className="rotate-270 text-white flex gap-2 mt-8 text-nowrap">
+          <p>{t("name.pre")}</p>
+          <strong className="text-primary-1">{t("name.post")}</strong>
+        </div>
+        <div className="rotate-90 text-white p-2 border-white border-1 w-fit cursor-pointer" onClick={() => window.location.href = "/"}>기억</div>
         <LanguageSwitch
           vertical={true}
           withSound={true}
@@ -81,37 +89,123 @@ export const HorizontalNav = () => {
 export const TopNav = () => {
 
   const { t } = useTranslation("general");
+  const { t: navT } = useTranslation("nav");
   const [show, setShow] = useState(false);
 
   const navigation = useNavigate();
 
+  const navElements = [
+    {
+      id: 0,
+      title: navT("intro"),
+      path: "/view/intro"
+    },
+    {
+      id: 1,
+      chapter: navT("ch1"),
+      title: navT("TopNav.1"),
+      path: "/view/ch1"
+    },
+    {
+      id: 2,
+      chapter: navT("ch2"),
+      title: navT("TopNav.2"),
+      path: "/view/ch2"
+    },
+    {
+      id: 3,
+      chapter: navT("ch3"),
+      title: navT("TopNav.3"),
+      path: "/view/ch3"
+    },
+    {
+      id: 4,
+      title: navT("conclu"),
+      path: "/view/conclusion"
+    },
+    {
+      id: 5,
+      title: navT("TopNav.archive"),
+      path: "/archives"
+    },
+  ];
+
+  // check current page path and return title, path State
+  const [current, setCurrent] = useState({ title: "", chapter: "" });
+  useEffect(() => {
+    const path = substringAfter(location.pathname, "/view/");
+    switch (path) {
+      case "intro".includes(path):
+        setCurrent({ title: navT("intro"), chapter: "" });
+        break;
+      case "ch1":
+        setCurrent({ title: navT("TopNav.1"), chapter: navT("ch1") });
+        break;
+      case "ch2":
+        setCurrent({ title: navT("TopNav.2"), chapter: navT("ch2") });
+        break;
+      case "ch3":
+        setCurrent({ title: navT("TopNav.3"), chapter: navT("ch3") });
+        break;
+      case "conclusion":
+        setCurrent({ title: navT("conclu"), chapter: "" });
+        break;
+      case "archives":
+        setCurrent({ title: navT("TopNav.archive"), chapter: "" });
+        break;
+      default:
+        break;
+    }
+  }, []);
+
   return (
-    <div id="TopNav" className="w-full flex justify-between items-center border-b-1 border-white px-4">
-      <div className="flex items-center text-white gap-2 font-sans">
-        <div id="menuBurger" className="cursor-pointer">
-          <i className="bi bi-list text-[48px]" onClick={() => setShow(true)} />
-        </div>
-        <p className="text-xl uppercase">lorem ipsum</p>
-        <p className="text-xl">-</p>
-        <p className="text-xl text-gray-400 font-body">Lorem ipsum</p>
-      </div>
-      <div 
-      className="text-white border border-white w-fit uppercase p-2 cursor-pointer"
-      onClick={()=>navigation("/map")}
-      >
-        {t("returnToMap")}
-      </div>
-      {show && (
-        <div id="showMenu" className="absolute top-0 left-[120px] text-white bg-black z-20 w-160 h-full">
-          <div className="relative">
-            <i className="bi bi-x-lg text-[32px] absolute top-10 right-5 cursor-pointer" onClick={() => setShow(false)} />
-            <nav className="flex flex-col">
-              <li>Test</li>
-              <li>Test</li>
-            </nav>
+    <div id="TopNav" className="w-[calc(100%-120px)] z-10 ml-[120px] bg-black fixed  border-b-1 border-white px-4 z-50">
+      <div className="w-full flex justify-between items-center">
+        <div className="flex items-center text-white gap-2 font-sans">
+          <div id="menuBurger" className="cursor-pointer">
+            <i className="bi bi-list text-[48px]" onClick={() => setShow(true)} />
+          </div>
+          <div className="flex items-center">
+            <p className="text-xl uppercase">{current.title}</p>
+            {current.chapter !== "" &&
+              (
+                <div className="flex items-center">
+                  <p className="text-xl">-</p>
+                  <p className="text-xl text-gray-400 font-body">{current.chapter}</p>
+                </div>
+              )}
           </div>
         </div>
-      )}
+        <div
+          className="text-white border border-white w-fit uppercase p-2 cursor-pointer"
+          onClick={() => navigation("/map")}
+        >
+          {t("returnToMap")}
+        </div>
+        {show && (
+          <div id="showMenu" className="absolute top-0 left-0 text-white bg-black z-15 w-160 h-screen">
+            <div className="relative">
+              <i className="bi bi-x-lg text-[32px] absolute top-10 right-5 cursor-pointer" onClick={() => setShow(false)} />
+              <nav className="flex flex-col gap-10 py-20 px-10">
+                {navElements.map((item) => (
+                  <div onClick={() => { window.location.href = item.path; }} className="flex justify-between items-center cursor-pointer text-white/70 hover:text-white ">
+                    <div>
+                      <h1 className="uppercase text-[30px]">{item.title}</h1>
+                      {window.location.pathname === item.path &&
+                        (
+                          <>
+                            <hr className="w-[80%] border-primary-1 border-2" />
+                          </>
+                        )}
+                    </div>
+                    <h1 className="font-body font-bold text-[25px] underline">{item.chapter}</h1>
+                  </div>
+                ))}
+              </nav>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

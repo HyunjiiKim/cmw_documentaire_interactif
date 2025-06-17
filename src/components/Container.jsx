@@ -13,6 +13,7 @@ const ContainerVariants = cva("", {
       md: "w-130 h-80",
       lg: "w-auto h-full",
       full: "w-full h-auto",
+      fullHeightScreen: "w-full h-screen"
     },
     border: {
       white: "border-white",

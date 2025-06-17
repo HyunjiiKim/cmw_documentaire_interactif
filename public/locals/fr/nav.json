@@ -1,6 +1,13 @@
 {
   "intro": "Introduction",
-  "ch1": "Ch.1",
-  "ch2": "Ch.2",
-  "ch3": "Ch.3"
+  "conclu": "Conclusion",
+  "ch1": "Chapitre 1",
+  "ch2": "Chapitre 2",
+  "ch3": "Chapitre 3",
+  "TopNav": {
+    "1": "le camp de geoje",
+    "2": "du camp au parc historique",
+    "3": "un passé écouté",
+    "archive": "les archives"
+  }
 }

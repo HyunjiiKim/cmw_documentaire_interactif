@@ -58,6 +58,42 @@ export const InfoBtn = () => {
   );
 };
 
+// Trigger Button with Audio File
+export const AudioBtn = ({ audioSrc, label, textColor, bgColor }) => {
+  if (audioSrc) {
+    const audioRef = useRef(new Audio(audioSrc));
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    useEffect(() => {
+      if (isPlaying) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }, [isPlaying]);
+
+    const toggleAudio = () => {
+      setIsPlaying(!isPlaying);
+    };
+  }
+
+  return (
+    <div
+      className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-12 px-12`}
+      onClick={toggleAudio}
+      title={isPlaying ? "Pause audio" : "Play audio"}>
+      <p className="text-lg font-body uppercase">{label}</p>
+      <svg xmlns="http://www.w3.org/2000/svg"
+        width="45"
+        height="45"
+        fill="#9a938a"
+        viewBox="0 0 16 16"
+        aria-label="Unmute sounds" />
+    </div>
+  );
+};
+
+
 export const SoundBtn = () => {
   const [isSilent, setIsSilent] = useState(() => {
     const savedMuteState = localStorage.getItem("siteMuted");
@@ -177,7 +213,7 @@ export const SoundBtn = () => {
           <path d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5m-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5m4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5m-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5m12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5" />
           <path
             stroke="#9a938a"
-            stroke-linecap="round"
+            strokeLinecap="round"
             d="M2.5 4.5 L14.5 11.5"
           />
         </svg>
@@ -217,9 +253,8 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
-          isLeft ? "left" : "right"
-        }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
+          }`}
       ></i>
     </div>
   );
