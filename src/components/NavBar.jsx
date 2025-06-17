@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react"; // Added useMemo
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom"; // Added useLocation
 
 import { substringAfter } from "../utils/functions/extractCharacters";
 
@@ -70,7 +70,7 @@ export const NavBar = ({ whichPage }) => {
 export const HorizontalNav = () => {
   const { t } = useTranslation("general");
   return (
-    <div id="horizontalNav" className="fixed z-50 w-[120px] h-full border-r border-white py-10 px-4">
+    <div id="horizontalNav" className="fixed z-40 w-[120px] h-full border-r border-white py-10 px-4">
       <div className="flex flex-col justify-between items-center h-full">
         <div className="rotate-270 text-white flex gap-2 mt-8 text-nowrap">
           <p>{t("name.pre")}</p>
@@ -92,12 +92,13 @@ export const TopNav = () => {
   const [show, setShow] = useState(false);
 
   const navigation = useNavigate();
+  const location = useLocation();
 
-  const navElements = [
+  const navElements = useMemo(() => [
     {
       id: 0,
       title: navT("intro"),
-      path: "/view/intro"
+      path: "/map"
     },
     {
       id: 1,
@@ -127,35 +128,64 @@ export const TopNav = () => {
       title: navT("TopNav.archive"),
       path: "/archives"
     },
-  ];
+  ], [navT]); // navElements will only be recomputed if navT changes
 
   // check current page path and return title, path State
   const [current, setCurrent] = useState({ title: "", chapter: "" });
+
   useEffect(() => {
-    const path = substringAfter(location.pathname, "/view/");
-    switch (path) {
-      case "intro".includes(path):
-        setCurrent({ title: navT("intro"), chapter: "" });
-        break;
-      case "ch1":
-        setCurrent({ title: navT("TopNav.1"), chapter: navT("ch1") });
-        break;
-      case "ch2":
-        setCurrent({ title: navT("TopNav.2"), chapter: navT("ch2") });
-        break;
-      case "ch3":
-        setCurrent({ title: navT("TopNav.3"), chapter: navT("ch3") });
-        break;
-      case "conclusion":
-        setCurrent({ title: navT("conclu"), chapter: "" });
-        break;
-      case "archives":
-        setCurrent({ title: navT("TopNav.archive"), chapter: "" });
-        break;
-      default:
-        break;
+    const currentPathname = location.pathname;
+    const viewPathSegment = currentPathname.startsWith('/view/') ? substringAfter(currentPathname, '/view/') : null;
+
+    let newTitle = "";
+    let newChapter = "";
+
+    // Find the corresponding element in navElements for chapter information if needed
+    const mapElementForChapter = navElements.find(el => el.path === '/map');
+    const archivesElementForChapter = navElements.find(el => el.path === '/archives');
+
+    if (currentPathname === '/map') {
+      newTitle = navT("intro");
+      newChapter = mapElementForChapter?.chapter || "";
+    } else if (currentPathname === '/archives') {
+      newTitle = navT("TopNav.archive");
+      newChapter = archivesElementForChapter?.chapter || "";
+    } else if (viewPathSegment) {
+      switch (viewPathSegment) {
+        case "intro": 
+          newTitle = navT("intro"); 
+          newChapter = ""; 
+          break;
+        case "ch1":
+          newTitle = navT("TopNav.1");
+          newChapter = navT("ch1");
+          break;
+        case "ch2":
+          newTitle = navT("TopNav.2");
+          newChapter = navT("ch2");
+          break;
+        case "ch3":
+          newTitle = navT("TopNav.3");
+          newChapter = navT("ch3");
+          break;
+        case "conclusion":
+          newTitle = navT("conclu");
+          newChapter = "";
+          break;
+        default:
+  
+          // if viewSegment is not matched, try to find in navElements
+          const fallbackMatch = navElements.find(el => el.path === currentPathname);
+          if (fallbackMatch) {
+            newTitle = fallbackMatch.title;
+            newChapter = fallbackMatch.chapter || "";
+          }
+          break;
+      }
     }
-  }, []);
+
+    setCurrent({ title: newTitle, chapter: newChapter });
+  }, [location.pathname, navT]);
 
   return (
     <div id="TopNav" className="w-[calc(100%-120px)] z-10 ml-[120px] bg-black fixed  border-b-1 border-white px-4 z-50">

@@ -10,6 +10,7 @@ import Documentary from "./pages/Documentary";
 import { HorizontalNav, TopNav } from "./components/NavBar";
 
 import "./App.css";
+import Test from "./pages/test";
 
 function App() {
   return (
@@ -17,11 +18,13 @@ function App() {
       {location.pathname !== "/documentary" && <HorizontalNav />}
       {location.pathname !== "/" && <TopNav />}
       <Routes>
+        <Route path="/test" element={<Test />} />
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<Map />} />
         <Route path="/documentary" element={<Documentary />} />
         <Route path="/view/:id" element={<View />} />
       </Routes>
+      
     </Router>
   );
 }

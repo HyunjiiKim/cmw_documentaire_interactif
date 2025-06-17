@@ -91,6 +91,7 @@
     from {
       transform: translateY(0);
     }
+
     to {
       transform: translateY(-100%);
     }
@@ -100,8 +101,22 @@
     from {
       transform: translateY(-100%);
     }
+
     to {
       transform: translateY(0);
+    }
+  }
+}
+
+/* Custom */
+@layer utilities {
+   .scrollbar-hide {
+    /* For Firefox */
+    scrollbar-width: none;
+
+    /* For Chrome, Safari, and Edge */
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 }
