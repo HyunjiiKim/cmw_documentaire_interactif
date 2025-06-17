@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import Header from "../components/Header";
-import LanguageSwitch from "../components/Switch";
-import Button, { ArrowBtn, InfoBtn } from "../components/Button";
+import Button, { InfoBtn } from "../components/Button";
 import { Trigger } from "../components/Trigger";
-import { Logo } from "../components/Logo";
 import { Blocker } from "../components/Blocker";
 
 import mockMap from "/assets/img/mockImage.jpg";
