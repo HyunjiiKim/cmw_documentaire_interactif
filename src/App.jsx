@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // pages
-import Charging from "./pages/Charging";
 import Home from "./pages/Home";
 import Map from "./pages/Map";
 import View from "./pages/View";
@@ -15,7 +14,7 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      {location.pathname !== "/" && location.pathname !== "/documentary" && <HorizontalNav />}
+      {location.pathname !== "/documentary" && <HorizontalNav />}
       {location.pathname !== "/" && <TopNav />}
       <Routes>
         <Route path="/" element={<Home />} />
