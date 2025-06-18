@@ -8,7 +8,7 @@ import "./style.css";
 
 const Charging = () => {
   const { t } = useTranslation("contents");
-  const { t: t2 } = useTranslation("charging");
+  const { t: t2 } = useTranslation("home");
   const { t: t3 } = useTranslation("general");
 
   return (

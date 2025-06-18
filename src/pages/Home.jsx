@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import Header from "../components/Header";
+import { HorizontalNav } from "../components/NavBar";
 import LanguageSwitch from "../components/Switch";
-import Button, { ArrowBtn, InfoBtn } from "../components/Button";
+import Button, {
+  ArrowBtn,
+  InfoBtn,
+  ButtonWithIcon,
+} from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Logo } from "../components/Logo";
 import { Blocker } from "../components/Blocker";
+import { Indicator } from "../components/Indicator";
 
 import mockMap from "/assets/img/mockImage.jpg";
 import teaserIntro from "/assets/videos/Introduction.mp4";
@@ -17,17 +22,66 @@ const Home = () => {
   const { t } = useTranslation("contents");
   const { t: t2 } = useTranslation("home");
   const { t: t3 } = useTranslation("general");
-  const [showChoice, setShowChoice] = useState(false);
+  // const [showChoice, setShowChoice] = useState(false);
+  const [showHome, setShowHome] = useState(0);
+  let code;
 
   function openShowChoices() {
-    setShowChoice(true);
+    setShowHome(2);
+  }
+  function openShowHome() {
+    setShowHome(1);
   }
 
   return (
-    <div id="home" className="z-10 flex flex-col h-full">
-      <main className="max-sm:hidden h-full">
-        {!showChoice ? (
+    <div className="z-10 flex flex-col h-full">
+      <main id="home" className="max-sm:hidden h-full">
+        {showHome === 0 && (
           <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
+            <div className="absolute top-0 left-0 w-full h-full">
+              <img
+                src="../assets/videos/page_chargement.gif"
+                className="opacity-70 size-full object-cover"
+              />
+            </div>
+            <div id="header" className="flex justify-end pr-18 pt-18">
+              <LanguageSwitch position />
+            </div>
+            <div className="z-50 flex h-full justify-center">
+              <div id="quote" className="w-200 content-center">
+                <h4 className="font-sans text-white uppercase text-5xl text-center leading-15">
+                  &#8220;{t2("quote")}&#8221;
+                </h4>
+                <hr className="text-white text-center w-sm my-5 m-auto" />
+                <p className="font-body text-white text-center">
+                  {t2("author")}
+                </p>
+                <div className="flex gap-5">
+                  <ButtonWithIcon
+                    onClick={openShowHome}
+                    label={t2("enter")}
+                    custom="ml-auto flex gap-3"
+                    size="small"
+                  />
+                  <Button
+                    onClick={openShowHome}
+                    label={t2("skip")}
+                    custom="mr-auto"
+                    intent="ghost"
+                    size="small"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="z-50 flex justify-between pb-18 pr-18 pl-10">
+              <Indicator label={t2("loading")} />
+              <InfoBtn />
+            </div>
+          </div>
+        )}
+        {showHome === 1 && (
+          <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
+            <HorizontalNav />
             <div className="z-50 fixed top-18 right-18">
               <InfoBtn />
             </div>
@@ -108,8 +162,10 @@ const Home = () => {
               </div>
             </div>
           </div>
-        ) : (
+        )}
+        {showHome === 2 && (
           <div className="flex flex-col h-full">
+            <HorizontalNav />
             <div className="z-50 fixed top-18 right-18">
               <InfoBtn />
             </div>
