@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  # Enable the rewrite engine
+  RewriteEngine On
+
+  # Set the base path for the rewrite rules.
+  # This tells Apache that the root URL is '/'.
+  RewriteBase /
+
+  # If the requested filename is NOT an existing file, continue to the next condition.
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  # If the requested filename is NOT an existing directory, continue to the next condition.
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # If BOTH conditions above are met (the file/dir does not exist),
+  # then rewrite the request to /index.html.
+  RewriteRule . /index.html [L]
+</IfModule>
