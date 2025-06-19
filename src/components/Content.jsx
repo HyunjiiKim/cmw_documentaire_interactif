@@ -6,15 +6,16 @@ import HorizontalScroller from "./HorizontalScroller";
 import { Section1 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
 import Button from "./Button";
+import Credits from "./Credits";
 
 import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
 
 const Content = ({ chapter }) => {
-
   const { t: t1 } = useTranslation("contents");
 
-  const mockData = "Maecenas tristique nunc ut lectus mattis, vel lacinia nulla accumsan. Integer ac elit nec ligula porta fringilla in pulvinar urna. Etiam maximus urna at risus consectetur convallis. Sed gravida elit ipsum, sed tempus lorem cursus ut. Sed urna dui, eleifend sit amet augue sit amet, tincidunt ullamcorper dolor. Aenean vel eros est. Maecenas quis commodo elit, sed tristique nunc. Suspendisse malesuada at eros a mollis. Sed sodales pretium venenatis. In ut sem euismod, elementum turpis non, convallis lectus. Duis porttitor, purus sit amet tincidunt egestas, ipsum nulla dapibus orci, vel sollicitudin odio justo laoreet velit. Praesent a nibh gravida, auctor est quis, fermentum enim. Sed gravida mi dolor, eget facilisis nisi varius nec. Duis quis dictum ex, a finibus quam. Morbi non fermentum eros. Suspendisse non auctor dui. Quisque id felis a magna viverra malesuada. Phasellus porta ligula vel felis eleifend gravida. Sed mauris tortor, mollis sit amet pellentesque ut, condimentum in eros. Mauris erat magna, imperdiet at ligula non, eleifend hendrerit velit. Donec pharetra molestie arcu, ac dapibus purus aliquet ut. Donec nec sem nisi. In vitae nisl quam. In hac habitasse platea dictumst. Fusce ullamcorper metus erat, eu aliquet felis dapibus ut. Donec ipsum quam, pellentesque a dolor vel, viverra ornare elit. Duis sagittis, nulla id bibendum congue, lorem est ullamcorper erat, at mattis tortor neque non est. Fusce maximus, ante ac molestie rhoncus, mauris augue dapibus metus, sit amet tempus ipsum nulla at turpis. Nunc semper pulvinar magna vel bibendum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin a purus velit. Maecenas auctor, nisl ut dictum placerat, ex enim egestas eros, ac ornare enim lorem in massa. Ut diam sem, tincidunt ac suscipit id, eleifend nec ante. Aenean sodales ultricies turpis ac fringilla. Phasellus ornare massa at felis cursus dapibus. Nunc nunc dui, dictum id lectus non, condimentum fermentum enim. Aliquam blandit arcu mauris, sed tempus augue vestibulum a. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus ultrices semper velit eget aliquet. Donec ut lorem mi. Quisque iaculis ex ut libero gravida rutrum. Vestibulum ultrices in lectus quis consequat. Morbi iaculis at justo at consectetur. Curabitur sodales sem sit amet est blandit convallis. Quisque sit amet eros malesuada, malesuada leo at, malesuada sem. Cras est lectus, iaculis in lobortis sit amet, varius in ligula. Vivamus eget erat finibus, maximus sem id, pulvinar lectus. Duis consectetur ipsum ut venenatis eleifend. Mauris suscipit turpis aliquet magna accumsan pulvinar. Praesent bibendum vitae nulla accumsan lacinia. Donec nisi ipsum, semper sit amet imperdiet vitae, auctor quis sem. Pellentesque at auctor velit, a mollis orci. In auctor, tellus sed viverra facilisis, augue dui mollis odio, nec scelerisque arcu ligula nec ante. Donec malesuada libero at enim bibendum euismod. Nam cursus lectus consectetur volutpat viverra. Etiam neque felis, dapibus eget orci vel, tristique sollicitudin mauris. Nunc purus massa, tristique ut mattis in, varius et elit. Etiam at aliquam sapien, non venenatis augue.";
+  const mockData =
+    "Maecenas tristique nunc ut lectus mattis, vel lacinia nulla accumsan. Integer ac elit nec ligula porta fringilla in pulvinar urna. Etiam maximus urna at risus consectetur convallis. Sed gravida elit ipsum, sed tempus lorem cursus ut. Sed urna dui, eleifend sit amet augue sit amet, tincidunt ullamcorper dolor. Aenean vel eros est. Maecenas quis commodo elit, sed tristique nunc. Suspendisse malesuada at eros a mollis. Sed sodales pretium venenatis. In ut sem euismod, elementum turpis non, convallis lectus. Duis porttitor, purus sit amet tincidunt egestas, ipsum nulla dapibus orci, vel sollicitudin odio justo laoreet velit. Praesent a nibh gravida, auctor est quis, fermentum enim. Sed gravida mi dolor, eget facilisis nisi varius nec. Duis quis dictum ex, a finibus quam. Morbi non fermentum eros. Suspendisse non auctor dui. Quisque id felis a magna viverra malesuada. Phasellus porta ligula vel felis eleifend gravida. Sed mauris tortor, mollis sit amet pellentesque ut, condimentum in eros. Mauris erat magna, imperdiet at ligula non, eleifend hendrerit velit. Donec pharetra molestie arcu, ac dapibus purus aliquet ut. Donec nec sem nisi. In vitae nisl quam. In hac habitasse platea dictumst. Fusce ullamcorper metus erat, eu aliquet felis dapibus ut. Donec ipsum quam, pellentesque a dolor vel, viverra ornare elit. Duis sagittis, nulla id bibendum congue, lorem est ullamcorper erat, at mattis tortor neque non est. Fusce maximus, ante ac molestie rhoncus, mauris augue dapibus metus, sit amet tempus ipsum nulla at turpis. Nunc semper pulvinar magna vel bibendum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin a purus velit. Maecenas auctor, nisl ut dictum placerat, ex enim egestas eros, ac ornare enim lorem in massa. Ut diam sem, tincidunt ac suscipit id, eleifend nec ante. Aenean sodales ultricies turpis ac fringilla. Phasellus ornare massa at felis cursus dapibus. Nunc nunc dui, dictum id lectus non, condimentum fermentum enim. Aliquam blandit arcu mauris, sed tempus augue vestibulum a. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus ultrices semper velit eget aliquet. Donec ut lorem mi. Quisque iaculis ex ut libero gravida rutrum. Vestibulum ultrices in lectus quis consequat. Morbi iaculis at justo at consectetur. Curabitur sodales sem sit amet est blandit convallis. Quisque sit amet eros malesuada, malesuada leo at, malesuada sem. Cras est lectus, iaculis in lobortis sit amet, varius in ligula. Vivamus eget erat finibus, maximus sem id, pulvinar lectus. Duis consectetur ipsum ut venenatis eleifend. Mauris suscipit turpis aliquet magna accumsan pulvinar. Praesent bibendum vitae nulla accumsan lacinia. Donec nisi ipsum, semper sit amet imperdiet vitae, auctor quis sem. Pellentesque at auctor velit, a mollis orci. In auctor, tellus sed viverra facilisis, augue dui mollis odio, nec scelerisque arcu ligula nec ante. Donec malesuada libero at enim bibendum euismod. Nam cursus lectus consectetur volutpat viverra. Etiam neque felis, dapibus eget orci vel, tristique sollicitudin mauris. Nunc purus massa, tristique ut mattis in, varius et elit. Etiam at aliquam sapien, non venenatis augue.";
 
   const imgMockData = [
     {
@@ -44,12 +45,11 @@ const Content = ({ chapter }) => {
     },
   ];
 
-
   /**
    * Chapter 2 Triggers & Animations
    */
 
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState("");
   const mainRef = useRef(null);
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
@@ -61,55 +61,75 @@ const Content = ({ chapter }) => {
   // Observer for main sections
   useEffect(() => {
     const mainContainer = mainRef.current;
-    if (!mainContainer || chapter !== 'ch2') {
+    if (!mainContainer || chapter !== "ch2") {
       // If not chapter 2, or no main container, ensure activeSection is cleared if it was from a previous ch2 render
-      if (activeSection) setActiveSection('')
+      if (activeSection) setActiveSection("");
       return;
     }
 
     const sections = [section1Ref, section2Ref, section3Ref, section4Ref];
-    const observer = new IntersectionObserver((entries) => {
-      let newActiveCandidate = null;
-      let section2IsIntersecting = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let newActiveCandidate = null;
+        let section2IsIntersecting = false;
 
-      entries.forEach((entry) => {
-        console.log(`Observer raw entry: id=${entry.target.id}, isIntersecting=${entry.isIntersecting}, ratio=${entry.intersectionRatio.toFixed(2)}`);
-        if (entry.target.id === 'section2' && entry.isIntersecting) {
-          section2IsIntersecting = true;
-        }
-        if (entry.isIntersecting) {
-          if (!newActiveCandidate) newActiveCandidate = entry.target.id;
-        }
-      });
+        entries.forEach((entry) => {
+          console.log(
+            `Observer raw entry: id=${entry.target.id}, isIntersecting=${
+              entry.isIntersecting
+            }, ratio=${entry.intersectionRatio.toFixed(2)}`
+          );
+          if (entry.target.id === "section2" && entry.isIntersecting) {
+            section2IsIntersecting = true;
+          }
+          if (entry.isIntersecting) {
+            if (!newActiveCandidate) newActiveCandidate = entry.target.id;
+          }
+        });
 
-      if (section2IsIntersecting) {
-        if (activeSection !== 'section2') {
-          console.log("Observer: Setting activeSection to 'section2'");
-          setActiveSection('section2');
+        if (section2IsIntersecting) {
+          if (activeSection !== "section2") {
+            console.log("Observer: Setting activeSection to 'section2'");
+            setActiveSection("section2");
+          }
+        } else if (newActiveCandidate) {
+          // If section2 is not intersecting, but another is, set that one.
+          if (
+            activeSection !== newActiveCandidate &&
+            activeSection === "section2"
+          ) {
+            // Only change if it was section2
+            console.log(
+              `Observer: Changing activeSection from 'section2' to '${newActiveCandidate}'`
+            );
+            setActiveSection(newActiveCandidate);
+          } else if (!activeSection && newActiveCandidate) {
+            // If active section was empty
+            console.log(
+              `Observer: Setting activeSection to '${newActiveCandidate}' (was empty)`
+            );
+            setActiveSection(newActiveCandidate);
+          }
+        } else {
+          // No sections are intersecting at the threshold
+          if (activeSection !== "") {
+            console.log(
+              `Observer: Clearing activeSection (was ${activeSection}) because nothing is intersecting`
+            );
+            setActiveSection("");
+          }
         }
-      } else if (newActiveCandidate) {
-        // If section2 is not intersecting, but another is, set that one.
-        if (activeSection !== newActiveCandidate && activeSection === 'section2') { // Only change if it was section2
-          console.log(`Observer: Changing activeSection from 'section2' to '${newActiveCandidate}'`);
-          setActiveSection(newActiveCandidate);
-        } else if (!activeSection && newActiveCandidate) { // If active section was empty
-           console.log(`Observer: Setting activeSection to '${newActiveCandidate}' (was empty)`);
-           setActiveSection(newActiveCandidate);
-        }
-      } else {
-        // No sections are intersecting at the threshold
-        if (activeSection !== '') {
-          console.log(`Observer: Clearing activeSection (was ${activeSection}) because nothing is intersecting`);
-          setActiveSection('');
-        }
-      }
-    }, { root: mainContainer, threshold: 0.5 }); // SUGGESTION: Lowered threshold to 0.5 for testing
+      },
+      { root: mainContainer, threshold: 0.5 }
+    ); // SUGGESTION: Lowered threshold to 0.5 for testing
 
     sections.forEach((s) => {
       if (s.current) {
         observer.observe(s.current);
       } else {
-        console.warn(`Observer: Ref for a section is null. This might be expected if not all sections are rendered for this chapter.`);
+        console.warn(
+          `Observer: Ref for a section is null. This might be expected if not all sections are rendered for this chapter.`
+        );
       }
     });
 
@@ -122,34 +142,37 @@ const Content = ({ chapter }) => {
   // Scroll handling for main container (mainRef) in Chapter 2
   useEffect(() => {
     const mainContainer = mainRef.current;
-    if (!mainContainer || chapter !== 'ch2') { 
-      if (mainContainer) mainContainer.style.scrollSnapType = 'y mandatory'; 
+    if (!mainContainer || chapter !== "ch2") {
+      if (mainContainer) mainContainer.style.scrollSnapType = "y mandatory";
       return;
     }
 
     const handleMainScroll = (e) => {
-      if (activeSection === 'section2') {
+      if (activeSection === "section2") {
         const textBox = textBoxRef.current;
         let allowPageScroll = false;
 
         if (textBox && textBox.contains(e.target)) {
           // If the event target is within the textbox, the textbox listener should handle it first.
           // This listener (handleMainScroll) should only act if the event was not stopped by the textbox.
-          console.log("MainScroll: Event originated in textbox, deferring unless propagated.");
-          return; 
+          console.log(
+            "MainScroll: Event originated in textbox, deferring unless propagated."
+          );
+          return;
         }
-        
+
         // If event is not from textbox or textbox allowed propagation:
         if (textBox) {
           const { scrollTop, scrollHeight, clientHeight } = textBox;
           const isTextBoxAtTop = scrollTop <= 0; // Use <= 0 for top
-          const isTextBoxAtBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
+          const isTextBoxAtBottom =
+            Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
 
-          if (e.deltaY < 0 && isTextBoxAtTop) { 
-            allowPageScroll = true; 
+          if (e.deltaY < 0 && isTextBoxAtTop) {
+            allowPageScroll = true;
             console.log("MainScroll: Allowing UP (textbox at top)");
-          } else if (e.deltaY > 0 && isTextBoxAtBottom) { 
-            allowPageScroll = true; 
+          } else if (e.deltaY > 0 && isTextBoxAtBottom) {
+            allowPageScroll = true;
             console.log("MainScroll: Allowing DOWN (textbox at bottom)");
           }
         } else {
@@ -158,43 +181,52 @@ const Content = ({ chapter }) => {
         }
 
         if (!allowPageScroll) {
-          console.log(`MainScroll: Preventing default scroll for section2. DeltaY: ${e.deltaY}`);
+          console.log(
+            `MainScroll: Preventing default scroll for section2. DeltaY: ${e.deltaY}`
+          );
           e.preventDefault();
         }
       }
     };
 
-    if (activeSection === 'section2') {
-      mainContainer.style.scrollSnapType = 'none'; 
-      mainContainer.addEventListener('wheel', handleMainScroll, { passive: false });
+    if (activeSection === "section2") {
+      mainContainer.style.scrollSnapType = "none";
+      mainContainer.addEventListener("wheel", handleMainScroll, {
+        passive: false,
+      });
       console.log("MainScroll: Listener ADDED for section2. Snap: none.");
     } else {
-      mainContainer.style.scrollSnapType = 'y mandatory'; 
-      console.log("MainScroll: Listener INACTIVE for non-section2. Snap: y mandatory.");
+      mainContainer.style.scrollSnapType = "y mandatory";
+      console.log(
+        "MainScroll: Listener INACTIVE for non-section2. Snap: y mandatory."
+      );
     }
 
     return () => {
-      mainContainer.removeEventListener('wheel', handleMainScroll);
-      mainContainer.style.scrollSnapType = 'y mandatory'; 
+      mainContainer.removeEventListener("wheel", handleMainScroll);
+      mainContainer.style.scrollSnapType = "y mandatory";
       console.log("MainScroll: Listener REMOVED. Snap reset.");
     };
-  }, [activeSection, chapter]); 
+  }, [activeSection, chapter]);
 
   // Logic for the scrollable text box
   useEffect(() => {
     const textBox = textBoxRef.current;
-    if (!textBox || chapter !== 'ch2') return;
+    if (!textBox || chapter !== "ch2") return;
 
     const handleTextBoxWheel = (e) => {
-      if (activeSection === 'section2') {
+      if (activeSection === "section2") {
         const { scrollTop, scrollHeight, clientHeight } = textBox;
         const isAtTop = scrollTop === 0;
-        const isAtBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight -2;
+        const isAtBottom =
+          Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
 
         // If scrolling up at the top of the text box, or scrolling down at the bottom,
         // let the event bubble to the mainContainer.
         if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
-          console.log("TextBox: Reached edge, allowing event to propagate to main container.");
+          console.log(
+            "TextBox: Reached edge, allowing event to propagate to main container."
+          );
           return;
         }
 
@@ -205,12 +237,12 @@ const Content = ({ chapter }) => {
       }
     };
 
-    textBox.addEventListener('wheel', handleTextBoxWheel, { passive: false })
-    return () => textBox.removeEventListener('wheel', handleTextBoxWheel);
+    textBox.addEventListener("wheel", handleTextBoxWheel, { passive: false });
+    return () => textBox.removeEventListener("wheel", handleTextBoxWheel);
   }, [activeSection, chapter]); // Added chapter dependency
 
   /*
-   * Chapter2 Section2 Content 
+   * Chapter2 Section2 Content
    */
 
   const ch2s2Texts = [
@@ -228,20 +260,25 @@ const Content = ({ chapter }) => {
             <Section1 vimeoId={1082043684} />
           </div>
           <div id="section2" className="flex flex-col relative h-[150vh]">
-            <img src={C1S2} alt="" className="z-0 absolute h-full max-w-[700px] w-[60%] left-1/2 -translate-x-1/2" />
+            <img
+              src={C1S2}
+              alt=""
+              className="z-0 absolute h-full max-w-[700px] w-[60%] left-1/2 -translate-x-1/2"
+            />
             <div className="z-1">
-              <div id="TextContainer" className="font-body tracking-widest max-w-[470px] ml-20 flex flex-col gap-10">
+              <div
+                id="TextContainer"
+                className="font-body tracking-widest max-w-[470px] ml-20 flex flex-col gap-10"
+              >
                 <div className="font-bold text-right text-2xl">
                   {t1("ch1.section2.1")}
                 </div>
-                <div className="ml-10 text-lg">
-                  {t1("ch1.section2.2")}
-                </div>
-                <div className="ml-10 text-lg">
-                  {t1("ch1.section2.3")}
-                </div>
+                <div className="ml-10 text-lg">{t1("ch1.section2.2")}</div>
+                <div className="ml-10 text-lg">{t1("ch1.section2.3")}</div>
               </div>
-              <h1 className="w-full text-primary-1 uppercase text-[calc(max(1rem,(100vw-4rem)/6))]">geoje - 1951</h1>
+              <h1 className="w-full text-primary-1 uppercase text-[calc(max(1rem,(100vw-4rem)/6))]">
+                geoje - 1951
+              </h1>
               <div className="justify-self-center">
                 <Chronology />
               </div>
@@ -249,40 +286,68 @@ const Content = ({ chapter }) => {
           </div>
           <div id="section3" className="relative my-10 py-5 h-screen">
             <h1 className="text-white-1 text-[175px]">WERNER</h1>
-            <HorizontalScroller data={imgMockData} custom={`asepct-square`} size='md' />
-            <h1 className="text-white-1 text-[175px] absolute right-0">BISCHOF</h1>
-            <div id="textContainer" className="font-body max-w-[425px] absolute bottom-0 left-10">
+            <HorizontalScroller
+              data={imgMockData}
+              custom={`asepct-square`}
+              size="md"
+            />
+            <h1 className="text-white-1 text-[175px] absolute right-0">
+              BISCHOF
+            </h1>
+            <div
+              id="textContainer"
+              className="font-body max-w-[425px] absolute bottom-0 left-10"
+            >
               {t1("ch1.section3.contents")}
             </div>
           </div>
           <div id="section4" className="bg-white-1 px-10 py-10 m-0">
-            <h1 className="text-black text-[50px] text-shadow-lg/20 text-shadow-black uppercase">Le travail de mémoire à Geoje</h1>
-            <div id="pageContainer">
-            </div>
+            <h1 className="text-black text-[50px] text-shadow-lg/20 text-shadow-black uppercase">
+              Le travail de mémoire à Geoje
+            </h1>
+            <div id="pageContainer"></div>
           </div>
         </div>
       );
     case "ch2":
       return (
-        <div id="ch2" className="flex flex-col text-white gap-10 h-full overflow-y-scroll" ref={mainRef}>
+        <div
+          id="ch2"
+          className="flex flex-col text-white gap-10 h-full overflow-y-scroll"
+          ref={mainRef}
+        >
           <div id="section1" ref={section1Ref}>
             <Section1 vimeoId={1082043684} />
           </div>
-          <div id="section2" ref={section2Ref} className="flex flex-col relative h-screen">
-            <img src={C2S2} alt="background" className="w-full h-full object-cover" />
+          <div
+            id="section2"
+            ref={section2Ref}
+            className="flex flex-col relative h-screen"
+          >
+            <img
+              src={C2S2}
+              alt="background"
+              className="w-full h-full object-cover"
+            />
 
             <div
               ref={textBoxRef}
               className="scrollbar-hide z-5 absolute top-10 left-10 font-body max-w-[300px] h-[50%] max-h-[500px] overflow-y-auto first-letter:text-4xl first-letter:font-bold"
             >
               {ch2s2Texts.map((it, id) => (
-                <div id="textContainer" className="my-5 tracking-widest" key={id}>
+                <div
+                  id="textContainer"
+                  className="my-5 tracking-widest"
+                  key={id}
+                >
                   {it}
                 </div>
               ))}
             </div>
             <Button
-              onClick={() => { section3Ref.current.scrollIntoView({ behavior: 'smooth' }); }}
+              onClick={() => {
+                section3Ref.current.scrollIntoView({ behavior: "smooth" });
+              }}
               label="Next To 3 Section"
               custom={"absolute bottom-10 right-10"}
             />
@@ -290,10 +355,15 @@ const Content = ({ chapter }) => {
           <div id="section3" ref={section3Ref} className="relative h-screen">
             <p>Section3</p>
           </div>
-          <div id="section4" ref={section4Ref} className="bg-white-1 px-10 py-10 m-0">
-            <h1 className="text-black text-[50px] text-shadow-lg/20 text-shadow-black uppercase">Le travail de mémoire à Geoje</h1>
-            <div id="pageContainer">
-            </div>
+          <div
+            id="section4"
+            ref={section4Ref}
+            className="bg-white-1 px-10 py-10 m-0"
+          >
+            <h1 className="text-black text-[50px] text-shadow-lg/20 text-shadow-black uppercase">
+              Le travail de mémoire à Geoje
+            </h1>
+            <div id="pageContainer"></div>
           </div>
         </div>
       );
@@ -303,54 +373,71 @@ const Content = ({ chapter }) => {
           <div id="section1" className="h-screen">
             <Section1 vimeoId={1082043684} />
           </div>
-          <div id="section2" className="h-screen flex flex-col justify-center items-center">
+          <div
+            id="section2"
+            className="h-screen flex flex-col justify-center items-center"
+          >
             <h1 className="text-center w-[80%] text-[40px]">
               MAIS… RESSENTEZ-VOUS ENCORE CE QU’ILS ONT VÉCU ?<br />
               OU JUSTE CE QU’ON A VOULU VOUS MONTRER ?
             </h1>
-            <Button label="voir le témoignage" custom="uppercase" onClick={() => window.location.href = "./witness"} />
+            <Button
+              label="voir le témoignage"
+              custom="uppercase"
+              onClick={() => (window.location.href = "./witness")}
+            />
           </div>
           <div id="section3" className="h-screen">
             <Section1 vimeoId={1082043684} />
           </div>
-        </div >
+        </div>
       );
     case "witness":
       return (
-        <div id="witness" className="text-white h-screen flex flex-col justify-center items-center">
+        <div
+          id="witness"
+          className="text-white h-screen flex flex-col justify-center items-center"
+        >
           Test
         </div>
       );
     case "conclusion":
       return (
         <div id="conclusion" className="text-white">
-          <div id="section1" className="flex justify-between items-center">
+          <div
+            id="section1"
+            className="flex justify-between pr-20 items-center"
+          >
             <div id="TextContainer" className="w-[40%] pl-20 py-20">
-              <h1 className="text-[50px]">La trace d’un camp</h1>
+              <h1 className="text-[50px] uppercase">
+                {t1("conclu.contents.subtitle")}
+              </h1>
               <div className="font-body tracking-widest flex flex-col gap-5">
-                <p>
-                  Geoje fut plus qu’un camp. C’était un espace de tension, de survie, d’idéologie, de silence parfois. Un lieu où l’Histoire se croisait dans les gestes ordinaires : manger, obéir, attendre, chanter, croire, fuir.
-                  Les murs ont disparu depuis longtemps, engloutis par le temps, les reconstructions et les nécessités d’oublier. Mais les récits, eux, restent. Fragmentés, contradictoires, souvent inconfortables — ils survivent dans les photos, les lettres, les silences des survivants.
-                  Aujourd’hui, ce ne sont plus les barbelés qui enferment, mais les versions multiples de ce qui s’est vraiment passé. Chacun retient une image, une version, un détail.
-                </p>
-                <p>
-                  Alors…
-                </p>
-                <strong>
-                  Que reste-t-il d’un camp quand les murs tombent, mais que les mémoires restent divisées ?
-                </strong>
+                <p>{t1("conclu.contents.1")}</p>
+                <p>{t1("conclu.contents.2")}</p>
+                <strong>{t1("conclu.contents.3")}</strong>
               </div>
             </div>
             <VimeoPlayer videoId="1082043684" width="w-[40%]" portrait={true} />
           </div>
-          <div id="section2">
-
+          <div id="section2" className="w-full pl-20 py-20 bg-tertiary-1">
+            <Credits />
+            <h2 className="text-[50px] pt-20 pb-5">
+              {t1("conclu.contents.thanks")}
+            </h2>
+            <p className="font-body text-lg">
+              BOUREAU Pierre, BONZON Thierry, AUVRAY Mariette, LÉVY Stéphane,
+              ZORNINGER Sylvain.
+            </p>
           </div>
         </div>
-      )
+      );
     default:
       return (
-        <div id="pageNotFound" className="h-screen flex flex-col justify-center items-center text-white">
+        <div
+          id="pageNotFound"
+          className="h-screen flex flex-col justify-center items-center text-white"
+        >
           Page Not Found
           <Button
             label="Back to Home"
@@ -359,6 +446,6 @@ const Content = ({ chapter }) => {
         </div>
       );
   }
-}
+};
 
 export default Content;

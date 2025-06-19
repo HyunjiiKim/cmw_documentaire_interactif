@@ -5,7 +5,7 @@
   },
   "ch1": {
     "title": "Chapitre 1",
-    "section2":{
+    "section2": {
       "1": "Dès les années 50, la péninsule coréenne plonge dans une guerre fratricide aux répercussions majeures sur la géopolitique du pays.",
       "2": "En effet, la fin de la Seconde Guerre mondiale marque celle de l’occupation japonaise, mais pas le début d’une véritable indépendance pour autant. Le territoire fut une fois de plus spolié au profit des grandes puissances.",
       "3": "Aujourd’hui, les images qui nous restent de ce camp proviennent de l’administration américaine ou de la presse Alliée. Il s’agit surtout de mise en scène où la réalité apparaît en filigrane. Le lieu ouvert aux visiteurs depuis 1997 continue en effet d’antagoniser les prisonniers sympathisants du communisme et d’enjoliver les conditions de détention."
@@ -49,5 +49,15 @@
   },
   "ch3": {
     "title": "Chapitre 3"
+  },
+  "conclu": {
+    "title": "Conclusion",
+    "contents": {
+      "subtitle": "La trace d'un camp",
+      "1": "Geoje fut plus qu’un camp. C’était un espace de tension, de survie, d’idéologie, de silence parfois. Un lieu où l’Histoire se croisait dans les gestes ordinaires : manger, obéir, attendre, chanter, croire, fuir. Les murs ont disparu depuis longtemps, engloutis par le temps, les reconstructions et les nécessités d’oublier. Mais les récits, eux, restent. Fragmentés, contradictoires, souvent inconfortables — ils survivent dans les photos, les lettres, les silences des survivants. Aujourd’hui, ce ne sont plus les barbelés qui enferment, mais les versions multiples de ce qui s’est vraiment passé. Chacun retient une image, une version, un détail.",
+      "2": "Alors...",
+      "3": "Que reste-t-il d’un camp quand les murs tombent, mais que les mémoires restent divisées ?",
+      "thanks": "Remerciements"
+    }
   }
 }

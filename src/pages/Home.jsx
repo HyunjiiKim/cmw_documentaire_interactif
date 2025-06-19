@@ -23,7 +23,6 @@ const Home = () => {
   const { t: t3 } = useTranslation("general");
   // const [showChoice, setShowChoice] = useState(false);
   const [showHome, setShowHome] = useState(0);
-  let code;
 
   function openShowChoices() {
     setShowHome(2);

@@ -11,6 +11,7 @@ const buttonVariants = cva(
       intent: {
         primary: "mt-[2.5em] border-white border-1",
         secondary: "border-white border-1",
+        tertiary: "border-white border-1 bg-primary-1",
         ghost: "mt-[2.5em] underline",
       },
       size: {
@@ -121,18 +122,20 @@ export const AudioBtn = ({ audioSrc, label, textColor, bgColor }) => {
     <div
       className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-12 px-12`}
       onClick={toggleAudio}
-      title={isPlaying ? "Pause audio" : "Play audio"}>
+      title={isPlaying ? "Pause audio" : "Play audio"}
+    >
       <p className="text-lg font-body uppercase">{label}</p>
-      <svg xmlns="http://www.w3.org/2000/svg"
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
         width="45"
         height="45"
         fill="#9a938a"
         viewBox="0 0 16 16"
-        aria-label="Unmute sounds" />
+        aria-label="Unmute sounds"
+      />
     </div>
   );
 };
-
 
 export const SoundBtn = () => {
   const [isSilent, setIsSilent] = useState(() => {
@@ -283,8 +286,9 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
-          }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
+          isLeft ? "left" : "right"
+        }`}
       ></i>
     </div>
   );

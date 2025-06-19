@@ -15,7 +15,9 @@ import Test from "./pages/test";
 function App() {
   return (
     <Router>
-      {location.pathname !== "/documentary" && <HorizontalNav />}
+      {location.pathname !== "/documentary" && location.pathname !== "/" && (
+        <HorizontalNav />
+      )}
       {location.pathname !== "/" && <TopNav />}
       <Routes>
         <Route path="/test" element={<Test />} />
@@ -24,7 +26,6 @@ function App() {
         <Route path="/documentary" element={<Documentary />} />
         <Route path="/view/:id" element={<View />} />
       </Routes>
-      
     </Router>
   );
 }
