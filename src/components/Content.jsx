@@ -265,6 +265,31 @@ const Content = ({ chapter }) => {
     },
   ]
 
+  /**
+   * ch3 section 3 
+   */
+
+  const ch3s3Images = [
+    {
+      id: 0,
+      name: "", // img alt
+      img: "", // img src
+      position: "bottom-20 left-30",
+    },
+    {
+      id: 0,
+      name: "", // img alt
+      img: "", // img src
+      position: "bottom-20 left-30",
+    },
+    {
+      id: 0,
+      name: "", // img alt
+      img: "", // img src
+      position: "bottom-20 left-30",
+    }
+  ]
+
   switch (chapter) {
     case "ch1":
       return (
@@ -352,7 +377,6 @@ const Content = ({ chapter }) => {
             <Button label="voir le témoignage" custom="uppercase" onClick={() => window.location.href = "./witness"} />
           </div>
           <div id="section3" className="h-screen">
-            <Section1 vimeoId={1082043684} />
           </div>
         </div >
       );

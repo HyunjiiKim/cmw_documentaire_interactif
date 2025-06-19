@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { VimeoPlayer } from "../VideoPlayer";
-import Button from "../Button";
+import Button, { ButtonWithIcon } from "../Button";
 import { DotsContainer } from "../Container";
 
 export const Section1 = ({ vimeoId }) => {
@@ -51,9 +51,29 @@ export const Section4 = ({ content }) => {
             </div>
             {/* <DotsContainer sections={content.pages} activeSection={content.pages[0].id} /> */}
             <div id="buttonGroup">
-                <Button label="Next Chapter" />
+                <Button label="Next Chapter" custom="bg-black" />
 
             </div>
+        </div>
+    )
+}
+
+/**
+ * This allows to render image with description when clicking
+ */
+export const clickImage = ({ content }) => {
+
+    const [remover, setRemover] = useState(false);
+
+    return (
+        <div id="clickImage" className="relative">
+            {!remover && (
+                <div id="grayfilter" className="z-10 bg-black/30 w-full h-full absolute top-0 left-0" />
+            )}
+            <img src={content.img} name={content.name} className="w-full h-full object-cover" />
+            <ButtonWithIcon
+                onClick={() => { setRemover(true) }}
+                custom={`absolute z-15 ${remover ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" : `${content.position}`}`} />
         </div>
     )
 }
