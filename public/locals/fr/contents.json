@@ -5,6 +5,11 @@
   },
   "ch1": {
     "title": "Chapitre 1",
+    "section2":{
+      "1": "Dès les années 50, la péninsule coréenne plonge dans une guerre fratricide aux répercussions majeures sur la géopolitique du pays.",
+      "2": "En effet, la fin de la Seconde Guerre mondiale marque celle de l’occupation japonaise, mais pas le début d’une véritable indépendance pour autant. Le territoire fut une fois de plus spolié au profit des grandes puissances.",
+      "3": "Aujourd’hui, les images qui nous restent de ce camp proviennent de l’administration américaine ou de la presse Alliée. Il s’agit surtout de mise en scène où la réalité apparaît en filigrane. Le lieu ouvert aux visiteurs depuis 1997 continue en effet d’antagoniser les prisonniers sympathisants du communisme et d’enjoliver les conditions de détention."
+    },
     "chronology": {
       "title": "le camp de l'île de geoje - héritage",
       "contents": {

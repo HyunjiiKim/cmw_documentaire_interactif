@@ -8,7 +8,6 @@ const mapElementsData = [
     asset: "introBefore",
     name: "intro",
     targetWidth: 400,
-    path: "/view/intro",
     hover: { asset:"introAfter", alpha: 0.7, yOffset: -5, scaleFactor: 0.4, tint: 0xffefc4 },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },

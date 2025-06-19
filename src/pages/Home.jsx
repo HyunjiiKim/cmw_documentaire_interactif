@@ -9,7 +9,6 @@ import Button, {
   ButtonWithIcon,
 } from "../components/Button";
 import { Trigger } from "../components/Trigger";
-import { Logo } from "../components/Logo";
 import { Blocker } from "../components/Blocker";
 import { Indicator } from "../components/Indicator";
 

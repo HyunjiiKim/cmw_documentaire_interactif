@@ -5,10 +5,10 @@ import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
 import { Section1 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
-
-import C2S2 from "/assets/img/ch2sec2.png";
 import Button from "./Button";
 
+import C1S2 from "/assets/img/ch1sec2.png";
+import C2S2 from "/assets/img/ch2sec2.png";
 
 const Content = ({ chapter }) => {
 
@@ -49,67 +49,169 @@ const Content = ({ chapter }) => {
    * Chapter 2 Triggers & Animations
    */
 
-  // State to keep track of the currently visible section
-  const [activeSection, setActiveSection] = useState('section1');
-
-  // Refs for each section and the main container
+  const [activeSection, setActiveSection] = useState('');
   const mainRef = useRef(null);
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
   const section4Ref = useRef(null);
 
-  // Effect to set up the IntersectionObserver
-  useEffect(() => {
-    const sections = [section1Ref, section2Ref, section3Ref, section4Ref];
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, {
-      root: mainRef.current,
-      threshold: 0.7,
-    });
+  const textBoxRef = useRef(null);
 
-    sections.forEach((section) => {
-      if (section.current) {
-        observer.observe(section.current);
-      };
-    });
-
-    // Cleanup observer on component unmount
-    return () =>
-      sections.forEach((section) => {
-        if (section.current) {
-          observer.unobserve(section.current);
-        }
-      })
-  }, []);
-
-  // Effect to add/remove scroll blocking based on the active section
+  // Observer for main sections
   useEffect(() => {
     const mainContainer = mainRef.current;
+    if (!mainContainer || chapter !== 'ch2') {
+      // If not chapter 2, or no main container, ensure activeSection is cleared if it was from a previous ch2 render
+      if (activeSection) setActiveSection('')
+      return;
+    }
 
-    // handle scroll blocking
-    function handleWheel(evt) {
-      if (activeSection === 'section2' && evt.deltaY > 0) {
-        evt.preventDefault();
+    const sections = [section1Ref, section2Ref, section3Ref, section4Ref];
+    const observer = new IntersectionObserver((entries) => {
+      let newActiveCandidate = null;
+      let section2IsIntersecting = false;
+
+      entries.forEach((entry) => {
+        console.log(`Observer raw entry: id=${entry.target.id}, isIntersecting=${entry.isIntersecting}, ratio=${entry.intersectionRatio.toFixed(2)}`);
+        if (entry.target.id === 'section2' && entry.isIntersecting) {
+          section2IsIntersecting = true;
+        }
+        if (entry.isIntersecting) {
+          if (!newActiveCandidate) newActiveCandidate = entry.target.id;
+        }
+      });
+
+      if (section2IsIntersecting) {
+        if (activeSection !== 'section2') {
+          console.log("Observer: Setting activeSection to 'section2'");
+          setActiveSection('section2');
+        }
+      } else if (newActiveCandidate) {
+        // If section2 is not intersecting, but another is, set that one.
+        if (activeSection !== newActiveCandidate && activeSection === 'section2') { // Only change if it was section2
+          console.log(`Observer: Changing activeSection from 'section2' to '${newActiveCandidate}'`);
+          setActiveSection(newActiveCandidate);
+        } else if (!activeSection && newActiveCandidate) { // If active section was empty
+           console.log(`Observer: Setting activeSection to '${newActiveCandidate}' (was empty)`);
+           setActiveSection(newActiveCandidate);
+        }
+      } else {
+        // No sections are intersecting at the threshold
+        if (activeSection !== '') {
+          console.log(`Observer: Clearing activeSection (was ${activeSection}) because nothing is intersecting`);
+          setActiveSection('');
+        }
+      }
+    }, { root: mainContainer, threshold: 0.5 }); // SUGGESTION: Lowered threshold to 0.5 for testing
+
+    sections.forEach((s) => {
+      if (s.current) {
+        observer.observe(s.current);
+      } else {
+        console.warn(`Observer: Ref for a section is null. This might be expected if not all sections are rendered for this chapter.`);
+      }
+    });
+
+    return () => {
+      sections.forEach((s) => s.current && observer.unobserve(s.current));
+      console.log("Observer: Cleaned up");
+    };
+  }, [chapter]); // Rerun if chapter changes, so observer is set for the correct mainRef
+
+  // Scroll handling for main container (mainRef) in Chapter 2
+  useEffect(() => {
+    const mainContainer = mainRef.current;
+    if (!mainContainer || chapter !== 'ch2') { 
+      if (mainContainer) mainContainer.style.scrollSnapType = 'y mandatory'; 
+      return;
+    }
+
+    const handleMainScroll = (e) => {
+      if (activeSection === 'section2') {
+        const textBox = textBoxRef.current;
+        let allowPageScroll = false;
+
+        if (textBox && textBox.contains(e.target)) {
+          // If the event target is within the textbox, the textbox listener should handle it first.
+          // This listener (handleMainScroll) should only act if the event was not stopped by the textbox.
+          console.log("MainScroll: Event originated in textbox, deferring unless propagated.");
+          return; 
+        }
+        
+        // If event is not from textbox or textbox allowed propagation:
+        if (textBox) {
+          const { scrollTop, scrollHeight, clientHeight } = textBox;
+          const isTextBoxAtTop = scrollTop <= 0; // Use <= 0 for top
+          const isTextBoxAtBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
+
+          if (e.deltaY < 0 && isTextBoxAtTop) { 
+            allowPageScroll = true; 
+            console.log("MainScroll: Allowing UP (textbox at top)");
+          } else if (e.deltaY > 0 && isTextBoxAtBottom) { 
+            allowPageScroll = true; 
+            console.log("MainScroll: Allowing DOWN (textbox at bottom)");
+          }
+        } else {
+          allowPageScroll = true; // No textbox, allow normal scroll for section2
+          console.log("MainScroll: Allowing (no textbox)");
+        }
+
+        if (!allowPageScroll) {
+          console.log(`MainScroll: Preventing default scroll for section2. DeltaY: ${e.deltaY}`);
+          e.preventDefault();
+        }
       }
     };
 
-    mainContainer.removeEventListener('wheel', handleWheel, { passive: false });
+    if (activeSection === 'section2') {
+      mainContainer.style.scrollSnapType = 'none'; 
+      mainContainer.addEventListener('wheel', handleMainScroll, { passive: false });
+      console.log("MainScroll: Listener ADDED for section2. Snap: none.");
+    } else {
+      mainContainer.style.scrollSnapType = 'y mandatory'; 
+      console.log("MainScroll: Listener INACTIVE for non-section2. Snap: y mandatory.");
+    }
 
-    // Cleanup the event listner
     return () => {
-      mainContainer.removeEventListener('wheel', handleWheel);
+      mainContainer.removeEventListener('wheel', handleMainScroll);
+      mainContainer.style.scrollSnapType = 'y mandatory'; 
+      console.log("MainScroll: Listener REMOVED. Snap reset.");
     };
-  }, [activeSection])
+  }, [activeSection, chapter]); 
+
+  // Logic for the scrollable text box
+  useEffect(() => {
+    const textBox = textBoxRef.current;
+    if (!textBox || chapter !== 'ch2') return;
+
+    const handleTextBoxWheel = (e) => {
+      if (activeSection === 'section2') {
+        const { scrollTop, scrollHeight, clientHeight } = textBox;
+        const isAtTop = scrollTop === 0;
+        const isAtBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight -2;
+
+        // If scrolling up at the top of the text box, or scrolling down at the bottom,
+        // let the event bubble to the mainContainer.
+        if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
+          console.log("TextBox: Reached edge, allowing event to propagate to main container.");
+          return;
+        }
+
+        // Otherwise, if scrolling within the text box, stop the event from bubbling
+        // to prevent the mainContainer from scrolling.
+        console.log("TextBox: Scrolling internally, stopping propagation.");
+        e.stopPropagation();
+      }
+    };
+
+    textBox.addEventListener('wheel', handleTextBoxWheel, { passive: false })
+    return () => textBox.removeEventListener('wheel', handleTextBoxWheel);
+  }, [activeSection, chapter]); // Added chapter dependency
 
   /*
    * Chapter2 Section2 Content 
-  */
+   */
 
   const ch2s2Texts = [
     t1("ch2.contents.2.para1"),
@@ -121,17 +223,35 @@ const Content = ({ chapter }) => {
   switch (chapter) {
     case "ch1":
       return (
-        <div className="flex flex-col text-white gap-10">
-          <Section1 vimeoId={1082043684} />
-          <div id="section2" className="flex flex-col">
-            <h1 className="text-primary-1 uppercase">geoje - 1951</h1>
-            <Chronology />
+        <div id="ch1" className="mt-10 flex flex-col text-white gap-15">
+          <div id="section1Container" className="h-full">
+            <Section1 vimeoId={1082043684} />
           </div>
-          <div id="section3" className="relative">
-            <h1 className="text-white-1">WERNER</h1>
-            <HorizontalScroller data={imgMockData} />
-            <h1 className="text-white-1">BISCHOF</h1>
-            <div id="textContainer" className="font-body max-w-[425px]">
+          <div id="section2" className="flex flex-col relative h-[150vh]">
+            <img src={C1S2} alt="" className="z-0 absolute h-full max-w-[700px] w-[60%] left-1/2 -translate-x-1/2" />
+            <div className="z-1">
+              <div id="TextContainer" className="font-body tracking-widest max-w-[470px] ml-20 flex flex-col gap-10">
+                <div className="font-bold text-right text-2xl">
+                  {t1("ch1.section2.1")}
+                </div>
+                <div className="ml-10 text-lg">
+                  {t1("ch1.section2.2")}
+                </div>
+                <div className="ml-10 text-lg">
+                  {t1("ch1.section2.3")}
+                </div>
+              </div>
+              <h1 className="w-full text-primary-1 uppercase text-[calc(max(1rem,(100vw-4rem)/6))]">geoje - 1951</h1>
+              <div className="justify-self-center">
+                <Chronology />
+              </div>
+            </div>
+          </div>
+          <div id="section3" className="relative my-10 py-5 h-screen">
+            <h1 className="text-white-1 text-[175px]">WERNER</h1>
+            <HorizontalScroller data={imgMockData} custom={`asepct-square`} size='md' />
+            <h1 className="text-white-1 text-[175px] absolute right-0">BISCHOF</h1>
+            <div id="textContainer" className="font-body max-w-[425px] absolute bottom-0 left-10">
               {t1("ch1.section3.contents")}
             </div>
           </div>
@@ -144,26 +264,31 @@ const Content = ({ chapter }) => {
       );
     case "ch2":
       return (
-        <div className="flex flex-col text-white gap-10" ref={mainRef}>
-          <Section1 vimeoId={1082043684} ref={section1Ref} />
-          <div id="section2" ref={section2Ref} className="flex flex-col relative">
-            <img src={C2S2} img="background" className="w-full h-full object-cover" />
-            <div className="z-5 absolute top-10 left-10 font-body max-w-[300px] h-[50%] max-h-[500px] overflow-hidden overscroll-y-scroll first-letter:text-4xl first-letter:font-bold">
+        <div id="ch2" className="flex flex-col text-white gap-10 h-full overflow-y-scroll" ref={mainRef}>
+          <div id="section1" ref={section1Ref}>
+            <Section1 vimeoId={1082043684} />
+          </div>
+          <div id="section2" ref={section2Ref} className="flex flex-col relative h-screen">
+            <img src={C2S2} alt="background" className="w-full h-full object-cover" />
+
+            <div
+              ref={textBoxRef}
+              className="scrollbar-hide z-5 absolute top-10 left-10 font-body max-w-[300px] h-[50%] max-h-[500px] overflow-y-auto first-letter:text-4xl first-letter:font-bold"
+            >
               {ch2s2Texts.map((it, id) => (
                 <div id="textContainer" className="my-5 tracking-widest" key={id}>
                   {it}
                 </div>
               ))}
             </div>
-            <Button onClick={() => { section3Ref.current.scrollIntoView({ behavior: 'smooth' }); }} label="Next To 3 Section" />
+            <Button
+              onClick={() => { section3Ref.current.scrollIntoView({ behavior: 'smooth' }); }}
+              label="Next To 3 Section"
+              custom={"absolute bottom-10 right-10"}
+            />
           </div>
-          <div id="section3" ref={section3Ref} className="relative">
-            <h1 className="text-white-1">WERNER</h1>
-            <HorizontalScroller data={imgMockData} />
-            <h1 className="text-white-1">BISCHOF</h1>
-            <div id="textContainer" className="font-body max-w-[425px]">
-              {t1("ch1.section3.contents")}
-            </div>
+          <div id="section3" ref={section3Ref} className="relative h-screen">
+            <p>Section3</p>
           </div>
           <div id="section4" ref={section4Ref} className="bg-white-1 px-10 py-10 m-0">
             <h1 className="text-black text-[50px] text-shadow-lg/20 text-shadow-black uppercase">Le travail de mémoire à Geoje</h1>
@@ -174,28 +299,63 @@ const Content = ({ chapter }) => {
       );
     case "ch3":
       return (
-        <div className="text-white">
-          <Section1 vimeoId={1082043684} />
+        <div className="px-10 py-10 text-white">
+          <div id="section1" className="h-screen">
+            <Section1 vimeoId={1082043684} />
+          </div>
+          <div id="section2" className="h-screen flex flex-col justify-center items-center">
+            <h1 className="text-center w-[80%] text-[40px]">
+              MAIS… RESSENTEZ-VOUS ENCORE CE QU’ILS ONT VÉCU ?<br />
+              OU JUSTE CE QU’ON A VOULU VOUS MONTRER ?
+            </h1>
+            <Button label="voir le témoignage" custom="uppercase" onClick={() => window.location.href = "./witness"} />
+          </div>
+          <div id="section3" className="h-screen">
+            <Section1 vimeoId={1082043684} />
+          </div>
+        </div >
+      );
+    case "witness":
+      return (
+        <div id="witness" className="text-white h-screen flex flex-col justify-center items-center">
+          Test
         </div>
       );
     case "conclusion":
       return (
-        <div id="conclusion">
-          <div id="section1" className="flex">
-            <div id="textContainer">
-              <h1>La trace d’un camp</h1>
+        <div id="conclusion" className="text-white">
+          <div id="section1" className="flex justify-between items-center">
+            <div id="TextContainer" className="w-[40%] pl-20 py-20">
+              <h1 className="text-[50px]">La trace d’un camp</h1>
+              <div className="font-body tracking-widest flex flex-col gap-5">
+                <p>
+                  Geoje fut plus qu’un camp. C’était un espace de tension, de survie, d’idéologie, de silence parfois. Un lieu où l’Histoire se croisait dans les gestes ordinaires : manger, obéir, attendre, chanter, croire, fuir.
+                  Les murs ont disparu depuis longtemps, engloutis par le temps, les reconstructions et les nécessités d’oublier. Mais les récits, eux, restent. Fragmentés, contradictoires, souvent inconfortables — ils survivent dans les photos, les lettres, les silences des survivants.
+                  Aujourd’hui, ce ne sont plus les barbelés qui enferment, mais les versions multiples de ce qui s’est vraiment passé. Chacun retient une image, une version, un détail.
+                </p>
+                <p>
+                  Alors…
+                </p>
+                <strong>
+                  Que reste-t-il d’un camp quand les murs tombent, mais que les mémoires restent divisées ?
+                </strong>
+              </div>
+            </div>
+            <VimeoPlayer videoId="1082043684" width="w-[40%]" portrait={true} />
+          </div>
+          <div id="section2">
 
-            </div>
-            <div id="vidoeContainer">
-              <VimeoPlayer videoId="1082043684" width="w-[40%]" />
-            </div>
           </div>
         </div>
       )
     default:
       return (
-        <div id="pageNotFound">
+        <div id="pageNotFound" className="h-screen flex flex-col justify-center items-center text-white">
           Page Not Found
+          <Button
+            label="Back to Home"
+            onClick={() => (window.location.href = "/")}
+          />
         </div>
       );
   }
