@@ -11,7 +11,7 @@ const buttonVariants = cva(
       intent: {
         primary: "mt-[2.5em] border-white border-1",
         secondary: "border-white border-1",
-        tertiary: "border-white border-1 bg-primary-1",
+        tertiary: "mt-[2.5em] border-white border-1 bg-primary-1",
         ghost: "mt-[2.5em] underline",
       },
       size: {
