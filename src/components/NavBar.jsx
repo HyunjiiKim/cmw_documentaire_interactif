@@ -188,7 +188,7 @@ export const TopNav = () => {
   }, [location.pathname, navT]);
 
   return (
-    <div id="TopNav" className="w-[calc(100%-120px)] z-10 ml-[120px] bg-black fixed  border-b-1 border-white px-4 z-50">
+    <div id="TopNav" className="w-[calc(100%-120px)] z-45 ml-[120px] bg-black fixed  border-b-1 border-white px-4">
       <div className="w-full flex justify-between items-center">
         <div className="flex items-center text-white gap-2 font-sans">
           <div id="menuBurger" className="cursor-pointer">

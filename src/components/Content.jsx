@@ -16,6 +16,11 @@ const Content = ({ chapter }) => {
 
   const mockData = "Maecenas tristique nunc ut lectus mattis, vel lacinia nulla accumsan. Integer ac elit nec ligula porta fringilla in pulvinar urna. Etiam maximus urna at risus consectetur convallis. Sed gravida elit ipsum, sed tempus lorem cursus ut. Sed urna dui, eleifend sit amet augue sit amet, tincidunt ullamcorper dolor. Aenean vel eros est. Maecenas quis commodo elit, sed tristique nunc. Suspendisse malesuada at eros a mollis. Sed sodales pretium venenatis. In ut sem euismod, elementum turpis non, convallis lectus. Duis porttitor, purus sit amet tincidunt egestas, ipsum nulla dapibus orci, vel sollicitudin odio justo laoreet velit. Praesent a nibh gravida, auctor est quis, fermentum enim. Sed gravida mi dolor, eget facilisis nisi varius nec. Duis quis dictum ex, a finibus quam. Morbi non fermentum eros. Suspendisse non auctor dui. Quisque id felis a magna viverra malesuada. Phasellus porta ligula vel felis eleifend gravida. Sed mauris tortor, mollis sit amet pellentesque ut, condimentum in eros. Mauris erat magna, imperdiet at ligula non, eleifend hendrerit velit. Donec pharetra molestie arcu, ac dapibus purus aliquet ut. Donec nec sem nisi. In vitae nisl quam. In hac habitasse platea dictumst. Fusce ullamcorper metus erat, eu aliquet felis dapibus ut. Donec ipsum quam, pellentesque a dolor vel, viverra ornare elit. Duis sagittis, nulla id bibendum congue, lorem est ullamcorper erat, at mattis tortor neque non est. Fusce maximus, ante ac molestie rhoncus, mauris augue dapibus metus, sit amet tempus ipsum nulla at turpis. Nunc semper pulvinar magna vel bibendum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin a purus velit. Maecenas auctor, nisl ut dictum placerat, ex enim egestas eros, ac ornare enim lorem in massa. Ut diam sem, tincidunt ac suscipit id, eleifend nec ante. Aenean sodales ultricies turpis ac fringilla. Phasellus ornare massa at felis cursus dapibus. Nunc nunc dui, dictum id lectus non, condimentum fermentum enim. Aliquam blandit arcu mauris, sed tempus augue vestibulum a. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus ultrices semper velit eget aliquet. Donec ut lorem mi. Quisque iaculis ex ut libero gravida rutrum. Vestibulum ultrices in lectus quis consequat. Morbi iaculis at justo at consectetur. Curabitur sodales sem sit amet est blandit convallis. Quisque sit amet eros malesuada, malesuada leo at, malesuada sem. Cras est lectus, iaculis in lobortis sit amet, varius in ligula. Vivamus eget erat finibus, maximus sem id, pulvinar lectus. Duis consectetur ipsum ut venenatis eleifend. Mauris suscipit turpis aliquet magna accumsan pulvinar. Praesent bibendum vitae nulla accumsan lacinia. Donec nisi ipsum, semper sit amet imperdiet vitae, auctor quis sem. Pellentesque at auctor velit, a mollis orci. In auctor, tellus sed viverra facilisis, augue dui mollis odio, nec scelerisque arcu ligula nec ante. Donec malesuada libero at enim bibendum euismod. Nam cursus lectus consectetur volutpat viverra. Etiam neque felis, dapibus eget orci vel, tristique sollicitudin mauris. Nunc purus massa, tristique ut mattis in, varius et elit. Etiam at aliquam sapien, non venenatis augue.";
 
+
+  /**
+   * Chapter 1 infos
+   */
+
   const imgMockData = [
     {
       id: 0,
@@ -93,8 +98,8 @@ const Content = ({ chapter }) => {
           console.log(`Observer: Changing activeSection from 'section2' to '${newActiveCandidate}'`);
           setActiveSection(newActiveCandidate);
         } else if (!activeSection && newActiveCandidate) { // If active section was empty
-           console.log(`Observer: Setting activeSection to '${newActiveCandidate}' (was empty)`);
-           setActiveSection(newActiveCandidate);
+          console.log(`Observer: Setting activeSection to '${newActiveCandidate}' (was empty)`);
+          setActiveSection(newActiveCandidate);
         }
       } else {
         // No sections are intersecting at the threshold
@@ -122,8 +127,8 @@ const Content = ({ chapter }) => {
   // Scroll handling for main container (mainRef) in Chapter 2
   useEffect(() => {
     const mainContainer = mainRef.current;
-    if (!mainContainer || chapter !== 'ch2') { 
-      if (mainContainer) mainContainer.style.scrollSnapType = 'y mandatory'; 
+    if (!mainContainer || chapter !== 'ch2') {
+      if (mainContainer) mainContainer.style.scrollSnapType = 'y mandatory';
       return;
     }
 
@@ -136,20 +141,20 @@ const Content = ({ chapter }) => {
           // If the event target is within the textbox, the textbox listener should handle it first.
           // This listener (handleMainScroll) should only act if the event was not stopped by the textbox.
           console.log("MainScroll: Event originated in textbox, deferring unless propagated.");
-          return; 
+          return;
         }
-        
+
         // If event is not from textbox or textbox allowed propagation:
         if (textBox) {
           const { scrollTop, scrollHeight, clientHeight } = textBox;
           const isTextBoxAtTop = scrollTop <= 0; // Use <= 0 for top
           const isTextBoxAtBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
 
-          if (e.deltaY < 0 && isTextBoxAtTop) { 
-            allowPageScroll = true; 
+          if (e.deltaY < 0 && isTextBoxAtTop) {
+            allowPageScroll = true;
             console.log("MainScroll: Allowing UP (textbox at top)");
-          } else if (e.deltaY > 0 && isTextBoxAtBottom) { 
-            allowPageScroll = true; 
+          } else if (e.deltaY > 0 && isTextBoxAtBottom) {
+            allowPageScroll = true;
             console.log("MainScroll: Allowing DOWN (textbox at bottom)");
           }
         } else {
@@ -165,20 +170,20 @@ const Content = ({ chapter }) => {
     };
 
     if (activeSection === 'section2') {
-      mainContainer.style.scrollSnapType = 'none'; 
+      mainContainer.style.scrollSnapType = 'none';
       mainContainer.addEventListener('wheel', handleMainScroll, { passive: false });
       console.log("MainScroll: Listener ADDED for section2. Snap: none.");
     } else {
-      mainContainer.style.scrollSnapType = 'y mandatory'; 
+      mainContainer.style.scrollSnapType = 'y mandatory';
       console.log("MainScroll: Listener INACTIVE for non-section2. Snap: y mandatory.");
     }
 
     return () => {
       mainContainer.removeEventListener('wheel', handleMainScroll);
-      mainContainer.style.scrollSnapType = 'y mandatory'; 
+      mainContainer.style.scrollSnapType = 'y mandatory';
       console.log("MainScroll: Listener REMOVED. Snap reset.");
     };
-  }, [activeSection, chapter]); 
+  }, [activeSection, chapter]);
 
   // Logic for the scrollable text box
   useEffect(() => {
@@ -189,7 +194,7 @@ const Content = ({ chapter }) => {
       if (activeSection === 'section2') {
         const { scrollTop, scrollHeight, clientHeight } = textBox;
         const isAtTop = scrollTop === 0;
-        const isAtBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight -2;
+        const isAtBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
 
         // If scrolling up at the top of the text box, or scrolling down at the bottom,
         // let the event bubble to the mainContainer.
@@ -220,6 +225,26 @@ const Content = ({ chapter }) => {
     t1("ch2.contents.2.para4"),
   ];
 
+  /**
+   * witness seciton 1 infos
+   */
+
+  // default pdv on section1 is null
+  const [showPdv, setShowPdv] = useState(null);
+
+  const witnessInfo = [
+    {
+      id: 'nk',
+      btnLabel: 'north korean version',
+      descripton: 'pdv of north korea. Hello'
+    },
+    {
+      id: 'us',
+      btnLabel: 'amerian version',
+      descripton: 'pdv of the US. Hello'
+    },
+  ]
+
   switch (chapter) {
     case "ch1":
       return (
@@ -249,7 +274,7 @@ const Content = ({ chapter }) => {
           </div>
           <div id="section3" className="relative my-10 py-5 h-screen">
             <h1 className="text-white-1 text-[175px]">WERNER</h1>
-            <HorizontalScroller data={imgMockData} custom={`asepct-square`} size='md' />
+            <HorizontalScroller data={imgMockData} custom={`asepct-square`} size="md" isMarquee={true} />
             <h1 className="text-white-1 text-[175px] absolute right-0">BISCHOF</h1>
             <div id="textContainer" className="font-body max-w-[425px] absolute bottom-0 left-10">
               {t1("ch1.section3.contents")}
@@ -318,30 +343,40 @@ const Content = ({ chapter }) => {
     case "witness":
       return (
         <div id="witness" className="text-white h-screen flex flex-col justify-center items-center">
-          Test
+          <div id="section1" className="h-screen flex flex-col">
+            <h1 className="3xl uppercase">qui écrit</h1>
+            <div id="buttonGroup" className="flex flex-col align-self-center">
+              {witnessInfo.map((item) => (
+                <Button label={item.btnLabel} key={item.id} />
+              ))}
+            </div>
+            <h1 className="3xl uppercase">l'histoire</h1>
+          </div>
+          <div id="section"></div>
+          <div id="section"></div>
+          <div id="section"></div>
         </div>
       );
     case "conclusion":
       return (
         <div id="conclusion" className="text-white">
-          <div id="section1" className="flex justify-between items-center">
-            <div id="TextContainer" className="w-[40%] pl-20 py-20">
+          <div id="section1" className="w-full py-10 px-10">
+            <div id="TextContainer" className="text-wrap">
               <h1 className="text-[50px]">La trace d’un camp</h1>
-              <div className="font-body tracking-widest flex flex-col gap-5">
+              <div className="font-body tracking-widest columns-2">
                 <p>
                   Geoje fut plus qu’un camp. C’était un espace de tension, de survie, d’idéologie, de silence parfois. Un lieu où l’Histoire se croisait dans les gestes ordinaires : manger, obéir, attendre, chanter, croire, fuir.
                   Les murs ont disparu depuis longtemps, engloutis par le temps, les reconstructions et les nécessités d’oublier. Mais les récits, eux, restent. Fragmentés, contradictoires, souvent inconfortables — ils survivent dans les photos, les lettres, les silences des survivants.
                   Aujourd’hui, ce ne sont plus les barbelés qui enferment, mais les versions multiples de ce qui s’est vraiment passé. Chacun retient une image, une version, un détail.
-                </p>
-                <p>
+                  <br />
                   Alors…
+                  <br />
+                  <strong>
+                    Que reste-t-il d’un camp quand les murs tombent, mais que les mémoires restent divisées ?
+                  </strong>
                 </p>
-                <strong>
-                  Que reste-t-il d’un camp quand les murs tombent, mais que les mémoires restent divisées ?
-                </strong>
               </div>
             </div>
-            <VimeoPlayer videoId="1082043684" width="w-[40%]" portrait={true} />
           </div>
           <div id="section2">
 
