@@ -41,7 +41,11 @@ const Button = ({ intent, size, custom, label, onClick }) => {
 export const ButtonWithIcon = ({ intent, size, custom, label, onClick }) => {
   return (
     <button
-      className={twMerge(buttonVariants({ intent, size }), custom)}
+      className={twMerge(
+        "flex flex-row gap-5",
+        buttonVariants({ intent, size }),
+        custom
+      )}
       onClick={onClick}
     >
       {label}

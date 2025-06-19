@@ -5,13 +5,14 @@ import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
 import { Section1 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
-import Button from "./Button";
+import Button, { ButtonWithIcon } from "./Button";
 import Credits from "./Credits";
 
 import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
 
 const Content = ({ chapter }) => {
+  const { t } = useTranslation("general");
   const { t: t1 } = useTranslation("contents");
 
   const mockData =
@@ -420,15 +421,25 @@ const Content = ({ chapter }) => {
             </div>
             <VimeoPlayer videoId="1082043684" width="w-[40%]" portrait={true} />
           </div>
-          <div id="section2" className="w-full pl-20 py-20 bg-tertiary-1">
+          <div
+            id="section2"
+            className="flex flex-col w-full pl-20 py-20 bg-tertiary-1"
+          >
             <Credits />
-            <h2 className="text-[50px] pt-20 pb-5">
-              {t1("conclu.contents.thanks")}
-            </h2>
-            <p className="font-body text-lg">
-              BOUREAU Pierre, BONZON Thierry, AUVRAY Mariette, LÉVY Stéphane,
-              ZORNINGER Sylvain.
-            </p>
+            <div id="thanks">
+              <h2 className="text-[50px] pt-20 pb-5">
+                {t1("conclu.contents.thanks")}
+              </h2>
+              <p className="font-body text-lg">
+                BOUREAU Pierre, BONZON Thierry, AUVRAY Mariette, LÉVY Stéphane,
+                ZORNINGER Sylvain.
+              </p>
+            </div>
+            <ButtonWithIcon
+              label={t("returnToHome")}
+              onClick={() => (window.location.href = "/")}
+              custom="self-end mr-20"
+            />
           </div>
         </div>
       );
@@ -440,7 +451,7 @@ const Content = ({ chapter }) => {
         >
           Page Not Found
           <Button
-            label="Back to Home"
+            label={t("returnToHome")}
             onClick={() => (window.location.href = "/")}
           />
         </div>
