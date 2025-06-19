@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
-import { Section1 } from "./ChapterContents/Sections";
+import { Section1, Section4 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
 import Button from "./Button";
 
@@ -255,10 +255,8 @@ const Content = ({ chapter }) => {
               {t1("ch1.section3.contents")}
             </div>
           </div>
-          <div id="section4" className="bg-white-1 px-10 py-10 m-0">
-            <h1 className="text-black text-[50px] text-shadow-lg/20 text-shadow-black uppercase">Le travail de mémoire à Geoje</h1>
-            <div id="pageContainer">
-            </div>
+          <div id="section4Container">
+            <Section4 />
           </div>
         </div>
       );
