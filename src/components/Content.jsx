@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
-import { Section1 } from "./ChapterContents/Sections";
+import { Section1, Section4 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
 import Button from "./Button";
 
@@ -48,6 +48,14 @@ const Content = ({ chapter }) => {
       alt: "",
     },
   ];
+
+  const ch1s4 = {
+    title: t1("ch1.section4.title"),
+    description: [
+      t1("ch1.section4.description.1"),
+      t1("ch1.section4.description.2"),
+    ]
+  }
 
 
   /**
@@ -225,6 +233,18 @@ const Content = ({ chapter }) => {
     t1("ch2.contents.2.para4"),
   ];
 
+  const ch2s4 = {
+    title: t1("ch2.contents.4.title"),
+    description: [
+      t1("ch2.contents.4.description.1"),
+      t1("ch2.contents.4.description.2"),
+      t1("ch2.contents.4.description.3"),
+      t1("ch2.contents.4.description.4"),
+      t1("ch2.contents.4.description.5"),
+    ]
+  }
+
+
   /**
    * witness seciton 1 infos
    */
@@ -280,10 +300,8 @@ const Content = ({ chapter }) => {
               {t1("ch1.section3.contents")}
             </div>
           </div>
-          <div id="section4" className="bg-white-1 px-10 py-10 m-0">
-            <h1 className="text-black text-[50px] text-shadow-lg/20 text-shadow-black uppercase">Le travail de mémoire à Geoje</h1>
-            <div id="pageContainer">
-            </div>
+          <div id="section4Container">
+            <Section4 content={ch1s4} />
           </div>
         </div>
       );
@@ -316,9 +334,7 @@ const Content = ({ chapter }) => {
             <p>Section3</p>
           </div>
           <div id="section4" ref={section4Ref} className="bg-white-1 px-10 py-10 m-0">
-            <h1 className="text-black text-[50px] text-shadow-lg/20 text-shadow-black uppercase">Le travail de mémoire à Geoje</h1>
-            <div id="pageContainer">
-            </div>
+            <Section4 content={ch2s4} />
           </div>
         </div>
       );
@@ -342,15 +358,15 @@ const Content = ({ chapter }) => {
       );
     case "witness":
       return (
-        <div id="witness" className="text-white h-screen flex flex-col justify-center items-center">
-          <div id="section1" className="h-screen flex flex-col">
-            <h1 className="3xl uppercase">qui écrit</h1>
-            <div id="buttonGroup" className="flex flex-col align-self-center">
+        <div id="witness" className="px-10 py-10 text-white">
+          <div id="section1" className="h-screen flex flex-col mx-20 gap-5">
+            <h1 className="text-7xl uppercase">qui écrit</h1>
+            <div id="buttonGroup" className="flex flex-col self-center items-center">
               {witnessInfo.map((item) => (
                 <Button label={item.btnLabel} key={item.id} />
               ))}
             </div>
-            <h1 className="3xl uppercase">l'histoire</h1>
+            <h1 className="text-7xl uppercase self-end">l'histoire</h1>
           </div>
           <div id="section"></div>
           <div id="section"></div>
@@ -359,7 +375,7 @@ const Content = ({ chapter }) => {
       );
     case "conclusion":
       return (
-        <div id="conclusion" className="text-white">
+        <div id="conclusion" className="px-10 py-10 text-white">
           <div id="section1" className="w-full py-10 px-10">
             <div id="TextContainer" className="text-wrap">
               <h1 className="text-[50px]">La trace d’un camp</h1>

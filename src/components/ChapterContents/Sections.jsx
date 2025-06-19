@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { VimeoPlayer } from "../VideoPlayer";
 import Button from "../Button";
+import { DotsContainer } from "../Container";
 
 export const Section1 = ({ vimeoId }) => {
     // check if VimeoPlayer finished or not
@@ -33,6 +34,26 @@ export const Section1 = ({ vimeoId }) => {
                     </div>
                 )
             }
+        </div>
+    )
+}
+
+export const Section4 = ({ content }) => {
+    return (
+        <div id="section4">
+            <div id="contentContainer" className="bg-white-1 px-10 py-10 m-0 text-black ">
+                <h2 className="text-[50px] text-shadow-lg/20 text-shadow-black uppercase">{content.title}</h2>
+                <div id="description" className="columns-2 font-body text-lg">
+                    {content.description.map((item, index) => (
+                        <p key={index}>{item}</p>
+                    ))}
+                </div>
+            </div>
+            {/* <DotsContainer sections={content.pages} activeSection={content.pages[0].id} /> */}
+            <div id="buttonGroup">
+                <Button label="Next Chapter" />
+
+            </div>
         </div>
     )
 }

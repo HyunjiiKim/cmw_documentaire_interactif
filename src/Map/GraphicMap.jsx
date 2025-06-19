@@ -47,7 +47,7 @@ const GraphicMap = () => {
         phaserGameRef.current = null;
       }
     };
-  }, [1200, 800, navigate]);
+  }, [window.innerWidth, window.innerHeight, navigate]);
 
   return (
     <div

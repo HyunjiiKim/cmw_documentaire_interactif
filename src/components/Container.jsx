@@ -70,10 +70,24 @@ export const FlagContainer = ({ src, alt, onClick, isActive }) => {
         alt={alt}
         onClick={onClick}
         className={`w-10 h-10 rounded-full cursor-pointer border-2 border-secondary-1 object-cover
-         saturate-0 hover:saturate-100 hover:scale-120 ${
-           isActive ? "saturate-100" : ""
-         }`}
+         saturate-0 hover:saturate-100 hover:scale-120 ${isActive ? "saturate-100" : ""
+          }`}
       />
     </>
+  );
+};
+
+// DotsContainer component for page/section navigation indicator
+export const DotsContainer = ({ sections, activeSection, isVertical=true }) => {
+  return (
+    <div className={`flex gap-3 ${isVertical ? 'flex-col' : 'flex-row'} items-center`}>
+      {sections.map((section, idx) => (
+        <span
+          key={section.id}
+          className={`w-3 h-3 rounded-full transition-all duration-200 border border-white ${activeSection === section.id ? 'bg-white scale-125' : 'bg-transparent'
+            }`}
+        />
+      ))}
+    </div>
   );
 };
