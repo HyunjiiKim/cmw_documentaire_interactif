@@ -1,13 +1,14 @@
 {
   "name": {
-    "pre": "mémoire",
-    "post": "captive"
+    "pre": "mémoires",
+    "post": "captives"
   },
   "footer": "Camp de Geoje",
   "start": "Commencer",
   "watch": "Visionner le documentaire",
   "map": "Explorer la carte",
   "returnToMap": "Retour à la carte",
+  "returnToHome": "Retournez à l'accueil",
   "Rotate": "Faire pivoter l'écran sur votre appareil",
   "loading": "Veuillez patienter...",
   "notAvailable": "Ce contenu sera bientôt disponible.",

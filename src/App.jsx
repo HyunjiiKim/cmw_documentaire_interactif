@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Map from "./pages/Map";
 import View from "./pages/View";
 import Documentary from "./pages/Documentary";
+import Archives from "./pages/Archives";
 
 // components
 import { HorizontalNav, TopNav } from "./components/NavBar";
@@ -15,7 +16,9 @@ import Test from "./pages/test";
 function App() {
   return (
     <Router>
-      {location.pathname !== "/documentary" && <HorizontalNav />}
+      {location.pathname !== "/documentary" && location.pathname !== "/" && (
+        <HorizontalNav />
+      )}
       {location.pathname !== "/" && <TopNav />}
       <Routes>
         <Route path="/test" element={<Test />} />
@@ -23,8 +26,8 @@ function App() {
         <Route path="/map" element={<Map />} />
         <Route path="/documentary" element={<Documentary />} />
         <Route path="/view/:id" element={<View />} />
+        <Route path="/archives" element={<Archives />} />
       </Routes>
-      
     </Router>
   );
 }
