@@ -62,9 +62,25 @@
           "5": "The challenge lies in this delicate balance: how to preserve the duty of remembrance, respect for the victims, and historical depth, while responding to a demand from tourism and education that often prioritizes immediacy and sensory experience?"
         }
       }
+    }
+  },
+  "ch3": {
+    "title": "Chapter 3"
+  },
+  "conclu": {
+    "title": "Conclusion",
+    "contents": {
+      "subtitle": "The Trace of a Camp",
+      "1": "Geoje was more than a camp. It was a space of tension, survival, ideology, and at times, silence. A place where History intersected with ordinary actions: eating, obeying, waiting, singing, believing, fleeing. The walls have long since disappeared, swallowed by time, reconstructions, and the need to forget. But the stories remain. Fragmented, contradictory, often uncomfortable—they survive in photos, letters, and the silences of survivors. Today, it is no longer the barbed wire that confines, but the multiple versions of what really happened. Everyone holds on to an image, a version, a detail.",
+      "2": "So...",
+      "3": "What remains of a camp when the walls fall, but memories remain divided?"
     },
-    "ch3": {
-      "title": "Chapter 3"
+    "credit": {
+      "title": "References and Credits",
+      "legend": "A number of ideas are the result of the team's personal reflections. Other sources are more readily available."
+    },
+    "thanks": {
+      "title": "Acknowledgements"
     }
   }
 }
