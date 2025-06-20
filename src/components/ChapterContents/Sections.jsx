@@ -61,19 +61,27 @@ export const Section4 = ({ content }) => {
 /**
  * This allows to render image with description when clicking
  */
-export const clickImage = ({ content }) => {
+export const ClickImage = ({ content={} }) => {
 
     const [remover, setRemover] = useState(false);
+    const [showDescription, setShowDescription] = useState(false);
 
     return (
-        <div id="clickImage" className="relative">
+        <div id="clickImage" className="relative w-full h-full">
             {!remover && (
-                <div id="grayfilter" className="z-10 bg-black/30 w-full h-full absolute top-0 left-0" />
+                <div id="grayfilter" className="z-10 bg-black/70 w-full h-full absolute top-0 left-0" />
             )}
-            <img src={content.img} name={content.name} className="w-full h-full object-cover" />
+            <img src={content.img} alt={content.name} className="w-full h-full object-cover" />
             <ButtonWithIcon
-                onClick={() => { setRemover(true) }}
-                custom={`absolute z-15 ${remover ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" : `${content.position}`}`} />
+                onClick={remover ? () => setShowDescription(!showDescription) : () => setRemover(true)}
+                custom={`absolute z-20 ${!remover ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" : `${content.position}`}`} />
+                {showDescription && (
+                    <div id="description" className="absolute bottom-10 left-10 z-30 border border-primary-1 bg-tertiary-1 text-white px-10 py-10">
+                        <h4 className="text-lg uppercase">{content.name}</h4>
+                        <hr className="w-10 border-primary-1 border-2 my-2" />
+                        <p className="text-sm font-body">{content.description}</p>
+                    </div>
+                )}
         </div>
     )
 }

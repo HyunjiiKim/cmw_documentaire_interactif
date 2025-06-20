@@ -3,43 +3,43 @@ import Phaser, { Tilemaps } from "phaser";
 const mapElementsData = [
   {
     id: "intro",
-    x: window.innerWidth/2,
-    y: window.innerHeight-200,
+    x: window.innerWidth / 2,
+    y: window.innerHeight-100,
     asset: "introBefore",
     name: "intro",
-    targetWidth: 400,
-    hover: { asset:"introAfter", alpha: 0.7, yOffset: -5, scaleFactor: 0.4, tint: 0xffefc4 },
+    targetWidth: 200,
+    hover: { asset: "introAfter", alpha: 0.7, yOffset: -5, scaleFactor: 0.4, tint: 0xffefc4 },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },
   {
     id: "ch1",
-    x: window.innerWidth/2,
-    y: window.innerHeight/4,
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2,
     asset: "chapter1Before",
     name: "ch1",
-    targetWidth: 400,
+    targetWidth: 300,
     path: "/view/ch1",
     hover: { asset: "chapter1After", alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },
   {
     id: "ch2",
-    x: window.innerWidth/4,
-    y: window.innerHeight/2,
+    x: window.innerWidth / 4,
+    y: window.innerHeight / 2,
     asset: "chapter2Before",
     name: "ch2",
-    targetWidth: 400,
+    targetWidth: 200,
     path: "/view/ch2",
     hover: { asset: "chapter2After", alpha: 0.7, yOffset: -8, scaleFactor: 1, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },
   {
     id: "ch3",
-    x: window.innerWidth-200,
-    y: window.innerHeight/2,
+    x: window.innerWidth - 200,
+    y: window.innerHeight / 2,
     asset: "chapter3Before",
     name: "ch3",
-    targetWidth: window.innerWidth/6,
+    targetWidth: window.innerWidth / 6,
     path: "/view/ch3",
     hover: { asset: "chapter3After", alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
@@ -58,8 +58,7 @@ export class MapScene extends Phaser.Scene {
 
   preload() {
     // tile set
-    this.load.image("mapBackground", "/assets/img/mapBg.png");
-    this.load.image("tileset", "/assets/img/tileset.png")
+    this.load.image("mapBackground", "/assets/img/background.png");
     // introduction graphic elements
     this.load.image("introBefore", "/assets/img/introBefore.png");
     this.load.image("introAfter", "/assets/img/introAfter.png");
@@ -77,13 +76,27 @@ export class MapScene extends Phaser.Scene {
 
   create() {
 
-    // Add background image, centered
-    this.add.image(
-      this.cameras.main.centerX,
-      this.cameras.main.centerY,
-      "tileset"
+    // Add and scale the background
+    const { width: gameWidth, height: gameHeight } = this.scale;
+    const mapBackground = this.add.image(
+      gameWidth / 2,
+      gameHeight / 2,
+      "mapBackground"
     );
 
+    const bgTexture = this.textures.get("mapBackground");
+    const { width: imageWidth, height: imageHeight } = bgTexture.getSourceImage();
+
+    const gameRatio = gameWidth / gameHeight;
+    const imageRatio = imageWidth / imageHeight;
+
+    // If the game screen is wider than the image, scale by width.
+    // Otherwise, scale by height. This ensures the image "covers" the screen.
+    if (gameRatio > imageRatio) {
+      mapBackground.setScale(gameWidth / imageWidth);
+    } else {
+      mapBackground.setScale(gameHeight / imageHeight);
+    }
     // Iterate over the data to create each map element (building)
     mapElementsData.forEach((data) => {
       // default information

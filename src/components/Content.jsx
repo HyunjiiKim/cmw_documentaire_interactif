@@ -3,12 +3,26 @@ import { useState, useEffect, useRef } from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
-import { Section1, Section4 } from "./ChapterContents/Sections";
+import { ClickImage, Section1, Section4 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
 import Button from "./Button";
 
 import C1S2 from "/assets/img/ch1sec2.png";
+import C1S3E1 from "/assets/img/marquee1.jpg";
+import C1S3E2 from "/assets/img/marquee2.jpg";
+import C1S3E3 from "/assets/img/marquee3.jpg";
+import C1S3E4 from "/assets/img/marquee4.jpeg";
+import C1S3E5 from "/assets/img/marquee5.jpeg";
+import C1S3E6 from "/assets/img/marquee6.jpeg";
+import C1S3E7 from "/assets/img/marquee7.jpeg";
+import C1S3E8 from "/assets/img/marquee8.jpg";
+import C1S3E9 from "/assets/img/marquee9.jpg";
+import C1S3E10 from "/assets/img/marquee10.jpeg";
+import C1S3E11 from "/assets/img/marquee11.jpeg";
 import C2S2 from "/assets/img/ch2sec2.png";
+import C2S3E1 from "/assets/img/zones_camp03.png";
+import C2S3E2 from "/assets/img/zones_camp01.png";
+import C2S3E3 from "/assets/img/reconstitution04.png";
 
 const Content = ({ chapter }) => {
 
@@ -24,27 +38,57 @@ const Content = ({ chapter }) => {
   const imgMockData = [
     {
       id: 0,
-      src: "https://picsum.photos/200",
+      src: C1S3E1,
       alt: "",
     },
     {
       id: 1,
-      src: "https://picsum.photos/200",
+      src: C1S3E2,
       alt: "",
     },
     {
       id: 2,
-      src: "https://picsum.photos/200",
+      src: C1S3E3,
       alt: "",
     },
     {
       id: 3,
-      src: "https://picsum.photos/200",
+      src: C1S3E4,
       alt: "",
     },
     {
       id: 4,
-      src: "https://picsum.photos/200",
+      src: C1S3E5,
+      alt: "",
+    },
+    {
+      id: 5,
+      src: C1S3E6,
+      alt: "",
+    },
+    {
+      id: 6,
+      src: C1S3E7,
+      alt: "",
+    },
+    {
+      id: 7,
+      src: C1S3E8,
+      alt: "",
+    },
+    {
+      id: 8,
+      src: C1S3E9,
+      alt: "",
+    },
+    {
+      id: 9,
+      src: C1S3E10,
+      alt: "",
+    },
+    {
+      id: 10,
+      src: C1S3E11,
       alt: "",
     },
   ];
@@ -272,20 +316,23 @@ const Content = ({ chapter }) => {
   const ch3s3Images = [
     {
       id: 0,
-      name: "", // img alt
-      img: "", // img src
+      name: t1("ch2.contents.3.el1.title"), // img alt
+      img: C2S3E1, // img src
+      description: t1("ch2.contents.3.el1.description"),
       position: "bottom-20 left-30",
     },
     {
-      id: 0,
-      name: "", // img alt
-      img: "", // img src
+      id: 1,
+      name: t1("ch2.contents.3.el2.title"), // img alt
+      img: C2S3E2, // img src
+      description: t1("ch2.contents.3.el2.description"),
       position: "bottom-20 left-30",
     },
     {
-      id: 0,
-      name: "", // img alt
-      img: "", // img src
+      id: 2,
+      name: t1("ch2.contents.3.el3.title"), // img alt
+      img: C2S3E3, // img src
+      description: t1("ch2.contents.3.el3.description"),
       position: "bottom-20 left-30",
     }
   ]
@@ -334,7 +381,7 @@ const Content = ({ chapter }) => {
       return (
         <div id="ch2" className="flex flex-col text-white gap-10 h-full overflow-y-scroll" ref={mainRef}>
           <div id="section1" ref={section1Ref}>
-            <Section1 vimeoId={1082043684} />
+            <Section1 vimeoId={"1082043684"} />
           </div>
           <div id="section2" ref={section2Ref} className="flex flex-col relative h-screen">
             <img src={C2S2} alt="background" className="w-full h-full object-cover" />
@@ -356,7 +403,14 @@ const Content = ({ chapter }) => {
             />
           </div>
           <div id="section3" ref={section3Ref} className="relative h-screen">
-            <p>Section3</p>
+            {ch3s3Images[0] &&
+              <ClickImage
+                src={ch3s3Images[0].img}
+                alt={ch3s3Images[0].name}
+                position={ch3s3Images[0].position}
+                description={ch3s3Images[0].description}
+              />
+            }
           </div>
           <div id="section4" ref={section4Ref} className="bg-white-1 px-10 py-10 m-0">
             <Section4 content={ch2s4} />
