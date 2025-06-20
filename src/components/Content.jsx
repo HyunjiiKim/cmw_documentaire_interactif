@@ -9,10 +9,12 @@ import Button from "./Button";
 
 import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
+import Credits from "./Credits";
 
 const Content = ({ chapter }) => {
 
   const { t: t1 } = useTranslation("contents");
+  const { t: t2 } = useTranslation("general");
 
   const mockData = "Maecenas tristique nunc ut lectus mattis, vel lacinia nulla accumsan. Integer ac elit nec ligula porta fringilla in pulvinar urna. Etiam maximus urna at risus consectetur convallis. Sed gravida elit ipsum, sed tempus lorem cursus ut. Sed urna dui, eleifend sit amet augue sit amet, tincidunt ullamcorper dolor. Aenean vel eros est. Maecenas quis commodo elit, sed tristique nunc. Suspendisse malesuada at eros a mollis. Sed sodales pretium venenatis. In ut sem euismod, elementum turpis non, convallis lectus. Duis porttitor, purus sit amet tincidunt egestas, ipsum nulla dapibus orci, vel sollicitudin odio justo laoreet velit. Praesent a nibh gravida, auctor est quis, fermentum enim. Sed gravida mi dolor, eget facilisis nisi varius nec. Duis quis dictum ex, a finibus quam. Morbi non fermentum eros. Suspendisse non auctor dui. Quisque id felis a magna viverra malesuada. Phasellus porta ligula vel felis eleifend gravida. Sed mauris tortor, mollis sit amet pellentesque ut, condimentum in eros. Mauris erat magna, imperdiet at ligula non, eleifend hendrerit velit. Donec pharetra molestie arcu, ac dapibus purus aliquet ut. Donec nec sem nisi. In vitae nisl quam. In hac habitasse platea dictumst. Fusce ullamcorper metus erat, eu aliquet felis dapibus ut. Donec ipsum quam, pellentesque a dolor vel, viverra ornare elit. Duis sagittis, nulla id bibendum congue, lorem est ullamcorper erat, at mattis tortor neque non est. Fusce maximus, ante ac molestie rhoncus, mauris augue dapibus metus, sit amet tempus ipsum nulla at turpis. Nunc semper pulvinar magna vel bibendum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin a purus velit. Maecenas auctor, nisl ut dictum placerat, ex enim egestas eros, ac ornare enim lorem in massa. Ut diam sem, tincidunt ac suscipit id, eleifend nec ante. Aenean sodales ultricies turpis ac fringilla. Phasellus ornare massa at felis cursus dapibus. Nunc nunc dui, dictum id lectus non, condimentum fermentum enim. Aliquam blandit arcu mauris, sed tempus augue vestibulum a. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus ultrices semper velit eget aliquet. Donec ut lorem mi. Quisque iaculis ex ut libero gravida rutrum. Vestibulum ultrices in lectus quis consequat. Morbi iaculis at justo at consectetur. Curabitur sodales sem sit amet est blandit convallis. Quisque sit amet eros malesuada, malesuada leo at, malesuada sem. Cras est lectus, iaculis in lobortis sit amet, varius in ligula. Vivamus eget erat finibus, maximus sem id, pulvinar lectus. Duis consectetur ipsum ut venenatis eleifend. Mauris suscipit turpis aliquet magna accumsan pulvinar. Praesent bibendum vitae nulla accumsan lacinia. Donec nisi ipsum, semper sit amet imperdiet vitae, auctor quis sem. Pellentesque at auctor velit, a mollis orci. In auctor, tellus sed viverra facilisis, augue dui mollis odio, nec scelerisque arcu ligula nec ante. Donec malesuada libero at enim bibendum euismod. Nam cursus lectus consectetur volutpat viverra. Etiam neque felis, dapibus eget orci vel, tristique sollicitudin mauris. Nunc purus massa, tristique ut mattis in, varius et elit. Etiam at aliquam sapien, non venenatis augue.";
 
@@ -399,28 +401,43 @@ const Content = ({ chapter }) => {
       );
     case "conclusion":
       return (
-        <div id="conclusion" className="px-10 py-10 text-white">
+        <div id="conclusion" className="px-10 py-10 text-white flex flex-col gap-10">
           <div id="section1" className="w-full py-10 px-10">
             <div id="TextContainer" className="text-wrap">
-              <h1 className="text-[50px]">La trace d’un camp</h1>
+              <h1 className="text-[50px] my-5">{t1("conclu.contents.subtitle")}</h1>
               <div className="font-body tracking-widest columns-2">
                 <p>
-                  Geoje fut plus qu’un camp. C’était un espace de tension, de survie, d’idéologie, de silence parfois. Un lieu où l’Histoire se croisait dans les gestes ordinaires : manger, obéir, attendre, chanter, croire, fuir.
-                  Les murs ont disparu depuis longtemps, engloutis par le temps, les reconstructions et les nécessités d’oublier. Mais les récits, eux, restent. Fragmentés, contradictoires, souvent inconfortables — ils survivent dans les photos, les lettres, les silences des survivants.
-                  Aujourd’hui, ce ne sont plus les barbelés qui enferment, mais les versions multiples de ce qui s’est vraiment passé. Chacun retient une image, une version, un détail.
+                  {t1("conclu.contents.1")}
                   <br />
-                  Alors…
+                  <br />
+                  {t1("conclu.contents.2")}
+                  <br />
                   <br />
                   <strong>
-                    Que reste-t-il d’un camp quand les murs tombent, mais que les mémoires restent divisées ?
+                    {t1("conclu.contents.3")}
                   </strong>
                 </p>
               </div>
             </div>
           </div>
           <div id="section2">
-
+            <Credits />
           </div>
+          <div id="section3" className="flex flex-col gap-10">
+            <h1 className="uppercase text-6xl">{t1("conclu.thanks.title")}</h1>
+            <ol className="flex gap-5 font-body text-lg">
+              <li>BOUREAU Pierre</li>
+              <li>BONZON Thierry</li>
+              <li>AUVRAY Mariette</li>
+              <li>LÉVY Stéphane</li>
+              <li>ZORNINGER Sylvain.</li>
+            </ol>
+          </div>
+          <Button
+            label={t2("returnToHome")}
+            onClick={() => (window.location.href = "/")}
+            custom="self-end"
+          />
         </div>
       )
     default:
@@ -428,7 +445,7 @@ const Content = ({ chapter }) => {
         <div id="pageNotFound" className="h-screen flex flex-col justify-center items-center text-white">
           Page Not Found
           <Button
-            label="Back to Home"
+            label={t2("returnToHome")}
             onClick={() => (window.location.href = "/")}
           />
         </div>
