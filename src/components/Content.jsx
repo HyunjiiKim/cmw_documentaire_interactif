@@ -297,7 +297,7 @@ const Content = ({ chapter }) => {
       return (
         <div id="ch1" className="mt-10 flex flex-col text-white gap-15">
           <div id="section1Container" className="h-full">
-            <Section1 vimeoId={1082043684} />
+            <Section1 vimeoId={1095028297} />
           </div>
           <div id="section2" className="flex flex-col relative h-[150vh]">
             <img src={C1S2} alt="" className="z-0 absolute h-full max-w-[700px] w-[60%] left-1/2 -translate-x-1/2" />
@@ -336,7 +336,7 @@ const Content = ({ chapter }) => {
       return (
         <div id="ch2" className="flex flex-col text-white gap-10 h-full overflow-y-scroll" ref={mainRef}>
           <div id="section1" ref={section1Ref}>
-            <Section1 vimeoId={1082043684} />
+            <Section1 vimeoId={1095029681} />
           </div>
           <div id="section2" ref={section2Ref} className="flex flex-col relative h-screen">
             <img src={C2S2} alt="background" className="w-full h-full object-cover" />
@@ -369,7 +369,7 @@ const Content = ({ chapter }) => {
       return (
         <div className="px-10 py-10 text-white">
           <div id="section1" className="h-screen">
-            <Section1 vimeoId={1082043684} />
+            <Section1 vimeoId={1095030761} />
           </div>
           <div id="section2" className="h-screen flex flex-col justify-center items-center">
             <h1 className="text-center w-[80%] text-[40px]">
