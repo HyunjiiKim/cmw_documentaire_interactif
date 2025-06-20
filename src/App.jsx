@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Map from "./pages/Map";
 import View from "./pages/View";
 import Documentary from "./pages/Documentary";
-// import Test from "./pages/test";
+import Archives from "./pages/Archives";
 
 // components
 import { HorizontalNav, TopNav } from "./components/NavBar";
@@ -27,6 +27,7 @@ function App() {
         <Route path="/map" element={<Map />} />
         <Route path="/documentary" element={<Documentary />} />
         <Route path="/view/:id" element={<View />} />
+        <Route path="/archives" element={<Archives />} />
       </Routes>
     </Router>
   );

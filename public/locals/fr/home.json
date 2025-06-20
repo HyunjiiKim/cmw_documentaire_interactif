@@ -18,5 +18,10 @@
       "part1": "L’île de Geoje",
       "part2": "et le camp de prisonniers"
     }
-  }
+  },
+  "quote": "J’ai été fait prisonnier à 17 ans. Je suis sorti du camp à 20, en franchissant les barbelés à l’aube.",
+  "author": "— Oh Eun-seo, ancien prisonnier de guerre anticommuniste au camp de Geoje",
+  "enter": "Entrer sur le site",
+  "skip": "Passer l'intro",
+  "loading": "Chargement..."
 }
