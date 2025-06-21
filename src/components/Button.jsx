@@ -13,6 +13,7 @@ const buttonVariants = cva(
         secondary: "border-white border-1",
         tertiary: "mt-[2.5em] border-white border-1 bg-primary-1",
         ghost: "mt-[2.5em] underline",
+        disabled: "mt-[2.5em] border-white border-1 opacity-50",
       },
       size: {
         small: "px-[20px] py-[10px] text-sm",
@@ -27,11 +28,12 @@ const buttonVariants = cva(
   }
 );
 
-const Button = ({ intent, size, custom, label, onClick }) => {
+const Button = ({ intent, size, custom, label, onClick, disabled }) => {
   return (
     <button
       className={twMerge(buttonVariants({ intent, size }), custom)}
       onClick={onClick}
+      disabled={disabled}
     >
       {label}
     </button>

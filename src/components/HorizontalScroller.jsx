@@ -18,24 +18,21 @@ const HorizontalScroller = ({ data, custom, size, isMarquee = false }) => {
   );
 };
 
-export const GalleryImg = ({ data, custom, size, category }) => {
-  const filteredDataImg =
-    category !== "none"
-      ? data.filter((item) => item.category === category)
-      : data;
-
+export const GalleryImg = ({ data, custom, size }) => {
   return (
     <>
-      <div className="mt-10 mb-10 flex flex-row flex-wrap gap-5 h-90">
-        {filteredDataImg.map((item) => (
+      <div className="mt-10 mb-10 flex flex-row flex-wrap gap-5">
+        {data.map((item) => (
           <ImageContainer
             key={item.id}
             src={item.src}
             alt={item.alt}
+            category={item.category}
+            source={item.source}
             size={size}
             intent="gallery"
             border="none"
-            custom={`${custom} shadow-md/25 flex-none`}
+            custom={`${custom} shadow-md/25`}
           />
         ))}
       </div>
@@ -43,21 +40,18 @@ export const GalleryImg = ({ data, custom, size, category }) => {
   );
 };
 
-export const GalleryVid = ({ data, custom, size, category }) => {
-  const filteredDataVid =
-    category !== "none"
-      ? data.filter((item) => item.category === category)
-      : data;
-
+export const GalleryVid = ({ data, custom, size }) => {
   return (
-    <div className="mt-10 mb-10 flex flex-row flex-wrap gap-4 h-65">
-      {filteredDataVid.map((item) => (
+    <div className="mt-10 mb-10 flex flex-row flex-wrap gap-4">
+      {data.map((item) => (
         <VideoContainer
           key={item.id}
           src={item.src}
           alt={item.alt}
+          category={item.category}
+          source={item.source}
           size={size}
-          custom={`${custom} shadow-md/25 flex-none`}
+          custom={`${custom} shadow-md/25`}
         />
       ))}
     </div>

@@ -1,7 +1,6 @@
-AddType text/javascript .js
+<!-- AddType text/javascript .js
 AddType text/css .css
-AddType text/html .html
-
+AddType text/html .html -->
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /

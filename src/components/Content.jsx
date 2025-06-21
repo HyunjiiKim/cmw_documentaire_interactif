@@ -271,28 +271,26 @@ const Content = ({ chapter }) => {
    * ch3 section 3 
    */
 
+  const [c3s3, setC3s3] = useState(0);
+
   const ch3s3Images = [
     {
+      id: 0,
+      name: "test1 ", // img alt
+      img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/zones_camp03.png", // img src
+      position: "bottom-20 left-30",
+    },
+    {
       id: 1,
-      name: "Test", // img alt
-      img: "https://storage.googleapis.com/cmw-geoje-src/img/Chinese_and_North_Korean_POWs_at_camp_in_Pusan.JPEG", // img src
-      description: "test",
-      top: 0,
-      left: 0,
+      name: "test2", // img alt
+      img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/zones_camp01.png", // img src
+      position: "bottom-20 left-30",
     },
     {
       id: 2,
-      name: "", // img alt
-      img: "", // img src
-      top: 30,
-      left: 30,
-    },
-    {
-      id: 3,
-      name: "", // img alt
-      img: "", // img src
-      top: 20,
-      left: 30,
+      name: "test3", // img alt
+      img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/reconstitution04.png", // img src
+      position: "bottom-20 left-30",
     }
   ]
 
@@ -361,10 +359,13 @@ const Content = ({ chapter }) => {
               custom={"absolute bottom-10 right-10"}
             />
           </div>
-          <div id="section3" ref={section3Ref} className="h-screen w-full relative">
-            <ClickImage
-              content={ch3s3Images[0]}
-            />
+          <div id="section3" ref={section3Ref} className="relative h-screen">
+            <ol className="flex gap-10 absolute text-3xl">
+              {ch3s3Images.map((it, id) => (
+                <li key={id} onClick={() => setC3s3(id)} className="cursor-pointer">{it.name}</li>
+              ))}
+            </ol>
+            <ClickImage content={ch3s3Images[c3s3]} />
           </div>
           <div id="section4" ref={section4Ref} className="bg-white-1 px-10 py-10 m-0">
             <Section4 content={ch2s4} />
@@ -384,13 +385,13 @@ const Content = ({ chapter }) => {
             </h1>
             <Button label="voir le témoignage" custom="uppercase" onClick={() => window.location.href = "./witness"} />
           </div>
-          <div id="section3" className="h-screen w-full">
+          <div id="section3" className="h-screen">
           </div>
         </div >
       );
     case "witness":
       return (
-        <div id="witness" className="px-10 py-10 text-white">
+        <div id="witness" clas sName="px-10 py-10 text-white">
           <div id="section1" className="h-screen flex flex-col mx-20 gap-5">
             <h1 className="text-7xl uppercase">qui écrit</h1>
             <div id="buttonGroup" className="flex flex-col self-center items-center">

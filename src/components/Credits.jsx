@@ -22,8 +22,8 @@ export const Credits = () => {
   }
 
   return (
-    <>
-      <h2 className="text-white uppercase text-[50px]">
+    <div className="flex flex-col items-center">
+      <h2 className="text-white uppercase text-[50px] self-start">
         {t2("conclu.credit.title")}
       </h2>
       <div id="navCredits" className="flex pr-20 justify-between gap-7">
@@ -58,7 +58,7 @@ export const Credits = () => {
       </div>
       <div
         id="contentCredits"
-        className="flex flex-col mt-10 mr-20 p-10 border-1 border-white max-w-[600px]"
+        className="flex flex-col mt-10 mr-20 p-10 border-1 border-white max-w-[1000px]"
       >
         <img
           src="../assets/icons/close.svg"
@@ -101,7 +101,7 @@ export const Credits = () => {
                 non-traduit :{" "}
                 <a
                   href="https://books.google.fr/books?hl=fr&lr=&id=sJ0PYNGhwe0C&oi=fnd&pg=PA236&dq=camp+de+geoje+&ots=irefRf2VY4&sig=feaAIY5LEnb2H-SoH83HgClkI_8&redir_esc=y#v=onepage&q=camp%20de%20geoje&f=false"
-                  className="underline"
+                  className="underline wrap-break-word text-wrap"
                 >
                   https://books.google.fr/books?hl=fr&lr=&id=sJ0PYNGhwe0C&oi=fnd&pg=PA236&dq=camp+de+geoje+&ots=irefRf2VY4&sig=feaAIY5LEnb2H-SoH83HgClkI_8&redir_esc=y#v=onepage&q=camp%20de%20geoje&f=false
                 </a>
@@ -138,7 +138,7 @@ export const Credits = () => {
           </i>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
