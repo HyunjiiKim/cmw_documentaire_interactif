@@ -1,5 +1,8 @@
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { cva } from "class-variance-authority";
+
+import Button from "./Button";
 
 const ContainerVariants = cva("", {
   variants: {
@@ -9,11 +12,12 @@ const ContainerVariants = cva("", {
       gallery: "overflow-hidden",
     },
     size: {
-      sm: "w-fit h-50",
-      md: "w-[360px] max-md:w-[180px] h-auto",
-      lg: "w-auto h-full",
-      full: "w-full h-auto",
-      fullHeightScreen: "w-full h-screen",
+      sm: "w-fit h-50 flex-none",
+      md: "w-[360px] max-md:w-[180px] h-auto flex-none",
+      md2: "h-90 flex-auto",
+      lg: "w-auto h-full flex-none",
+      full: "w-full h-auto flex-none",
+      fullHeightScreen: "w-full h-screen flex-none",
     },
     border: {
       white: "border-white",
@@ -32,11 +36,15 @@ export const ImageContainer = ({
   id,
   alt,
   src,
+  category,
+  source,
   intent,
   size,
   border,
   custom,
 }) => {
+  const { t } = useTranslation("archives");
+
   const detailsRef = useRef(null);
 
   function openDetails() {
@@ -62,14 +70,40 @@ export const ImageContainer = ({
       <div
         ref={detailsRef}
         id={id}
-        className="hidden z-100 flex flex-col absolute top-50 mr-50 ml-50 size-fit pt-10 p-20 bg-black border-primary-1 border-1"
+        className="hidden z-100 flex flex-col content-center absolute top-25 mr-25 ml-10 size-fit pt-15 bg-black border-white border-1"
       >
-        <img
-          src="../assets/icons/close.svg"
-          className="cursor-pointer self-end w-7 pb-8"
-          onClick={closeDetails}
-        />
-        <p className="text-white font-body leading-7">{alt}</p>
+        <div id={`${id}Details`} className="">
+          <div id="headerDetails" className="pr-20 pl-20 mb-7">
+            <div className="flex justify-between">
+              <div>
+                <h3 className="uppercase">
+                  <span className="text-3xl">Geoje </span>
+                  <span className="text-xl opacity-60 font-body">
+                    / {t("content.img")}
+                  </span>
+                </h3>
+              </div>
+              <img
+                src="../assets/icons/close.svg"
+                className="cursor-pointer self-end"
+                onClick={closeDetails}
+              />
+            </div>
+            <div id="btnDetails" className="flex gap-3">
+              <Button label={category} intent="tertiary" custom="mt-2" />
+              <Button label={source} intent="tertiary" custom="mt-2" />
+            </div>
+          </div>
+          <div id="contentDetails" className="flex gap-7">
+            <div id="col1">
+              <img src={src} className="max-h-140" />
+            </div>
+            <div id="col2" className="flex flex-col gap-2 w-100 pr-20 pt-[5%]">
+              <h3 className="uppercase text-4xl">{source}</h3>
+              <p className="text-base font-body">{alt}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
@@ -79,12 +113,15 @@ export const VideoContainer = ({
   id,
   alt,
   src,
+  category,
+  source,
   intent,
   size,
   border,
   custom,
-  behavior = "",
 }) => {
+  const { t } = useTranslation("archives");
+
   const videoRef = useRef(null);
   const detailsRef = useRef(null);
 
@@ -127,14 +164,40 @@ export const VideoContainer = ({
       <div
         ref={detailsRef}
         id={id}
-        className="hidden z-100 flex flex-col absolute top-50 mr-50 ml-50 size-fit pt-10 p-20 bg-black border-primary-1 border-1"
+        className="hidden z-100 flex flex-col content-center absolute top-25 mr-25 ml-10 size-fit pt-15 bg-black border-white border-1"
       >
-        <img
-          src="../assets/icons/close.svg"
-          className="cursor-pointer self-end w-7 pb-8"
-          onClick={closeDetails}
-        />
-        <p className="text-white font-body leading-7">{alt}</p>
+        <div id={`${id}Details`} className="">
+          <div id="headerDetails" className="pr-20 pl-20 mb-7">
+            <div className="flex justify-between">
+              <div>
+                <h3 className="uppercase">
+                  <span className="text-3xl">Geoje </span>
+                  <span className="text-xl opacity-60 font-body">
+                    / {t("content.img")}
+                  </span>
+                </h3>
+              </div>
+              <img
+                src="../assets/icons/close.svg"
+                className="cursor-pointer self-end"
+                onClick={closeDetails}
+              />
+            </div>
+            <div id="btnDetails" className="flex gap-3">
+              <Button label={category} intent="tertiary" custom="mt-2" />
+              <Button label={source} intent="tertiary" custom="mt-2" />
+            </div>
+          </div>
+          <div id="contentDetails" className="flex gap-7">
+            <div id="col1">
+              <video src={src} controls className="max-h-140" />
+            </div>
+            <div id="col2" className="flex flex-col gap-2 w-100 pr-20 pt-[5%]">
+              <h3 className="uppercase text-4xl">{source}</h3>
+              <p className="text-base font-body">{alt}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
