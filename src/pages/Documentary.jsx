@@ -10,7 +10,7 @@ const Documentary = () => {
   return (
     <div id="documentary" className="flex justify-center">
       <main className="size-fit">
-        <VimeoPlayer videoId="1082043684" />
+        <VimeoPlayer videoId="1095021776" />
         <div className="flex w-full justify-between">
           <Button
             onClick={() => (window.location.href = "/")}

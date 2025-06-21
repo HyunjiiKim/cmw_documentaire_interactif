@@ -9,19 +9,20 @@ import Archives from "./pages/Archives";
 
 // components
 import { HorizontalNav, TopNav } from "./components/NavBar";
+import { Blocker } from "./components/Blocker";
 
 import "./App.css";
-import Test from "./pages/test";
+
+
 
 function App() {
   return (
     <Router>
-      {location.pathname !== "/documentary" && location.pathname !== "/" && (
-        <HorizontalNav />
-      )}
+      <Blocker />
+      {location.pathname !== "/documentary" && <HorizontalNav />}
       {location.pathname !== "/" && <TopNav />}
       <Routes>
-        <Route path="/test" element={<Test />} />
+        {/* <Route path="/test" element={<Test />} /> */}
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<Map />} />
         <Route path="/documentary" element={<Documentary />} />

@@ -33,6 +33,13 @@
     },
     "section3": {
       "contents": "In 1952, Werner Bischof traveled to Korea on behalf of the Magnum agency. Through his lens, he captured the human scars of war, far from the roar of combat. His photographs of the Geoje camp reflect a profoundly humanistic perspective, where the dignity of the prisoners shines through despite ideological tensions. Between reportage and visual poetry, Bischof recounts a conflict through its silences."
+    },
+    "section4": {
+      "title": "The Work of Remembrance at Geoje",
+      "description": {
+        "1": "When you enter the grounds of the historic park, an inscription greets you: Historic Park of Geoje POW Camp. It is located in the Fountain Square, where the flags of the 16 countries that participated in the Korean War are flying. A large fountain, adorned with statues, symbolizes the joy of the prisoners at the moment of their liberation. This monument pays homage to the end of an era marked by the existence of prisoner camps and celebrates the country's liberation. It perfectly captures the tone of the visit to the historic park, which is part of a primarily visual memorial approach. Here, you will find life-size models of war objects—tanks, planes, transport vehicles—whose function goes beyond a simple demonstration of realism. They bear witness to the omnipresence of militarization in a place initially intended for detention. Far from settling for a military or political approach, the park thus reveals not only suffering but also resistance and solidarity: essential dimensions for understanding the complexity of life in the camp. It is not simply a story of captivity, but a place of internal struggles, multiple forms of violence, and episodes of survival. Thus, throughout their tour, visitors are immersed in the oppressive atmosphere of the prisoners' experience: gunshots, explosions, chants, and war cries accompany them along the entire visit.",
+        "2": "The aerial model of the camp offers an overall view, allowing one to grasp the scale and the prison-like logic of the camp at a glance."
+      }
     }
   },
   "ch2": {
@@ -44,10 +51,36 @@
         "para2": "This former place of confinement and tension is now set up with reconstructions and mannequins, oscillating between the duty of remembrance and the spectacle of trauma. Its \"heritagization\" is, in effect, translated into a visitor trail that incorporates explanatory panels and scenographic displays designed to offer an accessible and engaging interpretation of the past. The visitor is invited to delve back into the troubled period of the Korean War by discovering the daily life and tensions of the Geoje camp.",
         "para3": "This transformation, however, raises a series of ambiguities, characteristic of the tensions between memory and tourism, between historical transmission and staging. The camp embodies the recent changes in how history is transmitted in societies where media and tourism profoundly influence the ways we access the past. Behind the scenography, a certain way of thinking about, telling, and sharing history is at play.",
         "para4": "The challenge lies in this delicate balance: how to preserve the duty of remembrance, respect for the victims, and historical depth, while also meeting a touristic and educational demand that often favors immediacy and sensory experience?"
+      },
+      "4": {
+        "title": "Geoje, 2025: From Camp to Historic Park",
+        "description": {
+          "1": "Transformed into a museum and tourist site, the Geoje camp now attracts visitors who are curious or wish to better understand a part of Korea's past. This former place of confinement and tension is now set up with reconstructions and mannequins. It oscillates between the duty of remembrance and the spectacle of trauma. Visitors are invited to dive back into the troubled period of the Korean War by discovering the daily life and tensions of the Geoje camp.",
+          "2": "Its transformation into a heritage site is reflected in a visitor route that includes explanatory panels and scenographic displays designed to offer an accessible and engaging interpretation of the past. By combining spectacular material reconstructions and archival documents, it allows visitors to feel emotions, certainly, but the understanding, which only comes from reading the signs, remains superficial, as not all visitors take the time to read them.",
+          "3": "It is possible to take a guided tour, but few visitors take advantage of this option. In short, the camp seems to struggle to move beyond a simple museum-like presentation.",
+          "4": "This transformation, however, inevitably raises a series of ambiguities, characteristic of the tensions between memory and tourism, between historical transmission and dramatic staging. The camp embodies the recent shifts in how history is conveyed in societies where media and tourism profoundly influence access to the past. Behind the scenography, a certain way of thinking about, narrating, and sharing history is at play.",
+          "5": "The challenge lies in this delicate balance: how to preserve the duty of remembrance, respect for the victims, and historical depth, while responding to a demand from tourism and education that often prioritizes immediacy and sensory experience?"
+        }
       }
     }
   },
   "ch3": {
     "title": "Chapter 3"
+  },
+  "conclu": {
+    "title": "Conclusion",
+    "contents": {
+      "subtitle": "The Trace of a Camp",
+      "1": "Geoje was more than a camp. It was a space of tension, survival, ideology, and at times, silence. A place where History intersected with ordinary actions: eating, obeying, waiting, singing, believing, fleeing. The walls have long since disappeared, swallowed by time, reconstructions, and the need to forget. But the stories remain. Fragmented, contradictory, often uncomfortable—they survive in photos, letters, and the silences of survivors. Today, it is no longer the barbed wire that confines, but the multiple versions of what really happened. Everyone holds on to an image, a version, a detail.",
+      "2": "So...",
+      "3": "What remains of a camp when the walls fall, but memories remain divided?"
+    },
+    "credit": {
+      "title": "References and Credits",
+      "legend": "A number of ideas are the result of the team's personal reflections. Other sources are more readily available."
+    },
+    "thanks": {
+      "title": "Acknowledgements"
+    }
   }
 }

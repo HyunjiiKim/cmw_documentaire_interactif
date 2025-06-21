@@ -24,7 +24,7 @@ export const Credits = () => {
   return (
     <>
       <h2 className="text-white uppercase text-[50px]">
-        Références et crédits
+        {t2("conclu.credit.title")}
       </h2>
       <div id="navCredits" className="flex pr-20 justify-between gap-7">
         <Button
@@ -134,8 +134,7 @@ export const Credits = () => {
             </ul>
           )}
           <i>
-            Un certain nombre d’idées sont le résultat de réflexions
-            personnelles de l’équipe. D’autres sources, plus disponibles.
+            {t2("conclu.credit.legend")}
           </i>
         </div>
       </div>

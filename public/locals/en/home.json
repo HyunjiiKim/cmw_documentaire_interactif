@@ -3,14 +3,25 @@
     "part1": "Captive",
     "part2": "Memories"
   },
-  "subtitle": "The Legacy of the Geoje Camp POW",
-  "presentation": {
-    "part1": "In the widely documented story of the Korean War, there is an often forgotten reality: the prisoners of war camps. Today, the island of Geoje is home to one of them: the Geoje Prison Camp Historical Park. A place of remembrance that bears witness to a life suspended between uncertainty, hope and loyalty to their ideals, and that is marked by a conflict with colossal repercussions for the entire country.",
-    "part2": "Simultaneously a theater of demands, propaganda and revolt, the representation of this reality still raises many questions today: how can it be told? What remains of these buried memories? We're going to try and understand the work carried out in this historic park, a symbol of a troubled era that still leaves its traces in the present."
+  "subtitle": "Geoje Island and the Legacy of the Prisoner Camp",
+  "content": {
+    "part1": "In February 1951, the American army had to take charge of thousands of ",
+    "part1-bis": "prisoners of war.",
+    "subpart1": "These were mainly Chinese and Korean soldiers.",
+    "part2": "In the confusion of battle, any suspect allied with the North ",
+    "part2-bis": "was arrested.",
+    "subpart2": "Geoje Island was chosen to host the main detention center. It would hold more than 150,000 prisoners."
   },
-  "quote": "I was taken prisoner at 17. I left the camp at 20, by crossing the barbed wire at dawn.",
+  "continue": {
+    "date": "1951 - 1953",
+    "title": {
+      "part1": "Geoje Island",
+      "part2": "and the Prisoner Camp"
+    }
+  },
+  "quote": "I was taken prisoner at 17. I got out of the camp at 20, by crossing the barbed wire at dawn.",
   "author": "— Oh Eun-seo, former anti-communist prisoner of war at the Geoje camp",
-  "enter": "Enter the site",
-  "skip": "Skip intro",
+  "enter": "Enter Site",
+  "skip": "Skip Intro",
   "loading": "Loading..."
 }

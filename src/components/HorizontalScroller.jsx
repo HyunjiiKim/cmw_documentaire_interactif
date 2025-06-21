@@ -1,6 +1,6 @@
 import { ImageContainer, VideoContainer } from "./Container";
 
-const HorizontalScroller = ({ data, custom, size }) => {
+const HorizontalScroller = ({ data, custom, size, isMarquee = false }) => {
   return (
     <div className="flex overflow-x-scroll gap-3 w-full justify-start scrollbar-hide">
       {data.map((item) => (
