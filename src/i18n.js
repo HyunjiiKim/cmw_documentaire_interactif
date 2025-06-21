@@ -17,7 +17,15 @@ i18n
     backend: {
       loadPath: "/locals/{{lng}}/{{ns}}.json",
     },
-    ns: ["general", "nav", "contents", "home", "map", "documentary"],
+    ns: [
+      "general",
+      "nav",
+      "contents",
+      "home",
+      "map",
+      "documentary",
+      "archives",
+    ],
     detection: {
       order: [
         "localStorage",

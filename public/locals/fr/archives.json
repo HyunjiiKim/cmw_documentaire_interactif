@@ -1,0 +1,19 @@
+{
+  "title": "Les archives du camp de Geoje",
+  "subtitle": "Explorer les traces filmées, photographiques et écrites de la vie du camp",
+  "content": {
+    "videos": "Archives filmées",
+    "img": "Archives photographiques"
+  },
+  "filter": {
+    "title": "Filtrer par",
+    "reset": "Réinitialiser les filtres"
+  },
+  "categories": {
+    "title": "Catégories",
+    "war": "La péninsule et la guerre",
+    "camp": "Les Coréens et le camp"
+  },
+  "dates": "Dates",
+  "sources": "Sources / Photographes"
+}
