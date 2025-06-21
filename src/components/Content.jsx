@@ -276,22 +276,26 @@ const Content = ({ chapter }) => {
   const ch3s3Images = [
     {
       id: 0,
-      name: "test1 ", // img alt
+      name: t1("ch2.contents.3.1st.title"), // img alt
+      description: t1("ch2.contents.3.1st.description"),
       img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/zones_camp03.png", // img src
       position: "bottom-20 left-30",
     },
     {
       id: 1,
-      name: "test2", // img alt
+      name: t1("ch2.contents.3.2nd.title"), // img alt
+      description: t1("ch2.contents.3.2nd.description"),
       img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/zones_camp01.png", // img src
       position: "bottom-20 left-30",
     },
     {
       id: 2,
-      name: "test3", // img alt
+      name: t1("ch2.contents.3.3rd.title"), // img alt
+      description: t1("ch2.contents.3.3rd.description"),
       img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/reconstitution04.png", // img src
       position: "bottom-20 left-30",
-    }
+    },
+
   ]
 
   switch (chapter) {

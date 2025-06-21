@@ -52,6 +52,28 @@
         "para3": "Cette transformation, cependant, ne va pas sans soulever une série d’ambiguïtés, caractéristiques des tensions entre mémoire et tourisme, entre transmission historique et mise en scène. Le camp incarne les mutations récentes de la transmission historique dans des sociétés où la médiatisation et le tourisme influencent profondément les modalités d’accès au passé. Car derrière la scénographie, se joue une certaine manière de penser l’histoire, de la raconter, de la partager.",
         "para4": "Le défi réside dans cet équilibre délicat : comment préserver le devoir de mémoire, le respect des victimes et la profondeur historique, tout en répondant à une demande touristique et éducative qui privilégie souvent l’immédiateté et l’expérience sensorielle ?"
       },
+      "3": {
+        "1st": {
+          "title": "Des mesures de répressions violentes",
+          "description": "Les nombreuses rébellions qui ont traversé l'histoire du camp de Geoje poussent les forces américaines à prendre des mesures violentes visant à soumettre les prisonniers. Aussi, des armes automatiques furent installées à des points stratégiques, des tanks furent mobilisés."
+        },
+        "2nd": {
+          "title": "L'enfer vécu par les civils",
+          "description": "Parfois, des navires de guerre américains furent réquisitionnés pour secourir des milliers de civils, juste avant l’arrivée des troupes ennemies. L'évacuation de Hungnam par exemple permit de secourir près de 90 000 réfugiés ; presque autant durent être laissés sur place faute de place."
+        },
+        "3rd": {
+          "title": "Revendications des prisonniers de guerre",
+          "description": "Mai 1952 : au camp de Geoje, des prisonniers nord-coréens capturent le général Dodd. Venu entendre leurs plaintes, il est enlevé en pleine discussion. Les revendications des prisonniers attaquaient la politique des Nations Unies concernant le traitement des prisonniers, le rapatriement et le filtrage."
+        },
+        "4th": {
+          "title": "Lieu de commémoration",
+          "description": "Le parc historique accueille parfois d’anciens prisonniers. Ils reviennent souvent avec leurs enfants et petits-enfants, une occasion de transmettre leur mémoire et de raconter ce qu’ils ont vécu derrière les barbelés. Il rend aussi hommage aux pays ayant participé à la guerre de Corée. C'est un lieu de commémoration à la fois personnelle et patriotique, où les souvenirs individuels croisent l'histoire collective."
+        },
+        "5th": {
+          "title": "Vestiges cachés sous le béton",
+          "description": "Le terrain occupé aujourd’hui par le parc historique n’est qu’une infime portion de ce qu’était autrefois le vaste camp de prisonniers de Geoje. La ville s’est progressivement développée autour de ses anciennes limites, grignotant peu à peu l’espace du camp. Bien que le parc historique cherche à conserver l'histoire du lieu, ce qui reste ne rend pas justice au camp."
+        }
+      },
       "4": {
         "title": "Geoje, 2025 : Du camp au parc historique",
         "description": {
