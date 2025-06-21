@@ -58,7 +58,7 @@ export const Credits = () => {
       </div>
       <div
         id="contentCredits"
-        className="flex flex-col mt-10 mr-20 p-10 border-1 border-white"
+        className="flex flex-col mt-10 mr-20 p-10 border-1 border-white max-w-[600px]"
       >
         <img
           src="../assets/icons/close.svg"
@@ -95,7 +95,7 @@ export const Credits = () => {
             </ul>
           )}
           {showCredits === "ch2" && (
-            <ul>
+            <ul className="text-wrap ">
               <li>
                 Dark Tourism and Place Identity. (s. d.). Google Books,
                 non-traduit :{" "}
@@ -109,7 +109,7 @@ export const Credits = () => {
             </ul>
           )}
           {showCredits === "ch3" && (
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-3 text-wrap">
               <li>
                 Monica KIM, « The Interrogation Rooms of the Korean War – The
                 Untold History » (Ed. Princeton University Press, 2018),

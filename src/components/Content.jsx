@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
-import { Section1, Section4 } from "./ChapterContents/Sections";
+import { ClickImage, Section1, Section4 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
 import Button from "./Button";
 
@@ -273,22 +273,26 @@ const Content = ({ chapter }) => {
 
   const ch3s3Images = [
     {
-      id: 0,
-      name: "", // img alt
-      img: "", // img src
-      position: "bottom-20 left-30",
+      id: 1,
+      name: "Test", // img alt
+      img: "https://storage.googleapis.com/cmw-geoje-src/img/Chinese_and_North_Korean_POWs_at_camp_in_Pusan.JPEG", // img src
+      description: "test",
+      top: 0,
+      left: 0,
     },
     {
-      id: 0,
+      id: 2,
       name: "", // img alt
       img: "", // img src
-      position: "bottom-20 left-30",
+      top: 30,
+      left: 30,
     },
     {
-      id: 0,
+      id: 3,
       name: "", // img alt
       img: "", // img src
-      position: "bottom-20 left-30",
+      top: 20,
+      left: 30,
     }
   ]
 
@@ -357,8 +361,10 @@ const Content = ({ chapter }) => {
               custom={"absolute bottom-10 right-10"}
             />
           </div>
-          <div id="section3" ref={section3Ref} className="relative h-screen">
-            <p>Section3</p>
+          <div id="section3" ref={section3Ref} className="h-screen w-full relative">
+            <ClickImage
+              content={ch3s3Images[0]}
+            />
           </div>
           <div id="section4" ref={section4Ref} className="bg-white-1 px-10 py-10 m-0">
             <Section4 content={ch2s4} />
@@ -378,7 +384,7 @@ const Content = ({ chapter }) => {
             </h1>
             <Button label="voir le témoignage" custom="uppercase" onClick={() => window.location.href = "./witness"} />
           </div>
-          <div id="section3" className="h-screen">
+          <div id="section3" className="h-screen w-full">
           </div>
         </div >
       );
