@@ -210,14 +210,6 @@ export const TopNav = () => {
           </div>
           <div className="flex items-center">
             <p className="text-xl uppercase">{current.title}</p>
-            {current.chapter !== "" && (
-              <div className="flex items-center">
-                <p className="text-xl">-</p>
-                <p className="text-xl text-gray-400 font-body">
-                  {current.chapter}
-                </p>
-              </div>
-            )}
           </div>
         </div>
         <div
@@ -252,9 +244,6 @@ export const TopNav = () => {
                         </>
                       )}
                     </div>
-                    <h1 className="font-body font-bold text-[25px] underline">
-                      {item.chapter}
-                    </h1>
                   </div>
                 ))}
               </nav>

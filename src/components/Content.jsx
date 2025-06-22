@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
-import { Section1, Section4 } from "./ChapterContents/Sections";
+import { ClickImage, Section1, Section4 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
 import Button from "./Button";
 
@@ -300,23 +300,28 @@ const Content = ({ chapter }) => {
    * ch3 section 3
    */
 
+  const [c3s3, setC3s3] = useState(0);
+
   const ch3s3Images = [
     {
       id: 0,
-      name: "", // img alt
-      img: "", // img src
+      name: t1("ch2.contents.3.1st.title"), // img alt
+      description: t1("ch2.contents.3.1st.description"),
+      img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/zones_camp03.png", // img src
       position: "bottom-20 left-30",
     },
     {
-      id: 0,
-      name: "", // img alt
-      img: "", // img src
+      id: 1,
+      name: t1("ch2.contents.3.2nd.title"), // img alt
+      description: t1("ch2.contents.3.2nd.description"),
+      img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/zones_camp01.png", // img src
       position: "bottom-20 left-30",
     },
     {
-      id: 0,
-      name: "", // img alt
-      img: "", // img src
+      id: 2,
+      name: t1("ch2.contents.3.3rd.title"), // img alt
+      description: t1("ch2.contents.3.3rd.description"),
+      img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/reconstitution04.png", // img src
       position: "bottom-20 left-30",
     },
   ];
@@ -420,7 +425,18 @@ const Content = ({ chapter }) => {
             />
           </div>
           <div id="section3" ref={section3Ref} className="relative h-screen">
-            <p>Section3</p>
+            <ol className="flex gap-10 absolute text-3xl">
+              {ch3s3Images.map((it, id) => (
+                <li
+                  key={id}
+                  onClick={() => setC3s3(id)}
+                  className="cursor-pointer"
+                >
+                  {it.name}
+                </li>
+              ))}
+            </ol>
+            <ClickImage content={ch3s3Images[c3s3]} />
           </div>
           <div
             id="section4"
@@ -456,7 +472,7 @@ const Content = ({ chapter }) => {
       );
     case "witness":
       return (
-        <div id="witness" className="px-10 py-10 text-white">
+        <div id="witness" clas sName="px-10 py-10 text-white">
           <div id="section1" className="h-screen flex flex-col mx-20 gap-5">
             <h1 className="text-7xl uppercase">qui écrit</h1>
             <div

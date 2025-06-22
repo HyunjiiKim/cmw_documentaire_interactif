@@ -1,0 +1,19 @@
+{
+  "title": "거제 포로수용소 아카이브",
+  "subtitle": "영상, 사진, 기록으로 보는 수용소의 삶",
+  "content": {
+    "videos": "영상 자료실",
+    "img": "사진 자료실"
+  },
+  "filter": {
+    "title": "필터",
+    "reset": "초기화"
+  },
+  "categories": {
+    "title": "주제별 보기",
+    "war": "한반도와 전쟁",
+    "camp": "수용소 생활"
+  },
+  "dates": "기간별 보기",
+  "sources": "출처 / 작가"
+}

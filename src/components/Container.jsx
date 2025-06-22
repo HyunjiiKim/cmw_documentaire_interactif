@@ -70,7 +70,7 @@ export const ImageContainer = ({
       <div
         ref={detailsRef}
         id={id}
-        className="hidden z-100 flex flex-col content-center absolute top-25 mr-25 ml-10 size-fit pt-15 bg-black border-white border-1"
+        className="hidden z-50 flex flex-col content-center absolute top-25 mr-25 ml-10 size-fit pt-15 bg-black border-white border-1"
       >
         <div id={`${id}Details`} className="">
           <div id="headerDetails" className="pr-20 pl-20 mb-7">
@@ -99,8 +99,8 @@ export const ImageContainer = ({
               <img src={src} className="max-h-140" />
             </div>
             <div id="col2" className="flex flex-col gap-2 w-100 pr-20 pt-[5%]">
-              <h3 className="uppercase text-4xl">{source}</h3>
-              <p className="text-base font-body">{alt}</p>
+              <h3 className="uppercase text-4xl text-wrap">{source}</h3>
+              <h3 className="text-base font-body w-full text-wrap text-balance wrap-break-word">{alt}</h3>
             </div>
           </div>
         </div>
