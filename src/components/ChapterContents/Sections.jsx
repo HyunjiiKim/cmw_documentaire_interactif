@@ -158,7 +158,7 @@ export const DifferentPdv = () => {
     },
     {
       id: "us",
-      btnLabel: "amerian version",
+      btnLabel: "american version",
       description: "pdv of the US. Hello",
     },
   ];
@@ -191,10 +191,7 @@ export const DifferentPdv = () => {
   };
 
   return (
-    <div
-      id="differentPdv"
-      className="h-full flex flex-col gap-5 my-10 text-white"
-    >
+    <div id="differentPdv" className="h-full flex flex-col gap-5 text-white">
       {showPdv === null ? (
         <div id="cover" className="flex flex-col">
           <div
@@ -202,23 +199,28 @@ export const DifferentPdv = () => {
             ref={mainRef}
             className="h-screen flex flex-col px-10 py-10 gap-5"
           >
-            <h1 className="text-[160px] max-sm:text-7xl uppercase">
+            <h1 className="text-[160px] max-sm:text-7xl uppercase tracking-[6%]">
               qui écrit
             </h1>
             <div
               id="buttonGroup"
               className="flex flex-col self-center items-center"
             >
+              <p className="text-3xl font-body tracking-[6%] text-center w-180">
+                Explore les deux versions d’un même événement à travers
+                différentes perspectives idéologiques.
+              </p>
               {witnessInfo.map((item) => (
                 <Button
                   label={item.btnLabel}
                   key={item["id"]}
+                  size="medium"
                   onClick={() => setShowPdv(item["id"])}
                 />
               ))}
             </div>
-            <h1 className="text-[160px] max-sm:text-7xl uppercase self-end">
-              l'histoire
+            <h1 className="text-[160px] max-sm:text-7xl uppercase self-end tracking-[6%]">
+              l'histoire ?
             </h1>
           </div>
         </div>
