@@ -22,11 +22,11 @@ export const Credits = () => {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col">
       <h2 className="text-white uppercase text-[50px] self-start">
         {t2("conclu.credit.title")}
       </h2>
-      <div id="navCredits" className="flex pr-20 justify-between gap-7">
+      <div id="navCredits" className="flex justify-between gap-7">
         <Button
           label={t2("biblio")}
           onClick={openShowBiblio}
@@ -58,7 +58,7 @@ export const Credits = () => {
       </div>
       <div
         id="contentCredits"
-        className="flex flex-col mt-10 mr-20 p-10 border-1 border-white max-w-[1000px]"
+        className="flex flex-col mt-10 mr-20 p-10 border-1 border-white w-full"
       >
         <img
           src="../assets/icons/close.svg"
@@ -118,7 +118,7 @@ export const Credits = () => {
 
               <div id="ch3Credits">
                 <h3 className="uppercase mb-2">{t2("ch3.title")}</h3>
-                <ul className="flex flex-col gap-3">
+                <ul className="flex flex-col gap-5">
                   <li>
                     Monica KIM, « The Interrogation Rooms of the Korean War –
                     The Untold History » (Ed. Princeton University Press, 2018),
@@ -148,7 +148,7 @@ export const Credits = () => {
           )}
           {showCredits === "img" && (
             <>
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-5 overflow-hidden">
                 <li>
                   Geoje City. (s.d.). The Prisoner of War Olympics.
                   [Photographie].{" "}
@@ -204,7 +204,7 @@ export const Credits = () => {
           )}
           {showCredits === "vid" && (
             <>
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-5">
                 <li>
                   ECPAD. (2019). Bande-annonce - Corée, nos soldats oubliés
                   (2016). [Vidéo]. YouTube.{" "}
@@ -370,18 +370,27 @@ export const Credits = () => {
           )}
           {showCredits === "sound" && (
             <>
-              <ul className="flex flex-col gap-3">
-                <li>
-                  Dark Tourism and Place Identity. (s. d.). Google Books,
-                  non-traduit :{" "}
+              <div id="transitionCredits">
+                <h3 className="uppercase">Transition</h3>
+                <p>
+                  <strong>Effet sonore : </strong>Transition Base
+                </p>
+                <p>
+                  <strong>Auteur : </strong>Pixabay Sound Effects
+                </p>
+                <p>
+                  <strong>Source : </strong>Pixabay
+                </p>
+                <p>
+                  <strong>Lien direct : </strong>
                   <a
-                    href="https://books.google.fr/books?hl=fr&lr=&id=sJ0PYNGhwe0C&oi=fnd&pg=PA236&dq=camp+de+geoje+&ots=irefRf2VY4&sig=feaAIY5LEnb2H-SoH83HgClkI_8&redir_esc=y#v=onepage&q=camp%20de%20geoje&f=false"
+                    href="https://pixabay.com/sound-effects/transition-base-121422/"
                     className="underline"
                   >
-                    https://books.google.fr/books?hl=fr&lr=&id=sJ0PYNGhwe0C&oi=fnd&pg=PA236&dq=camp+de+geoje+&ots=irefRf2VY4&sig=feaAIY5LEnb2H-SoH83HgClkI_8&redir_esc=y#v=onepage&q=camp%20de%20geoje&f=false
+                    https://pixabay.com/sound-effects/transition-base-121422/
                   </a>
-                </li>
-              </ul>
+                </p>
+              </div>
             </>
           )}
         </div>

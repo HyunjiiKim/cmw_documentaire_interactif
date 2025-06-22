@@ -125,7 +125,7 @@ const Home = () => {
             </div>
             <div
               id="introContent"
-              className="flex flex-col justify-between bg-[url(../assets/img/intro_waitingmedics.jpg)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply"
+              className="flex flex-col justify-between bg-[url(https://storage.googleapis.com/cmw-geoje-src/img/intro_waitingmedics.jpg)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply"
             >
               <div
                 id="homeTitle"

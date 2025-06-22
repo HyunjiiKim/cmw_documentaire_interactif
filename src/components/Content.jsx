@@ -5,7 +5,7 @@ import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
 import { ClickImage, Section1, Section4 } from "./ChapterContents/Sections";
 import { VimeoPlayer } from "./VideoPlayer";
-import Button from "./Button";
+import Button, { ButtonWithIcon, AudioBtn } from "./Button";
 
 import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
@@ -461,13 +461,46 @@ const Content = ({ chapter }) => {
               MAIS… RESSENTEZ-VOUS ENCORE CE QU’ILS ONT VÉCU ?<br />
               OU JUSTE CE QU’ON A VOULU VOUS MONTRER ?
             </h1>
-            <Button
-              label="voir le témoignage"
+            <ButtonWithIcon
+              label="Voir le témoignage"
               custom="uppercase"
               onClick={() => (window.location.href = "./witness")}
             />
           </div>
-          <div id="section3" className="h-screen"></div>
+          <div
+            id="section3"
+            className="h-screen bg-[url(https://storage.googleapis.com/cmw-geoje-src/img/Square-danse_devant_la_statut_de_la_liberte.jpg)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply flex flex-col justify-center items-center text-center gap-17 tracking-[6%]"
+          >
+            <div>
+              <h2 className="text-6xl uppercase">2023</h2>
+              <p className="text-xl w-145">
+                Témoignage de Monsieur OH Eun-seo, prisonnier anticommuniste au
+                camp de prisonniers de guerre de Geojedo
+              </p>
+            </div>
+            <div>
+              <AudioBtn audioSrc="https://storage.googleapis.com/cmw-geoje-src/audios/Extract-%EA%B1%B0%EC%A0%9C%EB%8F%84%20%ED%8F%AC%EB%A1%9C%EC%88%98%EC%9A%A9%EC%86%8C%20%EB%B0%98%EA%B3%B5%ED%8F%AC%EB%A1%9C%20%EC%98%A4%EC%9D%80%EC%84%9C%20%ED%95%A0%EC%95%84%EB%B2%84%EC%A7%80%20%EC%9D%B4%EC%95%BC%EA%B8%B0.mp3" />
+            </div>
+            <div className="text-xl w-80 flex flex-col gap-3">
+              <p>
+                - Interviewer : Ils vous ont donné beaucoup de nourriture, c'est
+                ça ?
+              </p>
+              <p className="opacity-50">
+                - M.Oh : Ils ont mis du riz dans cette poêle et nous ont
+                distribué.
+              </p>
+              <p className="opacity-50">
+                - Sa femme : Est-ce qu’ils vous ont bien nourri?
+              </p>
+            </div>
+            <div className="w-full flex justify-end mr-80">
+              <ButtonWithIcon
+                label="Continuer la visite"
+                onClick={() => (window.location.href = "/view/conclusion")}
+              />
+            </div>
+          </div>
         </div>
       );
     case "witness":
