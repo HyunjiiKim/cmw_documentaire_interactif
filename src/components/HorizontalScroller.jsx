@@ -27,6 +27,7 @@ export const GalleryImg = ({ data, custom, size }) => {
             key={item.id}
             src={item.src}
             alt={item.alt}
+            credit={item.credit}
             category={item.category}
             source={item.source}
             size={size}
@@ -48,6 +49,7 @@ export const GalleryVid = ({ data, custom, size }) => {
           key={item.id}
           src={item.src}
           alt={item.alt}
+          credit={item.credit}
           category={item.category}
           source={item.source}
           size={size}

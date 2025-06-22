@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const YearSlider = ({ selectedYear, onChange }) => {
-  const years = [1950, 1951, 1952, 2019];
+  const years = [1950, 1951, 1952, 1953, 2010, 2019];
   const selectedIndex = years.indexOf(selectedYear ?? years[0]);
 
   return (
