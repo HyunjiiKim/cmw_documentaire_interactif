@@ -14,10 +14,10 @@ const mapElementsData = [
   {
     id: "ch1",
     x: window.innerWidth / 2,
-    y: window.innerHeight / 4,
+    y: window.innerHeight / 2,
     asset: "chapter1Before",
     name: "ch1",
-    targetWidth: 200,
+    targetWidth: 300,
     path: "/view/ch1",
     hover: { asset: "chapter1After", alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
