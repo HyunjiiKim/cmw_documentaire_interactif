@@ -50,11 +50,10 @@ export const NavBar = ({ whichPage }) => {
       >
         {nav.map((item) => (
           <div
-            className={`uppercase font-body ${
-              pathName == `/view/${item.pathname}`
+            className={`uppercase font-body ${pathName == `/view/${item.pathname}`
                 ? "text-primary-2"
                 : "cursor-pointer"
-            }`}
+              }`}
             onClick={() => (window.location.href = `/view/${item.pathname}`)}
           >
             {t(item.name)}
@@ -231,14 +230,16 @@ export const TopNav = () => {
               <nav className="flex flex-col gap-10 py-20 px-10">
                 {navElements.map((item) => (
                   <div
+                    key={item.id} // It's a good practice to add a key here
                     onClick={() => {
-                      window.location.href = item.path;
+                      navigation(item.path);
+                      setShow(false);
                     }}
                     className="flex justify-between items-center cursor-pointer text-white/70 hover:text-white "
                   >
                     <div>
                       <h1 className="uppercase text-[30px]">{item.title}</h1>
-                      {window.location.pathname === item.path && (
+                      {location.pathname === item.path && (
                         <>
                           <hr className="w-[80%] border-primary-1 border-2" />
                         </>
