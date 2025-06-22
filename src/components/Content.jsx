@@ -3,13 +3,13 @@ import { useState, useEffect, useRef } from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
-import { ClickImage, Section1, Section4 } from "./ChapterContents/Sections";
-import { VimeoPlayer } from "./VideoPlayer";
+import { ClickImage, DifferentPdv, Section1, Section4 } from "./ChapterContents/Sections";
+import Credits from "./Credits";
 import Button from "./Button";
 
 import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
-import Credits from "./Credits";
+
 
 const Content = ({ chapter }) => {
   const { t: t1 } = useTranslation("contents");
@@ -88,8 +88,7 @@ const Content = ({ chapter }) => {
 
         entries.forEach((entry) => {
           console.log(
-            `Observer raw entry: id=${entry.target.id}, isIntersecting=${
-              entry.isIntersecting
+            `Observer raw entry: id=${entry.target.id}, isIntersecting=${entry.isIntersecting
             }, ratio=${entry.intersectionRatio.toFixed(2)}`
           );
           if (entry.target.id === "section2" && entry.isIntersecting) {
@@ -277,26 +276,6 @@ const Content = ({ chapter }) => {
   };
 
   /**
-   * witness seciton 1 infos
-   */
-
-  // default pdv on section1 is null
-  const [showPdv, setShowPdv] = useState(null);
-
-  const witnessInfo = [
-    {
-      id: "nk",
-      btnLabel: "north korean version",
-      descripton: "pdv of north korea. Hello",
-    },
-    {
-      id: "us",
-      btnLabel: "amerian version",
-      descripton: "pdv of the US. Hello",
-    },
-  ];
-
-  /**
    * ch3 section 3
    */
 
@@ -308,7 +287,8 @@ const Content = ({ chapter }) => {
       name: t1("ch2.contents.3.1st.title"), // img alt
       description: t1("ch2.contents.3.1st.description"),
       img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/zones_camp03.png", // img src
-      position: "bottom-20 left-30",
+      top: 20,
+      left: 30,
     },
     {
       id: 1,
@@ -424,16 +404,20 @@ const Content = ({ chapter }) => {
               custom={"absolute bottom-10 right-10"}
             />
           </div>
-          <div id="section3" ref={section3Ref} className="relative h-screen">
-            <ol className="flex gap-10 absolute text-3xl">
+          <div id="section3" ref={section3Ref} className="relative h-full">
+            <ol className="w-full px-10 flex absolute text-3xl top-10 justify-between">
               {ch3s3Images.map((it, id) => (
                 <li
                   key={id}
                   onClick={() => setC3s3(id)}
-                  className="cursor-pointer"
+                  className={`cursor-pointer font-body uppercase hover:font-bold text-white/70 ${c3s3 === id && "font-bold text-white/100"}`}
                 >
                   {it.name}
+                  {c3s3 === id && (
+                    <hr className="border-2 w-[30%] border-primary-1" />
+                  )}
                 </li>
+
               ))}
             </ol>
             <ClickImage content={ch3s3Images[c3s3]} />
@@ -472,18 +456,9 @@ const Content = ({ chapter }) => {
       );
     case "witness":
       return (
-        <div id="witness" clas sName="px-10 py-10 text-white">
-          <div id="section1" className="h-screen flex flex-col mx-20 gap-5">
-            <h1 className="text-7xl uppercase">qui écrit</h1>
-            <div
-              id="buttonGroup"
-              className="flex flex-col self-center items-center"
-            >
-              {witnessInfo.map((item) => (
-                <Button label={item.btnLabel} key={item.id} />
-              ))}
-            </div>
-            <h1 className="text-7xl uppercase self-end">l'histoire</h1>
+        <div id="witness" className="text-white">
+          <div id="section1">
+            <DifferentPdv />
           </div>
           <div id="section"></div>
           <div id="section"></div>
