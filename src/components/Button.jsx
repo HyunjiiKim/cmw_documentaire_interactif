@@ -323,4 +323,19 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
   );
 };
 
+export const TopPage = ({ scrollTo, bgColor, borderColor }) => {
+  return (
+    <button
+      className="cursor-pointer w-fit h-fit aspect-square w-20"
+      onClick={() => {
+        scrollTo.current.scrollIntoView({ behavior: "smooth" });
+      }}
+    >
+      <i
+        className={`bg-${bgColor} px-[14px] py-[10px] border-${borderColor} border-1 hover:inset-shadow-sm bi bi-chevron-up`}
+      ></i>
+    </button>
+  );
+};
+
 export default Button;

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { VimeoPlayer } from "../VideoPlayer";
-import Button, { ButtonWithIcon } from "../Button";
+import Button, { ButtonWithIcon, TopPage } from "../Button";
 import { DotsContainer } from "../Container";
 
 import mockVideo from "/assets/videos/Introduction.mp4";
@@ -70,14 +70,8 @@ export const Section4 = ({ content, scrollTo }) => {
         </div>
       </div>
       {/* <DotsContainer sections={content.pages} activeSection={content.pages[0].id} /> */}
-      <div id="buttonGroup" className="w-full flex justify-end gap-5">
-        <Button
-          onClick={() => {
-            scrollTo.current.scrollIntoView({ behavior: "smooth" });
-          }}
-          label="Retour en haut de la page"
-          custom="bg-black"
-        />
+      <div id="buttonGroup" className="w-full flex justify-end items-end gap-5">
+        <TopPage scrollTo={scrollTo} bgColor="black" borderColor="black" />
         <Button
           label="Retour à la carte"
           custom="border-black border-1 text-black"
@@ -329,14 +323,12 @@ export const DifferentPdv = () => {
           </div>
           <div
             id="buttonGroup"
-            className="w-full flex justify-end gap-5 mr-[60px]"
+            className="w-full flex justify-end items-end gap-5 mr-[60px]"
           >
-            <Button
-              onClick={() => {
-                mainRef.current.scrollIntoView({ behavior: "smooth" });
-              }}
-              label="Retour en haut de la page"
-              custom="bg-primary-1"
+            <TopPage
+              scrollTo={mainRef}
+              bgColor={"primary-1"}
+              borderColor={"white"}
             />
             <Button
               label="Retour à la carte"
