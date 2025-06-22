@@ -191,7 +191,7 @@ export const DifferentPdv = () => {
   };
 
   return (
-    <div id="differentPdv" className="h-full flex flex-col gap-5 text-white">
+    <div id="differentPdv" className="h-full flex flex-col text-white">
       {showPdv === null ? (
         <div id="cover" className="flex flex-col">
           <div
@@ -199,7 +199,7 @@ export const DifferentPdv = () => {
             ref={mainRef}
             className="h-screen flex flex-col px-10 py-10 gap-5"
           >
-            <h1 className="text-[160px] max-sm:text-7xl uppercase tracking-[6%]">
+            <h1 className="text-[160px] max-sm:text-7xl uppercase tracking-[6%]gi">
               qui écrit
             </h1>
             <div
@@ -255,7 +255,7 @@ export const DifferentPdv = () => {
       </div>
       <div
         id="screen3"
-        className="h-screen flex flex-col justify-center items-center text-center tracking-[6%]"
+        className="h-screen bg-[url(https://storage.googleapis.com/cmw-geoje-src/videos/chap3_section3.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply flex flex-col justify-center items-center text-center tracking-[6%]"
       >
         <h2 className="uppercase text-7xl leading-20">
           Camp de Geoje
