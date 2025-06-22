@@ -1,4 +1,8 @@
 {
+  "biblio": "Bibliographie",
+  "img": "Images",
+  "vid": "Vidéos",
+  "sound": "Audios",
   "intro": {
     "title": "Introduction",
     "subtitle": "Sous-titre"

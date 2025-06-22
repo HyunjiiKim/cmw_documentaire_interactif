@@ -5,13 +5,16 @@ import { twMerge } from "tailwind-merge";
 import { useTranslation } from "react-i18next";
 
 const buttonVariants = cva(
-  "cursor-pointer shadow-md/25 disabled:opacity-50 w-fit bg-transparent text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black",
+  "cursor-pointer disabled:opacity-50 w-fit bg-transparent text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:text-shadow-sm/30 hover:text-shadow-black",
   {
     variants: {
       intent: {
-        primary: "mt-[2.5em] border-white border-1",
-        secondary: "border-white border-1",
-        tertiary: "mt-[2.5em] border-white border-1 bg-primary-1",
+        primary:
+          "mt-[2.5em] border-white border-1 shadow-md/25 hover:inset-shadow-black",
+        secondary:
+          "border-white border-1 shadow-md/25 hover:inset-shadow-black",
+        tertiary:
+          "mt-[2.5em] border-white border-1 bg-primary-1 shadow-md/25 hover:inset-shadow-black",
         ghost: "mt-[2.5em] underline",
         disabled: "mt-[2.5em] border-white border-1 opacity-50",
       },
@@ -56,7 +59,7 @@ export const ButtonWithIcon = ({ intent, size, custom, label, onClick }) => {
   );
 };
 
-export const InfoBtn = () => {
+export const InfoBtn = (position) => {
   const { t } = useTranslation("general");
   document.addEventListener("DOMContentLoaded", () => {
     const infoSection = document.getElementById("infoSection");
@@ -79,7 +82,7 @@ export const InfoBtn = () => {
       />
       <div
         id="infoSection"
-        className="hidden z-100 flex flex-col absolute top-50 mr-50 ml-50 size-fit pt-10 p-20 bg-black border-primary-1 border-1"
+        className={`hidden z-100 flex flex-col fixed top-50 mr-50 ml-50 size-fit pt-10 p-20 bg-black border-primary-1 border-1`}
       >
         <img
           src="../assets/icons/close.svg"

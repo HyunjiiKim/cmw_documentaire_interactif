@@ -17,9 +17,7 @@ function App() {
   return (
     <Router>
       <Blocker />
-      {location.pathname !== "/documentary" && location.pathname !== "/" && (
-        <HorizontalNav />
-      )}
+      {location.pathname !== "/" && <HorizontalNav />}
       {location.pathname !== "/" && <TopNav />}
       <Routes>
         {/* <Route path="/test" element={<Test />} /> */}

@@ -11,6 +11,7 @@ import Button, {
 import { Trigger } from "../components/Trigger";
 import { Blocker } from "../components/Blocker";
 import { Indicator } from "../components/Indicator";
+import { VimeoPlayer } from "../components/VideoPlayer";
 
 import mockMap from "/assets/img/mockImage.jpg";
 import teaserIntro from "/assets/videos/Introduction.mp4";
@@ -29,6 +30,19 @@ const Home = () => {
   }
   function openShowHome() {
     setShowHome(1);
+  }
+
+  function openShowIntro() {
+    setShowHome(3);
+  }
+
+  function openShowBtn() {
+    var btn = document.getElementById("btnFinishedIntro");
+    if (btn.style.display == "none") {
+      btn.style.display = "flex";
+    } else {
+      btn.style.display = "none";
+    }
   }
 
   return (
@@ -56,7 +70,7 @@ const Home = () => {
                 </p>
                 <div className="flex gap-5">
                   <ButtonWithIcon
-                    onClick={openShowHome}
+                    onClick={openShowIntro}
                     label={t2("enter")}
                     custom="ml-auto flex gap-3"
                     size="small"
@@ -73,10 +87,36 @@ const Home = () => {
             </div>
             <div className="z-50 flex justify-between pb-18 pr-18 pl-10">
               <Indicator label={t2("loading")} />
-              <InfoBtn />
+              <InfoBtn position="top" />
             </div>
           </div>
         )}
+
+        {showHome === 3 && (
+          <div className="flex flex-col h-screen text-white">
+            <div className="h-fit">
+              <VimeoPlayer videoId="1095021776" onEnded={openShowBtn} />
+            </div>
+            <div
+              id="btnFinishedIntro"
+              className="z-50 hidden flex gap-5 fixed top-[45%] right-[35%]"
+            >
+              <Button
+                onClick={openShowBtn}
+                label="Revoir l'introduction"
+                size="large"
+                custom="m-0"
+              />
+              <Button
+                onClick={openShowHome}
+                label="Continuer"
+                size="large"
+                custom="m-0"
+              />
+            </div>
+          </div>
+        )}
+
         {showHome === 1 && (
           <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
             <HorizontalNav />
@@ -161,6 +201,7 @@ const Home = () => {
             </div>
           </div>
         )}
+
         {showHome === 2 && (
           <div className="flex flex-col h-full">
             <HorizontalNav />

@@ -8,8 +8,11 @@ const Documentary = () => {
   const { t: t2 } = useTranslation("documentary");
 
   return (
-    <div id="documentary" className="flex justify-center">
-      <main className="size-fit">
+    <div
+      id="documentary"
+      className="flex h-screen justify-center content-center ml-[120px]"
+    >
+      <main className="m-auto w-250">
         <VimeoPlayer videoId="1095021776" />
         <div className="flex w-full justify-between">
           <Button
