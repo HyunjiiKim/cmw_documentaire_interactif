@@ -10,7 +10,7 @@ import {
   Section4,
 } from "./ChapterContents/Sections";
 import Credits from "./Credits";
-import Button from "./Button";
+import Button, { ButtonWithIcon, AudioBtn } from "./Button";
 
 import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
@@ -315,7 +315,7 @@ const Content = ({ chapter }) => {
     case "ch1":
       return (
         <div id="ch1" className="mt-10 flex flex-col text-white gap-15">
-          <div id="section1Container" className="h-full">
+          <div id="section1Container" ref={section1Ref} className="h-full">
             <Section1 vimeoId={1095028297} />
           </div>
           <div id="section2" className="flex flex-col relative h-[150vh]">
@@ -361,8 +361,8 @@ const Content = ({ chapter }) => {
               {t1("ch1.section3.contents")}
             </div>
           </div>
-          <div id="section4Container">
-            <Section4 content={ch1s4} />
+          <div id="section4Container" className="bg-white-1 px-10 py-10 m-0">
+            <Section4 content={ch1s4} scrollTo={section1Ref} />
           </div>
         </div>
       );
@@ -433,7 +433,7 @@ const Content = ({ chapter }) => {
             ref={section4Ref}
             className="bg-white-1 px-10 py-10 m-0"
           >
-            <Section4 content={ch2s4} />
+            <Section4 content={ch2s4} scrollTo={section1Ref} />
           </div>
         </div>
       );
@@ -447,9 +447,10 @@ const Content = ({ chapter }) => {
             id="section2"
             className="h-screen flex flex-col justify-center items-center"
           >
-            <h1 className="text-center w-[80%] text-[40px]">
-              MAIS… RESSENTEZ-VOUS ENCORE CE QU’ILS ONT VÉCU ?<br />
-              OU JUSTE CE QU’ON A VOULU VOUS MONTRER ?
+            <h1 className="text-center w-[80%] text-[40px] uppercase">
+              {t1("ch3.contents.2.part1")}
+              <br />
+              {t1("ch3.contents.2.part2")}
             </h1>
             <ButtonWithIcon
               label="Voir le témoignage"
@@ -464,25 +465,16 @@ const Content = ({ chapter }) => {
             <div>
               <h2 className="text-6xl uppercase">2023</h2>
               <p className="text-xl w-145">
-                Témoignage de Monsieur OH Eun-seo, prisonnier anticommuniste au
-                camp de prisonniers de guerre de Geojedo
+                {t1("ch3.contents.3.description")}
               </p>
             </div>
             <div>
               <AudioBtn audioSrc="https://storage.googleapis.com/cmw-geoje-src/audios/Extract-%EA%B1%B0%EC%A0%9C%EB%8F%84%20%ED%8F%AC%EB%A1%9C%EC%88%98%EC%9A%A9%EC%86%8C%20%EB%B0%98%EA%B3%B5%ED%8F%AC%EB%A1%9C%20%EC%98%A4%EC%9D%80%EC%84%9C%20%ED%95%A0%EC%95%84%EB%B2%84%EC%A7%80%20%EC%9D%B4%EC%95%BC%EA%B8%B0.mp3" />
             </div>
             <div className="text-xl w-80 flex flex-col gap-3">
-              <p>
-                - Interviewer : Ils vous ont donné beaucoup de nourriture, c'est
-                ça ?
-              </p>
-              <p className="opacity-50">
-                - M.Oh : Ils ont mis du riz dans cette poêle et nous ont
-                distribué.
-              </p>
-              <p className="opacity-50">
-                - Sa femme : Est-ce qu’ils vous ont bien nourri?
-              </p>
+              <p>- {t1("ch3.contents.3.quote.part1")}</p>
+              <p className="opacity-50">- {t1("ch3.contents.3.quote.part2")}</p>
+              <p className="opacity-50">- {t1("ch3.contents.3.quote.part3")}</p>
             </div>
             <div className="w-full flex justify-end mr-80">
               <ButtonWithIcon
