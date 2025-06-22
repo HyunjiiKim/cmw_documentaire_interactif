@@ -464,14 +464,14 @@ const Content = ({ chapter }) => {
           >
             <div>
               <h2 className="text-6xl uppercase">2023</h2>
-              <p className="text-xl w-145">
+              <p className="font-body text-xl w-145">
                 {t1("ch3.contents.3.description")}
               </p>
             </div>
             <div>
               <AudioBtn audioSrc="https://storage.googleapis.com/cmw-geoje-src/audios/Extract-%EA%B1%B0%EC%A0%9C%EB%8F%84%20%ED%8F%AC%EB%A1%9C%EC%88%98%EC%9A%A9%EC%86%8C%20%EB%B0%98%EA%B3%B5%ED%8F%AC%EB%A1%9C%20%EC%98%A4%EC%9D%80%EC%84%9C%20%ED%95%A0%EC%95%84%EB%B2%84%EC%A7%80%20%EC%9D%B4%EC%95%BC%EA%B8%B0.mp3" />
             </div>
-            <div className="text-xl w-80 flex flex-col gap-3">
+            <div className="font-body text-xl w-80 flex flex-col gap-3">
               <p>- {t1("ch3.contents.3.quote.part1")}</p>
               <p className="opacity-50">- {t1("ch3.contents.3.quote.part2")}</p>
               <p className="opacity-50">- {t1("ch3.contents.3.quote.part3")}</p>

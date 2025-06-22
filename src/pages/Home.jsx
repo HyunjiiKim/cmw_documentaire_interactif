@@ -38,6 +38,7 @@ const Home = () => {
 
   function openShowBtn() {
     var btn = document.getElementById("btnFinishedIntro");
+
     if (btn.style.display == "none") {
       btn.style.display = "flex";
     } else {

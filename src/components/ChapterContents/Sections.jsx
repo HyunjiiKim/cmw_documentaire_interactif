@@ -5,6 +5,8 @@ import { VimeoPlayer } from "../VideoPlayer";
 import Button, { ButtonWithIcon } from "../Button";
 import { DotsContainer } from "../Container";
 
+import mockVideo from "/assets/videos/Introduction.mp4";
+
 export const Section1 = ({ vimeoId }) => {
   // check if VimeoPlayer finished or not
   const [isVimeoFinished, setIsVimeoFinished] = useState(false);
@@ -178,6 +180,15 @@ export const DifferentPdv = () => {
   };
 
   const mainRef = useRef(null);
+  const screen4ref = useRef(null);
+  const [showTemoignages, setShowTemoignages] = useState(false);
+
+  const handleShowTemoignages = () => {
+    setShowTemoignages(true);
+    setTimeout(() => {
+      screen4ref.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100); // short delay ensures element is rendered before scroll
+  };
 
   return (
     <div
@@ -210,9 +221,6 @@ export const DifferentPdv = () => {
               l'histoire
             </h1>
           </div>
-          <div id="screen2" className="w-full bg-white-1 px-10 py-10 m-0">
-            <Section4 content={ch3s4} scrollTo={mainRef} />
-          </div>
         </div>
       ) : (
         <div
@@ -237,6 +245,102 @@ export const DifferentPdv = () => {
           </div>
           <div className="bg-black text-white">
             {selectedWitness && <p>{selectedWitness.description}</p>}
+          </div>
+        </div>
+      )}
+      <div id="screen2" className="w-full bg-white-1 px-10 py-10 m-0">
+        <Section4 content={ch3s4} scrollTo={mainRef} />
+      </div>
+      <div
+        id="screen3"
+        className="h-screen flex flex-col justify-center items-center text-center tracking-[6%]"
+      >
+        <h2 className="uppercase text-7xl leading-20">
+          Camp de Geoje
+          <br />
+          Voix et mémoires
+        </h2>
+        <p className="font-body text-3xl w-190">
+          Découvrez les témoignages et les récits poignants des visiteurs du
+          parc historique.
+        </p>
+        <Button label="Voir les témoignages" onClick={handleShowTemoignages} />
+      </div>
+      {showTemoignages && (
+        <div
+          id="temoignages"
+          ref={screen4ref}
+          className="h-full flex flex-col justify-center items-center tracking-[6%] gap-15"
+        >
+          <div id="temoignage1" className="flex gap-10">
+            <video src={mockVideo} controls className="w-[130%]" />
+            <div className="flex flex-col justify-end mr-[60px] gap-20">
+              <div>
+                <h3 className="text-6xl leading-20">
+                  01
+                  <br />
+                  Min-jae
+                </h3>
+                <p className="font-body text-2xl">Petit-fils d'un prisonnier</p>
+              </div>
+              <p className="font-body text-2xl">
+                "Revenir ici, c’est affronter les silences de l’histoire. Mais
+                aussi les comprendre."
+              </p>
+            </div>
+          </div>
+          <div id="temoignage2" className="flex gap-10">
+            <div className="flex flex-col justify-end text-right ml-[60px] gap-20">
+              <div>
+                <h3 className="text-6xl leading-20">
+                  02
+                  <br />
+                  Sung-ho
+                </h3>
+                <p className="font-body text-2xl">Témoin et ancien résistant</p>
+              </div>
+              <p className="font-body text-2xl">
+                "Revenir ici, c’est affronter les silences de l’histoire. Mais
+                aussi les comprendre."
+              </p>
+            </div>
+            <video src={mockVideo} controls className="w-[130%]" />
+          </div>
+          <div id="temoignage3" className="flex gap-10">
+            <video src={mockVideo} controls className="w-[130%]" />
+            <div className="flex flex-col justify-end mr-[60px] gap-20">
+              <div>
+                <h3 className="text-6xl leading-20">
+                  03
+                  <br />
+                  Ji-Yeon
+                </h3>
+                <p className="font-body text-2xl">
+                  En visite dans le parc historique{" "}
+                </p>
+              </div>
+              <p className="font-body text-2xl">
+                "Revenir ici, c’est affronter les silences de l’histoire. Mais
+                aussi les comprendre."
+              </p>
+            </div>
+          </div>
+          <div
+            id="buttonGroup"
+            className="w-full flex justify-end gap-5 mr-[60px]"
+          >
+            <Button
+              onClick={() => {
+                mainRef.current.scrollIntoView({ behavior: "smooth" });
+              }}
+              label="Retour en haut de la page"
+              custom="bg-primary-1"
+            />
+            <Button
+              label="Retour à la carte"
+              custom="border-white border-1"
+              onClick={() => (window.location.href = "/map")}
+            />
           </div>
         </div>
       )}
