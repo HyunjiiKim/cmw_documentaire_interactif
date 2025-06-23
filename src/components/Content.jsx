@@ -94,201 +94,6 @@ const Content = ({ chapter }) => {
     ],
   };
 
-  /**
-   * Chapter 2 Triggers & Animations
-   */
-
-  const [activeSection, setActiveSection] = useState("");
-  const mainRef = useRef(null);
-  const section1Ref = useRef(null);
-  const section2Ref = useRef(null);
-  const section3Ref = useRef(null);
-  const section4Ref = useRef(null);
-
-  const textBoxRef = useRef(null);
-
-  // Observer for main sections
-  useEffect(() => {
-    const mainContainer = mainRef.current;
-    if (!mainContainer || chapter !== "ch2") {
-      // If not chapter 2, or no main container, ensure activeSection is cleared if it was from a previous ch2 render
-      if (activeSection) setActiveSection("");
-      return;
-    }
-
-    const sections = [section1Ref, section2Ref, section3Ref, section4Ref];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let newActiveCandidate = null;
-        let section2IsIntersecting = false;
-
-        entries.forEach((entry) => {
-          console.log(
-            `Observer raw entry: id=${entry.target.id}, isIntersecting=${entry.isIntersecting
-            }, ratio=${entry.intersectionRatio.toFixed(2)}`
-          );
-          if (entry.target.id === "section2" && entry.isIntersecting) {
-            section2IsIntersecting = true;
-          }
-          if (entry.isIntersecting) {
-            if (!newActiveCandidate) newActiveCandidate = entry.target.id;
-          }
-        });
-
-        if (section2IsIntersecting) {
-          if (activeSection !== "section2") {
-            console.log("Observer: Setting activeSection to 'section2'");
-            setActiveSection("section2");
-          }
-        } else if (newActiveCandidate) {
-          // If section2 is not intersecting, but another is, set that one.
-          if (
-            activeSection !== newActiveCandidate &&
-            activeSection === "section2"
-          ) {
-            // Only change if it was section2
-            console.log(
-              `Observer: Changing activeSection from 'section2' to '${newActiveCandidate}'`
-            );
-            setActiveSection(newActiveCandidate);
-          } else if (!activeSection && newActiveCandidate) {
-            // If active section was empty
-            console.log(
-              `Observer: Setting activeSection to '${newActiveCandidate}' (was empty)`
-            );
-            setActiveSection(newActiveCandidate);
-          }
-        } else {
-          // No sections are intersecting at the threshold
-          if (activeSection !== "") {
-            console.log(
-              `Observer: Clearing activeSection (was ${activeSection}) because nothing is intersecting`
-            );
-            setActiveSection("");
-          }
-        }
-      },
-      { root: mainContainer, threshold: 0.5 }
-    ); // SUGGESTION: Lowered threshold to 0.5 for testing
-
-    sections.forEach((s) => {
-      if (s.current) {
-        observer.observe(s.current);
-      } else {
-        console.warn(
-          `Observer: Ref for a section is null. This might be expected if not all sections are rendered for this chapter.`
-        );
-      }
-    });
-
-    return () => {
-      sections.forEach((s) => s.current && observer.unobserve(s.current));
-      console.log("Observer: Cleaned up");
-    };
-  }, [chapter]); // Rerun if chapter changes, so observer is set for the correct mainRef
-
-  // Scroll handling for main container (mainRef) in Chapter 2
-  useEffect(() => {
-    const mainContainer = mainRef.current;
-    if (!mainContainer || chapter !== "ch2") {
-      if (mainContainer) mainContainer.style.scrollSnapType = "y mandatory";
-      return;
-    }
-
-    const handleMainScroll = (e) => {
-      if (activeSection === "section2") {
-        const textBox = textBoxRef.current;
-        let allowPageScroll = false;
-
-        if (textBox && textBox.contains(e.target)) {
-          // If the event target is within the textbox, the textbox listener should handle it first.
-          // This listener (handleMainScroll) should only act if the event was not stopped by the textbox.
-          console.log(
-            "MainScroll: Event originated in textbox, deferring unless propagated."
-          );
-          return;
-        }
-
-        // If event is not from textbox or textbox allowed propagation:
-        if (textBox) {
-          const { scrollTop, scrollHeight, clientHeight } = textBox;
-          const isTextBoxAtTop = scrollTop <= 0; // Use <= 0 for top
-          const isTextBoxAtBottom =
-            Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
-
-          if (e.deltaY < 0 && isTextBoxAtTop) {
-            allowPageScroll = true;
-            console.log("MainScroll: Allowing UP (textbox at top)");
-          } else if (e.deltaY > 0 && isTextBoxAtBottom) {
-            allowPageScroll = true;
-            console.log("MainScroll: Allowing DOWN (textbox at bottom)");
-          }
-        } else {
-          allowPageScroll = true; // No textbox, allow normal scroll for section2
-          console.log("MainScroll: Allowing (no textbox)");
-        }
-
-        if (!allowPageScroll) {
-          console.log(
-            `MainScroll: Preventing default scroll for section2. DeltaY: ${e.deltaY}`
-          );
-          e.preventDefault();
-        }
-      }
-    };
-
-    if (activeSection === "section2") {
-      mainContainer.style.scrollSnapType = "none";
-      mainContainer.addEventListener("wheel", handleMainScroll, {
-        passive: false,
-      });
-      console.log("MainScroll: Listener ADDED for section2. Snap: none.");
-    } else {
-      mainContainer.style.scrollSnapType = "y mandatory";
-      console.log(
-        "MainScroll: Listener INACTIVE for non-section2. Snap: y mandatory."
-      );
-    }
-
-    return () => {
-      mainContainer.removeEventListener("wheel", handleMainScroll);
-      mainContainer.style.scrollSnapType = "y mandatory";
-      console.log("MainScroll: Listener REMOVED. Snap reset.");
-    };
-  }, [activeSection, chapter]);
-
-  // Logic for the scrollable text box
-  useEffect(() => {
-    const textBox = textBoxRef.current;
-    if (!textBox || chapter !== "ch2") return;
-
-    const handleTextBoxWheel = (e) => {
-      if (activeSection === "section2") {
-        const { scrollTop, scrollHeight, clientHeight } = textBox;
-        const isAtTop = scrollTop === 0;
-        const isAtBottom =
-          Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
-
-        // If scrolling up at the top of the text box, or scrolling down at the bottom,
-        // let the event bubble to the mainContainer.
-        if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
-          console.log(
-            "TextBox: Reached edge, allowing event to propagate to main container."
-          );
-          return;
-        }
-
-        // Otherwise, if scrolling within the text box, stop the event from bubbling
-        // to prevent the mainContainer from scrolling.
-        console.log("TextBox: Scrolling internally, stopping propagation.");
-        e.stopPropagation();
-      }
-    };
-
-    textBox.addEventListener("wheel", handleTextBoxWheel, { passive: false });
-    return () => textBox.removeEventListener("wheel", handleTextBoxWheel);
-  }, [activeSection, chapter]); // Added chapter dependency
-
   /*
    * Chapter2 Section2 Content
    */
@@ -415,7 +220,7 @@ const Content = ({ chapter }) => {
     case "ch1":
       return (
         <div id="ch1" className="mt-10 flex flex-col text-white gap-15">
-          <div id="section1Container" ref={section1Ref} className="h-full">
+          <div id="section1Container" className="h-full">
             <Section1 vimeoId={1095028297} />
           </div>
           <div id="section2" className="flex flex-col relative h-[150vh]">
@@ -471,14 +276,12 @@ const Content = ({ chapter }) => {
         <div
           id="ch2"
           className="flex flex-col text-white gap-10 h-full overflow-y-scroll"
-          ref={mainRef}
         >
-          <div id="section1" ref={section1Ref}>
+          <div id="section1">
             <Section1 vimeoId={1095029681} />
           </div>
           <div
-            id="section2"
-            ref={section2Ref}
+            id="c2section2"
             className="flex flex-col relative h-screen"
           >
             <img
@@ -488,28 +291,20 @@ const Content = ({ chapter }) => {
             />
 
             <div
-              ref={textBoxRef}
-              className="scrollbar-hide z-5 absolute top-10 left-10 font-body max-w-[300px] h-[50%] max-h-[500px] overflow-y-auto first-letter:text-4xl first-letter:font-bold"
+              className="scrollbar-hide z-5 absolute top-10 left-10 font-body max-w-[300px] h-[80%] max-h-[500px] overflow-y-hidden first-letter:text-4xl first-letter:font-bold "
             >
               {ch2s2Texts.map((it, id) => (
                 <div
-                  id="textContainer"
-                  className="my-5 tracking-widest"
+                  id="scrollTextContainer"
+                  className="my-5 tracking-widest animate-[autoScroller_40s_linear_infinite]"
                   key={id}
                 >
                   {it}
                 </div>
               ))}
             </div>
-            <Button
-              onClick={() => {
-                section3Ref.current.scrollIntoView({ behavior: "smooth" });
-              }}
-              label="Next To 3 Section"
-              custom={"absolute bottom-10 right-10"}
-            />
           </div>
-          <div id="section3" ref={section3Ref} className="relative h-full">
+          <div id="c2section3" className="relative h-full">
             <ol className="w-full px-10 flex absolute text-3xl top-10 justify-between">
               {ch3s3Images.map((it, id) => (
                 <li
@@ -529,10 +324,9 @@ const Content = ({ chapter }) => {
           </div>
           <div
             id="section4"
-            ref={section4Ref}
             className="bg-white-1 px-10 py-10 m-0"
           >
-            <Section4 content={ch2s4} scrollTo={section1Ref} />
+            <Section4 content={ch2s4} />
           </div>
         </div>
       );
@@ -554,7 +348,7 @@ const Content = ({ chapter }) => {
             <ButtonWithIcon
               label={t1("witness.witnessVideos.btn")}
               custom="uppercase"
-              onClick={() => chapter = "witness"}
+              onClick={() => window.location.href = "/view/witness"}
             />
           </div>
           <div
@@ -578,7 +372,7 @@ const Content = ({ chapter }) => {
             <div className="w-full flex justify-end mr-80">
               <ButtonWithIcon
                 label="Continuer la visite"
-                onClick={() => chapter("conclusion")}
+                onClick={() => window.location.href = "/view/conclusion"}
               />
             </div>
           </div>

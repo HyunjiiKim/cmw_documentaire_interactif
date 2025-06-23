@@ -202,11 +202,11 @@ export const DifferentPdv = () => {
             ) : (
                 <div
                     id="pdvContainer"
-                    className="bg-white-1 text-black h-full w-full flex"
+                    className="bg-white-1 text-black h-full py-20 w-full flex justify-center"
                 >
-                    <div>
+                    <div className="flex flex-col gap-5">
                         <h1 className="text-5xl uppercase">{t("witness.title.pre")} {t("witness.title.post")}</h1>
-                        <p className="text-3xl text-gray-400 tracking-widest font-body font-regular max-w-[600px]">
+                        <p className="text-2xl text-gray-1 tracking-widest font-body font-regular w-1/2 max-w-[600px]">
                             {t("witness.title.tagline")}
                         </p>
                         <div id="btnGroup" className="flex flex-col">
@@ -215,11 +215,18 @@ export const DifferentPdv = () => {
                                     label={item.btnLabel}
                                     key={item["id"]}
                                     onClick={() => setShowPdv(item["id"])}
+                                    custom={`m-2 ${item["id"]===showPdv ? "bg-primary-1" : "bg-transparent text-black"}`}
                                 />
                             ))}
                         </div>
                     </div>
-                    <div className="bg-black text-white">
+                    <div className="bg-black font-body tracking-widest text-white h-[50%] w-[40%] max-h-[300px] max-w-[593px] self-end p-15 overflow-y-scroll scrollbar-hide relative">
+                        <div 
+                        className="bg-primary-1 w-fit p-1 absolute top-5 left-5 cursor-pointer"
+                        onClick={() => setShowPdv(null)}
+                        >
+                            <i className="bi bi-x-lg"></i>
+                        </div>
                         {selectedWitness && <p>{selectedWitness.description}</p>}
                     </div>
                 </div>
