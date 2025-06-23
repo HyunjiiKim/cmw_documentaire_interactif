@@ -1,26 +1,57 @@
-import Phaser, { Tilemaps } from "phaser";
+import Phaser from "phaser";
 
-// ENHANCEMENT: Positions are now relative to the screen dimensions.
-// This makes the layout responsive to different canvas sizes.
-// The absolute pixel values will be calculated inside the create() method.
+const chapterElemets = [
+  {
+    id: "intro",
+    ko: "소개",
+    en: "INTRODUCTION",
+    fr: "le camp de geoje",
+  },
+  {
+    id: "ch1",
+    ko: "거제 포로수용소",
+    en: "the geoje pow camp",
+    fr: "le camp de geoje",
+  },
+  {
+    id: "ch2",
+    ko: "수용소에서 역사공원까지",
+    en: "from the camp to the historical park",
+    fr: "du camp au parc historique",
+  },
+  {
+    id: "ch3",
+    ko: "귀 기울인 과거",
+    en: "a listening past",
+    fr: "un passé écouté",
+  },
+];
+
+function renderUpperCase(comp) {
+  let currentLang = localStorage.getItem("i18nextLng") || "en";
+  let outputText = chapterElemets.find(chapter => chapter.id === comp)[currentLang];
+  if (typeof outputText === 'string') {
+    return outputText.toUpperCase();
+  }
+}
+
 const mapElementsData = [
   {
     id: "intro",
-    x: 0.49, // 50% of screen width
-    y: 0.85, // 85% of screen height
+    x: window.innerWidth / 2,
+    y: window.innerHeight - 200,
+    name: renderUpperCase("intro"),
     asset: "introBefore",
-    name: "intro",
-    targetWidth: 300,
+    targetWidth: 200,
     hover: { asset: "introAfter", alpha: 0.7, yOffset: -5, scaleFactor: 0.4, tint: 0xffefc4 },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },
   {
     id: "ch1",
-    x: 0.5, // 50% of screen width
-    y: 0.5, // 50% of screen height
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2,
+    name: renderUpperCase("ch1"),
     asset: "chapter1Before",
-    name: "ch1",
-    sound: "ch1Hover",
     targetWidth: 300,
     path: "/view/ch1",
     hover: { asset: "chapter1After", alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
@@ -28,24 +59,22 @@ const mapElementsData = [
   },
   {
     id: "ch2",
-    x: 0.25, // 25% of screen width
-    y: 0.5, // 50% of screen height
+    x: window.innerWidth / 4,
+    y: window.innerHeight / 2,
+    name: renderUpperCase("ch2"),
     asset: "chapter2Before",
-    name: "ch2",
-    sound: "ch2Hover",
-    targetWidth: 400,
+    targetWidth: 200,
     path: "/view/ch2",
-    hover: { asset: "chapter2After", alpha: 0.7, yOffset: -8, scaleFactor: 0.8, tint: 0xddeeff },
+    hover: { asset: "chapter2After", alpha: 0.7, yOffset: -8, scaleFactor: 1, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
   },
   {
     id: "ch3",
-    x: 0.8, // 80% of screen width
-    y: 0.5, // 50% of screen height
+    x: window.innerWidth - 200,
+    y: window.innerHeight / 2,
     asset: "chapter3Before",
-    name: "ch3",
-    sound: "ch3Hover",
-    targetWidth: 300, // ENHANCEMENT: Using a fixed width is more predictable than window.innerWidth
+    name: renderUpperCase("ch3"),
+    targetWidth: window.innerWidth / 6,
     path: "/view/ch3",
     hover: { asset: "chapter3After", alpha: 0.7, yOffset: -8, scaleFactor: 1.2, tint: 0xddeeff },
     out: { alpha: 1, yOffset: 0, scaleFactor: 1, tint: 0xffffff },
@@ -58,86 +87,105 @@ export class MapScene extends Phaser.Scene {
     this.interactiveElements = [];
     this.elementsById = {};
     this.infoText = null;
-    this.currentHoverSound = null;
   }
 
-  // FIX: Merged the two preload functions into one.
+  // image files load 
+
   preload() {
-    // === IMAGE ASSETS ===
+    // tile set
     this.load.image("mapBackground", "/assets/img/background.png");
+
+    // introduction graphic elements
     this.load.image("introBefore", "/assets/img/introBefore.png");
     this.load.image("introAfter", "/assets/img/introAfter.png");
+    // chpater1 graphic elements
     this.load.image("chapter1Before", "/assets/img/ch1Before.png");
     this.load.image("chapter1After", "/assets/img/ch1After.png");
+    // chapter2 graphic elements
     this.load.image("chapter2Before", "/assets/img/ch2Before.png");
     this.load.image("chapter2After", "/assets/img/ch2After.png");
+    // chapter3 graphic elements
     this.load.image("chapter3Before", "/assets/img/ch3Before.png");
-    this.load.image("chapter3After", "/assets/img/ch3After.png");
+    this.load.image("chapter3After", "/assets/img/ch3After.png")
 
-    // === AUDIO ASSETS ===
-    // Using local assets as discussed to avoid CORS issues during development.
-    this.load.audio("ch1Hover", "/assets/audio/Chant.m4a");
-    this.load.audio("ch2Hover", "/assets/audio/battle.m4a");
-    this.load.audio("ch3Hover", "/assets/audio/lively_classroom.mp3");
   }
 
   create() {
-    const { width: gameWidth, height: gameHeight } = this.scale;
 
     // Add and scale background image
-    const mapBackground = this.add.image(gameWidth / 2, gameHeight / 2, "mapBackground");
-    const bgTexture = this.textures.get("mapBackground");
-    const imageRatio = bgTexture.getSourceImage().width / bgTexture.getSourceImage().height;
-    const gameRatio = gameWidth / gameHeight;
+    const { width: gameWidth, height: gameHeight } = this.scale;
+    const mapBackground = this.add.image(
+      gameWidth / 2,
+      gameHeight / 2,
+      "mapBackground"
+    );
 
+    const bgTexture = this.textures.get("mapBackground");
+    const { width: imageWidth, height: imageHeight } = bgTexture.getSourceImage();
+
+    const gameRatio = gameWidth / gameHeight;
+    const imageRatio = imageWidth / imageHeight;
+
+    // If the game screen is wider than the image, scale by width.
+    // Otherwise, scale by height. This ensures the image "covers" the screen.
     if (gameRatio > imageRatio) {
-      mapBackground.setScale(gameWidth / bgTexture.getSourceImage().width);
+      mapBackground.setScale(gameWidth / imageWidth);
     } else {
-      mapBackground.setScale(gameHeight / bgTexture.getSourceImage().height);
+      mapBackground.setScale(gameHeight / imageHeight);
     }
 
-    // Iterate over the data to create each map element
+    // Iterate over the data to create each map element (building)
     mapElementsData.forEach((data) => {
+      // default information
       let element;
       let baseScale = 1;
 
-      // ENHANCEMENT: Calculate absolute X and Y based on game dimensions
-      const elementX = gameWidth * data.x;
-      const elementY = gameHeight * data.y;
+      // Create sprite for the building
+      element = this.add.sprite(data.x, data.y, data.asset).setInteractive();
 
-      element = this.add.sprite(elementX, elementY, data.asset).setInteractive();
-      element.originalTint = element.tintTopLeft;
-      element.originalY = elementY; // Store original Y for yOffset transitions
+      element.originalTint = element.tintTopLeft; // Store original tint (usually 0xffffff for no tint)
+      element.originalY = data.y; // Store original Y for yOffset transitions
 
-      if (data.targetWidth && element.texture && element.texture.key !== "__MISSING") {
+      // Apply targetWidth for initial sizing, maintaining aspect ratio
+      if (
+        data.targetWidth &&
+        element.texture &&
+        element.texture.key !== "__MISSING"
+      ) {
         const textureWidth = element.texture.getSourceImage().width;
         if (textureWidth > 0) {
-          baseScale = data.targetWidth / textureWidth;
+          baseScale = data.targetWidth / textureWidth; // Calculate uniform scale factor
         } else {
-          console.warn(`Texture width for asset "${data.asset}" is 0. Cannot apply targetWidth.`);
-          baseScale = 1;
+          console.warn(
+            `Texture width for asset "${data.asset}" is 0. Cannot apply targetWidth.`
+          );
+          baseScale = 1; // Fallback to avoid division by zero
         }
       } else if (data.initialScale) {
+        // Fallback to initialScale if targetWidth not specified or applicable
         baseScale = data.initialScale;
       }
-      element.setScale(baseScale);
+      element.setScale(baseScale); // Apply the calculated or default scale
 
-      element.setData("info", data);
+      element.setData("info", data); // Store the configuration data on the Phaser game object
       this.interactiveElements.push(element);
-      this.elementsById[data.id] = element;
+      this.elementsById[data.id] = element; // Store element by its ID for easy access
 
+      // Set up hover, out, and click interactivity for this element
       this.setupElementTransitions(element, data, baseScale);
     });
 
+    // Create a text object for displaying information on hover
     this.infoText = this.add
       .text(10, 10, "Hover over a building", {
         font: "16px Arial",
-        fill: "#ffffff",
-        backgroundColor: "rgba(0,0,0,0.7)",
-        padding: { x: 8, y: 5 },
+        fill: "#ffffff", // White text
+        backgroundColor: "rgba(0,0,0,0.7)", // Semi-transparent black background
+        padding: { x: 8, y: 5 }, // Padding around the text
+        // borderRadius: 4, // If you have a Phaser version that supports this for text bg
       })
-      .setDepth(100)
-      .setVisible(false);
+      .setDepth(100); // Ensure infoText is on top of other elements
+    this.infoText.setVisible(false); // Initially hidden
   }
 
   setupElementTransitions(element, config, currentBaseScale) {
@@ -149,27 +197,21 @@ export class MapScene extends Phaser.Scene {
 
     element.on("pointerover", () => {
       this.game.canvas.style.cursor = "pointer";
-
-      // --- Sound effect logic ---
-      if (this.currentHoverSound && this.currentHoverSound.isPlaying) {
-        this.currentHoverSound.stop();
-      }
-      if (config.sound) {
-        this.currentHoverSound = this.sound.add(config.sound);
-        this.currentHoverSound.play();
-      }
-      // --- End sound logic ---
-
-      const infoTextY = element.y - element.displayHeight / 2 - 10;
+      // Show and update info text
+      // Adjust info text Y position based on the element"s current scale to avoid overlap
+      const infoTextY = element.y - element.displayHeight / 2 - 10; // Position above the element
       this.infoText
         .setText(config.name || config.id)
         .setPosition(element.x, infoTextY)
         .setOrigin(0.5, 1)
         .setVisible(true);
 
-      const tweenConfig = {};
+
+      const tweenConfig = {}; // Properties to tween will be added here
       let applyTween = false;
 
+
+      // Apply hover effects defined in config
       if (hoverProps.scaleFactor !== undefined) {
         tweenConfig.scale = restingScale * hoverProps.scaleFactor;
         applyTween = true;
@@ -179,19 +221,21 @@ export class MapScene extends Phaser.Scene {
         applyTween = true;
       }
       if (hoverProps.yOffset !== undefined) {
+        // Ensure yOffset is relative to the originalY, not the currently tweened Y
         tweenConfig.y = element.originalY + hoverProps.yOffset;
         applyTween = true;
       }
       if (hoverProps.tint !== undefined) {
-        element.setTint(hoverProps.tint);
+        element.setTint(hoverProps.tint); // Tint is usually an immediate effect
       }
 
+      // Add the tween if there are properties to animate
       if (applyTween) {
         this.tweens.add({
           targets: element,
-          duration: 200,
-          ease: "Power1",
-          ...tweenConfig,
+          duration: 200, // Duration of hover animation in ms
+          ease: "Power1", // Easing function for the animation
+          ...tweenConfig, // Spread the properties to tween (scale, alpha, y)
         });
       }
 
@@ -199,42 +243,44 @@ export class MapScene extends Phaser.Scene {
     });
 
     element.on("pointerout", () => {
-      // --- Sound effect logic ---
-      if (this.currentHoverSound && this.currentHoverSound.isPlaying) {
-        this.currentHoverSound.stop();
-      }
-      // --- End sound logic ---
-
       this.game.canvas.style.cursor = "default";
+      // Hide info text
       this.infoText.setVisible(false);
 
       const outProps = config.out || {};
-      const tweenConfig = {};
+      const tweenConfig = {}; // Properties to tween back
       let applyTween = false;
 
-      tweenConfig.scale = restingScale * (outProps.scaleFactor !== undefined ? outProps.scaleFactor : 1);
-      applyTween = true;
+      // Revert to restingScale multiplied by out.scaleFactor (usually 1 for original size)
+      tweenConfig.scale =
+        restingScale *
+        (outProps.scaleFactor !== undefined ? outProps.scaleFactor : 1);
+      applyTween = true; // Always tween scale back
 
       if (outProps.alpha !== undefined) {
         tweenConfig.alpha = outProps.alpha;
       } else if (config.hover && config.hover.alpha !== undefined) {
+        // If hover changed alpha and out doesn"t specify, revert to default (usually 1)
         tweenConfig.alpha = 1;
       }
 
       if (config.hover && config.hover.yOffset !== undefined) {
+        // If yOffset was applied on hover, revert to originalY plus any "out" yOffset
         tweenConfig.y = element.originalY + (outProps.yOffset || 0);
       }
 
+      // Handle tint reset
       if (outProps.tint !== undefined) {
         element.setTint(outProps.tint);
       } else if (config.hover && config.hover.tint !== undefined) {
-        element.clearTint();
+        // If hover applied a tint and "out" doesn"t specify one, clear it
+        element.clearTint(); // Or setTint(element.originalTint)
       }
 
       if (applyTween) {
         this.tweens.add({
           targets: element,
-          duration: 150,
+          duration: 150, // Duration of mouse out animation
           ease: "Power1",
           ...tweenConfig,
         });
@@ -243,17 +289,22 @@ export class MapScene extends Phaser.Scene {
       element.setTexture(element.restingTexture);
     });
 
+    // Handle click (pointerdown) event for navigation
     element.on("pointerdown", () => {
       console.log(
-        `Phaser: Clicked on "${config.name || config.id}". Path: "${config.path}"`
+        `Phaser: Clicked on "${config.name || config.id}". Path: "${config.path
+        }"`
       );
       if (config.path) {
+        // Emit a custom event that the React component (PhaserMap.jsx) will listen for
         this.game.events.emit("navigateToPage", config.path);
       } else {
-        console.warn(`Phaser: No navigation path defined for element ID "${config.id}"`);
+        console.warn(
+          `Phaser: No navigation path defined for element ID "${config.id}"`
+        );
       }
     });
   }
 
-  update() {}
+  update() { }
 }

@@ -9,7 +9,6 @@ import Archives from "./pages/Archives";
 
 // components
 import MainLayout from "./components/mainLayout";
-import { HorizontalNav, TopNav } from "./components/NavBar";
 import { Blocker } from "./components/Blocker";
 
 import "./App.css";
@@ -22,7 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route element={<MainLayout />}>
           <Route path="/map" element={<Map />} />
-          <Route path="/documentary" Element={<Documentary />} />
+          <Route path="/documentary" element={<Documentary />} />
           <Route path="/view/:id" element={<View />} />
           <Route path="/archives" element={<Archives />} />
         </Route>
