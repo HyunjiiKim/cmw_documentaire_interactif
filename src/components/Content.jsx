@@ -18,7 +18,6 @@ import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
 import mockVideo from "/assets/videos/Introduction.mp4";
 
-
 const Content = ({ chapter }) => {
   const { t: t1 } = useTranslation("contents");
   const { t: t2 } = useTranslation("general");
@@ -158,7 +157,7 @@ const Content = ({ chapter }) => {
     t2("acknowledgement.GY"),
     t2("acknowledgement.MA"),
     t2("acknowledgement.SL"),
-    t2("acknowledgement.SZ")
+    t2("acknowledgement.SZ"),
   ];
 
   const ch3s4 = {
@@ -179,7 +178,7 @@ const Content = ({ chapter }) => {
       lname: "",
       status: t1("witness.witnessVideos.01.status"),
       tagline: t1("witness.witnessVideos.01.tagline"),
-      videoURL: mockVideo
+      videoURL: mockVideo,
     },
     {
       id: "02",
@@ -187,7 +186,7 @@ const Content = ({ chapter }) => {
       lname: "",
       status: t1("witness.witnessVideos.02.status"),
       tagline: t1("witness.witnessVideos.02.tagline"),
-      videoURL: mockVideo
+      videoURL: mockVideo,
     },
     {
       id: "03",
@@ -195,9 +194,9 @@ const Content = ({ chapter }) => {
       lname: "",
       status: t1("witness.witnessVideos.03.status"),
       tagline: t1("witness.witnessVideos.03.tagline"),
-      videoURL: mockVideo
-    }
-  ]
+      videoURL: mockVideo,
+    },
+  ];
 
   // show Temoignage
   const [showTemoignages, setShowTemoignages] = useState(false);
@@ -205,16 +204,12 @@ const Content = ({ chapter }) => {
   const handleShowTemoignages = () => {
     setShowTemoignages(true);
     //after 0.1 sec, it scrools smootly to the section id="temoignages"
-    setTimeout(
-      () => {
-        document.getElementById("temoignages").scrollIntoView({
-          behavior: "smooth",
-        });
-      },
-      100
-    )
+    setTimeout(() => {
+      document.getElementById("temoignages").scrollIntoView({
+        behavior: "smooth",
+      });
+    }, 100);
   };
-
 
   switch (chapter) {
     case "ch1":
@@ -266,7 +261,7 @@ const Content = ({ chapter }) => {
               {t1("ch1.section3.contents")}
             </div>
           </div>
-          <div id="section4Container" className="bg-white-1 px-10 py-10 m-0">
+          <div id="section4Container">
             <Section4 content={ch1s4} />
           </div>
         </div>
@@ -280,19 +275,14 @@ const Content = ({ chapter }) => {
           <div id="section1">
             <Section1 vimeoId={1095029681} nextChapter="/view/ch3" />
           </div>
-          <div
-            id="c2section2"
-            className="flex flex-col relative h-screen"
-          >
+          <div id="c2section2" className="flex flex-col relative h-screen">
             <img
               src={C2S2}
               alt="background"
               className="w-full h-full object-cover"
             />
 
-            <div
-              className="scrollbar-hide z-5 absolute top-10 left-10 font-body max-w-[300px] h-[80%] max-h-[500px] overflow-y-hidden first-letter:text-4xl first-letter:font-bold "
-            >
+            <div className="scrollbar-hide z-5 absolute top-10 left-10 font-body max-w-[300px] h-[80%] max-h-[500px] overflow-y-hidden first-letter:text-4xl first-letter:font-bold ">
               {ch2s2Texts.map((it, id) => (
                 <div
                   id="scrollTextContainer"
@@ -303,6 +293,14 @@ const Content = ({ chapter }) => {
                 </div>
               ))}
             </div>
+
+            <div className="w-full absolute bottom-20 left-290">
+              <ButtonWithIcon
+                label={t2("continue")}
+                custom="border-white border-1"
+                onClick=""
+              />
+            </div>
           </div>
           <div id="c2section3" className="relative h-full">
             <ol className="w-full px-10 flex absolute text-3xl top-10 justify-between">
@@ -310,8 +308,9 @@ const Content = ({ chapter }) => {
                 <li
                   key={id}
                   onClick={() => setC3s3(id)}
-                  className={`cursor-pointer font-body uppercase hover:font-bold text-white/70 ${c3s3 === id && "font-bold text-white/100"
-                    }`}
+                  className={`cursor-pointer font-body uppercase hover:font-bold text-white/70 ${
+                    c3s3 === id && "font-bold text-white/100"
+                  }`}
                 >
                   {it.name}
                   {c3s3 === id && (
@@ -322,10 +321,7 @@ const Content = ({ chapter }) => {
             </ol>
             <ClickImage content={ch3s3Images[c3s3]} />
           </div>
-          <div
-            id="section4"
-            className="bg-white-1 px-10 py-10 m-0"
-          >
+          <div id="section4">
             <Section4 content={ch2s4} />
           </div>
         </div>
@@ -369,9 +365,9 @@ const Content = ({ chapter }) => {
               <p className="opacity-50">- {t1("ch3.contents.3.quote.part2")}</p>
               <p className="opacity-50">- {t1("ch3.contents.3.quote.part3")}</p>
             </div>
-            <div className="w-full flex justify-end mr-80">
+            <div className="w-full flex justify-end mr-70">
               <ButtonWithIcon
-                label="Continuer la visite"
+                label={t2("continueVisit")}
                 onClick={() => navigation("/view/conclusion")}
               />
             </div>
@@ -387,7 +383,8 @@ const Content = ({ chapter }) => {
           <div id="section2">
             <Section4 content={ch3s4} />
           </div>
-          <div id="section3"
+          <div
+            id="section3"
             className="h-screen bg-[url(https://storage.googleapis.com/cmw-geoje-src/videos/chap3_section3.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply flex flex-col justify-center items-center text-center tracking-[6%]"
           >
             <h2 className="uppercase text-7xl leading-20">
@@ -398,32 +395,27 @@ const Content = ({ chapter }) => {
             <p className="font-body text-3xl w-190">
               {t1("witness.thumb.text")}
             </p>
-            <Button label={t1("witness.witnessVideos.btn")} onClick={handleShowTemoignages} />
+            <Button
+              label={t1("witness.witnessVideos.btn")}
+              onClick={handleShowTemoignages}
+            />
           </div>
-          <div
-            id="section4"
-          >
+          <div id="section4">
             {showTemoignages && (
               <div
                 id="temoignages"
-                className="h-full flex flex-col justify-center items-center tracking-[6%] gap-15"
+                className="mt-20 h-full flex flex-col justify-center items-center tracking-[6%] gap-15"
               >
                 {witnessInfo.map((it) => (
-                  <Witness
-                    key={it.id}
-                    content={it}
-                  />
+                  <Witness key={it.id} content={it} />
                 ))}
                 <div
                   id="buttonGroup"
                   className="w-full flex justify-end items-end gap-5 mr-[60px]"
                 >
-                  <TopPage
-                    bgColor={"primary-1"}
-                    borderColor={"white"}
-                  />
+                  <TopPage bgColor={"primary-1"} borderColor={"white"} />
                   <Button
-                    label="Retour à la carte"
+                    label={t2("returnToMap")}
                     custom="border-white border-1"
                     onClick={() => navigation("/map")}
                   />
@@ -464,7 +456,9 @@ const Content = ({ chapter }) => {
             <h1 className="uppercase text-6xl">{t1("conclu.thanks.title")}</h1>
             <ol className="flex gap-5 font-body text-lg">
               {acknowledgementList.map((it, id) => (
-                <li key={id}>{it} {id === acknowledgementList.length - 1 ? "." : ","}</li>
+                <li key={id}>
+                  {it} {id === acknowledgementList.length - 1 ? "." : ","}
+                </li>
               ))}
             </ol>
           </div>
@@ -482,10 +476,7 @@ const Content = ({ chapter }) => {
           className="h-screen flex flex-col justify-center items-center text-white"
         >
           Page Not Found
-          <Button
-            label={t2("returnToHome")}
-            onClick={() => navigation("/")}
-          />
+          <Button label={t2("returnToHome")} onClick={() => navigation("/")} />
         </div>
       );
   }
