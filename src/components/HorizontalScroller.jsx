@@ -45,9 +45,9 @@ export const GalleryImg = ({ data, custom, size }) => {
 export const GalleryVid = ({ data, custom, size }) => {
   return (
     <div className="mt-10 mb-10 flex flex-row flex-wrap gap-4">
-      {data.map((item) => (
+      {data.map((item, id) => (
         <VideoContainer
-          key={item.id}
+          key={id}
           src={item.src}
           alt={item.alt}
           credit={item.credit}

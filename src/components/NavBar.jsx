@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react"; 
+import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -34,7 +34,7 @@ export const NavBar = ({ whichPage }) => {
     },
   ];
 
-  var pathName = document.location.pathname;
+  var pathName = `/view/${pathname}`;
 
   return (
     <div id="nav" className="w-200">
@@ -49,8 +49,8 @@ export const NavBar = ({ whichPage }) => {
         {nav.map((item) => (
           <div
             className={`uppercase font-body ${pathName == `/view/${item.pathname}`
-                ? "text-primary-2"
-                : "cursor-pointer"
+              ? "text-primary-2"
+              : "cursor-pointer"
               }`}
             onClick={() => (window.location.href = `/view/${item.pathname}`)}
           >
@@ -94,42 +94,14 @@ export const TopNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // useMemo will recompute navElements only if navT (the translation function) changes.
   const navElements = useMemo(
     () => [
-      {
-        id: 0,
-        title: navT("intro"),
-        path: "/map",
-      },
-      {
-        id: 1,
-        chapter: navT("ch1"),
-        title: navT("TopNav.1"),
-        path: "/view/ch1",
-      },
-      {
-        id: 2,
-        chapter: navT("ch2"),
-        title: navT("TopNav.2"),
-        path: "/view/ch2",
-      },
-      {
-        id: 3,
-        chapter: navT("ch3"),
-        title: navT("TopNav.3"),
-        path: "/view/ch3",
-      },
-      {
-        id: 4,
-        title: navT("conclu"),
-        path: "/view/conclusion",
-      },
-      {
-        id: 5,
-        title: navT("TopNav.archive"),
-        path: "/archives",
-      },
+      { id: 0, title: navT("intro"), path: "/map" },
+      { id: 1, chapter: navT("ch1"), title: navT("TopNav.1"), path: "/view/ch1" },
+      { id: 2, chapter: navT("ch2"), title: navT("TopNav.2"), path: "/view/ch2" },
+      { id: 3, chapter: navT("ch3"), title: navT("TopNav.3"), path: "/view/ch3" },
+      { id: 4, title: navT("conclu"), path: "/view/conclusion" },
+      { id: 5, title: navT("TopNav.archive"), path: "/archives" },
     ],
     [navT]
   );
@@ -137,7 +109,6 @@ export const TopNav = () => {
   const [current, setCurrent] = useState({ title: "", chapter: "" });
 
   useEffect(() => {
-    // Find the current navigation element by matching the browser's current path.
     const currentNav = navElements.find(
       (el) => el.path === location.pathname
     );
@@ -145,20 +116,16 @@ export const TopNav = () => {
     if (currentNav) {
       setCurrent({
         title: currentNav.title,
-        chapter: currentNav.chapter || "", // Use the chapter from the found element, or default to empty.
+        chapter: currentNav.chapter || "",
       });
     } else {
-      // Optional: Handle cases where the path doesn't match any navElement.
-      // You could set a default title or leave it blank.
-      setCurrent({ title: "Page Not Found", chapter: "" });
+      setCurrent({ title: "", chapter: "" });
     }
   }, [location.pathname, navElements]);
 
-  // Use react-router's navigate function for client-side routing.
-  // This avoids a full page reload, which is what window.location.href does.
   const handleNavigation = (path) => {
     navigate(path);
-    setShow(false); // Close the menu after navigation.
+    setShow(false);
   };
 
   return (
@@ -169,23 +136,14 @@ export const TopNav = () => {
       <div className="w-full flex justify-between items-center">
         <div className="flex items-center text-white gap-2 font-sans">
           <div id="menuBurger" className="cursor-pointer">
-            <i
-              className="bi bi-list text-[48px]"
-              onClick={() => setShow(true)}
-            />
+            <i className="bi bi-list text-[48px]" onClick={() => setShow(true)} />
           </div>
           <div className="flex items-center">
-            {/* Display the current chapter and title */}
+
             <p className="text-xl uppercase">
-              {current.chapter && `${current.chapter}: `}{current.title}
+              {current.title}
             </p>
           </div>
-        </div>
-        <div
-          className="text-white border border-white w-fit uppercase p-2 cursor-pointer"
-          onClick={() => navigate("/map")}
-        >
-          {t("returnToMap")}
         </div>
         {show && (
           <div
@@ -200,7 +158,7 @@ export const TopNav = () => {
               <nav className="flex flex-col gap-10 py-20 px-10">
                 {navElements.map((item) => (
                   <div
-                    key={item.id} // Add a unique key for list items.
+                    key={item.id}
                     onClick={() => handleNavigation(item.path)}
                     className="flex justify-between items-center cursor-pointer text-white/70 hover:text-white"
                   >

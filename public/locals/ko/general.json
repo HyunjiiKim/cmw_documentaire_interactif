@@ -6,6 +6,8 @@
   "footer": "거제 포로수용소",
   "start": "시작하기",
   "watch": "다큐멘터리 보기",
+  "reviewIntro": "소개 다시 보기",
+  "continue": "계속하기",
   "returnToMap": "지도로 돌아가기",
   "returnToHome": "홈으로 돌아가기",
   "map": "탐색하기",
@@ -19,7 +21,7 @@
     "para4": "귀스타브 에펠 대학교 소속: Camille Dixit, Emma Bréhin, 김현지, Kerby Anne-Kissy Janvier, Flavie Sallé--Maixent, Léa Spasaro",
     "para5": "동의대학교 소속: 이민도, 이예형, 박은석, 홍진석"
   },
-  "acknowledgement":{
+  "acknowledgement": {
     "GY": "유기훈",
     "MC": "차민철"
   }

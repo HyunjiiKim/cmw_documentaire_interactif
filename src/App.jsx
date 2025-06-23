@@ -8,6 +8,7 @@ import Documentary from "./pages/Documentary";
 import Archives from "./pages/Archives";
 
 // components
+import MainLayout from "./components/mainLayout";
 import { HorizontalNav, TopNav } from "./components/NavBar";
 import { Blocker } from "./components/Blocker";
 
@@ -17,15 +18,14 @@ function App() {
   return (
     <Router>
       <Blocker />
-      {location.pathname !== "/" && <HorizontalNav />}
-      {location.pathname !== "/" && <TopNav />}
       <Routes>
-        {/* <Route path="/test" element={<Test />} /> */}
         <Route path="/" element={<Home />} />
-        <Route path="/map" element={<Map />} />
-        <Route path="/documentary" element={<Documentary />} />
-        <Route path="/view/:id" element={<View />} />
-        <Route path="/archives" element={<Archives />} />
+        <Route element={<MainLayout />}>
+          <Route path="/map" element={<Map />} />
+          <Route path="/documentary" Element={<Documentary />} />
+          <Route path="/view/:id" element={<View />} />
+          <Route path="/archives" element={<Archives />} />
+        </Route>
       </Routes>
     </Router>
   );

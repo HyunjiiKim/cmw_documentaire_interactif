@@ -25,6 +25,7 @@ i18n
       "map",
       "documentary",
       "archives",
+      "credit"
     ],
     detection: {
       order: [

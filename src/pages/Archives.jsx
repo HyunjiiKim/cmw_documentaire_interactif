@@ -9,6 +9,7 @@ import Footer from "../components/Footer.jsx";
 const Archives = () => {
   const { t } = useTranslation("general");
   const { t: t1 } = useTranslation("archives");
+  const { t: c } = useTranslation("credit");
 
   const [showArchives, setShowArchives] = useState("img");
   const [showCategories, setShowCategories] = useState("none");
@@ -23,20 +24,19 @@ const Archives = () => {
   const war = t1("categories.war");
   const camp = t1("categories.camp");
 
-  const WB = "Werner Bischoff";
-  const MD = "Max Desfor";
-  const usNavy = "United States Navy";
-  const USA = "United States federal government";
-  const NARA = "National Archives and Records Administration";
-  const ROK = "Republic Of Korea Armed Forces";
-  const ECPAD =
-    "Établissement de Communication et de Production Audiovisuelle de la Défense";
-  const 극동사령부 = "극동사령부";
-  const ICRC = "International Committee of the Red Cross (ICRC)";
-  const actuFR = "Les Actualités Françaises";
-  const LP = "La Presse";
-  const GHQ = "GHQ (164통신대)";
-  const SPX = "SPX-87통신중대";
+  const WB = c("WB");
+  const MD = c("MD");
+  const usNavy = c("usNavy");
+  const USA = c("USA");
+  const NARA = c("NARA");
+  const ROK = c("ROK");
+  const ECPAD = c("ECPAD");
+  const FEC = c("FEC");
+  const ICRC = c("ICRC");
+  const actuFR = c("actuFR");
+  const LP = c("LP");
+  const GHQ = c("GHQ");
+  const SPX = c("SPX");
   const sourcesList = [WB, MD, usNavy, USA, ROK, ECPAD, ICRC, actuFR, LP];
 
   function openShowFilms() {
@@ -677,7 +677,7 @@ const Archives = () => {
       credit:
         "포로수용소 세계기록유산 등재 추. (s.d.). 처리텐트 / Prosesing tent(RG 111 LC 32389)[Vidéo]. YouTube. https://www.youtube.com/watch?v=zgS19roS8n0",
       category: camp,
-      source: 극동사령부,
+      source: FEC,
       year: "1953",
     },
   ];

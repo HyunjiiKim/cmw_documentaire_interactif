@@ -61,7 +61,7 @@ export const ImageContainer = ({
   return (
     <>
       <div
-        className={`${ContainerVariants({ intent, size, border })} ${custom}`}
+        className={`${ContainerVariants({ intent, size, border })} ${custom} ${isClickable && "cursor-pointer"}`}
       >
         <img
           src={src}

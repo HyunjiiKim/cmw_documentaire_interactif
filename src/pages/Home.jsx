@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { HorizontalNav } from "../components/NavBar";
 import LanguageSwitch from "../components/Switch";
@@ -24,6 +25,7 @@ const Home = () => {
   const { t: t3 } = useTranslation("general");
   // const [showChoice, setShowChoice] = useState(false);
   const [showHome, setShowHome] = useState(0);
+  const navigation = useNavigate();
 
   function openShowChoices() {
     setShowHome(2);
@@ -104,13 +106,13 @@ const Home = () => {
             >
               <Button
                 onClick={openShowBtn}
-                label="Revoir l'introduction"
+                label={t3("reviewIntro")}
                 size="large"
                 custom="m-0"
               />
               <Button
                 onClick={openShowHome}
-                label="Continuer"
+                label={t3("continue")}
                 size="large"
                 custom="m-0"
               />
@@ -218,14 +220,14 @@ const Home = () => {
                 isMultiple={true}
                 src={teaserIntro}
                 btnLabel={t3("watch")}
-                btnOnClick={() => (window.location.href = "/documentary")}
+                btnOnClick={() => navigation("/documentary")}
               />
               <Trigger
                 isImg={true}
                 isMultiple={true}
                 src={mockMap}
                 btnLabel={t3("map")}
-                btnOnClick={() => (window.location.href = "/map")}
+                btnOnClick={() => navigation("/map")}
               />
             </div>
           </div>
