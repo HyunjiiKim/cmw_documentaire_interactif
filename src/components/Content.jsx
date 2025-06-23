@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useState, useEffect, useRef } from "react";
+import { useState} from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
@@ -267,7 +267,7 @@ const Content = ({ chapter }) => {
             </div>
           </div>
           <div id="section4Container" className="bg-white-1 px-10 py-10 m-0">
-            <Section4 content={ch1s4} scrollTo={section1Ref} />
+            <Section4 content={ch1s4} />
           </div>
         </div>
       );
