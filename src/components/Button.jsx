@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
-
 const buttonVariants = cva(
   "cursor-pointer disabled:opacity-50 w-fit bg-transparent text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:text-shadow-sm/30 hover:text-shadow-black",
   {
@@ -107,13 +106,13 @@ export const InfoBtn = (position) => {
         <div id="universities" className="flex mt-10 justify-center gap-10">
           <a href="https://www.univ-gustave-eiffel.fr/">
             <img
-              src="../assets/img/logo_univ_gustave_eiffel.svg"
+              src="/assets/img/logo_univ_gustave_eiffel.svg"
               alt="Logo de l'université Gustave Eiffel"
             />
           </a>
           <a href="https://eng.deu.ac.kr/eng/index.do">
             <img
-              src="../assets/img/logo_dongeui.svg"
+              src="/assets/img/logo_dongeui.svg"
               alt="Logo de l'université Dongeui"
             />
           </a>
@@ -316,8 +315,9 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
-          }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
+          isLeft ? "left" : "right"
+        }`}
       ></i>
     </div>
   );

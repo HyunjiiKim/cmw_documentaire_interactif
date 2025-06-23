@@ -34,10 +34,6 @@ const Home = () => {
     setShowHome(1);
   }
 
-  function openShowIntro() {
-    setShowHome(3);
-  }
-
   function openShowBtn() {
     var btn = document.getElementById("btnFinishedIntro");
 
@@ -73,13 +69,13 @@ const Home = () => {
                 </p>
                 <div className="flex gap-5">
                   <ButtonWithIcon
-                    onClick={openShowIntro}
+                    onClick={openShowHome}
                     label={t2("enter")}
                     custom="ml-auto flex gap-3"
                     size="small"
                   />
                   <Button
-                    onClick={openShowHome}
+                    onClick={openShowChoices}
                     label={t2("skip")}
                     custom="mr-auto"
                     intent="ghost"
@@ -91,31 +87,6 @@ const Home = () => {
             <div className="z-50 flex justify-between pb-18 pr-18 pl-10">
               <Indicator label={t2("loading")} />
               <InfoBtn position="top" />
-            </div>
-          </div>
-        )}
-
-        {showHome === 3 && (
-          <div className="flex flex-col h-screen text-white">
-            <div className="h-fit">
-              <VimeoPlayer videoId="1095021776" onEnded={openShowBtn} />
-            </div>
-            <div
-              id="btnFinishedIntro"
-              className="z-50 hidden flex gap-5 fixed top-[45%] right-[35%]"
-            >
-              <Button
-                onClick={openShowBtn}
-                label={t3("reviewIntro")}
-                size="large"
-                custom="m-0"
-              />
-              <Button
-                onClick={openShowHome}
-                label={t3("continue")}
-                size="large"
-                custom="m-0"
-              />
             </div>
           </div>
         )}
