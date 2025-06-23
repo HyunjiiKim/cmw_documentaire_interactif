@@ -221,7 +221,7 @@ const Content = ({ chapter }) => {
       return (
         <div id="ch1" className="mt-10 flex flex-col text-white gap-15">
           <div id="section1Container" className="h-full">
-            <Section1 vimeoId={1095028297} />
+            <Section1 vimeoId={1095028297} nextChapter="/view/ch2" />
           </div>
           <div id="section2" className="flex flex-col relative h-[150vh]">
             <img
@@ -278,7 +278,7 @@ const Content = ({ chapter }) => {
           className="flex flex-col text-white gap-10 h-full overflow-y-scroll"
         >
           <div id="section1">
-            <Section1 vimeoId={1095029681} />
+            <Section1 vimeoId={1095029681} nextChapter="/view/ch3" />
           </div>
           <div
             id="c2section2"
@@ -334,7 +334,7 @@ const Content = ({ chapter }) => {
       return (
         <div className="px-10 py-10 text-white">
           <div id="section1" className="h-screen">
-            <Section1 vimeoId={1095030761} />
+            <Section1 vimeoId={1095030761} nextChapter="/view/conclusion" />
           </div>
           <div
             id="section2"

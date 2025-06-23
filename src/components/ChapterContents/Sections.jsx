@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { VimeoPlayer } from "../VideoPlayer";
@@ -7,7 +8,10 @@ import { DotsContainer } from "../Container";
 
 
 
-export const Section1 = ({ vimeoId }) => {
+export const Section1 = ({ vimeoId, nextChapter }) => {
+    const { t } = useTranslation("general");
+    const navigate = useNavigate();
+
     // check if VimeoPlayer finished or not
     const [isVimeoFinished, setIsVimeoFinished] = useState(false);
 
@@ -15,6 +19,15 @@ export const Section1 = ({ vimeoId }) => {
         setIsVimeoFinished(true);
         console.log("video finished");
     };
+
+    // ViemoPlayer restart
+    const videoRef = useRef(null);
+    const handleRestartVimeo = () => {
+        if (videoRef.current) {
+            videoRef.current.restart();
+        }
+    };
+
 
     return (
         <div id="section1" className="relative">
@@ -24,6 +37,7 @@ export const Section1 = ({ vimeoId }) => {
                 onEnded={handleVimeoEnded}
                 width="w-full"
                 height="h-full"
+                ref={videoRef}
             />
             {
                 // if video is finished, these triggers are appeared.
@@ -31,10 +45,10 @@ export const Section1 = ({ vimeoId }) => {
                     <div className="absolute z-10 w-full h-full top-0 bg-black/80">
                         <div
                             id="btn-group"
-                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-5"
+                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-5 uppercase"
                         >
-                            <Button label="Test" />
-                            <Button label="Test" />
+                            <Button label={t("review")} onClick={() => { setIsVimeoFinished(false); handleRestartVimeo(); }} />
+                            <Button label={t("continue")} onClick={ ()=> navigate(nextChapter) } />
                         </div>
                         <div
                             id="scrollTrigger"
@@ -215,15 +229,15 @@ export const DifferentPdv = () => {
                                     label={item.btnLabel}
                                     key={item["id"]}
                                     onClick={() => setShowPdv(item["id"])}
-                                    custom={`m-2 ${item["id"]===showPdv ? "bg-primary-1" : "bg-transparent text-black"}`}
+                                    custom={`m-2 ${item["id"] === showPdv ? "bg-primary-1" : "bg-transparent text-black"}`}
                                 />
                             ))}
                         </div>
                     </div>
                     <div className="bg-black font-body tracking-widest text-white h-[50%] w-[40%] max-h-[300px] max-w-[593px] self-end p-15 overflow-y-scroll scrollbar-hide relative">
-                        <div 
-                        className="bg-primary-1 w-fit p-1 absolute top-5 left-5 cursor-pointer"
-                        onClick={() => setShowPdv(null)}
+                        <div
+                            className="bg-primary-1 w-fit p-1 absolute top-5 left-5 cursor-pointer"
+                            onClick={() => setShowPdv(null)}
                         >
                             <i className="bi bi-x-lg"></i>
                         </div>
