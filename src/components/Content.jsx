@@ -211,6 +211,13 @@ const Content = ({ chapter }) => {
     }, 100);
   };
 
+  // btn ch2 section 2
+  const section3container = document.querySelector("#c2section3");
+
+  function scrollToSection3() {
+    section3container.scrollIntoView({ scroll: "smooth" });
+  }
+
   switch (chapter) {
     case "ch1":
       return (
@@ -298,7 +305,7 @@ const Content = ({ chapter }) => {
               <ButtonWithIcon
                 label={t2("continue")}
                 custom="border-white border-1"
-                onClick=""
+                onClick={scrollToSection3}
               />
             </div>
           </div>
