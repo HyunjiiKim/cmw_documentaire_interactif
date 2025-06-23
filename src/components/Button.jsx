@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
-import { useTranslation } from "react-i18next";
+
 
 const buttonVariants = cva(
   "cursor-pointer disabled:opacity-50 w-fit bg-transparent text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:text-shadow-sm/30 hover:text-shadow-black",
@@ -327,7 +328,13 @@ export const TopPage = ({ bgColor, borderColor }) => {
     <button
       className="cursor-pointer w-fit h-fit aspect-square w-20"
       onClick={() => {
-        scrollTo.scrollTo(0, { behavior: "smooth" });
+        // using vanilla js to scroll to the top of the page
+        // in React, #root is the parent element of the app
+        const body = document.querySelector("#root");
+        body.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
       }}
     >
       <i

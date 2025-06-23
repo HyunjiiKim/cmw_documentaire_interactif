@@ -133,6 +133,7 @@
       }
     },
     "witnessVideos": {
+      "btn": "Voir les témoignages",
       "01": {
         "fname": "Min-jae",
         "status": "Petit-fils d'un prisonnier",

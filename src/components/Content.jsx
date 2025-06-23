@@ -522,9 +522,9 @@ const Content = ({ chapter }) => {
               {t1("ch3.contents.2.part2")}
             </h1>
             <ButtonWithIcon
-              label="Voir le témoignage"
+              label={t1("witness.witnessVideos.btn")}
               custom="uppercase"
-              onClick={() => (window.location.href = "./witness")}
+              onClick={() => chapter="witness"}
             />
           </div>
           <div
@@ -548,7 +548,7 @@ const Content = ({ chapter }) => {
             <div className="w-full flex justify-end mr-80">
               <ButtonWithIcon
                 label="Continuer la visite"
-                onClick={() => (window.location.href = "/view/conclusion")}
+                onClick={() => chapter("conclusion")}
               />
             </div>
           </div>
@@ -575,7 +575,7 @@ const Content = ({ chapter }) => {
               Découvrez les témoignages et les récits poignants des visiteurs du
               parc historique.
             </p>
-            <Button label="Voir les témoignages" onClick={handleShowTemoignages} />
+            <Button label={t1("witness.witnessVideos.btn")} onClick={handleShowTemoignages} />
           </div>
           <div
             id="section4"
