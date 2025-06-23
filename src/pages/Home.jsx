@@ -55,7 +55,7 @@ const Home = () => {
           <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
             <div className="absolute top-0 left-0 w-full h-full">
               <img
-                src="../assets/videos/page_chargement.gif"
+                src="https://storage.googleapis.com/cmw-geoje-src/videos/page_chargement.gif"
                 className="opacity-70 size-full object-cover"
               />
             </div>
@@ -176,7 +176,7 @@ const Home = () => {
 
             <div
               id="continueDocumentary"
-              className="flex flex-col bg-[url(../assets/videos/page_introduction.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply"
+              className="flex flex-col bg-[url(https://storage.googleapis.com/cmw-geoje-src/videos/page_introduction.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply"
             >
               <div
                 id="continueContent"
