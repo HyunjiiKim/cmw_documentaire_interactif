@@ -1,8 +1,6 @@
-import { useState, useEffect, useMemo } from "react"; // Added useMemo
+import { useState, useEffect, useMemo } from "react"; 
 import { useTranslation } from "react-i18next";
-import { useNavigate, useLocation } from "react-router-dom"; // Added useLocation
-
-import { substringAfter } from "../utils/functions/extractCharacters";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import LanguageSwitch from "./Switch";
 
@@ -50,11 +48,10 @@ export const NavBar = ({ whichPage }) => {
       >
         {nav.map((item) => (
           <div
-            className={`uppercase font-body ${
-              pathName == `/view/${item.pathname}`
+            className={`uppercase font-body ${pathName == `/view/${item.pathname}`
                 ? "text-primary-2"
                 : "cursor-pointer"
-            }`}
+              }`}
             onClick={() => (window.location.href = `/view/${item.pathname}`)}
           >
             {t(item.name)}
@@ -94,9 +91,10 @@ export const TopNav = () => {
   const { t: navT } = useTranslation("nav");
   const [show, setShow] = useState(false);
 
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
 
+  // useMemo will recompute navElements only if navT (the translation function) changes.
   const navElements = useMemo(
     () => [
       {
@@ -134,72 +132,40 @@ export const TopNav = () => {
       },
     ],
     [navT]
-  ); // navElements will only be recomputed if navT changes
+  );
 
-  // check current page path and return title, path State
   const [current, setCurrent] = useState({ title: "", chapter: "" });
 
   useEffect(() => {
-    const currentPathname = location.pathname;
-    const viewPathSegment = currentPathname.startsWith("/view/")
-      ? substringAfter(currentPathname, "/view/")
-      : null;
-
-    let newTitle = "";
-    let newChapter = "";
-
-    // Find the corresponding element in navElements for chapter information if needed
-    const mapElementForChapter = navElements.find((el) => el.path === "/map");
-    const archivesElementForChapter = navElements.find(
-      (el) => el.path === "/archives"
+    // Find the current navigation element by matching the browser's current path.
+    const currentNav = navElements.find(
+      (el) => el.path === location.pathname
     );
 
-    if (currentPathname === "/map") {
-      newTitle = navT("intro");
-      newChapter = mapElementForChapter?.chapter || "";
-    } else if (currentPathname === "/archives") {
-      newTitle = navT("TopNav.archive");
-      newChapter = archivesElementForChapter?.chapter || "";
-    } else if (viewPathSegment) {
-      switch (viewPathSegment) {
-        case "intro":
-          newTitle = navT("intro");
-          newChapter = "";
-          break;
-        case "ch1":
-          newTitle = navT("TopNav.1");
-          newChapter = navT("ch1");
-          break;
-        case "ch2":
-          newTitle = navT("TopNav.2");
-          newChapter = navT("ch2");
-          break;
-        case "ch3":
-          newTitle = navT("TopNav.3");
-          newChapter = navT("ch3");
-          break;
-        case "conclusion":
-          newTitle = navT("conclu");
-          newChapter = "";
-          break;
-        default:
-          // if viewSegment is not matched, try to find in navElements
-          const fallbackMatch = navElements.find(
-            (el) => el.path === currentPathname
-          );
-          if (fallbackMatch) {
-            newTitle = fallbackMatch.title;
-            newChapter = fallbackMatch.chapter || "";
-          }
-          break;
-      }
+    if (currentNav) {
+      setCurrent({
+        title: currentNav.title,
+        chapter: currentNav.chapter || "", // Use the chapter from the found element, or default to empty.
+      });
+    } else {
+      // Optional: Handle cases where the path doesn't match any navElement.
+      // You could set a default title or leave it blank.
+      setCurrent({ title: "Page Not Found", chapter: "" });
     }
+  }, [location.pathname, navElements]);
 
-    setCurrent({ title: newTitle, chapter: newChapter });
-  }, [location.pathname, navT]);
+  // Use react-router's navigate function for client-side routing.
+  // This avoids a full page reload, which is what window.location.href does.
+  const handleNavigation = (path) => {
+    navigate(path);
+    setShow(false); // Close the menu after navigation.
+  };
 
   return (
-    <div id="TopNav" className="w-[calc(100%-120px)] z-45 ml-[120px] bg-black fixed  border-b-1 border-white px-4">
+    <div
+      id="TopNav"
+      className="w-[calc(100%-120px)] z-45 ml-[120px] bg-black fixed border-b-1 border-white px-4"
+    >
       <div className="w-full flex justify-between items-center">
         <div className="flex items-center text-white gap-2 font-sans">
           <div id="menuBurger" className="cursor-pointer">
@@ -209,12 +175,15 @@ export const TopNav = () => {
             />
           </div>
           <div className="flex items-center">
-            <p className="text-xl uppercase">{current.title}</p>
+            {/* Display the current chapter and title */}
+            <p className="text-xl uppercase">
+              {current.chapter && `${current.chapter}: `}{current.title}
+            </p>
           </div>
         </div>
         <div
           className="text-white border border-white w-fit uppercase p-2 cursor-pointer"
-          onClick={() => navigation("/map")}
+          onClick={() => navigate("/map")}
         >
           {t("returnToMap")}
         </div>
@@ -231,17 +200,14 @@ export const TopNav = () => {
               <nav className="flex flex-col gap-10 py-20 px-10">
                 {navElements.map((item) => (
                   <div
-                    onClick={() => {
-                      window.location.href = item.path;
-                    }}
-                    className="flex justify-between items-center cursor-pointer text-white/70 hover:text-white "
+                    key={item.id} // Add a unique key for list items.
+                    onClick={() => handleNavigation(item.path)}
+                    className="flex justify-between items-center cursor-pointer text-white/70 hover:text-white"
                   >
                     <div>
                       <h1 className="uppercase text-[30px]">{item.title}</h1>
-                      {window.location.pathname === item.path && (
-                        <>
-                          <hr className="w-[80%] border-primary-1 border-2" />
-                        </>
+                      {location.pathname === item.path && (
+                        <hr className="w-[80%] border-primary-1 border-2" />
                       )}
                     </div>
                   </div>
