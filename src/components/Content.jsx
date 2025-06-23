@@ -261,7 +261,7 @@ const Content = ({ chapter }) => {
               {t1("ch1.section3.contents")}
             </div>
           </div>
-          <div id="section4Container" className="bg-white-1 px-10 py-10 m-0">
+          <div id="section4Container">
             <Section4 content={ch1s4} />
           </div>
         </div>
@@ -296,7 +296,7 @@ const Content = ({ chapter }) => {
 
             <div className="w-full absolute bottom-20 left-290">
               <ButtonWithIcon
-                label="Continuer"
+                label={t2("continue")}
                 custom="border-white border-1"
                 onClick=""
               />
@@ -321,7 +321,7 @@ const Content = ({ chapter }) => {
             </ol>
             <ClickImage content={ch3s3Images[c3s3]} />
           </div>
-          <div id="section4" className="bg-white-1 px-10 py-10 m-0">
+          <div id="section4">
             <Section4 content={ch2s4} />
           </div>
         </div>
@@ -367,7 +367,7 @@ const Content = ({ chapter }) => {
             </div>
             <div className="w-full flex justify-end mr-70">
               <ButtonWithIcon
-                label="Continuer la visite"
+                label={t2("continueVisit")}
                 onClick={() => navigation("/view/conclusion")}
               />
             </div>
@@ -404,7 +404,7 @@ const Content = ({ chapter }) => {
             {showTemoignages && (
               <div
                 id="temoignages"
-                className="h-full flex flex-col justify-center items-center tracking-[6%] gap-15"
+                className="mt-20 h-full flex flex-col justify-center items-center tracking-[6%] gap-15"
               >
                 {witnessInfo.map((it) => (
                   <Witness key={it.id} content={it} />
@@ -415,7 +415,7 @@ const Content = ({ chapter }) => {
                 >
                   <TopPage bgColor={"primary-1"} borderColor={"white"} />
                   <Button
-                    label="Retour à la carte"
+                    label={t2("returnToMap")}
                     custom="border-white border-1"
                     onClick={() => navigation("/map")}
                   />
