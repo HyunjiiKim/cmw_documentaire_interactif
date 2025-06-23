@@ -2,7 +2,7 @@ import { ImageContainer, VideoContainer } from "./Container";
 
 const HorizontalScroller = ({ data, custom, size, isMarquee = false }) => {
   return (
-    <div className="flex overflow-x-scroll gap-3 w-full justify-start scrollbar-hide">
+    <div className={`flex overflow-x-scroll gap-3 w-fit justify-start scrollbar-hide ${isMarquee && "animate-[marquee_40s_linear_infinite]"}`}>
       {data.map((item) => (
         <ImageContainer
           key={item.id}
@@ -34,6 +34,7 @@ export const GalleryImg = ({ data, custom, size }) => {
             intent="gallery"
             border="none"
             custom={`${custom} shadow-md/25`}
+            isClickable={true}
           />
         ))}
       </div>

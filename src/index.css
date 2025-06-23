@@ -107,10 +107,16 @@
   }
 
   @keyframes marquee {
-   /* start default */
-    0%   { transform: translateX(0); }
+
+    /* start default */
+    0% {
+      transform: translateX(0);
+    }
+
     /* end just off the left edge */
-    100% { transform: translateX(-100%); }
+    100% {
+      transform: translateX(-60%);
+    }
   }
 }
 

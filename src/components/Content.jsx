@@ -28,30 +28,60 @@ const Content = ({ chapter }) => {
    * Chapter 1 infos
    */
 
-  const imgMockData = [
+  const caroulerSlider = [
     {
       id: 0,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/General_Kim-Il-Sung%2C_Koje-do%2C_South_Korea.jpg",
       alt: "",
     },
     {
       id: 1,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Square-danse_devant_la_statut_de_la_liberte.jpg",
       alt: "",
     },
     {
       id: 2,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Compound%2092%2C_Koje-do%2C_South_Korea.jpg",
       alt: "",
     },
     {
       id: 3,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Killing_Time.jpg",
       alt: "",
     },
     {
       id: 4,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Enterrement_d'une_fillette_sud-cor%C3%A9enne_avant_le_d%C3%A9placement_des_habitants_de_son_village_vers_un_camp_de_r%C3%A9fugi%C3%A9s.jpeg",
+      alt: "",
+    },
+    {
+      id: 5,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Jeunes_mendiants.jpeg",
+      alt: "",
+    },
+    {
+      id: 6,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Korean_War_Montage_2.png",
+      alt: "",
+    },
+    {
+      id: 7,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/lunch_time_in_kohe_do_camp.jpg",
+      alt: "",
+    },
+    {
+      id: 8,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/La_press_internationale_couvre_la_guerre_de_cor%C3%A9e.jpeg",
+      alt: "",
+    },
+    {
+      id: 9,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Photography-Prisoner-Camp-Retraining-Physical%20Education-Prisoner-Olympic-Geojedo.jpg",
+      alt: "",
+    },
+    {
+      id: 10,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Chinese_New_Year.jpg",
       alt: "",
     },
   ];
@@ -416,7 +446,7 @@ const Content = ({ chapter }) => {
           <div id="section3" className="relative my-10 py-5 h-screen">
             <h1 className="text-white-1 text-[175px]">WERNER</h1>
             <HorizontalScroller
-              data={imgMockData}
+              data={caroulerSlider}
               custom={`asepct-square`}
               size="md"
               isMarquee={true}
@@ -524,7 +554,7 @@ const Content = ({ chapter }) => {
             <ButtonWithIcon
               label={t1("witness.witnessVideos.btn")}
               custom="uppercase"
-              onClick={() => chapter="witness"}
+              onClick={() => chapter = "witness"}
             />
           </div>
           <div

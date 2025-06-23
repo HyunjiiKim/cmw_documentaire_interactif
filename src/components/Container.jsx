@@ -43,6 +43,8 @@ export const ImageContainer = ({
   size,
   border,
   custom,
+  // to prevent functionning openDetails in all ImageContainer, isClickable is false by default 
+  isClickable=false,
 }) => {
   const { t } = useTranslation("archives");
 
@@ -65,7 +67,7 @@ export const ImageContainer = ({
           src={src}
           alt={alt}
           className="size-full object-cover"
-          onClick={openDetails}
+          onClick={isClickable ? openDetails : null}
         />
       </div>
       <div
