@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
-import { useTranslation } from "react-i18next";
+
 
 const buttonVariants = cva(
   "cursor-pointer disabled:opacity-50 w-fit bg-transparent text-white font-body font-semibold uppercase text-xl hover:inset-shadow-sm hover:text-shadow-sm/30 hover:text-shadow-black",
@@ -82,7 +83,7 @@ export const InfoBtn = (position) => {
       />
       <div
         id="infoSection"
-        className={`hidden z-100 flex flex-col fixed top-50 mr-50 ml-50 size-fit pt-10 p-20 bg-black border-primary-1 border-1`}
+        className={`hidden z-100 flex flex-col fixed top-40 mr-50 ml-50 size-fit pt-10 p-20 pb-10 bg-black border-primary-1 border-1`}
       >
         <img
           src="../assets/icons/close.svg"
@@ -103,6 +104,20 @@ export const InfoBtn = (position) => {
           <br />
           {t("info.para5")}
         </p>
+        <div id="universities" className="flex mt-10 justify-center gap-10">
+          <a href="https://www.univ-gustave-eiffel.fr/">
+            <img
+              src="../assets/img/logo_univ_gustave_eiffel.svg"
+              alt="Logo de l'université Gustave Eiffel"
+            />
+          </a>
+          <a href="https://eng.deu.ac.kr/eng/index.do">
+            <img
+              src="../assets/img/logo_dongeui.svg"
+              alt="Logo de l'université Dongeui"
+            />
+          </a>
+        </div>
       </div>
     </>
   );
@@ -110,10 +125,10 @@ export const InfoBtn = (position) => {
 
 // Trigger Button with Audio File
 export const AudioBtn = ({ audioSrc, label, textColor, bgColor }) => {
-  if (audioSrc) {
-    const audioRef = useRef(new Audio(audioSrc));
-    const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(new Audio(audioSrc));
+  const [isPlaying, setIsPlaying] = useState(false);
 
+  if (audioSrc) {
     useEffect(() => {
       if (isPlaying) {
         audioRef.current.play();
@@ -121,27 +136,33 @@ export const AudioBtn = ({ audioSrc, label, textColor, bgColor }) => {
         audioRef.current.pause();
       }
     }, [isPlaying]);
-
-    const toggleAudio = () => {
-      setIsPlaying(!isPlaying);
-    };
   }
+
+  const toggleAudio = () => {
+    setIsPlaying(!isPlaying);
+  };
 
   return (
     <div
-      className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-12 px-12`}
+      className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-5 px-5`}
       onClick={toggleAudio}
       title={isPlaying ? "Pause audio" : "Play audio"}
     >
-      <p className="text-lg font-body uppercase">{label}</p>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="45"
-        height="45"
-        fill="#9a938a"
-        viewBox="0 0 16 16"
-        aria-label="Unmute sounds"
-      />
+      {label ? (
+        <>
+          <p className="text-lg font-body uppercase">{label}</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            fill="#9a938a"
+            viewBox="0 0 16 16"
+            aria-label="Unmute sounds"
+          />
+        </>
+      ) : (
+        <img src="../assets/icons/soundBtn.svg" className="h-10" />
+      )}
     </div>
   );
 };
@@ -295,11 +316,31 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
-          isLeft ? "left" : "right"
-        }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
+          }`}
       ></i>
     </div>
+  );
+};
+
+export const TopPage = ({ bgColor, borderColor }) => {
+  return (
+    <button
+      className="cursor-pointer w-fit h-fit aspect-square w-20"
+      onClick={() => {
+        // using vanilla js to scroll to the top of the page
+        // in React, #root is the parent element of the app
+        const body = document.querySelector("#root");
+        body.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }}
+    >
+      <i
+        className={`bg-${bgColor} px-[14px] py-[10px] border-${borderColor} border-1 hover:inset-shadow-sm bi bi-chevron-up`}
+      ></i>
+    </button>
   );
 };
 

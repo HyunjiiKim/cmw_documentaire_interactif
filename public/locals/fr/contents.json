@@ -91,7 +91,65 @@
     }
   },
   "ch3": {
-    "title": "Chapitre 3"
+    "title": "Chapitre 3",
+    "contents": {
+      "2": {
+        "part1": "Ressentez-vous encore ce qu'ils ont vécu ?",
+        "part2": "Ou juste ce qu'on a voulu vous montrer ?"
+      },
+      "3": {
+        "description": "Témoignage de Monsieur OH Eun-seo, prisonnier anticommuniste au camp de prisonniers de guerre de Geojedo",
+        "quote": {
+          "part1": "Interviewer : Ils vous ont donné beaucoup de nourriture, c'est ça ?",
+          "part2": "M.Oh : Ils ont mis du riz dans cette poêle et nous ont distribué.",
+          "part3": "Sa femme : Est-ce qu’ils vous ont bien nourri?"
+        }
+      },
+      "4": {
+        "title": "Le prisonnier comme acteur politique",
+        "description": {
+          "1": "Les Etats-Unis s’efforcent de présenter leur gestion du camp comme exemplaire, notamment en diffusant des images d’un camp respectueux des droits de l’homme. Le prisonnier de guerre est mis en scène, on ne montre que les « bons côtés » de la gestion du camp. À l’instar de leur geôlier, les détenus profitent de la médiatisation offerte par les Etats-Unis et de leur condition de prisonniers pour dénoncer ce qu’ils considèrent comme une entreprise impérialiste. Aussi, nous avons souvent deux visions d’un même événement. Par exemple, lors de l’enlèvement du commandant Dodd, les Américains présentent les responsables de cette action comme des « communistes fanatiques » : ils cherchent à décrédibiliser leur révolte. Les prisonniers, eux, se placent en victimes forcées de subir un traitement contraire aux Conventions de Genève et n’ayant pas d’autre choix pour faire entendre leur revendication.",
+          "2": "De cette manière, les prisonniers de guerre deviennent un acteur politique. Ils s’organisent en entités collectives, développent des structures internes et prennent position politiquement. Ils deviennent ainsi les porte-voix d’un combat idéologique et national, parfois jusqu’au sacrifice.",
+          "3": "En effet, les prisonniers nord-coréens se considèrent comme les acteurs d’une guerre de libération, héritiers d’un long combat contre la domination japonaise, puis contre la présence américaine. Leur résistance n’est pas seulement politique, elle est aussi identitaire.",
+          "4": "C’est leur statut qui interroge la pertinence du droit international tel qu’il est formulé dans les Conventions de Genève. Conçues pour des conflits classiques entre États-nations, ces conventions peinent à encadrer des guerres civiles ou idéologiques comme celle de la Corée. Le camp de Geoje, en accueillant des individus perçus à la fois comme soldats, militants, victimes et propagandistes, révèle les limites de ce cadre juridique. Ainsi, cette figure hybride du prisonnier, entre acteur politique et sujet humanitaire, incarne une tension permanente entre le droit et la réalité de la guerre."
+        }
+      }
+    }
+  },
+  "witness": {
+    "title": {
+      "pre": "qui écrit",
+      "post": "l'histoire ?",
+      "tagline": "Explore les deux versions d’un même événement à travers différentes perspectives idéologiques."
+    },
+    "version": {
+      "NK": {
+        "title": "version nord-coréenne",
+        "description": "Koje-do était, aux yeux des forces nord-coréennes, un camp de détention politique illégal où les prisonniers de guerre de l’Armée populaire de Corée et de l’Armée des volontaires chinois étaient soumis à des interrogatoires arbitraires, à des violations des Conventions de Genève et à des manœuvres de manipulation sur le rapatriement volontaire. Dans ce contexte, les prisonniers ne voyaient pas l’enlèvement du général Dodd comme un acte de violence gratuite ou de sauvagerie, comme le présentaient les médias occidentaux, mais comme une action politique calculée menée pour défendre les droits des prisonniers de guerre, attirer l’attention sur les violations commises par les États-Unis, et établir une reconnaissance officielle de leur légitimité en tant qu'organisation représentative. La bannière déployée par les détenus – annonçant que Dodd ne serait pas blessé si les revendications étaient prises au sérieux – montre une volonté de négociation, non de destruction. À travers cet acte, les prisonniers de guerre ont dénoncé le caractère illégal des procédures de rapatriement volontaire, imposées par les Américains alors même qu’aucun accord n’était encore trouvé à Panmunjom. Ils s’insurgeaient contre l’usage de la figure du prisonnier comme outil de propagande occidentale, au service d’une guerre froide fondée sur une morale hypocrite. Dans cette lecture nord-coréenne, les prisonniers de guerre de Koje-do n’étaient ni des captifs soumis, ni de simples victimes, mais des acteurs politiques conscients, qui ont su articuler leur propre stratégie diplomatique depuis leur lieu d’internement. Le colonel Lee Hak-Ku, avec sa lettre adressée au CICR, en est une figure emblématique : il incarne l’intellectuel résistant, capable de faire valoir les principes de droit international tout en dénonçant leur instrumentalisation impérialiste."
+      },
+      "US": {
+        "title": "versione américaine",
+        "description": "Du côté américain, la gestion du camp de Geoje est rapidement conçue comme un outil de soft power dans le contexte de la guerre froide. Officiellement, l’armée américaine affirme respecter les Conventions de Genève qui assurent un traitement humain des prisonniers. Des photographies et reportages sont diffusés dans la presse pour présenter un camp moderne, propre et organisé, ce sont les preuves de la supériorité du modèle démocratique occidental. En réponse aux actes de résistance des prisonniers, comme l’enlèvement du général Dodd, les États-Unis adoptent une posture défensive : l’armée américaine passe d’une posture de gestion humanitaire à une politique de contrôle total et militarisé des camps. La révolte des prisonniers est interprétée non pas comme une revendication politique légitime, mais comme une manipulation orchestrée par les cadres communistes infiltrés parmi les détenus. Leur capacité à s’organiser est perçue comme un danger sécuritaire et une menace pour l’ordre moral américain. Dans cette version des faits, les insurgés ne sont pas des sujets politiques, mais des fanatiques instrumentalisés par le régime nord-coréen et chinois, refusant les bienfaits d’un ordre fondé sur les droits et la liberté. Toute reconnaissance de leur organisation autonome est refusée, car elle remettrait en cause la frontière entre légitimité démocratique et subversion totalitaire."
+      }
+    },
+    "witnessVideos": {
+      "btn": "Voir les témoignages",
+      "01": {
+        "fname": "Min-jae",
+        "status": "Petit-fils d'un prisonnier",
+        "tagline": "Revenir ici, c’est affronter les silences de l’histoire. Mais aussi les comprendre."
+      },
+      "02": {
+        "fname": "Sung-ho",
+        "status": "Témoin et ancien résistant",
+        "tagline": "Revenir ici, c’est affronter les silences de l’histoire. Mais aussi les comprendre."
+      },
+      "03": {
+        "fname": "Ji-Yeon",
+        "status": "En visite dans le parc historique ",
+        "tagline": "Revenir ici, c’est affronter les silences de l’histoire. Mais aussi les comprendre"
+      }
+    }
   },
   "conclu": {
     "title": "Conclusion",

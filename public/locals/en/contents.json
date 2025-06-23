@@ -87,7 +87,65 @@
     }
   },
   "ch3": {
-    "title": "Chapter 3"
+    "title": "Chapter 3",
+    "contents": {
+      "2": {
+        "part1": "Do you still feel what they lived through?",
+        "part2": "Or just what you were meant to see?"
+      },
+      "3": {
+        "description": "Testimony of Mr. OH Eun-seo, an anti-communist prisoner at the Geojedo prisoner of war camp",
+        "quote": {
+          "part1": "Interviewer: They gave you a lot of food, is that right?",
+          "part2": "Mr. Oh: They put rice in this pan and distributed it to us.",
+          "part3": "His wife: Did they feed you well?"
+        }
+      },
+      "4": {
+        "title": "The Prisoner as a Political Actor",
+        "description": {
+          "1": "The United States strives to present its management of the camp as exemplary, particularly by disseminating images of a camp that respects human rights. The prisoner of war is staged; only the 'good sides' of the camp's management are shown. Like their jailers, the detainees take advantage of the media coverage offered by the United States and their status as prisoners to denounce what they consider an imperialist enterprise. Thus, we often have two visions of the same event. For example, during the abduction of Commander Dodd, the Americans portray those responsible for this action as 'fanatical communists,' seeking to discredit their revolt. The prisoners, on the other hand, position themselves as victims forced to endure treatment contrary to the Geneva Conventions, with no other choice to make their demands heard.",
+          "2": "In this way, prisoners of war become political actors. They organize into collective entities, develop internal structures, and take political stances. They thus become the spokespersons for an ideological and national struggle, sometimes to the point of sacrifice.",
+          "3": "Indeed, North Korean prisoners see themselves as actors in a war of liberation, heirs to a long struggle against Japanese domination and then against the American presence. Their resistance is not only political; it is also a matter of identity.",
+          "4": "It is their status that questions the relevance of international law as formulated in the Geneva Conventions. Designed for classic conflicts between nation-states, these conventions struggle to regulate civil or ideological wars like the one in Korea. The Geoje camp, by hosting individuals perceived as soldiers, militants, victims, and propagandists all at once, reveals the limits of this legal framework. Thus, this hybrid figure of the prisoner, between a political actor and a humanitarian subject, embodies a permanent tension between law and the reality of war."
+        }
+      }
+    }
+  },
+  "witness": {
+    "title": {
+      "pre": "who writes",
+      "post": "history?",
+      "tagline": "Explore the two versions of the same event through different ideological perspectives."
+    },
+    "version": {
+      "NK": {
+        "title": "North Korean Version",
+        "description": "In the eyes of the North Korean forces, Koje-do was an illegal political detention camp where prisoners of war from the Korean People's Army and the Chinese Volunteer Army were subjected to arbitrary interrogations, violations of the Geneva Conventions, and manipulative maneuvers regarding voluntary repatriation. In this context, the prisoners did not see the kidnapping of General Dodd as an act of gratuitous violence or savagery, as portrayed by Western media, but as a calculated political action carried out to defend the rights of POWs, draw attention to violations committed by the United States, and establish official recognition of their legitimacy as a representative organization. The banner displayed by the detainees—announcing that Dodd would not be harmed if their demands were taken seriously—shows a willingness to negotiate, not to destroy. Through this act, the prisoners of war denounced the illegal nature of the voluntary repatriation procedures, imposed by the Americans even though no agreement had yet been reached at Panmunjom. They protested against the use of the prisoner figure as a tool of Western propaganda, serving a Cold War based on hypocritical morality. In this North Korean reading, the POWs of Koje-do were neither submissive captives nor mere victims, but conscious political actors who were able to articulate their own diplomatic strategy from their place of internment. Colonel Lee Hak-Ku, with his letter to the ICRC, is an emblematic figure: he embodies the resistant intellectual, capable of asserting the principles of international law while denouncing their imperialist instrumentalization."
+      },
+      "US": {
+        "title": "American Version",
+        "description": "On the American side, the management of the Geoje camp was quickly conceived as a soft power tool in the context of the Cold War. Officially, the U.S. military claimed to respect the Geneva Conventions, which ensure the humane treatment of prisoners. Photographs and reports were disseminated in the press to present a modern, clean, and organized camp, serving as proof of the superiority of the Western democratic model. In response to acts of resistance by the prisoners, such as the kidnapping of General Dodd, the United States adopted a defensive posture: the American military shifted from a humanitarian management stance to a policy of total, militarized control of the camps. The prisoners' revolt was interpreted not as a legitimate political demand, but as a manipulation orchestrated by communist cadres infiltrated among the detainees. Their ability to organize was perceived as a security danger and a threat to the American moral order. In this version of events, the insurgents are not political subjects, but fanatics instrumentalized by the North Korean and Chinese regimes, refusing the benefits of an order based on rights and freedom. Any recognition of their autonomous organization was refused, as it would challenge the boundary between democratic legitimacy and totalitarian subversion."
+      }
+    },
+    "witnessVideos": {
+      "btn": "Watch the testimonies",
+      "01": {
+        "fname": "Min-jae",
+        "status": "Grandson of a prisoner",
+        "tagline": "To come back here is to confront the silences of history. But also to understand them."
+      },
+      "02": {
+        "fname": "Sung-ho",
+        "status": "Witness and former resistance fighter",
+        "tagline": "To come back here is to confront the silences of history. But also to understand them."
+      },
+      "03": {
+        "fname": "Ji-Yeon",
+        "status": "Visiting the historic park",
+        "tagline": "To come back here is to confront the silences of history. But also to understand them."
+      }
+    }
   },
   "conclu": {
     "title": "Conclusion",

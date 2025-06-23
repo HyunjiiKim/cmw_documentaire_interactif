@@ -3,13 +3,19 @@ import { useState, useEffect, useRef } from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
-import { ClickImage, DifferentPdv, Section1, Section4 } from "./ChapterContents/Sections";
+import {
+  ClickImage,
+  DifferentPdv,
+  Section1,
+  Section4,
+  Witness,
+} from "./ChapterContents/Sections";
 import Credits from "./Credits";
-import Button from "./Button";
+import Button, { ButtonWithIcon, AudioBtn, TopPage } from "./Button";
 
 import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
-
+import mockVideo from "/assets/videos/Introduction.mp4";
 
 const Content = ({ chapter }) => {
   const { t: t1 } = useTranslation("contents");
@@ -22,30 +28,60 @@ const Content = ({ chapter }) => {
    * Chapter 1 infos
    */
 
-  const imgMockData = [
+  const caroulerSlider = [
     {
       id: 0,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/General_Kim-Il-Sung%2C_Koje-do%2C_South_Korea.jpg",
       alt: "",
     },
     {
       id: 1,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Square-danse_devant_la_statut_de_la_liberte.jpg",
       alt: "",
     },
     {
       id: 2,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Compound%2092%2C_Koje-do%2C_South_Korea.jpg",
       alt: "",
     },
     {
       id: 3,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Killing_Time.jpg",
       alt: "",
     },
     {
       id: 4,
-      src: "https://picsum.photos/200",
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Enterrement_d'une_fillette_sud-cor%C3%A9enne_avant_le_d%C3%A9placement_des_habitants_de_son_village_vers_un_camp_de_r%C3%A9fugi%C3%A9s.jpeg",
+      alt: "",
+    },
+    {
+      id: 5,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Jeunes_mendiants.jpeg",
+      alt: "",
+    },
+    {
+      id: 6,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Korean_War_Montage_2.png",
+      alt: "",
+    },
+    {
+      id: 7,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/lunch_time_in_kohe_do_camp.jpg",
+      alt: "",
+    },
+    {
+      id: 8,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/La_press_internationale_couvre_la_guerre_de_cor%C3%A9e.jpeg",
+      alt: "",
+    },
+    {
+      id: 9,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Photography-Prisoner-Camp-Retraining-Physical%20Education-Prisoner-Olympic-Geojedo.jpg",
+      alt: "",
+    },
+    {
+      id: 10,
+      src: "https://storage.googleapis.com/cmw-geoje-src/img/Chinese_New_Year.jpg",
       alt: "",
     },
   ];
@@ -57,201 +93,6 @@ const Content = ({ chapter }) => {
       t1("ch1.section4.description.2"),
     ],
   };
-
-  /**
-   * Chapter 2 Triggers & Animations
-   */
-
-  const [activeSection, setActiveSection] = useState("");
-  const mainRef = useRef(null);
-  const section1Ref = useRef(null);
-  const section2Ref = useRef(null);
-  const section3Ref = useRef(null);
-  const section4Ref = useRef(null);
-
-  const textBoxRef = useRef(null);
-
-  // Observer for main sections
-  useEffect(() => {
-    const mainContainer = mainRef.current;
-    if (!mainContainer || chapter !== "ch2") {
-      // If not chapter 2, or no main container, ensure activeSection is cleared if it was from a previous ch2 render
-      if (activeSection) setActiveSection("");
-      return;
-    }
-
-    const sections = [section1Ref, section2Ref, section3Ref, section4Ref];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let newActiveCandidate = null;
-        let section2IsIntersecting = false;
-
-        entries.forEach((entry) => {
-          console.log(
-            `Observer raw entry: id=${entry.target.id}, isIntersecting=${entry.isIntersecting
-            }, ratio=${entry.intersectionRatio.toFixed(2)}`
-          );
-          if (entry.target.id === "section2" && entry.isIntersecting) {
-            section2IsIntersecting = true;
-          }
-          if (entry.isIntersecting) {
-            if (!newActiveCandidate) newActiveCandidate = entry.target.id;
-          }
-        });
-
-        if (section2IsIntersecting) {
-          if (activeSection !== "section2") {
-            console.log("Observer: Setting activeSection to 'section2'");
-            setActiveSection("section2");
-          }
-        } else if (newActiveCandidate) {
-          // If section2 is not intersecting, but another is, set that one.
-          if (
-            activeSection !== newActiveCandidate &&
-            activeSection === "section2"
-          ) {
-            // Only change if it was section2
-            console.log(
-              `Observer: Changing activeSection from 'section2' to '${newActiveCandidate}'`
-            );
-            setActiveSection(newActiveCandidate);
-          } else if (!activeSection && newActiveCandidate) {
-            // If active section was empty
-            console.log(
-              `Observer: Setting activeSection to '${newActiveCandidate}' (was empty)`
-            );
-            setActiveSection(newActiveCandidate);
-          }
-        } else {
-          // No sections are intersecting at the threshold
-          if (activeSection !== "") {
-            console.log(
-              `Observer: Clearing activeSection (was ${activeSection}) because nothing is intersecting`
-            );
-            setActiveSection("");
-          }
-        }
-      },
-      { root: mainContainer, threshold: 0.5 }
-    ); // SUGGESTION: Lowered threshold to 0.5 for testing
-
-    sections.forEach((s) => {
-      if (s.current) {
-        observer.observe(s.current);
-      } else {
-        console.warn(
-          `Observer: Ref for a section is null. This might be expected if not all sections are rendered for this chapter.`
-        );
-      }
-    });
-
-    return () => {
-      sections.forEach((s) => s.current && observer.unobserve(s.current));
-      console.log("Observer: Cleaned up");
-    };
-  }, [chapter]); // Rerun if chapter changes, so observer is set for the correct mainRef
-
-  // Scroll handling for main container (mainRef) in Chapter 2
-  useEffect(() => {
-    const mainContainer = mainRef.current;
-    if (!mainContainer || chapter !== "ch2") {
-      if (mainContainer) mainContainer.style.scrollSnapType = "y mandatory";
-      return;
-    }
-
-    const handleMainScroll = (e) => {
-      if (activeSection === "section2") {
-        const textBox = textBoxRef.current;
-        let allowPageScroll = false;
-
-        if (textBox && textBox.contains(e.target)) {
-          // If the event target is within the textbox, the textbox listener should handle it first.
-          // This listener (handleMainScroll) should only act if the event was not stopped by the textbox.
-          console.log(
-            "MainScroll: Event originated in textbox, deferring unless propagated."
-          );
-          return;
-        }
-
-        // If event is not from textbox or textbox allowed propagation:
-        if (textBox) {
-          const { scrollTop, scrollHeight, clientHeight } = textBox;
-          const isTextBoxAtTop = scrollTop <= 0; // Use <= 0 for top
-          const isTextBoxAtBottom =
-            Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
-
-          if (e.deltaY < 0 && isTextBoxAtTop) {
-            allowPageScroll = true;
-            console.log("MainScroll: Allowing UP (textbox at top)");
-          } else if (e.deltaY > 0 && isTextBoxAtBottom) {
-            allowPageScroll = true;
-            console.log("MainScroll: Allowing DOWN (textbox at bottom)");
-          }
-        } else {
-          allowPageScroll = true; // No textbox, allow normal scroll for section2
-          console.log("MainScroll: Allowing (no textbox)");
-        }
-
-        if (!allowPageScroll) {
-          console.log(
-            `MainScroll: Preventing default scroll for section2. DeltaY: ${e.deltaY}`
-          );
-          e.preventDefault();
-        }
-      }
-    };
-
-    if (activeSection === "section2") {
-      mainContainer.style.scrollSnapType = "none";
-      mainContainer.addEventListener("wheel", handleMainScroll, {
-        passive: false,
-      });
-      console.log("MainScroll: Listener ADDED for section2. Snap: none.");
-    } else {
-      mainContainer.style.scrollSnapType = "y mandatory";
-      console.log(
-        "MainScroll: Listener INACTIVE for non-section2. Snap: y mandatory."
-      );
-    }
-
-    return () => {
-      mainContainer.removeEventListener("wheel", handleMainScroll);
-      mainContainer.style.scrollSnapType = "y mandatory";
-      console.log("MainScroll: Listener REMOVED. Snap reset.");
-    };
-  }, [activeSection, chapter]);
-
-  // Logic for the scrollable text box
-  useEffect(() => {
-    const textBox = textBoxRef.current;
-    if (!textBox || chapter !== "ch2") return;
-
-    const handleTextBoxWheel = (e) => {
-      if (activeSection === "section2") {
-        const { scrollTop, scrollHeight, clientHeight } = textBox;
-        const isAtTop = scrollTop === 0;
-        const isAtBottom =
-          Math.ceil(scrollTop + clientHeight) >= scrollHeight - 2;
-
-        // If scrolling up at the top of the text box, or scrolling down at the bottom,
-        // let the event bubble to the mainContainer.
-        if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
-          console.log(
-            "TextBox: Reached edge, allowing event to propagate to main container."
-          );
-          return;
-        }
-
-        // Otherwise, if scrolling within the text box, stop the event from bubbling
-        // to prevent the mainContainer from scrolling.
-        console.log("TextBox: Scrolling internally, stopping propagation.");
-        e.stopPropagation();
-      }
-    };
-
-    textBox.addEventListener("wheel", handleTextBoxWheel, { passive: false });
-    return () => textBox.removeEventListener("wheel", handleTextBoxWheel);
-  }, [activeSection, chapter]); // Added chapter dependency
 
   /*
    * Chapter2 Section2 Content
@@ -306,6 +147,75 @@ const Content = ({ chapter }) => {
     },
   ];
 
+  /**
+   * Conclusion
+   */
+
+  const acknowledgementList = [
+    t2("acknowledgement.PB"),
+    t2("acknowledgement.TB"),
+    t2("acknowledgement.MC"),
+    t2("acknowledgement.GY"),
+    t2("acknowledgement.MA"),
+    t2("acknowledgement.SL"),
+    t2("acknowledgement.SZ")
+  ];
+
+  const ch3s4 = {
+    title: t1("ch3.contents.4.title"),
+    description: [
+      t1("ch3.contents.4.description.1"),
+      t1("ch3.contents.4.description.2"),
+      t1("ch3.contents.4.description.3"),
+      t1("ch3.contents.4.description.4"),
+    ],
+  };
+
+  // witeness information is stored here
+  const witnessInfo = [
+    {
+      id: "01",
+      fname: t1("witness.witnessVideos.01.fname"),
+      lname: "",
+      status: t1("witness.witnessVideos.01.status"),
+      tagline: t1("witness.witnessVideos.01.tagline"),
+      videoURL: mockVideo
+    },
+    {
+      id: "02",
+      fname: t1("witness.witnessVideos.02.fname"),
+      lname: "",
+      status: t1("witness.witnessVideos.02.status"),
+      tagline: t1("witness.witnessVideos.02.tagline"),
+      videoURL: mockVideo
+    },
+    {
+      id: "03",
+      fname: t1("witness.witnessVideos.03.fname"),
+      lname: "",
+      status: t1("witness.witnessVideos.03.status"),
+      tagline: t1("witness.witnessVideos.03.tagline"),
+      videoURL: mockVideo
+    }
+  ]
+
+  // show Temoignage
+  const [showTemoignages, setShowTemoignages] = useState(false);
+
+  const handleShowTemoignages = () => {
+    setShowTemoignages(true);
+    //after 0.1 sec, it scrools smootly to the section id="temoignages"
+    setTimeout(
+      () => {
+        document.getElementById("temoignages").scrollIntoView({
+          behavior: "smooth",
+        });
+      },
+      100
+    )
+  };
+
+
   switch (chapter) {
     case "ch1":
       return (
@@ -341,7 +251,7 @@ const Content = ({ chapter }) => {
           <div id="section3" className="relative my-10 py-5 h-screen">
             <h1 className="text-white-1 text-[175px]">WERNER</h1>
             <HorizontalScroller
-              data={imgMockData}
+              data={caroulerSlider}
               custom={`asepct-square`}
               size="md"
               isMarquee={true}
@@ -356,8 +266,8 @@ const Content = ({ chapter }) => {
               {t1("ch1.section3.contents")}
             </div>
           </div>
-          <div id="section4Container">
-            <Section4 content={ch1s4} />
+          <div id="section4Container" className="bg-white-1 px-10 py-10 m-0">
+            <Section4 content={ch1s4} scrollTo={section1Ref} />
           </div>
         </div>
       );
@@ -366,14 +276,12 @@ const Content = ({ chapter }) => {
         <div
           id="ch2"
           className="flex flex-col text-white gap-10 h-full overflow-y-scroll"
-          ref={mainRef}
         >
-          <div id="section1" ref={section1Ref}>
+          <div id="section1">
             <Section1 vimeoId={1095029681} />
           </div>
           <div
-            id="section2"
-            ref={section2Ref}
+            id="c2section2"
             className="flex flex-col relative h-screen"
           >
             <img
@@ -383,48 +291,39 @@ const Content = ({ chapter }) => {
             />
 
             <div
-              ref={textBoxRef}
-              className="scrollbar-hide z-5 absolute top-10 left-10 font-body max-w-[300px] h-[50%] max-h-[500px] overflow-y-auto first-letter:text-4xl first-letter:font-bold"
+              className="scrollbar-hide z-5 absolute top-10 left-10 font-body max-w-[300px] h-[80%] max-h-[500px] overflow-y-hidden first-letter:text-4xl first-letter:font-bold "
             >
               {ch2s2Texts.map((it, id) => (
                 <div
-                  id="textContainer"
-                  className="my-5 tracking-widest"
+                  id="scrollTextContainer"
+                  className="my-5 tracking-widest animate-[autoScroller_40s_linear_infinite]"
                   key={id}
                 >
                   {it}
                 </div>
               ))}
             </div>
-            <Button
-              onClick={() => {
-                section3Ref.current.scrollIntoView({ behavior: "smooth" });
-              }}
-              label="Next To 3 Section"
-              custom={"absolute bottom-10 right-10"}
-            />
           </div>
-          <div id="section3" ref={section3Ref} className="relative h-full">
+          <div id="c2section3" className="relative h-full">
             <ol className="w-full px-10 flex absolute text-3xl top-10 justify-between">
               {ch3s3Images.map((it, id) => (
                 <li
                   key={id}
                   onClick={() => setC3s3(id)}
-                  className={`cursor-pointer font-body uppercase hover:font-bold text-white/70 ${c3s3 === id && "font-bold text-white/100"}`}
+                  className={`cursor-pointer font-body uppercase hover:font-bold text-white/70 ${c3s3 === id && "font-bold text-white/100"
+                    }`}
                 >
                   {it.name}
                   {c3s3 === id && (
                     <hr className="border-2 w-[30%] border-primary-1" />
                   )}
                 </li>
-
               ))}
             </ol>
             <ClickImage content={ch3s3Images[c3s3]} />
           </div>
           <div
             id="section4"
-            ref={section4Ref}
             className="bg-white-1 px-10 py-10 m-0"
           >
             <Section4 content={ch2s4} />
@@ -441,17 +340,42 @@ const Content = ({ chapter }) => {
             id="section2"
             className="h-screen flex flex-col justify-center items-center"
           >
-            <h1 className="text-center w-[80%] text-[40px]">
-              MAIS… RESSENTEZ-VOUS ENCORE CE QU’ILS ONT VÉCU ?<br />
-              OU JUSTE CE QU’ON A VOULU VOUS MONTRER ?
+            <h1 className="text-center w-[80%] text-[40px] uppercase">
+              {t1("ch3.contents.2.part1")}
+              <br />
+              {t1("ch3.contents.2.part2")}
             </h1>
-            <Button
-              label="voir le témoignage"
+            <ButtonWithIcon
+              label={t1("witness.witnessVideos.btn")}
               custom="uppercase"
-              onClick={() => (window.location.href = "./witness")}
+              onClick={() => window.location.href = "/view/witness"}
             />
           </div>
-          <div id="section3" className="h-screen"></div>
+          <div
+            id="section3"
+            className="h-screen bg-[url(https://storage.googleapis.com/cmw-geoje-src/img/Square-danse_devant_la_statut_de_la_liberte.jpg)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply flex flex-col justify-center items-center text-center gap-17 tracking-[6%]"
+          >
+            <div>
+              <h2 className="text-6xl uppercase">2023</h2>
+              <p className="font-body text-xl w-145">
+                {t1("ch3.contents.3.description")}
+              </p>
+            </div>
+            <div>
+              <AudioBtn audioSrc="https://storage.googleapis.com/cmw-geoje-src/audios/Extract-%EA%B1%B0%EC%A0%9C%EB%8F%84%20%ED%8F%AC%EB%A1%9C%EC%88%98%EC%9A%A9%EC%86%8C%20%EB%B0%98%EA%B3%B5%ED%8F%AC%EB%A1%9C%20%EC%98%A4%EC%9D%80%EC%84%9C%20%ED%95%A0%EC%95%84%EB%B2%84%EC%A7%80%20%EC%9D%B4%EC%95%BC%EA%B8%B0.mp3" />
+            </div>
+            <div className="font-body text-xl w-80 flex flex-col gap-3">
+              <p>- {t1("ch3.contents.3.quote.part1")}</p>
+              <p className="opacity-50">- {t1("ch3.contents.3.quote.part2")}</p>
+              <p className="opacity-50">- {t1("ch3.contents.3.quote.part3")}</p>
+            </div>
+            <div className="w-full flex justify-end mr-80">
+              <ButtonWithIcon
+                label="Continuer la visite"
+                onClick={() => window.location.href = "/view/conclusion"}
+              />
+            </div>
+          </div>
         </div>
       );
     case "witness":
@@ -460,9 +384,54 @@ const Content = ({ chapter }) => {
           <div id="section1">
             <DifferentPdv />
           </div>
-          <div id="section"></div>
-          <div id="section"></div>
-          <div id="section"></div>
+          <div id="section2">
+            <Section4 content={ch3s4} />
+          </div>
+          <div id="section3"
+            className="h-screen bg-[url(https://storage.googleapis.com/cmw-geoje-src/videos/chap3_section3.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply flex flex-col justify-center items-center text-center tracking-[6%]"
+          >
+            <h2 className="uppercase text-7xl leading-20">
+              Camp de Geoje
+              <br />
+              Voix et mémoires
+            </h2>
+            <p className="font-body text-3xl w-190">
+              Découvrez les témoignages et les récits poignants des visiteurs du
+              parc historique.
+            </p>
+            <Button label={t1("witness.witnessVideos.btn")} onClick={handleShowTemoignages} />
+          </div>
+          <div
+            id="section4"
+          >
+            {showTemoignages && (
+              <div
+                id="temoignages"
+                className="h-full flex flex-col justify-center items-center tracking-[6%] gap-15"
+              >
+                {witnessInfo.map((it) => (
+                  <Witness
+                    key={it.id}
+                    content={it}
+                  />
+                ))}
+                <div
+                  id="buttonGroup"
+                  className="w-full flex justify-end items-end gap-5 mr-[60px]"
+                >
+                  <TopPage
+                    bgColor={"primary-1"}
+                    borderColor={"white"}
+                  />
+                  <Button
+                    label="Retour à la carte"
+                    custom="border-white border-1"
+                    onClick={() => (window.location.href = "/map")}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       );
     case "conclusion":
@@ -471,12 +440,12 @@ const Content = ({ chapter }) => {
           id="conclusion"
           className="px-10 py-10 text-white flex flex-col gap-10"
         >
-          <div id="section1" className="w-full py-10 px-10">
+          <div id="section1" className="py-20 w-full">
             <div id="TextContainer" className="text-wrap">
-              <h1 className="text-[50px] my-5">
+              <h1 className="uppercase text-[50px] my-5">
                 {t1("conclu.contents.subtitle")}
               </h1>
-              <div className="font-body tracking-widest columns-2">
+              <div className="font-body tracking-widest columns-2 tracking-[6%] leading-8">
                 <p>
                   {t1("conclu.contents.1")}
                   <br />
@@ -495,11 +464,9 @@ const Content = ({ chapter }) => {
           <div id="section3" className="flex flex-col gap-10">
             <h1 className="uppercase text-6xl">{t1("conclu.thanks.title")}</h1>
             <ol className="flex gap-5 font-body text-lg">
-              <li>BOUREAU Pierre</li>
-              <li>BONZON Thierry</li>
-              <li>AUVRAY Mariette</li>
-              <li>LÉVY Stéphane</li>
-              <li>ZORNINGER Sylvain.</li>
+              {acknowledgementList.map((it, id) => (
+                <li key={id}>{it} {id === acknowledgementList.length - 1 ? "." : ","}</li>
+              ))}
             </ol>
           </div>
           <Button

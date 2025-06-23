@@ -38,10 +38,13 @@ export const ImageContainer = ({
   src,
   category,
   source,
+  credit,
   intent,
   size,
   border,
   custom,
+  // to prevent functionning openDetails in all ImageContainer, isClickable is false by default 
+  isClickable=false,
 }) => {
   const { t } = useTranslation("archives");
 
@@ -64,7 +67,7 @@ export const ImageContainer = ({
           src={src}
           alt={alt}
           className="size-full object-cover"
-          onClick={openDetails}
+          onClick={isClickable ? openDetails : null}
         />
       </div>
       <div
@@ -89,18 +92,27 @@ export const ImageContainer = ({
                 onClick={closeDetails}
               />
             </div>
-            <div id="btnDetails" className="flex gap-3">
+            <div id="btnDetails" className="flex">
               <Button label={category} intent="tertiary" custom="mt-2" />
-              <Button label={source} intent="tertiary" custom="mt-2" />
             </div>
           </div>
           <div id="contentDetails" className="flex gap-7">
             <div id="col1">
               <img src={src} className="max-h-140" />
             </div>
-            <div id="col2" className="flex flex-col gap-2 w-100 pr-20 pt-[5%]">
-              <h3 className="uppercase text-4xl text-wrap">{source}</h3>
-              <h3 className="text-base font-body w-full text-wrap text-balance wrap-break-word">{alt}</h3>
+            <div
+              id="col2"
+              className="flex flex-col justify-between w-100 pr-20 pt-[5%]"
+            >
+              <div className="flex flex-col gap-2">
+                <h3 className="uppercase text-4xl text-wrap">{source}</h3>
+                <p className="text-base font-body w-full text-wrap text-balance wrap-break-word">
+                  {alt}
+                </p>
+              </div>
+              <p className="mb-10 italic text-base text-sm font-body w-full text-wrap text-balance wrap-break-word">
+                {credit}
+              </p>
             </div>
           </div>
         </div>
@@ -113,6 +125,7 @@ export const VideoContainer = ({
   id,
   alt,
   src,
+  credit,
   category,
   source,
   intent,
@@ -185,16 +198,25 @@ export const VideoContainer = ({
             </div>
             <div id="btnDetails" className="flex gap-3">
               <Button label={category} intent="tertiary" custom="mt-2" />
-              <Button label={source} intent="tertiary" custom="mt-2" />
             </div>
           </div>
           <div id="contentDetails" className="flex gap-7">
             <div id="col1">
               <video src={src} controls className="max-h-140" />
             </div>
-            <div id="col2" className="flex flex-col gap-2 w-100 pr-20 pt-[5%]">
-              <h3 className="uppercase text-4xl">{source}</h3>
-              <p className="text-base font-body">{alt}</p>
+            <div
+              id="col2"
+              className="flex flex-col justify-between w-100 pr-20 pt-[5%]"
+            >
+              <div className="flex flex-col gap-2">
+                <h3 className="uppercase text-4xl text-wrap">{source}</h3>
+                <p className="text-base font-body w-full text-wrap text-balance wrap-break-word">
+                  {alt}
+                </p>
+              </div>
+              <p className="mb-10 italic text-base text-sm font-body w-full text-wrap text-balance wrap-break-word">
+                {credit}
+              </p>
             </div>
           </div>
         </div>
