@@ -89,6 +89,40 @@
   "ch3": {
     "title": "Chapter 3"
   },
+  "witness": {
+    "title": {
+      "pre": "who writes",
+      "post": "history?",
+      "tagline": "Explore the two versions of the same event through different ideological perspectives."
+    },
+    "version": {
+      "NK": {
+        "title": "North Korean Version",
+        "description": "In the eyes of the North Korean forces, Koje-do was an illegal political detention camp where prisoners of war from the Korean People's Army and the Chinese Volunteer Army were subjected to arbitrary interrogations, violations of the Geneva Conventions, and manipulative maneuvers regarding voluntary repatriation. In this context, the prisoners did not see the kidnapping of General Dodd as an act of gratuitous violence or savagery, as portrayed by Western media, but as a calculated political action carried out to defend the rights of POWs, draw attention to violations committed by the United States, and establish official recognition of their legitimacy as a representative organization. The banner displayed by the detainees—announcing that Dodd would not be harmed if their demands were taken seriously—shows a willingness to negotiate, not to destroy. Through this act, the prisoners of war denounced the illegal nature of the voluntary repatriation procedures, imposed by the Americans even though no agreement had yet been reached at Panmunjom. They protested against the use of the prisoner figure as a tool of Western propaganda, serving a Cold War based on hypocritical morality. In this North Korean reading, the POWs of Koje-do were neither submissive captives nor mere victims, but conscious political actors who were able to articulate their own diplomatic strategy from their place of internment. Colonel Lee Hak-Ku, with his letter to the ICRC, is an emblematic figure: he embodies the resistant intellectual, capable of asserting the principles of international law while denouncing their imperialist instrumentalization."
+      },
+      "US": {
+        "title": "American Version",
+        "description": "On the American side, the management of the Geoje camp was quickly conceived as a soft power tool in the context of the Cold War. Officially, the U.S. military claimed to respect the Geneva Conventions, which ensure the humane treatment of prisoners. Photographs and reports were disseminated in the press to present a modern, clean, and organized camp, serving as proof of the superiority of the Western democratic model. In response to acts of resistance by the prisoners, such as the kidnapping of General Dodd, the United States adopted a defensive posture: the American military shifted from a humanitarian management stance to a policy of total, militarized control of the camps. The prisoners' revolt was interpreted not as a legitimate political demand, but as a manipulation orchestrated by communist cadres infiltrated among the detainees. Their ability to organize was perceived as a security danger and a threat to the American moral order. In this version of events, the insurgents are not political subjects, but fanatics instrumentalized by the North Korean and Chinese regimes, refusing the benefits of an order based on rights and freedom. Any recognition of their autonomous organization was refused, as it would challenge the boundary between democratic legitimacy and totalitarian subversion."
+      }
+    },
+    "witnessVideos": {
+      "01": {
+        "fname": "Min-jae",
+        "status": "Grandson of a prisoner",
+        "tagline": "To come back here is to confront the silences of history. But also to understand them."
+      },
+      "02": {
+        "fname": "Sung-ho",
+        "status": "Witness and former resistance fighter",
+        "tagline": "To come back here is to confront the silences of history. But also to understand them."
+      },
+      "03": {
+        "fname": "Ji-Yeon",
+        "status": "Visiting the historic park",
+        "tagline": "To come back here is to confront the silences of history. But also to understand them."
+      }
+    }
+  },
   "conclu": {
     "title": "Conclusion",
     "contents": {

@@ -10,7 +10,7 @@ i18n
   .use(HttpBackend)
   .use(initReactI18next)
   .init({
-    fallbackLng: lang || "en",
+    fallbackLng: "en",
     supportedLngs: ["en", "ko", "fr"],
     nonExplicitSupportedLngs: true,
     debug: false, //Set to true for dev debug (process.env.NODE_ENV === 'development')

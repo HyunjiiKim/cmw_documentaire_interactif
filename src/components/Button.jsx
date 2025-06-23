@@ -315,20 +315,19 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
-          isLeft ? "left" : "right"
-        }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
+          }`}
       ></i>
     </div>
   );
 };
 
-export const TopPage = ({ scrollTo, bgColor, borderColor }) => {
+export const TopPage = ({ bgColor, borderColor }) => {
   return (
     <button
       className="cursor-pointer w-fit h-fit aspect-square w-20"
       onClick={() => {
-        scrollTo.current.scrollIntoView({ behavior: "smooth" });
+        scrollTo.scrollTo(0, { behavior: "smooth" });
       }}
     >
       <i

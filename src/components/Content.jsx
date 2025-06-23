@@ -8,12 +8,14 @@ import {
   DifferentPdv,
   Section1,
   Section4,
+  Witness,
 } from "./ChapterContents/Sections";
 import Credits from "./Credits";
-import Button, { ButtonWithIcon, AudioBtn } from "./Button";
+import Button, { ButtonWithIcon, AudioBtn, TopPage } from "./Button";
 
 import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
+import mockVideo from "/assets/videos/Introduction.mp4";
 
 const Content = ({ chapter }) => {
   const { t: t1 } = useTranslation("contents");
@@ -92,8 +94,7 @@ const Content = ({ chapter }) => {
 
         entries.forEach((entry) => {
           console.log(
-            `Observer raw entry: id=${entry.target.id}, isIntersecting=${
-              entry.isIntersecting
+            `Observer raw entry: id=${entry.target.id}, isIntersecting=${entry.isIntersecting
             }, ratio=${entry.intersectionRatio.toFixed(2)}`
           );
           if (entry.target.id === "section2" && entry.isIntersecting) {
@@ -311,6 +312,75 @@ const Content = ({ chapter }) => {
     },
   ];
 
+  /**
+   * Conclusion
+   */
+
+  const acknowledgementList = [
+    t2("acknowledgement.PB"),
+    t2("acknowledgement.TB"),
+    t2("acknowledgement.MC"),
+    t2("acknowledgement.GY"),
+    t2("acknowledgement.MA"),
+    t2("acknowledgement.SL"),
+    t2("acknowledgement.SZ")
+  ];
+
+  const ch3s4 = {
+    title: t1("ch3.contents.4.title"),
+    description: [
+      t1("ch3.contents.4.description.1"),
+      t1("ch3.contents.4.description.2"),
+      t1("ch3.contents.4.description.3"),
+      t1("ch3.contents.4.description.4"),
+    ],
+  };
+
+  // witeness information is stored here
+  const witnessInfo = [
+    {
+      id: "01",
+      fname: t1("witness.witnessVideos.01.fname"),
+      lname: "",
+      status: t1("witness.witnessVideos.01.status"),
+      tagline: t1("witness.witnessVideos.01.tagline"),
+      videoURL: mockVideo
+    },
+    {
+      id: "02",
+      fname: t1("witness.witnessVideos.02.fname"),
+      lname: "",
+      status: t1("witness.witnessVideos.02.status"),
+      tagline: t1("witness.witnessVideos.02.tagline"),
+      videoURL: mockVideo
+    },
+    {
+      id: "03",
+      fname: t1("witness.witnessVideos.03.fname"),
+      lname: "",
+      status: t1("witness.witnessVideos.03.status"),
+      tagline: t1("witness.witnessVideos.03.tagline"),
+      videoURL: mockVideo
+    }
+  ]
+
+  // show Temoignage
+  const [showTemoignages, setShowTemoignages] = useState(false);
+
+  const handleShowTemoignages = () => {
+    setShowTemoignages(true);
+    //after 0.1 sec, it scrools smootly to the section id="temoignages"
+    setTimeout(
+      () => {
+        document.getElementById("temoignages").scrollIntoView({
+          behavior: "smooth",
+        });
+      },
+      100
+    )
+  };
+
+
   switch (chapter) {
     case "ch1":
       return (
@@ -415,9 +485,8 @@ const Content = ({ chapter }) => {
                 <li
                   key={id}
                   onClick={() => setC3s3(id)}
-                  className={`cursor-pointer font-body uppercase hover:font-bold text-white/70 ${
-                    c3s3 === id && "font-bold text-white/100"
-                  }`}
+                  className={`cursor-pointer font-body uppercase hover:font-bold text-white/70 ${c3s3 === id && "font-bold text-white/100"
+                    }`}
                 >
                   {it.name}
                   {c3s3 === id && (
@@ -491,9 +560,54 @@ const Content = ({ chapter }) => {
           <div id="section1">
             <DifferentPdv />
           </div>
-          <div id="section"></div>
-          <div id="section"></div>
-          <div id="section"></div>
+          <div id="section2">
+            <Section4 content={ch3s4} />
+          </div>
+          <div id="section3"
+            className="h-screen bg-[url(https://storage.googleapis.com/cmw-geoje-src/videos/chap3_section3.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply flex flex-col justify-center items-center text-center tracking-[6%]"
+          >
+            <h2 className="uppercase text-7xl leading-20">
+              Camp de Geoje
+              <br />
+              Voix et mémoires
+            </h2>
+            <p className="font-body text-3xl w-190">
+              Découvrez les témoignages et les récits poignants des visiteurs du
+              parc historique.
+            </p>
+            <Button label="Voir les témoignages" onClick={handleShowTemoignages} />
+          </div>
+          <div
+            id="section4"
+          >
+            {showTemoignages && (
+              <div
+                id="temoignages"
+                className="h-full flex flex-col justify-center items-center tracking-[6%] gap-15"
+              >
+                {witnessInfo.map((it) => (
+                  <Witness
+                    key={it.id}
+                    content={it}
+                  />
+                ))}
+                <div
+                  id="buttonGroup"
+                  className="w-full flex justify-end items-end gap-5 mr-[60px]"
+                >
+                  <TopPage
+                    bgColor={"primary-1"}
+                    borderColor={"white"}
+                  />
+                  <Button
+                    label="Retour à la carte"
+                    custom="border-white border-1"
+                    onClick={() => (window.location.href = "/map")}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       );
     case "conclusion":
@@ -526,13 +640,9 @@ const Content = ({ chapter }) => {
           <div id="section3" className="flex flex-col gap-10">
             <h1 className="uppercase text-6xl">{t1("conclu.thanks.title")}</h1>
             <ol className="flex gap-5 font-body text-lg">
-              <li>BOUREAU Pierre,</li>
-              <li>BONZON Thierry,</li>
-              <li>CHA Minchol,</li>
-              <li>YU Gihoon (유기훈),</li>
-              <li>AUVRAY Mariette,</li>
-              <li>LÉVY Stéphane,</li>
-              <li>ZORNINGER Sylvain.</li>
+              {acknowledgementList.map((it, id) => (
+                <li key={id}>{it} {id === acknowledgementList.length - 1 ? "." : ","}</li>
+              ))}
             </ol>
           </div>
           <Button
