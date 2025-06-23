@@ -502,12 +502,12 @@ const Content = ({ chapter }) => {
           id="conclusion"
           className="px-10 py-10 text-white flex flex-col gap-10"
         >
-          <div id="section1" className="w-full py-10 px-10">
+          <div id="section1" className="py-20 w-full">
             <div id="TextContainer" className="text-wrap">
-              <h1 className="text-[50px] my-5">
+              <h1 className="uppercase text-[50px] my-5">
                 {t1("conclu.contents.subtitle")}
               </h1>
-              <div className="font-body tracking-widest columns-2">
+              <div className="font-body tracking-widest columns-2 tracking-[6%] leading-8">
                 <p>
                   {t1("conclu.contents.1")}
                   <br />
@@ -526,10 +526,12 @@ const Content = ({ chapter }) => {
           <div id="section3" className="flex flex-col gap-10">
             <h1 className="uppercase text-6xl">{t1("conclu.thanks.title")}</h1>
             <ol className="flex gap-5 font-body text-lg">
-              <li>BOUREAU Pierre</li>
-              <li>BONZON Thierry</li>
-              <li>AUVRAY Mariette</li>
-              <li>LÉVY Stéphane</li>
+              <li>BOUREAU Pierre,</li>
+              <li>BONZON Thierry,</li>
+              <li>CHA Minchol,</li>
+              <li>YU Gihoon (유기훈),</li>
+              <li>AUVRAY Mariette,</li>
+              <li>LÉVY Stéphane,</li>
               <li>ZORNINGER Sylvain.</li>
             </ol>
           </div>

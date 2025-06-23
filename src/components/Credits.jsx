@@ -199,6 +199,369 @@ export const Credits = () => {
                     https://collections.artsmia.org/art/5257/chinese-new-year-werner-bischof
                   </a>
                 </li>
+                <li>
+                  Bischof, W. (1952). At Lunch Time [Photographie]. Minneapolis
+                  Institute of Art.{" "}
+                  <a
+                    href="https://collections.artsmia.org/art/5255/at-lunch-time-werner-bischof"
+                    className="underline"
+                  >
+                    https://collections.artsmia.org/art/5255/at-lunch-time-werner-bischof
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (1952). English Lesson [Photographie]. Minneapolis
+                  Institute of Art.{" "}
+                  <a
+                    href="https://collections.artsmia.org/art/5254/english-lesson-werner-bischof"
+                    className="underline"
+                  >
+                    https://collections.artsmia.org/art/5254/english-lesson-werner-bischof
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (1952). Killing Time [Photographie]. Minneapolis
+                  Institute of Art.{" "}
+                  <a
+                    href="https://collections.artsmia.org/art/5246/killing-time-werner-bischof"
+                    className="underline"
+                  >
+                    https://collections.artsmia.org/art/5246/killing-time-werner-bischof
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (1952). Spectacle avec échassiers pour prisonniers
+                  de guerre, camp de Koje-do, Corée du Sud [Photographie].
+                  Magnum Photos.{" "}
+                  <a
+                    href="https://collections.artsmia.org/art/5010/koje-do-werner-bischof"
+                    className="underline"
+                  >
+                    https://collections.artsmia.org/art/5010/koje-do-werner-bischof
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (1952). Spectacle musical pour prisonniers de
+                  guerre, Koje-do, Corée du Sud [Photographie]. Magnum Photos.{" "}
+                  <a
+                    href="https://collections.artsmia.org/art/5248/speech-werner-bischof"
+                    className="underline"
+                  >
+                    https://collections.artsmia.org/art/5248/speech-werner-bischof
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (1952). Compound 92 [Photographie]. Minneapolis
+                  Institute of Art.{" "}
+                  <a
+                    href="https://collections.artsmia.org/art/5000/compound-92-werner-bischof"
+                    className="underline"
+                  >
+                    https://collections.artsmia.org/art/5000/compound-92-werner-bischof
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (1952). Portrait d’un prisonnier de guerre
+                  souriant, camp de Koje-do, Corée du Sud [Photographie]. Magnum
+                  Photos.{" "}
+                  <a
+                    href="https://collections.artsmia.org/art/5249/general-kim-il-sung-werner-bischof"
+                    className="underline"
+                  >
+                    https://collections.artsmia.org/art/5249/general-kim-il-sung-werner-bischof
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f1.item.r=%22guerre%20de%20cor%C3%A9e%22"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f1.item.r=%22guerre%20de%20cor%C3%A9e%22
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f2.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f2.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f3.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f3.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f4.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f4.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f5.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f5.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f6.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f6.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f7.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f7.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f8.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f8.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f9.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f9.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f10.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f10.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f11.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f11.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f12.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f12.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f13.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f13.item
+                  </a>
+                </li>
+                <li>
+                  Bibliothèque nationale de France. (s.d.). [Photographies sur
+                  la guerre de Corée] [Photographies]. Gallica.{" "}
+                  <a
+                    href="https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f14.item"
+                    className="underline"
+                  >
+                    https://gallica.bnf.fr/ark:/12148/btv1b2400165h/f14.item
+                  </a>
+                </li>
+                <li>
+                  Wikipédia. (s.d). With her brother on her back a war weary
+                  Korean girl tiredly trudges by a stalled M-46 tank, at
+                  Haengju, Korea. June 9, 1951. Maj. R.V. Spencer, UAF. (Navy).
+                  [Photographie]. Wikimedia Commons.{" "}
+                  <a
+                    href="https://commons.wikimedia.org/wiki/File:KoreanWarRefugeeWithBaby.jpg?uselang=fr#/media/File:With_her_brother_on_her_back_a_war_weary_Korean_girl_tiredly_trudges_by_a_stalled_M-26_tank,_at_Haengju,_Korea_HD-SN-99-03144.jpg"
+                    className="underline"
+                  >
+                    https://commons.wikimedia.org/wiki/File:KoreanWarRefugeeWithBaby.jpg?uselang=fr#/media/File:With_her_brother_on_her_back_a_war_weary_Korean_girl_tiredly_trudges_by_a_stalled_M-26_tank,_at_Haengju,_Korea_HD-SN-99-03144.jpg
+                  </a>
+                </li>
+                <li>
+                  Inconnu. (1950). Unité blindée de chars T-34 nord-coréens
+                  entrant à Séoul [Photographie]. Wikimedia Commons.{" "}
+                  <a
+                    href="https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Tank_unit_of_the_Korean_People's_Army_enters_the_streets_of_Seoul_while_being_welcomed_by_the_Korean_people,_1950.jpg"
+                    className="underline"
+                  >
+                    https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Tank_unit_of_the_Korean_People's_Army_enters_the_streets_of_Seoul_while_being_welcomed_by_the_Korean_people,_1950.jpg
+                  </a>
+                </li>
+                <li>
+                  Wikipédia. (s.d).Mère sud-coréenne accompagnant son fils
+                  mobilisé à la gare de Daegu [Photographie]. Wikimedia Commons.{" "}
+                  <a
+                    href="https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:1950.12.19_%ED%95%9C%EA%B5%AD%EC%A0%84%EC%9F%81-%EA%B5%AD%EA%B5%B0%EC%8B%A0%EB%B3%91_(7445956136).jpg"
+                    className="underline"
+                  >
+                    https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:1950.12.19_%ED%95%9C%EA%B5%AD%EC%A0%84%EC%9F%81-%EA%B5%AD%EA%B5%B0%EC%8B%A0%EB%B3%91_(7445956136).jpg
+                  </a>
+                </li>
+                <li>
+                  Wikipédia. (s.d). Évacuation par l’US Navy de réfugiés
+                  nord-coréens à bord de l’USS Weiss [Photographie]. Wikimedia
+                  Commons.{" "}
+                  <a
+                    href="https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Korean_War_refugees_aboard_USS_Weiss_(APD-135),_16_September_1952_(80-G-K-14209).jpg"
+                    className="underline"
+                  >
+                    https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Korean_War_refugees_aboard_USS_Weiss_(APD-135),_16_September_1952_(80-G-K-14209).jpg
+                  </a>
+                </li>
+                <li>
+                  Wikipédia. (s.d). Fuite de réfugiés à travers un pont détruit
+                  sur le fleuve Taedong [Photographie]. Wikimedia Commons.{" "}
+                  <a
+                    href="https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Max_Desfor_-_Flight_of_Refugees_Across_Wrecked_Bridge_in_Korea.jpg"
+                    className="underline"
+                  >
+                    https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Max_Desfor_-_Flight_of_Refugees_Across_Wrecked_Bridge_in_Korea.jpg
+                  </a>
+                </li>
+                <li>
+                  Wikipédia. (s.d). Prisonniers nord-coréens et chinois dans un
+                  camp à Pusan [Photographie]. Wikimedia Commons.{" "}
+                  <a
+                    href="https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Chinese_and_North_Korean_POWs_at_camp_in_Pusan_HD-SN-99-03155.JPEG"
+                    className="underline"
+                  >
+                    https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Chinese_and_North_Korean_POWs_at_camp_in_Pusan_HD-SN-99-03155.JPEG
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (s.d.). 1951 – India, Japan, Korea. Werner Bischof
+                  – Official Website.{" "}
+                  <a
+                    href="https://wernerbischof.com/world-1951-1954/1951-india-japan-korea-2/"
+                    className="underline"
+                  >
+                    https://wernerbischof.com/world-1951-1954/1951-india-japan-korea-2/
+                  </a>
+                </li>
+                <li>
+                  La Presse. (2010, 28 juin). Il y a 60 ans commençait la guerre
+                  de Corée. La Presse.{" "}
+                  <a
+                    href="https://www.lapresse.ca/international/asie-oceanie/201006/28/01-4293725-il-y-a-60-ans-commencait-la-guerre-de-coree.php"
+                    className="underline"
+                  >
+                    https://www.lapresse.ca/international/asie-oceanie/201006/28/01-4293725-il-y-a-60-ans-commencait-la-guerre-de-coree.php
+                  </a>
+                </li>
+                <li>
+                  Wikipédia. (s.d).Fichier:Korean War refugees aboard USS Weiss
+                  (APD-135), 16 September 1952 (80-G-K-14209).jpg.
+                  [Photographie]. Wikimedia Commons.{" "}
+                  <a
+                    href="https://fr.m.wikipedia.org/wiki/Fichier:Korean_War_refugees_aboard_USS_Weiss_%28APD-135%29,_16_September_1952_%2880-G-K-14209%29.jpg"
+                    className="underline"
+                  >
+                    https://fr.m.wikipedia.org/wiki/Fichier:Korean_War_refugees_aboard_USS_Weiss_%28APD-135%29,_16_September_1952_%2880-G-K-14209%29.jpg
+                  </a>
+                </li>
+                <li>
+                  Younhap News Agency. (24 juin 2020).Geoje POW camp during
+                  Korean War. [Photographie].{" "}
+                  <a
+                    href="https://en.yna.co.kr/view/PYH20200624063500325"
+                    className="underline"
+                  >
+                    https://en.yna.co.kr/view/PYH20200624063500325
+                  </a>
+                </li>
+                <li>
+                  Wikipédia. (s.d). Montage of images from the Korean War.
+                  Clockwise from top: U.S. Marines retreating during the Battle
+                  of the Chosin Resevoir, U.N. landing at Incheon, Korean
+                  refugees in front of an American M46 Patton tank, U.S.
+                  Marines, led by First Lieutenant Baldomero Lopez, landing at
+                  Incheon, and an American F-86 Sabre fighter jet.
+                  [Photographie]. Wikimedia Commons.{" "}
+                  <a
+                    href="https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Korean_War_Montage_2.png"
+                    className="underline"
+                  >
+                    https://fr.wikipedia.org/wiki/Guerre_de_Cor%C3%A9e#/media/Fichier:Korean_War_Montage_2.png
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (1952). Portrait d’un prisonnier de guerre
+                  souriant, camp de Koje-do, Corée du Sud [Photographie]. Magnum
+                  Photos.{" "}
+                  <a
+                    href="https://www.magnumphotos.com/photographer/werner-bischof/"
+                    className="underline"
+                  >
+                    https://www.magnumphotos.com/photographer/werner-bischof/
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (1952). Spectacle musical pour prisonniers de
+                  guerre, Koje-do, Corée du Sud [Photographie]. Minneapolis
+                  Institute of Art.{" "}
+                  <a
+                    href="https://collections.artsmia.org/art/1805/koje-do-south-korea-werner-bischof"
+                    className="underline"
+                  >
+                    https://collections.artsmia.org/art/1805/koje-do-south-korea-werner-bischof
+                  </a>
+                </li>
+                <li>
+                  Bischof, W. (1952). Koje-Do [Photographie]. Minneapolis
+                  Institute of Art.{" "}
+                  <a
+                    href="https://collections.artsmia.org/art/5243/koje-do-werner-bischof"
+                    className="underline"
+                  >
+                    https://collections.artsmia.org/art/5243/koje-do-werner-bischof
+                  </a>
+                </li>
               </ul>
             </>
           )}
@@ -388,6 +751,363 @@ export const Credits = () => {
                     className="underline"
                   >
                     https://pixabay.com/sound-effects/transition-base-121422/
+                  </a>
+                </p>
+              </div>
+              <div id="introCredits">
+                <h3 className="uppercase">
+                  Page d'introduction et de chargement
+                </h3>
+                <p>
+                  <strong>Effet sonore : </strong>The Faded Rose
+                </p>
+                <p>
+                  <strong>Auteur : </strong>OB-LIX
+                </p>
+                <p>
+                  <strong>Source : </strong>Pixabay
+                </p>
+                <p>
+                  <strong>Lien direct : </strong>
+                  <a
+                    href="https://pixabay.com/music/id-109375/"
+                    className="underline"
+                  >
+                    https://pixabay.com/music/id-109375/
+                  </a>
+                </p>
+              </div>
+              <div id="ch1Credits">
+                <h3 className="uppercase">Chapitre 1</h3>
+                <div className="flex flex-col gap-5">
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>Howling wind through
+                      window in tower
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>tomhannen
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      <a
+                        href="https://freesound.org/people/tomhannen"
+                        className="underline"
+                      >
+                        Freesound
+                      </a>
+                    </p>
+                    <p>
+                      <strong>Plateforme de téléchargement : </strong>Pixabay
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://pixabay.com/sound-effects/howling-wind-through-window-in-tower-28578/"
+                        className="underline"
+                      >
+                        https://pixabay.com/sound-effects/howling-wind-through-window-in-tower-28578/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>Simple Battle or War
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>GameXplosion
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/people/GameXplosion/sounds/760104/"
+                        className="underline"
+                      >
+                        https://freesound.org/people/GameXplosion/sounds/760104/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>The Creepy War Atmosphere
+                      Will Give You Goosebumps
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>muyo5438
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/people/muyo5438/sounds/711148/"
+                        className="underline"
+                      >
+                        https://freesound.org/people/muyo5438/sounds/711148/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>Battlefield 7
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>3dj
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/people/3dj/sounds/658823/"
+                        className="underline"
+                      >
+                        https://freesound.org/people/3dj/sounds/658823/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>Butt War Sounds with Farts
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>ashdunny
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/people/ashdunny/sounds/640858/"
+                        className="underline"
+                      >
+                        https://freesound.org/people/ashdunny/sounds/640858/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>Don’t Give a Dam[n] About
+                      Hitler (World War 2)
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>Kris Klavenes (klavo1985)
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/people/klavo1985/sounds/334912/"
+                        className="underline"
+                      >
+                        https://freesound.org/people/klavo1985/sounds/334912/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>War of the Worlds Horn 1
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>jarredgibb
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/people/jarredgibb/sounds/244796/"
+                        className="underline"
+                      >
+                        https://freesound.org/people/jarredgibb/sounds/244796/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>Medieval Combat Loop
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>yap_audio_production
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/people/yap_audio_production/sounds/218522/"
+                        className="underline"
+                      >
+                        https://freesound.org/people/yap_audio_production/sounds/218522/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>Civil War Caplock Rifle
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>artdeco
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>01451 War Scene
+                      Arrangement 1
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>robinhood76
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/people/robinhood76/sounds/87718/"
+                        className="underline"
+                      >
+                        https://freesound.org/people/robinhood76/sounds/87718/
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div id="ch3Credits">
+                <h3 className="uppercase">Chapitre 3</h3>
+                <div className="flex flex-col gap-5">
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>Distant Pistol Gun Battle
+                      (S19-18)
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>craigsmith
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/s/675137/"
+                        className="underline"
+                      >
+                        https://freesound.org/s/675137/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Effet sonore : </strong>Distant Explosion
+                    </p>
+                    <p>
+                      <strong>Auteur : </strong>danlucaz
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Freesound
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://freesound.org/s/517747/"
+                        className="underline"
+                      >
+                        https://freesound.org/s/517747/
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Témoignage audio : </strong>Interview de M. OH
+                      Eun-seo
+                    </p>
+                    <p>
+                      <strong>Description : </strong>Extrait de témoignage d'un
+                      visiteur du camp, disponible sur YouTube.
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Youtube
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://youtu.be/7G0mp9lDaN8?si=qUkh0hf29bJD1U-n"
+                        className="underline"
+                      >
+                        거제도 포로수용소 반공포로 오은서 할아버지 이야기
+                      </a>
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Musique : </strong>Chant militaire des prisonniers
+                      du camp de Geoje
+                    </p>
+                    <p>
+                      <strong>Source : </strong>
+                      Vidéo d’archives Korean Prisoners of War Marching and
+                      Singing
+                    </p>
+                    <p>
+                      <strong>Lien direct : </strong>
+                      <a
+                        href="https://www.pond5.com/fr/stock-footage/item/108222962-korean-prisoners-war-marching-and-singing"
+                        className="underline"
+                      >
+                        Korean Prisoners Of War Marching And Sin... | Stock
+                        Video | Pond5
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div id="btnCredits">
+                <h3 className="uppercase">Bouton</h3>
+                <p>
+                  <strong>Effet sonore : </strong>Clic léger d’interface
+                </p>
+                <p>
+                  <strong>Auteur : </strong>chango
+                </p>
+                <p>
+                  <strong>Source : </strong>Freesound
+                </p>
+                <p>
+                  <strong>Plateforme de téléchargement : </strong>Pixabay
+                </p>
+                <p>
+                  <strong>Lien direct : </strong>
+                  <a
+                    href="https://pixabay.com/sound-effects/chango-clique-164103/"
+                    className="underline"
+                  >
+                    https://pixabay.com/sound-effects/chango-clique-164103/
                   </a>
                 </p>
               </div>
