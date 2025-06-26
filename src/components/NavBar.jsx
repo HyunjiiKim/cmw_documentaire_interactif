@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import LanguageSwitch from "./Switch";
+import { Logo } from "./Logo";
 
 export const NavBar = ({ whichPage }) => {
   const { t } = useTranslation("nav");
@@ -70,16 +71,7 @@ export const HorizontalNav = () => {
       className="fixed z-40 w-[120px] h-full border-r border-white py-10 px-4"
     >
       <div className="flex flex-col justify-between items-center h-full">
-        <div className="rotate-270 text-white flex gap-2 mt-8 text-nowrap">
-          <p>{t("name.pre")}</p>
-          <strong className="text-primary-1">{t("name.post")}</strong>
-        </div>
-        <div
-          className="rotate-90 text-white p-2 border-white border-1 w-fit cursor-pointer"
-          onClick={() => (window.location.href = "/")}
-        >
-          기억
-        </div>
+        <Logo />
         <LanguageSwitch vertical={true} withSound={true} />
       </div>
     </div>

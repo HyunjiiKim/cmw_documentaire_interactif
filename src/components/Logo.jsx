@@ -28,7 +28,7 @@ const logoVariants = cva(
   }
 );
 
-export const Logo = ({ intent, size, withText }) => {
+export const Logo = ({ intent, size, withText=false }) => {
   const { t } = useTranslation("home");
 
   return (

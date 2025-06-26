@@ -13,7 +13,7 @@ const ContainerVariants = cva("", {
     },
     size: {
       sm: "w-fit h-50 flex-none",
-      md: "w-[360px] max-md:w-[180px] h-auto flex-none",
+      md: "w-[360px] max-lg:w-[180px] h-auto flex-none",
       md2: "h-90 flex-auto",
       lg: "w-auto h-full flex-none",
       full: "w-full h-auto flex-none",

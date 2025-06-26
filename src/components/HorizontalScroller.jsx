@@ -21,7 +21,7 @@ const HorizontalScroller = ({ data, custom, size, isMarquee = false }) => {
 export const GalleryImg = ({ data, custom, size }) => {
   return (
     <>
-      <div className="mt-10 mb-10 flex flex-row flex-wrap gap-5">
+      <div className=" my-10 mx-50 grid grid-cols-3 gap-4">
         {data.map((item) => (
           <ImageContainer
             key={item.id}
@@ -33,7 +33,7 @@ export const GalleryImg = ({ data, custom, size }) => {
             size={size}
             intent="gallery"
             border="none"
-            custom={`${custom} shadow-md/25`}
+            custom={`${custom} shadow-md/25 hover:shadow-xl hover:shadow-white/50 hover:cursor-pointer`}
             isClickable={true}
           />
         ))}

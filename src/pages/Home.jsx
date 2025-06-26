@@ -25,6 +25,8 @@ const Home = () => {
   const { t: t3 } = useTranslation("general");
   // const [showChoice, setShowChoice] = useState(false);
   const [showHome, setShowHome] = useState(0);
+  const [showVideo, setShowVideo] = useState(true);
+
   const navigation = useNavigate();
 
   function openShowChoices() {
@@ -49,6 +51,16 @@ const Home = () => {
       <main id="home" className="max-sm:hidden h-full">
         {showHome === 0 && (
           <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
+            {showVideo && (
+              <div className="absolute top-0 left-0 z-50 bg-black/50 w-screen h-screen flex justify-center items-center" onClick={(event) => { event.stopPropagation(); event.preventDefault(); }}>
+                <div className="relative">
+                  <div className="border-1 border-white aspect-square  text-white text-lg flex items-center justify-center absolute w-5 h-5 top-2 right-2 cursor-pointer z-20">
+                    <i className="bi bi-x" onClick={()=>setShowVideo(false)} />
+                  </div>
+                  <VimeoPlayer videoId={1095026519} onEnded={() => setTimeout(() => setShowVideo(false), 2000)} width="w-[600px]" />
+                </div>
+              </div>
+            )}
             <div className="absolute top-0 left-0 w-full h-full">
               <img
                 src="https://storage.googleapis.com/cmw-geoje-src/videos/page_chargement.gif"
@@ -58,7 +70,7 @@ const Home = () => {
             <div id="header" className="flex justify-end pr-18 pt-18">
               <LanguageSwitch position />
             </div>
-            <div className="z-50 flex h-full justify-center">
+            <div className="z-10 flex h-full justify-center">
               <div id="quote" className="w-200 content-center">
                 <h4 className="font-sans text-white uppercase text-5xl text-center leading-15">
                   &#8220;{t2("quote")}&#8221;
