@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -29,6 +29,16 @@ const Home = () => {
 
   const navigation = useNavigate();
 
+  // pass to setShowHome(1) after 2 sec
+  useEffect(() => {
+    if (showHome === 0) {
+      const timer = setTimeout(() => {
+        setShowHome(1);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [showHome])
+
   function openShowChoices() {
     setShowHome(2);
   }
@@ -51,16 +61,6 @@ const Home = () => {
       <main id="home" className="max-sm:hidden h-full">
         {showHome === 0 && (
           <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
-            {showVideo && (
-              <div className="absolute top-0 left-0 z-50 bg-black/50 w-screen h-screen flex justify-center items-center" onClick={(event) => { event.stopPropagation(); event.preventDefault(); }}>
-                <div className="relative">
-                  <div className="border-1 border-white aspect-square  text-white text-lg flex items-center justify-center absolute w-5 h-5 top-2 right-2 cursor-pointer z-20">
-                    <i className="bi bi-x" onClick={()=>setShowVideo(false)} />
-                  </div>
-                  <VimeoPlayer videoId={1095026519} onEnded={() => setTimeout(() => setShowVideo(false), 2000)} width="w-[600px]" />
-                </div>
-              </div>
-            )}
             <div className="absolute top-0 left-0 w-full h-full">
               <img
                 src="https://storage.googleapis.com/cmw-geoje-src/videos/page_chargement.gif"
@@ -109,6 +109,16 @@ const Home = () => {
             <div className="z-50 fixed top-18 right-18">
               <InfoBtn />
             </div>
+            {showVideo && (
+              <div className="absolute top-0 left-0 z-50 bg-black/50 w-screen h-screen flex justify-center items-center" onClick={(event) => { event.stopPropagation(); event.preventDefault(); }}>
+                <div className="relative">
+                  <div className="border-1 border-white aspect-square  text-white text-lg flex items-center justify-center absolute w-5 h-5 top-2 right-2 cursor-pointer z-20">
+                    <i className="bi bi-x" onClick={() => setShowVideo(false)} />
+                  </div>
+                  <VimeoPlayer videoId={1095026519} onEnded={() => setTimeout(() => setShowVideo(false), 2000)} width="w-[600px]" />
+                </div>
+              </div>
+            )}
             <div
               id="introContent"
               className="flex flex-col justify-between bg-[url(https://storage.googleapis.com/cmw-geoje-src/img/intro_waitingmedics.jpg)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply"
