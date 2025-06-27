@@ -15,6 +15,7 @@
     "@vimeo/player": "^2.26.0",
     "bootstrap-icons": "^1.11.3",
     "class-variance-authority": "^0.7.1",
+    "gsap": "^3.13.0",
     "i18next-browser-languagedetector": "^8.0.2",
     "i18next-http-backend": "^3.0.2",
     "phaser": "^3.88.2",

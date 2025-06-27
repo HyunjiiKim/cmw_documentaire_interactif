@@ -123,28 +123,12 @@ export const InfoBtn = (position) => {
 };
 
 // Trigger Button with Audio File
-export const AudioBtn = ({ audioSrc, label, textColor, bgColor }) => {
-  const audioRef = useRef(new Audio(audioSrc));
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  if (audioSrc) {
-    useEffect(() => {
-      if (isPlaying) {
-        audioRef.current.play();
-      } else {
-        audioRef.current.pause();
-      }
-    }, [isPlaying]);
-  }
-
-  const toggleAudio = () => {
-    setIsPlaying(!isPlaying);
-  };
+export const AudioBtn = ({ audioSrc, label, textColor, bgColor, isPlaying, onTogglePlay }) => {
 
   return (
     <div
-      className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-5 px-5`}
-      onClick={toggleAudio}
+      className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-5 px-5 w-fit`}
+      onClick={onTogglePlay}
       title={isPlaying ? "Pause audio" : "Play audio"}
     >
       {label ? (
@@ -160,7 +144,7 @@ export const AudioBtn = ({ audioSrc, label, textColor, bgColor }) => {
           />
         </>
       ) : (
-        <img src="../assets/icons/soundBtn.svg" className="h-10" />
+        <img src="../assets/icons/soundBtn.svg" className={`h-10 ${isPlaying && "animate-[autoScaler_2s_linear_infinite]"}`} />
       )}
     </div>
   );
@@ -315,9 +299,8 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
-          isLeft ? "left" : "right"
-        }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
+          }`}
       ></i>
     </div>
   );
