@@ -63,10 +63,9 @@ const SyncedLyricsPlayer = ({ audioSrc = "" }) => {
         const activeLineElement = scriptContainerRef.current.children[currentLineIndex];
 
         // If the element exists, scroll to it
-        if (activeLineElement) {
+        if (activeLineElement && isPlaying) {
             activeLineElement.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
+                behavior: "smooth"
             })
         }
     }, [currentLineIndex])
@@ -81,10 +80,8 @@ const SyncedLyricsPlayer = ({ audioSrc = "" }) => {
     };
 
     // Also update isPlaying state if user uses the native controls
-    const handlePlay = () => {
-        setIsPlaying(true);
-        console.log("isPlaying turns true")
-    }
+    const handlePlay = () => setIsPlaying(true);
+
     const handlePause = () => setIsPlaying(false);
 
     return (

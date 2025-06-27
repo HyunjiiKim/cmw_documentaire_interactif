@@ -474,10 +474,6 @@ const Content = ({ chapter }) => {
           />
         </div>
       );
-    case "test":
-      return (
-        <ChapterContainer />
-      )
     default:
       return (
         <div

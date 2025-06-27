@@ -4,7 +4,7 @@ import { gsap } from "https://cdn.skypack.dev/gsap";
 import { ScrollToPlugin } from "https://cdn.skypack.dev/gsap/ScrollToPlugin";
 import SyncedLyricsPlayer from "./AudioReader";
 
-// Register the plugin with GSAP - this is crucial!
+// Register the plugin with GSAP
 gsap.registerPlugin(ScrollToPlugin);
 
 const ChapterContainer = () => {

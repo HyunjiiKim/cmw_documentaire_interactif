@@ -321,7 +321,7 @@ export const TopPage = ({ bgColor, borderColor }) => {
       }}
     >
       <i
-        className={`bg-${bgColor} px-[14px] py-[10px] border-${borderColor} border-1 hover:inset-shadow-sm bi bi-chevron-up`}
+        className={`bg-${bgColor} hover:bg-tertiary-2 px-[14px] py-[10px] border-${borderColor} border-1 hover:inset-shadow-sm bi bi-chevron-up`}
       ></i>
     </button>
   );
