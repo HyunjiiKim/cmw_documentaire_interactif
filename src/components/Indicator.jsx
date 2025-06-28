@@ -10,6 +10,7 @@ export const Indicator = ({ label }) => {
         </p>
         <SoundBtn />
       </div>
+
     </>
   );
 };

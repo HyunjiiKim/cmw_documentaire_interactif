@@ -79,12 +79,12 @@ export const InfoBtn = ({ infoPosition = {top, right, bottom, left} }) => {
           // this infoSection is always centered on the screen
           <div
             id="infoSection"
-            className={`z-50 flex bg-white fixed max-w-240 w-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
+            className={`z-50 flex bg-black fixed max-w-240 w-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
           >
             <div className="relative  p-20">
-              <i className="bi bi-x-lg absolute right-5 top-5 cursor-pointer" onClick={() => setShowInfo(false)} />
+              <i className="bi bi-x-lg text-white text-lg absolute right-5 top-5 cursor-pointer" onClick={() => setShowInfo(false)} />
               <div id="infoContent" className="w-fit">
-                <p className="text-black font-body leading-7">
+                <p className="text-white font-body leading-7">
                   {t("info.para1")}
                   <br />
                   <br />

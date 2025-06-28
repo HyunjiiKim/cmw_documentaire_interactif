@@ -4,71 +4,239 @@
         "key": "line1"
     },
     {
-        "time": 6.63,
+        "time": 6.00,
         "key": "line2"
     },
     {
-        "time": 12.25,
+        "time": 12.05,
         "key": "line3"
     },
     {
-        "time": 13.8,
+        "time": 14.18,
         "key": "line4"
     },
     {
-        "time": 17.50,
+        "time": 18.08,
         "key": "line5"
     },
     {
-        "time": 17.50,
+        "time": 21.11,
         "key": "line6"
     },
     {
-        "time": 17.50,
+        "time": 24.11,
         "key": "line7"
     },
     {
-        "time": 17.50,
+        "time": 28.10,
         "key": "line8"
     },
     {
-        "time": 17.50,
+        "time": 32.00,
         "key": "line9"
     },
     {
-        "time": 17.50,
+        "time": 37.10,
         "key": "line10"
     },
     {
-        "time": 17.50,
+        "time": 39.18,
         "key": "line11"
     },
     {
-        "time": 17.50,
+        "time": 46.11,
         "key": "line12"
     },
     {
-        "time": 17.50,
+        "time": 49.19,
         "key": "line13"
     },
     {
-        "time": 17.50,
+        "time": 53.08,
         "key": "line14"
     },
     {
-        "time": 17.50,
+        "time": 55.14,
         "key": "line15"
     },
     {
-        "time": 17.50,
+        "time": 60.20,
         "key": "line16"
     },
     {
-        "time": 17.50,
+        "time": 65.19,
         "key": "line17"
     },
     {
-        "time": 17.50,
+        "time": 69.17,
         "key": "line18"
+    },
+    {
+        "time": 71.01,
+        "key": "line19"
+    },
+    {
+        "time": 78.06,
+        "key": "line20"
+    },
+    {
+        "time": 81.20,
+        "key": "line21"
+    },
+    {
+        "time": 86.20,
+        "key": "line22"
+    },
+    {
+        "time": 89.15,
+        "key": "line23"
+    },
+    {
+        "time": 95.08,
+        "key": "line24"
+    },
+    {
+        "time": 98.06,
+        "key": "line25"
+    },
+    {
+        "time": 103.12,
+        "key": "line26"
+    },
+    {
+        "time": 109.07,
+        "key": "line27"
+    },
+    {
+        "time": 111.11,
+        "key": "line28"
+    },
+    {
+        "time": 114.16,
+        "key": "line29"
+    },
+    {
+        "time": 118.21,
+        "key": "line30"
+    },
+    {
+        "time": 122.02,
+        "key": "line31"
+    },
+    {
+        "time": 126.05,
+        "key": "line32"
+    },
+    {
+        "time": 129.14,
+        "key": "line33"
+    },
+    {
+        "time": 135.19,
+        "key": "line34"
+    },
+    {
+        "time": 139.03,
+        "key": "line35"
+    },
+    {
+        "time": 144.20,
+        "key": "line36"
+    },
+    {
+        "time": 148.07,
+        "key": "line37"
+    },
+    {
+        "time": 152.04,
+        "key": "line38"
+    },
+    {
+        "time": 157.03,
+        "key": "line39"
+    },
+    {
+        "time": 160.21,
+        "key": "line40"
+    },
+    {
+        "time": 162.09,
+        "key": "line41"
+    },
+    {
+        "time": 164.22,
+        "key": "line42"
+    },
+    {
+        "time": 169.11,
+        "key": "line43"
+    },
+    {
+        "time": 178.21,
+        "key": "line44"
+    },
+    {
+        "time": 181.22,
+        "key": "line45"
+    },
+    {
+        "time": 186.02,
+        "key": "line46"
+    },
+    {
+        "time": 188.06,
+        "key": "line47"
+    },
+    {
+        "time": 190.19,
+        "key": "line48"
+    },
+    {
+        "time": 192.07,
+        "key": "line49"
+    },
+    {
+        "time": 194.06,
+        "key": "line50"
+    },
+    {
+        "time": 203.20,
+        "key": "line51"
+    },
+    {
+        "time": 205.21,
+        "key": "line52"
+    },
+    {
+        "time": 210.12,
+        "key": "line53"
+    },
+    {
+        "time": 213.13,
+        "key": "line54"
+    },
+    {
+        "time": 216.15,
+        "key": "line55"
+    },
+    {
+        "time": 218.18,
+        "key": "line56"
+    },
+    {
+        "time": 221.15,
+        "key": "line57"
+    },
+    {
+        "time": 224.20,
+        "key": "line58"
+    },
+    {
+        "time": 227.11,
+        "key": "line59"
+    },
+    {
+        "time": 233.12,
+        "key": "line60"
     }
 ]
