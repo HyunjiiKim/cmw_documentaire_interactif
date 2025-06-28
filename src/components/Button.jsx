@@ -123,8 +123,14 @@ export const InfoBtn = ({ infoPosition = {top, right, bottom, left} }) => {
 };
 
 // Trigger Button with Audio File
-export const AudioBtn = ({ audioSrc, label, textColor, bgColor, isPlaying, onTogglePlay }) => {
-
+export const AudioBtn = ({
+  audioSrc,
+  label,
+  textColor,
+  bgColor,
+  isPlaying,
+  onTogglePlay,
+}) => {
   return (
     <div
       className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-5 px-5 w-fit`}
@@ -144,7 +150,12 @@ export const AudioBtn = ({ audioSrc, label, textColor, bgColor, isPlaying, onTog
           />
         </>
       ) : (
-        <img src="../assets/icons/soundBtn.svg" className={`h-10 ${isPlaying && "animate-[autoScaler_2s_linear_infinite]"}`} />
+        <img
+          src="../assets/icons/soundBtn.svg"
+          className={`h-10 ${
+            isPlaying && "animate-[autoScaler_2s_linear_infinite]"
+          }`}
+        />
       )}
     </div>
   );
@@ -268,6 +279,54 @@ export const SoundBtn = () => {
   );
 };
 
+export const MapIcon = ({ label }) => {
+  const [showLabel, setShowLabel] = useState(false);
+
+  function openShowLabel() {
+    const labelMap = document.getElementById("labelMap");
+
+    if (labelMap.classList.contains("hidden")) {
+      labelMap.classList.remove("hidden");
+    } else {
+      labelMap.classList.add("hidden");
+    }
+  }
+
+  // TBD: add sounds on hover + add paths + correct design + correct labelMap
+
+  return (
+    <>
+      <img
+        id="iconMap"
+        src="../assets/icons/soundBtn.svg"
+        className="cursor-pointer w-12 h-12 p-2 hover:scale-120 border-white border-1 rounded-full"
+        onMouseOver={openShowLabel}
+      />
+      <div id="labelMap" className="size-full bg-black hidden">
+        {label}
+      </div>
+    </>
+  );
+};
+
+export const ReplayIntro = () => {
+  return (
+    <div
+      className="flex gap-2 h-20 fixed bottom-20 left-50 w-50 bg-primary-1 cursor-pointer hover:scale-120"
+      onClick={() => navigation("/")}
+    >
+      <div className="w-[75%]">Revoir l'introduction</div>
+      <div className="">
+        <img
+          id="iconMap"
+          src="../assets/icons/soundBtn.svg"
+          className="cursor-pointer w-12 h-12 p-2 hover:scale-120"
+        />
+      </div>
+    </div>
+  );
+};
+
 export const WatchBtn = ({ href }) => {
   const { t } = useTranslation("general");
 
@@ -299,8 +358,9 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
-          }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
+          isLeft ? "left" : "right"
+        }`}
       ></i>
     </div>
   );

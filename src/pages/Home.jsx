@@ -34,7 +34,7 @@ const Home = () => {
       }, 4000);
       return () => clearTimeout(timer);
     }
-  }, [showHome])
+  }, [showHome]);
 
   function openShowChoices() {
     setShowHome(2);
@@ -98,12 +98,25 @@ const Home = () => {
               <InfoBtn infoPosition={{ top: 10, right: 5 }} />
             </div>
             {showVideo && (
-              <div className="absolute top-0 left-0 z-50 bg-black/50 w-screen h-screen flex justify-center items-center" onClick={(event) => { event.stopPropagation(); event.preventDefault(); }}>
+              <div
+                className="absolute top-0 left-0 z-50 bg-black/50 w-screen h-screen flex justify-center items-center"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  event.preventDefault();
+                }}
+              >
                 <div className="relative">
                   <div className="border-1 border-white aspect-square  text-white text-lg flex items-center justify-center absolute w-5 h-5 top-2 right-2 cursor-pointer z-20">
-                    <i className="bi bi-x" onClick={() => setShowVideo(false)} />
+                    <i
+                      className="bi bi-x"
+                      onClick={() => setShowVideo(false)}
+                    />
                   </div>
-                  <VimeoPlayer videoId={1095026519} onEnded={() => setTimeout(() => setShowVideo(false), 2000)} width="w-[600px]" />
+                  <VimeoPlayer
+                    videoId={1095026519}
+                    onEnded={() => setTimeout(() => setShowVideo(false), 2000)}
+                    width="w-[600px]"
+                  />
                 </div>
               </div>
             )}
