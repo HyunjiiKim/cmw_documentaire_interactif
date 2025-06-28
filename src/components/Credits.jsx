@@ -60,10 +60,6 @@ export const Credits = () => {
         id="contentCredits"
         className="flex flex-col mt-10 mr-20 p-10 border-1 border-white w-full"
       >
-        <img
-          src="../assets/icons/close.svg"
-          className="self-end w-7 pb-3 justify-end"
-        />
         <div className="w-[85%] flex flex-col gap-10 font-body text-lg">
           {showCredits === "biblio" && (
             <>
@@ -73,13 +69,6 @@ export const Credits = () => {
                   <li>
                     Monica KIM, « The Interrogation Rooms of the Korean War –
                     The Untold History » (Ed. Princeton University Press, 2018),
-                    non-traduit :{" "}
-                    <a
-                      href="https://cloud.iguane.org/s/qDCZWernWp7Zx5z"
-                      className="underline"
-                    >
-                      https://cloud.iguane.org/s/qDCZWernWp7Zx5z
-                    </a>
                   </li>
                 </ul>
               </div>
@@ -89,7 +78,7 @@ export const Credits = () => {
                 <ul>
                   <li>
                     Wikipedia contributors, « Geoje POW camp » (Wikipedia, The
-                    Free Encyclopedia, 2025), non-traduit :{" "}
+                    Free Encyclopedia, 2025)
                     <a
                       href="https://en.wikipedia.org/w/index.php?title=Geoje_POW_camp&oldid=1285525340"
                       className="underline"
@@ -104,8 +93,7 @@ export const Credits = () => {
                 <h3 className="uppercase">{t2("ch2.title")}</h3>
                 <ul>
                   <li>
-                    Dark Tourism and Place Identity. (s. d.). Google Books,
-                    non-traduit :{" "}
+                    Dark Tourism and Place Identity. (s. d.). Google Books
                     <a
                       href="https://books.google.fr/books?hl=fr&lr=&id=sJ0PYNGhwe0C&oi=fnd&pg=PA236&dq=camp+de+geoje+&ots=irefRf2VY4&sig=feaAIY5LEnb2H-SoH83HgClkI_8&redir_esc=y#v=onepage&q=camp%20de%20geoje&f=false"
                       className="underline"
@@ -122,23 +110,10 @@ export const Credits = () => {
                   <li>
                     Monica KIM, « The Interrogation Rooms of the Korean War –
                     The Untold History » (Ed. Princeton University Press, 2018),
-                    non-traduit :{" "}
-                    <a
-                      href="https://cloud.iguane.org/s/qDCZWernWp7Zx5z"
-                      className="underline"
-                    >
-                      https://cloud.iguane.org/s/qDCZWernWp7Zx5z
-                    </a>
                   </li>
                   <li>
                     ICRC action during the Korean War - ICRC Archives & Library
                     | Cross-Files | ICRC Archives, audiovisual and library :{" "}
-                    <a
-                      href="https://blogs.icrc.org/cross-files/icrc-action-in-the-korean-war-br-1950-1953/"
-                      className="underline"
-                    >
-                      https://blogs.icrc.org/cross-files/icrc-action-in-the-korean-war-br-1950-1953/
-                    </a>
                   </li>
                 </ul>
               </div>
