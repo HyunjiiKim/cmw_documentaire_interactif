@@ -5,12 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { HorizontalNav } from "../components/NavBar";
 import LanguageSwitch from "../components/Switch";
 import Button, {
-  ArrowBtn,
   InfoBtn,
   ButtonWithIcon,
 } from "../components/Button";
 import { Trigger } from "../components/Trigger";
-import { Blocker } from "../components/Blocker";
 import { Indicator } from "../components/Indicator";
 import { VimeoPlayer } from "../components/VideoPlayer";
 
@@ -23,18 +21,17 @@ const Home = () => {
   const { t } = useTranslation("contents");
   const { t: t2 } = useTranslation("home");
   const { t: t3 } = useTranslation("general");
-  // const [showChoice, setShowChoice] = useState(false);
   const [showHome, setShowHome] = useState(0);
   const [showVideo, setShowVideo] = useState(true);
 
   const navigation = useNavigate();
 
-  // pass to setShowHome(1) after 2 sec
+  // pass to setShowHome(1) after 4 sec
   useEffect(() => {
     if (showHome === 0) {
       const timer = setTimeout(() => {
         setShowHome(1);
-      }, 2000);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, [showHome])
@@ -46,68 +43,59 @@ const Home = () => {
     setShowHome(1);
   }
 
-  function openShowBtn() {
-    var btn = document.getElementById("btnFinishedIntro");
 
-    if (btn.style.display == "none") {
-      btn.style.display = "flex";
-    } else {
-      btn.style.display = "none";
-    }
-  }
-
-  return (
-    <div className="z-10 flex flex-col h-full">
-      <main id="home" className="max-sm:hidden h-full">
-        {showHome === 0 && (
-          <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
-            <div className="absolute top-0 left-0 w-full h-full">
-              <img
-                src="https://storage.googleapis.com/cmw-geoje-src/videos/page_chargement.gif"
-                className="opacity-70 size-full object-cover"
-              />
-            </div>
-            <div id="header" className="flex justify-end pr-18 pt-18">
-              <LanguageSwitch position />
-            </div>
-            <div className="z-10 flex h-full justify-center">
-              <div id="quote" className="w-200 content-center">
-                <h4 className="font-sans text-white uppercase text-5xl text-center leading-15">
-                  &#8220;{t2("quote")}&#8221;
-                </h4>
-                <hr className="text-white text-center w-sm my-5 m-auto" />
-                <p className="font-body text-white text-center">
-                  {t2("author")}
-                </p>
-                <div className="flex gap-5">
-                  <ButtonWithIcon
-                    onClick={openShowHome}
-                    label={t2("enter")}
-                    custom="ml-auto flex gap-3"
-                    size="small"
-                  />
-                  <Button
-                    onClick={openShowChoices}
-                    label={t2("skip")}
-                    custom="mr-auto"
-                    intent="ghost"
-                    size="small"
-                  />
-                </div>
+  switch (showHome) {
+    case 0:
+      return (
+        <div className="max-sm:hidden h-screen overflow-y-hidden relative">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <img
+              src="https://storage.googleapis.com/cmw-geoje-src/videos/page_chargement.gif"
+              className="opacity-70 w-full h-full object-cover"
+            />
+          </div>
+          <div id="header" className="flex justify-end pr-18 pt-18">
+            <LanguageSwitch />
+          </div>
+          <div className="z-10 absolute top-0 left-0 flex h-full w-full justify-center items-center bg-transparent">
+            <div id="quote" className="w-200 content-center">
+              <h4 className="font-sans text-white uppercase text-5xl text-center leading-15">
+                &#8220;{t2("quote")}&#8221;
+              </h4>
+              <hr className="text-white text-center w-sm my-5 m-auto" />
+              <p className="font-body text-white text-center">
+                {t2("author")}
+              </p>
+              <div className="flex gap-5 z-50">
+                <ButtonWithIcon
+                  onClick={openShowHome}
+                  label={t2("enter")}
+                  custom="ml-auto flex gap-3"
+                  size="small"
+                />
+                <Button
+                  onClick={openShowChoices}
+                  label={t2("skip")}
+                  custom="mr-auto"
+                  intent="ghost"
+                  size="small"
+                />
               </div>
             </div>
-            <div className="z-50 flex justify-between pb-18 pr-18 pl-10">
-              <Indicator label={t2("loading")} />
-              <InfoBtn position="top" />
-            </div>
           </div>
-        )}
-
-        {showHome === 1 && (
-          <div className="max-md:flex-col max-md:items-start h-full flex flex-col">
+          <div className="absolute z-10 bottom-5 left-5">
+            <Indicator label={t2("loading")} />
+          </div>
+          <InfoBtn infoPosition={{ bottom: 20, right: 5 }} />
+        </div>
+      )
+    case 1:
+      return (
+        <div className="max-sm:hidden relative">
+          <div className="max-md:items-start h-full flex flex-col relative">
             <HorizontalNav />
-            <div className="z-50 fixed top-18 right-18">
-              <InfoBtn />
+            <div className="z-50">
+              <InfoBtn infoPosition={{ top: 10, right: 5 }} />
             </div>
             {showVideo && (
               <div className="absolute top-0 left-0 z-50 bg-black/50 w-screen h-screen flex justify-center items-center" onClick={(event) => { event.stopPropagation(); event.preventDefault(); }}>
@@ -188,7 +176,7 @@ const Home = () => {
                   </span>
                 </h3>
                 <Button
-                  onClick={openShowChoices}
+                  onClick={(openShowChoices)}
                   label={t3("start")}
                   custom="mr-auto ml-auto"
                   size="large"
@@ -196,14 +184,14 @@ const Home = () => {
               </div>
             </div>
           </div>
-        )}
-
-        {showHome === 2 && (
+        </div>
+      )
+    case 2:
+      return (
+        <div className="max-sm:hidden">
           <div className="flex flex-col h-full">
             <HorizontalNav />
-            <div className="z-50 fixed top-18 right-18">
-              <InfoBtn />
-            </div>
+            <InfoBtn infoPosition={{ top: 10, right: 5 }} />
             <div
               id="contents"
               className="flex absolute top-0 left-0 size-full object-cover"
@@ -224,11 +212,11 @@ const Home = () => {
               />
             </div>
           </div>
-        )}
-      </main>
-      <Blocker />
-    </div>
-  );
+        </div>
+      )
+    default:
+      return 0;
+  };
 };
 
 export default Home;

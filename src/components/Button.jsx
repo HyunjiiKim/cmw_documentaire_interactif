@@ -59,66 +59,66 @@ export const ButtonWithIcon = ({ intent, size, custom, label, onClick }) => {
   );
 };
 
-export const InfoBtn = (position) => {
+export const InfoBtn = ({ infoPosition = {top, right, bottom, left} }) => {
   const { t } = useTranslation("general");
-  document.addEventListener("DOMContentLoaded", () => {
-    const infoSection = document.getElementById("infoSection");
-  });
 
-  function openInfoSection() {
-    infoSection.classList.remove("hidden");
-  }
-
-  function closeInfoSection() {
-    infoSection.classList.add("hidden");
-  }
+  const [showInfo, setShowInfo] = useState(false);
 
   return (
-    <>
-      <img
-        src="../assets/icons/infoBtn.svg"
-        className="cursor-pointer w-10 h-10 hover:scale-120"
-        onClick={openInfoSection}
-      />
-      <div
-        id="infoSection"
-        className={`hidden z-100 flex flex-col fixed top-40 mr-50 ml-50 size-fit pt-10 p-20 pb-10 bg-black border-primary-1 border-1`}
-      >
+    <div id="infoBtn">
+      {/* using type narrowing to stabilize the customized position */}
+      <div className={`fixed ${typeof infoPosition.top === "number" ? `top-${infoPosition.top}` : ""} ${typeof infoPosition.right === "number" && "string" ? `right-${infoPosition.right}` : ""} ${typeof infoPosition.bottom === "number" ? `bottom-${infoPosition.bottom}` :  ""} ${typeof infoPosition.left === "number" ? `left-${infoPosition.left}` : ""} z-50 cursor-pointer`}>
         <img
-          src="../assets/icons/close.svg"
-          className="cursor-pointer self-end w-7 pb-8"
-          onClick={closeInfoSection}
+          src="../assets/icons/infoBtn.svg"
+          className=" w-10 h-10 hover:scale-120"
+          onClick={() => setShowInfo(true)}
         />
-        <p className="text-white font-body leading-7">
-          {t("info.para1")}
-          <br />
-          <br />
-          {t("info.para2")}
-          <br />
-          <br />
-          {t("info.para3")}
-          <br />
-          <br />
-          {t("info.para4")}
-          <br />
-          {t("info.para5")}
-        </p>
-        <div id="universities" className="flex mt-10 justify-center gap-10">
-          <a href="https://www.univ-gustave-eiffel.fr/">
-            <img
-              src="/assets/img/logo_univ_gustave_eiffel.svg"
-              alt="Logo de l'université Gustave Eiffel"
-            />
-          </a>
-          <a href="https://eng.deu.ac.kr/eng/index.do">
-            <img
-              src="/assets/img/logo_dongeui.svg"
-              alt="Logo de l'université Dongeui"
-            />
-          </a>
-        </div>
       </div>
-    </>
+      {
+        showInfo && (
+          // this infoSection is always centered on the screen
+          <div
+            id="infoSection"
+            className={`z-50 flex bg-white fixed max-w-240 w-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
+          >
+            <div className="relative  p-20">
+              <i className="bi bi-x-lg absolute right-5 top-5 cursor-pointer" onClick={() => setShowInfo(false)} />
+              <div id="infoContent" className="w-fit">
+                <p className="text-black font-body leading-7">
+                  {t("info.para1")}
+                  <br />
+                  <br />
+                  {t("info.para2")}
+                  <br />
+                  <br />
+                  {t("info.para3")}
+                  <br />
+                  <br />
+                  {t("info.para4")}
+                  <br />
+                  {t("info.para5")}
+                </p>
+                <div id="universities" className="flex mt-10 justify-center gap-10">
+                  <a href="https://www.univ-gustave-eiffel.fr/">
+                    <img
+                      src="https://www.amcsti.fr/wp-content/uploads/2025/04/UNIVERSITE-GUSTEVE-EIFFEL.png"
+                      alt="Logo de l'université Gustave Eiffel"
+                    />
+                  </a>
+                  <a href="https://eng.deu.ac.kr/eng/index.do">
+                    <img
+                      src="/assets/img/logo_dongeui.svg"
+                      alt="Logo de l'université Dongeui"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        )
+      }
+    </div >
   );
 };
 

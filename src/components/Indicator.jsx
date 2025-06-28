@@ -10,7 +10,6 @@ export const Indicator = ({ label }) => {
         </p>
         <SoundBtn />
       </div>
-      <hr className="text-white text-center w-60 -rotate-90 -translate-x-210" />
     </>
   );
 };
