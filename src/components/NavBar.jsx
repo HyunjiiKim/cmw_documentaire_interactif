@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import LanguageSwitch from "./Switch";
 import { Logo } from "./Logo";
+import Button from "./Button";
 
 export const NavBar = ({ whichPage }) => {
   const { t } = useTranslation("nav");
@@ -131,7 +132,6 @@ export const TopNav = () => {
             <i className="bi bi-list text-[48px]" onClick={() => setShow(true)} />
           </div>
           <div className="flex items-center">
-
             <p className="text-xl uppercase">
               {current.title}
             </p>
@@ -140,7 +140,7 @@ export const TopNav = () => {
         {show && (
           <div
             id="showMenu"
-            className="absolute top-0 left-0 text-white bg-black z-15 w-160 h-screen"
+            className="absolute top-0 left-0 text-white bg-black z-15 w-160 h-screen max-lg:overflow-y-scroll"
           >
             <div className="relative">
               <i
@@ -166,6 +166,10 @@ export const TopNav = () => {
             </div>
           </div>
         )}
+        <div>
+          <Button intent="primary" label={t("returnToMap")} onClick={()=>navigate("/map")} custom="max-lg:hidden" />
+          <i className="bi bi-map-fill text-white text-2xl cursor-pointer hover:text-primary-1 lg:hidden" onClick={()=> navigate("/map")} />
+        </div>
       </div>
     </div>
   );
