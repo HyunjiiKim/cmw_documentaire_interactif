@@ -348,20 +348,8 @@ const Content = ({ chapter }) => {
           <div id="section1" className="h-screen">
             <Section1 vimeoId={1095030761} nextChapter="/view/conclusion" />
           </div>
-          <div
-            id="section2"
-            className="h-screen flex flex-col justify-center items-center"
-          >
-            <h1 className="text-center w-[80%] text-[40px] uppercase">
-              {t1("ch3.contents.2.part1")}
-              <br />
-              {t1("ch3.contents.2.part2")}
-            </h1>
-            <ButtonWithIcon
-              label={t1("witness.witnessVideos.btn")}
-              custom="uppercase mt-20"
-              onClick={() => navigation("/view/witness")}
-            />
+          <div id="section2">
+            <DifferentPdv />
           </div>
           <div
             id="section3"
@@ -382,57 +370,6 @@ const Content = ({ chapter }) => {
                 onClick={() => navigation("/view/conclusion")}
               />
             </div>
-          </div>
-        </div>
-      );
-    case "witness":
-      return (
-        <div id="witness" className="text-white">
-          <div id="section1">
-            <DifferentPdv />
-          </div>
-          <div id="section2">
-            <Section4 content={ch3s4} prevBtn={() => navigation("/view/ch3")} nextBtn={() => navigation("/view/conclusion")} />
-          </div>
-          <div
-            id="section3"
-            className="h-screen bg-[url(https://storage.googleapis.com/cmw-geoje-src/videos/chap3_section3.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply flex flex-col gap-5 justify-center items-center text-center tracking-[6%]"
-          >
-            <h2 className="uppercase text-7xl leading-20">
-              {t2("footer")}
-              <br />
-              {t1("witness.thumb.title")}
-            </h2>
-            <p className="font-body text-3xl w-190">
-              {t1("witness.thumb.text")}
-            </p>
-            <Button
-              label={t1("witness.witnessVideos.btn")}
-              onClick={handleShowTemoignages}
-            />
-          </div>
-          <div id="section4">
-            {showTemoignages && (
-              <div
-                id="temoignages"
-                className="mt-20 h-full flex flex-col justify-center items-center tracking-[6%] gap-15"
-              >
-                {witnessInfo.map((it) => (
-                  <Witness key={it.id} content={it} />
-                ))}
-                <div
-                  id="buttonGroup"
-                  className="w-full flex justify-end items-end gap-5 mr-[60px]"
-                >
-                  <TopPage bgColor={"primary-1"} borderColor={"white"} />
-                  <Button
-                    label={t2("returnToMap")}
-                    custom="border-white border-1"
-                    onClick={() => navigation("/map")}
-                  />
-                </div>
-              </div>
-            )}
           </div>
         </div>
       );
