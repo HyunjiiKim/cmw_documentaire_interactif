@@ -48,6 +48,7 @@ const Home = () => {
     case 0:
       return (
         <div className="max-sm:hidden h-screen overflow-y-hidden relative">
+          <audio src="https://storage.googleapis.com/cmw-geoje-src/audios/%231)%20the-faded-rose-dark-fantasy-background-music-109375.mp3" autoPlay loop />
           <div className="absolute top-0 left-0 w-full h-full">
             <img
               src="https://storage.googleapis.com/cmw-geoje-src/videos/page_chargement.gif"
@@ -66,7 +67,7 @@ const Home = () => {
               <p className="font-body text-white text-center">
                 {t2("author")}
               </p>
-              <div className="flex gap-5 z-50">
+              <div className="flex gap-5 z-50 mt-10">
                 <ButtonWithIcon
                   onClick={openShowHome}
                   label={t2("enter")}
@@ -92,6 +93,9 @@ const Home = () => {
     case 1:
       return (
         <div className="max-sm:hidden relative">
+          {!showVideo && (
+            <audio src="https://storage.googleapis.com/cmw-geoje-src/audios/%231)%20the-faded-rose-dark-fantasy-background-music-109375.mp3" autoPlay loop />
+          )}
           <div className="max-md:items-start h-full flex flex-col relative">
             <HorizontalNav />
             <div className="z-50">
@@ -191,7 +195,7 @@ const Home = () => {
                 <Button
                   onClick={(openShowChoices)}
                   label={t3("start")}
-                  custom="mr-auto ml-auto"
+                  custom="mx-auto mt-10"
                   size="large"
                 />
               </div>

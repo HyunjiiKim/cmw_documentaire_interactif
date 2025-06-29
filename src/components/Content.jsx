@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Chronology } from "./ChapterContents/Chronology";
 import HorizontalScroller from "./HorizontalScroller";
@@ -12,13 +12,12 @@ import {
   Witness,
 } from "./ChapterContents/Sections";
 import Credits from "./Credits";
-import Button, { ButtonWithIcon, AudioBtn, TopPage } from "./Button";
+import Button, { ButtonWithIcon, TopPage } from "./Button";
 import SyncedLyricsPlayer from "./ChapterContents/AudioReader";
 
 import C1S2 from "/assets/img/ch1sec2.png";
 import C2S2 from "/assets/img/ch2sec2.png";
 import mockVideo from "/assets/videos/Introduction.mp4";
-import ChapterContainer from "./ChapterContents/ControlScroller";
 
 const Content = ({ chapter }) => {
   const { t: t1 } = useTranslation("contents");
@@ -219,8 +218,13 @@ const Content = ({ chapter }) => {
   const section3container = document.querySelector("#c2section3");
 
   function scrollToSection3() {
-    section3container.scrollIntoView({ scroll: "smooth" });
+    // after 0.1 sec, it scrools smootly to the section id="c2section3"
+    setTimeout(() => {
+      section3container.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+    0
   }
+
 
   switch (chapter) {
     case "ch1":
@@ -273,7 +277,7 @@ const Content = ({ chapter }) => {
             </div>
           </div>
           <div id="section4Container">
-            <Section4 content={ch1s4} />
+            <Section4 content={ch1s4} prevBtn={() => navigation("/")} nextBtn={() => navigation("/view/ch2")} />
           </div>
         </div>
       );
@@ -292,17 +296,19 @@ const Content = ({ chapter }) => {
               alt="background"
               className="w-full h-full object-cover"
             />
+            <div className="w-full z-10">
+              <div className="absolute top-10 left-10 font-body max-w-[300px] h-1/2 overflow-y-scroll scrollbar-hide max-h-[500px] first-letter:text-4xl first-letter:font-bold ">
+                {ch2s2Texts.map((it, id) => (
+                  <div
+                    id="scrollTextContainer"
+                    className="my-5 tracking-widest"
+                    key={id}
+                  >
+                    {it}
+                  </div>
+                ))}
+              </div>
 
-            <div className="scrollbar-hide z-5 absolute top-10 left-10 font-body max-w-[300px] h-[80%] max-h-[500px] overflow-y-hidden first-letter:text-4xl first-letter:font-bold ">
-              {ch2s2Texts.map((it, id) => (
-                <div
-                  id="scrollTextContainer"
-                  className="my-5 tracking-widest animate-[autoScroller_40s_linear_infinite]"
-                  key={id}
-                >
-                  {it}
-                </div>
-              ))}
             </div>
 
             <div className="w-full absolute bottom-20 left-290">
@@ -332,7 +338,7 @@ const Content = ({ chapter }) => {
             <ClickImage content={ch3s3Images[c3s3]} />
           </div>
           <div id="section4">
-            <Section4 content={ch2s4} />
+            <Section4 content={ch2s4} prevBtn={() => navigation("/view/ch1")} nextBtn={() => navigation("/view/ch3")} />
           </div>
         </div>
       );
@@ -353,7 +359,7 @@ const Content = ({ chapter }) => {
             </h1>
             <ButtonWithIcon
               label={t1("witness.witnessVideos.btn")}
-              custom="uppercase"
+              custom="uppercase mt-20"
               onClick={() => navigation("/view/witness")}
             />
           </div>
@@ -386,11 +392,11 @@ const Content = ({ chapter }) => {
             <DifferentPdv />
           </div>
           <div id="section2">
-            <Section4 content={ch3s4} />
+            <Section4 content={ch3s4} prevBtn={() => navigation("/view/ch3")} nextBtn={() => navigation("/view/conclusion")} />
           </div>
           <div
             id="section3"
-            className="h-screen bg-[url(https://storage.googleapis.com/cmw-geoje-src/videos/chap3_section3.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply flex flex-col justify-center items-center text-center tracking-[6%]"
+            className="h-screen bg-[url(https://storage.googleapis.com/cmw-geoje-src/videos/chap3_section3.gif)] bg-no-repeat bg-cover bg-black/50 bg-blend-multiply flex flex-col gap-5 justify-center items-center text-center tracking-[6%]"
           >
             <h2 className="uppercase text-7xl leading-20">
               {t2("footer")}

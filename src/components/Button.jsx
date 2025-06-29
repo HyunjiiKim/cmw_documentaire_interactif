@@ -10,13 +10,13 @@ const buttonVariants = cva(
     variants: {
       intent: {
         primary:
-          "mt-[2.5em] border-white border-1 shadow-md/25 hover:inset-shadow-black",
+          "border-white border-1 shadow-lg/25 hover:shadow-white",
         secondary:
           "border-white border-1 shadow-md/25 hover:inset-shadow-black",
         tertiary:
-          "mt-[2.5em] border-white border-1 bg-primary-1 shadow-md/25 hover:inset-shadow-black",
-        ghost: "mt-[2.5em] underline",
-        disabled: "mt-[2.5em] border-white border-1 opacity-50",
+          "border-white border-1 bg-primary-1 shadow-md/25 hover:inset-shadow-black",
+        ghost: "underline",
+        disabled: "border-white border-1 opacity-50",
       },
       size: {
         small: "px-[20px] py-[10px] text-sm",
@@ -59,7 +59,7 @@ export const ButtonWithIcon = ({ intent, size, custom, label, onClick }) => {
   );
 };
 
-export const InfoBtn = ({ infoPosition = {top, right, bottom, left} }) => {
+export const InfoBtn = ({ infoPosition = { top, right, bottom, left } }) => {
   const { t } = useTranslation("general");
 
   const [showInfo, setShowInfo] = useState(false);
@@ -67,7 +67,7 @@ export const InfoBtn = ({ infoPosition = {top, right, bottom, left} }) => {
   return (
     <div id="infoBtn">
       {/* using type narrowing to stabilize the customized position */}
-      <div className={`fixed ${typeof infoPosition.top === "number" ? `top-${infoPosition.top}` : ""} ${typeof infoPosition.right === "number" && "string" ? `right-${infoPosition.right}` : ""} ${typeof infoPosition.bottom === "number" ? `bottom-${infoPosition.bottom}` :  ""} ${typeof infoPosition.left === "number" ? `left-${infoPosition.left}` : ""} z-50 cursor-pointer`}>
+      <div className={`fixed ${typeof infoPosition.top === "number" ? `top-${infoPosition.top}` : ""} ${typeof infoPosition.right === "number" && "string" ? `right-${infoPosition.right}` : ""} ${typeof infoPosition.bottom === "number" ? `bottom-${infoPosition.bottom}` : ""} ${typeof infoPosition.left === "number" ? `left-${infoPosition.left}` : ""} z-50 cursor-pointer`}>
         <img
           src="../assets/icons/infoBtn.svg"
           className=" w-10 h-10 hover:scale-120"
@@ -133,7 +133,7 @@ export const AudioBtn = ({
 }) => {
   return (
     <div
-      className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-5 px-5 w-fit`}
+      className={`cursor-pointer flex flex-auto bg-${bgColor} text-${textColor} border-${textColor} border-1 py-5 px-5 w-fit hover:scale-120`}
       onClick={onTogglePlay}
       title={isPlaying ? "Pause audio" : "Play audio"}
     >
@@ -152,9 +152,8 @@ export const AudioBtn = ({
       ) : (
         <img
           src="../assets/icons/soundBtn.svg"
-          className={`h-10 ${
-            isPlaying && "animate-[autoScaler_2s_linear_infinite]"
-          }`}
+          className={`h-10 ${isPlaying && "animate-[autoScaler_2s_linear_infinite]"
+            }`}
         />
       )}
     </div>
@@ -358,18 +357,17 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
-          isLeft ? "left" : "right"
-        }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
+          }`}
       ></i>
     </div>
   );
 };
 
-export const TopPage = ({ bgColor, borderColor }) => {
+export const TopPage = () => {
   return (
     <button
-      className="cursor-pointer w-fit h-fit aspect-square w-20"
+      className="cursor-pointer aspect-square"
       onClick={() => {
         // using vanilla js to scroll to the top of the page
         // in React, #root is the parent element of the app
@@ -381,7 +379,7 @@ export const TopPage = ({ bgColor, borderColor }) => {
       }}
     >
       <i
-        className={`bg-${bgColor} hover:bg-tertiary-2 px-[14px] py-[10px] border-${borderColor} border-1 hover:inset-shadow-sm bi bi-chevron-up`}
+        className={`bg-tertiary-2 hover:bg-tertiary-1 px-[14px] py-[10px] bi bi-chevron-up`}
       ></i>
     </button>
   );

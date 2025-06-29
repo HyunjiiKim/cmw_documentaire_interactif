@@ -70,12 +70,12 @@ export const Section1 = ({ vimeoId, nextChapter }) => {
   );
 };
 
-export const Section4 = ({ content, scrollTo }) => {
+export const Section4 = ({ content, prevBtn, nextBtn }) => {
   const { t } = useTranslation("general");
 
   return (
-    <div id="section4" className="bg-white-1 px-10 py-10 m-0">
-      <div id="contentContainer" className="px-10 py-10 m-0 text-black">
+    <div id="section4" className="bg-white-1 px-10 py-20 m-0 relative">
+      <div id="contentContainer" className="flex flex-col gap-10 text-black my-10">
         <h2 className="text-[50px] text-shadow-lg/20 text-shadow-black uppercase">
           {content.title}
         </h2>
@@ -89,13 +89,20 @@ export const Section4 = ({ content, scrollTo }) => {
         </div>
       </div>
       {/* <DotsContainer sections={content.pages} activeSection={content.pages[0].id} /> */}
-      <div id="buttonGroup" className="w-full flex justify-end items-end gap-5">
-        <TopPage bgColor="black" borderColor="black" />
+      <div id="buttonGroup" className="w-full flex justify-between items-center gap-5 absolute bottom-5 left-0 px-10">
         <Button
-          label={t("returnToMap")}
-          custom="border-black border-1 text-black"
-          onClick={() => (window.location.href = "/map")}
+          label={t("goBack")}
+          onClick={prevBtn}
+          custom={"border-secondary-1 border-1 text-secondary-1"}
         />
+        <div id="btn-rightGroup" className="flex gap-5 items-center">
+          <TopPage bgColor="black" borderColor="black" />
+          <Button
+            label={t("continue")}
+            custom="border-black border-1 text-black"
+            onClick={nextBtn}
+          />
+        </div>
       </div>
     </div>
   );
@@ -180,7 +187,6 @@ export const DifferentPdv = () => {
   const [showPdv, setShowPdv] = useState(null);
   // Find the currently selected witness information based on showPdv
   const selectedWitness = witnessInfo.find((item) => item.id === showPdv);
-  console.log(showPdv);
 
   return (
     <div id="differentPdv" className="h-full flex flex-col text-white">
@@ -188,28 +194,31 @@ export const DifferentPdv = () => {
         <div id="cover" className="flex flex-col">
           <div
             id="screen1"
-            className="h-screen flex flex-col px-10 py-10 gap-5"
+            className="h-screen flex flex-col px-10 py-10 gap-10"
           >
-            <h1 className="text-[160px] max-sm:text-7xl uppercase tracking-[6%]gi">
+            <h1 className="text-[160px] max-sm:text-7xl uppercase tracking-[6%]gi max-lg:text-7xl">
               {t("witness.title.pre")}
             </h1>
             <div
               id="buttonGroup"
-              className="flex flex-col self-center items-center"
+              className="flex flex-col self-center items-center gap-5"
             >
               <p className="text-3xl font-body tracking-[6%] text-center w-180">
                 {t("witness.title.tagline")}
               </p>
-              {witnessInfo.map((item) => (
-                <Button
-                  label={item.btnLabel}
-                  key={item["id"]}
-                  size="medium"
-                  onClick={() => setShowPdv(item["id"])}
-                />
-              ))}
+              <div className="flex flex-col gap-5 items-center">
+                {witnessInfo.map((item) => (
+                  <Button
+                    label={item.btnLabel}
+                    key={item["id"]}
+                    size="medium"
+                    onClick={() => setShowPdv(item["id"])}
+                  />
+                ))}
+              </div>
+
             </div>
-            <h1 className="text-[160px] max-sm:text-7xl uppercase self-end tracking-[6%]">
+            <h1 className="text-[160px] max-lg:text-7xl uppercase self-end tracking-[6%]">
               {t("witness.title.post")}
             </h1>
           </div>
@@ -232,11 +241,10 @@ export const DifferentPdv = () => {
                   label={item.btnLabel}
                   key={item["id"]}
                   onClick={() => setShowPdv(item["id"])}
-                  custom={`m-2 ${
-                    item["id"] === showPdv
-                      ? "bg-primary-1"
-                      : "bg-transparent text-black"
-                  }`}
+                  custom={`m-2 ${item["id"] === showPdv
+                    ? "bg-primary-1"
+                    : "bg-transparent text-black"
+                    }`}
                 />
               ))}
             </div>
@@ -260,15 +268,13 @@ export const Witness = ({ content = {} }) => {
   return (
     <div
       id={`witnessContainer_${content.id}`}
-      className={`flex gap-10 w-full ${
-        content.id % 2 === 0 && "flex-row-reverse"
-      }`}
+      className={`flex gap-10 w-full ${content.id % 2 === 0 && "flex-row-reverse"
+        }`}
     >
       <video src={content.videoURL} controls className="max-w-[860px]" />
       <div
-        className={`flex flex-col justify-end mr-[60px] gap-20 ${
-          content.id % 2 === 0 && "text-right"
-        }`}
+        className={`flex flex-col justify-end mr-[60px] gap-20 ${content.id % 2 === 0 && "text-right"
+          }`}
       >
         <div>
           <h3 className="text-6xl leading-20">

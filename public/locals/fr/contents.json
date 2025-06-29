@@ -19,19 +19,23 @@
       "contents": {
         "1": {
           "title": "DÉBUT DE LA GUERRE DE CORÉE",
-          "description": "Création du camp de prisonniers de Geoje (l’ONU)."
+          "description": "Création du camp de prisonniers de Geoje (l’ONU).",
+          "text": "Création du camp de prisonniers de Geoje (l’ONU)."
         },
         "2": {
           "title": "TENSIONS INTERNES AU CAMP",
-          "description": "Affrontements entre les pro-et les anti-communistes."
+          "description": "Affrontements entre les pro-et les anti-communistes.",
+          "text": "Affrontements entre les pro-et les anti-communistes."
         },
         "3": {
           "title": "LE CAMP DE GEOJE EST EN CRISE",
-          "description": "Le général Dodd est capturé par les prisonniers pro- communistes."
+          "description": "Le général Dodd est capturé par les prisonniers pro- communistes.",
+          "text": "Après la révolte de plusieurs prisonniers, le général Dodd est capturé. Il sera finalement libéré lorsque les heurts ont été matés par les soldats."
         },
         "4": {
           "title": "FIN DE LA GUERRE DE CORÉE",
-          "description": "Armistice de Panmunjeom et fermeture progressive du camp. "
+          "description": "Armistice de Panmunjeom et fermeture progressive du camp. ",
+          "text": "A la suite de l’armistice signé le 27 juillet, à Panmunjom, les prisonniers sont peu à peu libérés et ont le choix de retourner ou non en Corée du Nord."
         }
       }
     },
