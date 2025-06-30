@@ -128,8 +128,8 @@ const Content = ({ chapter }) => {
       name: t1("ch2.contents.3.1st.title"), // img alt
       description: t1("ch2.contents.3.1st.description"),
       img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/zones_camp03.png", // img src
-      top: 20,
-      left: 30,
+      top: 30,
+      left: 40,
     },
     {
       id: 1,
@@ -137,6 +137,8 @@ const Content = ({ chapter }) => {
       description: t1("ch2.contents.3.2nd.description"),
       img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/zones_camp01.png", // img src
       position: "bottom-20 left-30",
+      top: 120,
+      left: 60
     },
     {
       id: 2,
@@ -144,6 +146,8 @@ const Content = ({ chapter }) => {
       description: t1("ch2.contents.3.3rd.description"),
       img: "https://storage.googleapis.com/cmw-geoje-src/img/chap02_section02/zones_camps/reconstitution04.png", // img src
       position: "bottom-20 left-30",
+      top: 120,
+      left: 120
     },
   ];
 
@@ -297,7 +301,7 @@ const Content = ({ chapter }) => {
               className="w-full h-full object-cover"
             />
             <div className="w-full z-10">
-              <div className="absolute top-10 left-10 font-body max-w-[300px] h-1/2 overflow-y-scroll scrollbar-hide max-h-[500px] first-letter:text-4xl first-letter:font-bold ">
+              <div className="absolute top-10 left-10 font-body max-w-[300px] h-1/2 overflow-y-scroll scrollbar-hide max-h-[500px] first-letter:text-4xl first-letter:font-bold animate-[autoscaler-6s-linear-inifite]">
                 {ch2s2Texts.map((it, id) => (
                   <div
                     id="scrollTextContainer"

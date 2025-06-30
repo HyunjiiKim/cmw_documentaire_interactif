@@ -134,7 +134,7 @@ export const ClickImage = ({ content = { img: "", isVideo: false } }) => {
         className="w-full h-full object-cover"
       />
       {remover && (
-        <div className={`absolute top-${content.top} left-${content.left}`}>
+        <div className={`absolute left-1/2 top-${content.top}`}>
           <ButtonWithIcon
             onClick={() => (showText ? setShowText(false) : setShowText(true))}
             custom="bg-primary-1"
