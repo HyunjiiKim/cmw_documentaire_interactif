@@ -4,10 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { HorizontalNav } from "../components/NavBar";
 import LanguageSwitch from "../components/Switch";
-import Button, {
-  InfoBtn,
-  ButtonWithIcon,
-} from "../components/Button";
+import Button, { InfoBtn, ButtonWithIcon } from "../components/Button";
 import { Trigger } from "../components/Trigger";
 import { Indicator } from "../components/Indicator";
 import { VimeoPlayer } from "../components/VideoPlayer";
@@ -43,12 +40,15 @@ const Home = () => {
     setShowHome(1);
   }
 
-
   switch (showHome) {
     case 0:
       return (
         <div className="max-sm:hidden h-screen overflow-y-hidden relative">
-          <audio src="https://storage.googleapis.com/cmw-geoje-src/audios/%231)%20the-faded-rose-dark-fantasy-background-music-109375.mp3" autoPlay loop />
+          <audio
+            src="https://storage.googleapis.com/cmw-geoje-src/audios/%231)%20the-faded-rose-dark-fantasy-background-music-109375.mp3"
+            autoPlay
+            loop
+          />
           <div className="absolute top-0 left-0 w-full h-full">
             <img
               src="https://storage.googleapis.com/cmw-geoje-src/videos/page_chargement.gif"
@@ -64,9 +64,7 @@ const Home = () => {
                 &#8220;{t2("quote")}&#8221;
               </h4>
               <hr className="text-white text-center w-sm my-5 m-auto" />
-              <p className="font-body text-white text-center">
-                {t2("author")}
-              </p>
+              <p className="font-body text-white text-center">{t2("author")}</p>
               <div className="flex gap-5 z-50 mt-10">
                 <ButtonWithIcon
                   onClick={openShowHome}
@@ -89,12 +87,16 @@ const Home = () => {
           </div>
           <InfoBtn infoPosition={{ bottom: 20, right: 5 }} />
         </div>
-      )
+      );
     case 1:
       return (
         <div className="max-sm:hidden relative">
           {!showVideo && (
-            <audio src="https://storage.googleapis.com/cmw-geoje-src/audios/%231)%20the-faded-rose-dark-fantasy-background-music-109375.mp3" autoPlay loop />
+            <audio
+              src="https://storage.googleapis.com/cmw-geoje-src/audios/%231)%20the-faded-rose-dark-fantasy-background-music-109375.mp3"
+              autoPlay
+              loop
+            />
           )}
           <div className="max-md:items-start h-full flex flex-col relative">
             <HorizontalNav />
@@ -119,7 +121,7 @@ const Home = () => {
                   <VimeoPlayer
                     videoId={1095026519}
                     onEnded={() => setTimeout(() => setShowVideo(false), 2000)}
-                    width="w-[600px]"
+                    width="w-[1000px]"
                   />
                 </div>
               </div>
@@ -193,7 +195,7 @@ const Home = () => {
                   </span>
                 </h3>
                 <Button
-                  onClick={(openShowChoices)}
+                  onClick={openShowChoices}
                   label={t3("start")}
                   custom="mx-auto mt-10"
                   size="large"
@@ -202,7 +204,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      )
+      );
     case 2:
       return (
         <div className="max-sm:hidden">
@@ -230,10 +232,10 @@ const Home = () => {
             </div>
           </div>
         </div>
-      )
+      );
     default:
       return 0;
-  };
+  }
 };
 
 export default Home;

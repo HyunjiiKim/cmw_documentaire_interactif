@@ -1,3 +1,8 @@
 {
-  "map": "Carte"
+  "map": "Carte",
+  "intro": "Introduction",
+  "ch1": "Le camp de Geoje",
+  "ch2": "Du camp au parc historique",
+  "ch3": "Un passé écouté",
+  "conclu": "La trace d'un camp"
 }
