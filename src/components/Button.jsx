@@ -67,21 +67,17 @@ export const InfoBtn = ({ infoPosition = { top, right, bottom, left } }) => {
     <div id="infoBtn">
       {/* using type narrowing to stabilize the customized position */}
       <div
-        className={`fixed ${
-          typeof infoPosition.top === "number" ? `top-${infoPosition.top}` : ""
-        } ${
-          typeof infoPosition.right === "number" && "string"
+        className={`fixed ${typeof infoPosition.top === "number" ? `top-${infoPosition.top}` : ""
+          } ${typeof infoPosition.right === "number" && "string"
             ? `right-${infoPosition.right}`
             : ""
-        } ${
-          typeof infoPosition.bottom === "number"
+          } ${typeof infoPosition.bottom === "number"
             ? `bottom-${infoPosition.bottom}`
             : ""
-        } ${
-          typeof infoPosition.left === "number"
+          } ${typeof infoPosition.left === "number"
             ? `left-${infoPosition.left}`
             : ""
-        } z-50 cursor-pointer`}
+          } z-50 cursor-pointer`}
       >
         <img
           src="../assets/icons/infoBtn.svg"
@@ -170,9 +166,8 @@ export const AudioBtn = ({
       ) : (
         <img
           src="../assets/icons/soundBtn.svg"
-          className={`h-10 ${
-            isPlaying && "animate-[autoScaler_2s_linear_infinite]"
-          }`}
+          className={`h-10 ${isPlaying && "animate-[autoScaler_2s_linear_infinite]"
+            }`}
         />
       )}
     </div>
@@ -341,9 +336,8 @@ export const MapIcon = ({ label, id, position, sound }) => {
       }}
     >
       <div
-        className={`text-white text-xl uppercase text-center bg-black/80 p-3 rounded-md transition-opacity duration-300 ${
-          hovered ? "opacity-100" : "opacity-0"
-        }`}
+        className={`text-white text-xl uppercase text-center bg-black/80 p-3 rounded-md transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"
+          }`}
       >
         {label}
       </div>
@@ -361,14 +355,16 @@ export const MapIcon = ({ label, id, position, sound }) => {
 
 export const MapChronology = ({ event, position }) => {
   const [hovered, setHovered] = useState(false);
+  const [openDetail, setOpenDetail] = useState(null);
   const chronologyRef = useRef(null);
 
   function openChronology() {
-    chronologyRef.current?.classList.remove("hidden");
+    setOpenDetail(chronologyRef);
   }
 
-  function closeChronology() {
-    chronologyRef.current?.classList.add("hidden");
+  function closeChronology(event) {
+    event.stopPropagation();
+    setOpenDetail(false);
   }
 
   return (
@@ -382,9 +378,8 @@ export const MapChronology = ({ event, position }) => {
       onClick={openChronology}
     >
       <div
-        className={`text-white text-xl uppercase text-center bg-black/80 p-3 rounded-md transition-opacity duration-300 ${
-          hovered ? "opacity-100" : "opacity-0"
-        }`}
+        className={`text-white text-xl uppercase text-center bg-black/80 p-3 rounded-md transition-opacity duration-300 ${hovered ? "opacity-100" : "opacity-0"
+          }`}
       >
         {event.title}
       </div>
@@ -396,47 +391,50 @@ export const MapChronology = ({ event, position }) => {
           className="w-20 h-20 p-3"
         />
       </div>
-
-      <div
-        ref={chronologyRef}
-        id={event.id}
-        className="hidden z-50 flex flex-col content-center absolute top-25 mr-25 ml-10 size-fit p-5 bg-black/70"
-      >
-        <div id={`${event.id}Chronology`} className="flex flex-col">
-          <div id="contentChronology" className="flex gap-7">
-            <div id="col1" className="m-auto w-50">
-              <p className="text-base text-right font-body w-full text-wrap text-balance wrap-break-word">
-                {event.alt}
-              </p>
-            </div>
-            <div id="col2" className="flex flex-col">
-              <div className="flex flex-col w-full gap-2">
-                <img
-                  src="../assets/icons/close.svg"
-                  className="cursor-pointer self-end mb-5"
-                  onClick={closeChronology}
-                />
-                <Button
-                  label={event.title}
-                  intent="primary"
-                  size="medium"
-                  custom="ml-auto"
-                />
-                <img
-                  src={event.src}
-                  className="max-h-90 border-primary-1 border-1"
-                />
+      {openDetail && (
+        <div
+          ref={chronologyRef}
+          id={event.id}
+          className="z-50 flex flex-col content-center absolute top-25 mr-25 ml-10 size-fit p-5 bg-black/70"
+        >
+          <div id={`${event.id}Chronology`} className="flex flex-col">
+            <div id="contentChronology" className="flex gap-7">
+              <div id="col1" className="m-auto w-50">
+                <p className="text-base text-right font-body w-full text-wrap text-balance wrap-break-word">
+                  {event.alt}
+                </p>
+              </div>
+              <div id="col2" className="flex flex-col">
+                <div className="flex flex-col w-full gap-2">
+                  <img
+                    src="../assets/icons/close.svg"
+                    className="cursor-pointer self-end mb-5"
+                    onClick={(e) => closeChronology(e)}
+                  />
+                  <Button
+                    label={event.title}
+                    intent="primary"
+                    size="medium"
+                    custom="ml-auto"
+                  />
+                  <img
+                    src={event.src}
+                    className="max-h-90 border-primary-1 border-1"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
+
     </div>
   );
 };
 
 export const ReplayIntro = () => {
   const navigation = useNavigate();
+  const { t } = useTranslation("general");
 
   return (
     <div
@@ -445,11 +443,10 @@ export const ReplayIntro = () => {
     >
       <div className="w-full font-body text-white p-4">
         <h4 className="uppercase text-2xl tracking-[6%] pb-1">
-          Revoir l'introduction
+          {t("reviewIntro")}
         </h4>
         <p className="text-sm">
-          Dans le récit de la guerre de Corée, conflit largement documenté,
-          subsiste une réalité souvent oubliée : celle des camps de prisonniers.
+          {t("reviewIntroDetail")}
         </p>
       </div>
       <div className="flex justify-center w-[85%] bg-[url(https://storage.googleapis.com/cmw-geoje-src/img/lunch_time_in_kohe_do_camp.jpg)] bg-cover bg-no-repeat">
@@ -494,9 +491,8 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
-          isLeft ? "left" : "right"
-        }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
+          }`}
       ></i>
     </div>
   );

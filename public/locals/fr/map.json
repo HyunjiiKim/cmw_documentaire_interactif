@@ -4,5 +4,43 @@
   "ch1": "Le camp de Geoje",
   "ch2": "Du camp au parc historique",
   "ch3": "Un passé écouté",
-  "conclu": "La trace d'un camp"
+  "conclu": "La trace d'un camp",
+  "events": {
+    "0": {
+      "alt": "Le camp de Geoje est construit par les prisonniers de guerre.",
+      "title": "Construction"
+    },
+    "1": {
+      "alt": "Débarqués sur l’île, les prisonniers sont emmenés au camp.",
+      "title": "Arrivée au camp"
+    },
+    "2": {
+      "alt": "Administrés par l’armée américaine, les soldats sud-coréens aident leurs alliés à encadrer les prisonniers.",
+      "title": "Militarisation du lieu"
+    },
+    "3": {
+      "alt": "À la suite des conventions de Genève, la Croix-Rouge visite régulièrement le camp afin de vérifier que les conditions de vie des détenus sont conformes aux engagements pris par l’armée américaine.",
+      "title": "L’après Genève"
+    },
+    "4": {
+      "alt": "Séparés dans de nombreux baraquements eux-mêmes séparés dans diverses zones, les prisonniers sont regroupés par affinités politiques et idéologiques.",
+      "title": "Séparations idéologiques"
+    },
+    "5": {
+      "alt": "Au sein du camp, de nombreuses activités sportives et culturelles sont organisées afin de divertir les prisonniers.",
+      "title": "Lieu de communion"
+    },
+    "6": {
+      "alt": "Afin de lutter contre l’ennemi communiste, les Américains réalisent des cours de rééducation idéologique aux prisonniers.",
+      "title": "Lieu de propagande"
+    },
+    "7": {
+      "alt": "Idéologiquement opposés, de nombreux prisonniers communistes ont renversé l’administration du camp et ont capturé le général Dodd.",
+      "title": "Les révoltés"
+    },
+    "8": {
+      "alt": "Les militaires matant la révolte au sein du camp.",
+      "title": "Lieu de contrôle"
+    }
+  }
 }

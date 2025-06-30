@@ -4,5 +4,43 @@
   "ch1": "The Geoje POW camp",
   "ch2": "From the camp to the historical park",
   "ch3": "A listened past",
-  "conclu": "The trace of a camp"
+  "conclu": "The trace of a camp",
+  "events": {
+    "0": {
+      "alt": "The Geoje camp is built by prisoners of war.",
+      "title": "Construction"
+    },
+    "1": {
+      "alt": "Disembarked on the island, the prisoners are taken to the camp.",
+      "title": "Arrival at the Camp"
+    },
+    "2": {
+      "alt": "Administered by the American army, South Korean soldiers help their allies to manage the prisoners.",
+      "title": "Militarization of the Site"
+    },
+    "3": {
+      "alt": "Following the Geneva Conventions, the Red Cross regularly visits the camp to verify that the living conditions of the detainees comply with the commitments made by the American army.",
+      "title": "After Geneva"
+    },
+    "4": {
+      "alt": "Separated into numerous barracks which are themselves separated into various zones, the prisoners are grouped by political and ideological affinities.",
+      "title": "Ideological Separations"
+    },
+    "5": {
+      "alt": "Within the camp, numerous sports and cultural activities are organized to entertain the prisoners.",
+      "title": "A Place of Community"
+    },
+    "6": {
+      "alt": "In order to fight against the communist enemy, the Americans conduct ideological re-education courses for the prisoners.",
+      "title": "A Place of Propaganda"
+    },
+    "7": {
+      "alt": "Ideologically opposed, many communist prisoners overthrew the camp's administration and captured General Dodd.",
+      "title": "The Rebels"
+    },
+    "8": {
+      "alt": "The military quelling the revolt within the camp.",
+      "title": "A Place of Control"
+    }
+  }
 }
