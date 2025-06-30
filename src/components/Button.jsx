@@ -9,8 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       intent: {
-        primary:
-          "border-white border-1 shadow-lg/25 hover:shadow-white",
+        primary: "border-white border-1 shadow-lg/25 hover:shadow-white",
         secondary:
           "border-white border-1 shadow-md/25 hover:inset-shadow-black",
         tertiary:
@@ -67,58 +66,77 @@ export const InfoBtn = ({ infoPosition = { top, right, bottom, left } }) => {
   return (
     <div id="infoBtn">
       {/* using type narrowing to stabilize the customized position */}
-      <div className={`fixed ${typeof infoPosition.top === "number" ? `top-${infoPosition.top}` : ""} ${typeof infoPosition.right === "number" && "string" ? `right-${infoPosition.right}` : ""} ${typeof infoPosition.bottom === "number" ? `bottom-${infoPosition.bottom}` : ""} ${typeof infoPosition.left === "number" ? `left-${infoPosition.left}` : ""} z-50 cursor-pointer`}>
+      <div
+        className={`fixed ${
+          typeof infoPosition.top === "number" ? `top-${infoPosition.top}` : ""
+        } ${
+          typeof infoPosition.right === "number" && "string"
+            ? `right-${infoPosition.right}`
+            : ""
+        } ${
+          typeof infoPosition.bottom === "number"
+            ? `bottom-${infoPosition.bottom}`
+            : ""
+        } ${
+          typeof infoPosition.left === "number"
+            ? `left-${infoPosition.left}`
+            : ""
+        } z-50 cursor-pointer`}
+      >
         <img
           src="../assets/icons/infoBtn.svg"
           className=" w-10 h-10 hover:scale-120"
           onClick={() => setShowInfo(true)}
         />
       </div>
-      {
-        showInfo && (
-          // this infoSection is always centered on the screen
-          <div
-            id="infoSection"
-            className={`z-50 flex bg-black fixed max-w-240 w-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
-          >
-            <div className="relative  p-20">
-              <i className="bi bi-x-lg text-white text-lg absolute right-5 top-5 cursor-pointer" onClick={() => setShowInfo(false)} />
-              <div id="infoContent" className="w-fit">
-                <p className="text-white font-body leading-7">
-                  {t("info.para1")}
-                  <br />
-                  <br />
-                  {t("info.para2")}
-                  <br />
-                  <br />
-                  {t("info.para3")}
-                  <br />
-                  <br />
-                  {t("info.para4")}
-                  <br />
-                  {t("info.para5")}
-                </p>
-                <div id="universities" className="flex mt-10 justify-center gap-10">
-                  <a href="https://www.univ-gustave-eiffel.fr/">
-                    <img
-                      src="https://www.amcsti.fr/wp-content/uploads/2025/04/UNIVERSITE-GUSTEVE-EIFFEL.png"
-                      alt="Logo de l'université Gustave Eiffel"
-                    />
-                  </a>
-                  <a href="https://eng.deu.ac.kr/eng/index.do">
-                    <img
-                      src="/assets/img/logo_dongeui.svg"
-                      alt="Logo de l'université Dongeui"
-                    />
-                  </a>
-                </div>
+      {showInfo && (
+        // this infoSection is always centered on the screen
+        <div
+          id="infoSection"
+          className={`z-50 flex bg-black fixed max-w-240 w-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
+        >
+          <div className="relative  p-20">
+            <i
+              className="bi bi-x-lg text-white text-lg absolute right-5 top-5 cursor-pointer"
+              onClick={() => setShowInfo(false)}
+            />
+            <div id="infoContent" className="w-fit">
+              <p className="text-white font-body leading-7">
+                {t("info.para1")}
+                <br />
+                <br />
+                {t("info.para2")}
+                <br />
+                <br />
+                {t("info.para3")}
+                <br />
+                <br />
+                {t("info.para4")}
+                <br />
+                {t("info.para5")}
+              </p>
+              <div
+                id="universities"
+                className="flex mt-10 justify-center gap-10"
+              >
+                <a href="https://www.univ-gustave-eiffel.fr/">
+                  <img
+                    src="https://www.amcsti.fr/wp-content/uploads/2025/04/UNIVERSITE-GUSTEVE-EIFFEL.png"
+                    alt="Logo de l'université Gustave Eiffel"
+                  />
+                </a>
+                <a href="https://eng.deu.ac.kr/eng/index.do">
+                  <img
+                    src="/assets/img/logo_dongeui.svg"
+                    alt="Logo de l'université Dongeui"
+                  />
+                </a>
               </div>
             </div>
-
           </div>
-        )
-      }
-    </div >
+        </div>
+      )}
+    </div>
   );
 };
 
@@ -152,8 +170,9 @@ export const AudioBtn = ({
       ) : (
         <img
           src="../assets/icons/soundBtn.svg"
-          className={`h-10 ${isPlaying && "animate-[autoScaler_2s_linear_infinite]"
-            }`}
+          className={`h-10 ${
+            isPlaying && "animate-[autoScaler_2s_linear_infinite]"
+          }`}
         />
       )}
     </div>
@@ -278,48 +297,166 @@ export const SoundBtn = () => {
   );
 };
 
-export const MapIcon = ({ label }) => {
-  const [showLabel, setShowLabel] = useState(false);
+export const MapIcon = ({ label, id, position, sound }) => {
+  const navigation = useNavigate();
+  const [hovered, setHovered] = useState(false);
+  const audioRef = useRef(null);
 
-  function openShowLabel() {
-    const labelMap = document.getElementById("labelMap");
-
-    if (labelMap.classList.contains("hidden")) {
-      labelMap.classList.remove("hidden");
-    } else {
-      labelMap.classList.add("hidden");
+  const initializeAudio = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio(sound);
     }
-  }
+  };
 
-  // TBD: add sounds on hover + add paths + correct design + correct labelMap
+  const playSound = () => {
+    initializeAudio();
+    const audio = audioRef.current;
+    audio.currentTime = 0;
+    audio.play().catch((err) => {
+      console.error("Audio play blocked:", err);
+    });
+  };
+
+  const stopSound = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  };
 
   return (
-    <>
-      <img
-        id="iconMap"
-        src="../assets/icons/soundBtn.svg"
-        className="cursor-pointer w-12 h-12 p-2 hover:scale-120 border-white border-1 rounded-full"
-        onMouseOver={openShowLabel}
-      />
-      <div id="labelMap" className="size-full bg-black hidden">
+    <div
+      className={twMerge(
+        "w-fit h-fit m-auto group flex flex-col w-fit gap-3 absolute",
+        position
+      )}
+      onClick={() => navigation(`/view/` + id)}
+      onMouseEnter={() => {
+        setHovered(true);
+        playSound();
+      }}
+      onMouseLeave={() => {
+        setHovered(false);
+        stopSound();
+      }}
+    >
+      <div
+        className={`text-white text-xl uppercase text-center bg-black/80 p-3 rounded-md transition-opacity duration-300 ${
+          hovered ? "opacity-100" : "opacity-0"
+        }`}
+      >
         {label}
       </div>
-    </>
+      <div className="relative w-fit mr-auto ml-auto cursor-pointer hover:scale-120 bg-black/90 border-white border-2 rounded-full">
+        <span className="absolute top-20 left-0 right-0 mr-auto ml-auto w-0 h-0 border-t-[20px] border-t-white border-l-[13px] border-l-transparent border-r-[13px] border-r-transparent"></span>
+        <img
+          id="iconMap"
+          src="../assets/icons/soundBtn.svg"
+          className="w-20 h-20 p-3"
+        />
+      </div>
+    </div>
+  );
+};
+
+export const MapChronology = ({ event, position }) => {
+  const [hovered, setHovered] = useState(false);
+  const chronologyRef = useRef(null);
+
+  function openChronology() {
+    chronologyRef.current?.classList.remove("hidden");
+  }
+
+  function closeChronology() {
+    chronologyRef.current?.classList.add("hidden");
+  }
+
+  return (
+    <div
+      className={twMerge(
+        "w-fit h-fit m-auto group flex flex-col w-fit gap-3 absolute",
+        position
+      )}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={openChronology}
+    >
+      <div
+        className={`text-white text-xl uppercase text-center bg-black/80 p-3 rounded-md transition-opacity duration-300 ${
+          hovered ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {event.title}
+      </div>
+      <div className="relative w-fit mr-auto ml-auto cursor-pointer hover:scale-120 bg-black/70 border-white border-2 rounded-full">
+        <span className="absolute top-20 left-0 right-0 mr-auto ml-auto w-0 h-0 border-t-[20px] border-t-white border-l-[13px] border-l-transparent border-r-[13px] border-r-transparent"></span>
+        <img
+          id="iconMap"
+          src="../assets/icons/soundBtn.svg"
+          className="w-20 h-20 p-3"
+        />
+      </div>
+
+      <div
+        ref={chronologyRef}
+        id={event.id}
+        className="hidden z-50 flex flex-col content-center absolute top-25 mr-25 ml-10 size-fit p-5 bg-black/70"
+      >
+        <div id={`${event.id}Chronology`} className="flex flex-col">
+          <div id="contentChronology" className="flex gap-7">
+            <div id="col1" className="m-auto w-50">
+              <p className="text-base text-right font-body w-full text-wrap text-balance wrap-break-word">
+                {event.alt}
+              </p>
+            </div>
+            <div id="col2" className="flex flex-col">
+              <div className="flex flex-col w-full gap-2">
+                <img
+                  src="../assets/icons/close.svg"
+                  className="cursor-pointer self-end mb-5"
+                  onClick={closeChronology}
+                />
+                <Button
+                  label={event.title}
+                  intent="primary"
+                  size="medium"
+                  custom="ml-auto"
+                />
+                <img
+                  src={event.src}
+                  className="max-h-90 border-primary-1 border-1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
 export const ReplayIntro = () => {
+  const navigation = useNavigate();
+
   return (
     <div
-      className="flex gap-2 h-20 fixed bottom-20 left-50 w-50 bg-primary-1 cursor-pointer hover:scale-120"
+      className="flex w-[420px] h-fit gap-2 h-20 fixed bottom-15 left-50 w-50 bg-primary-1 shadow-md/60 cursor-pointer hover:scale-110"
       onClick={() => navigation("/")}
     >
-      <div className="w-[75%]">Revoir l'introduction</div>
-      <div className="">
+      <div className="w-full font-body text-white p-4">
+        <h4 className="uppercase text-2xl tracking-[6%] pb-1">
+          Revoir l'introduction
+        </h4>
+        <p className="text-sm">
+          Dans le récit de la guerre de Corée, conflit largement documenté,
+          subsiste une réalité souvent oubliée : celle des camps de prisonniers.
+        </p>
+      </div>
+      <div className="flex justify-center w-[85%] bg-[url(https://storage.googleapis.com/cmw-geoje-src/img/lunch_time_in_kohe_do_camp.jpg)] bg-cover bg-no-repeat">
         <img
           id="iconMap"
-          src="../assets/icons/soundBtn.svg"
-          className="cursor-pointer w-12 h-12 p-2 hover:scale-120"
+          src="../assets/icons/soundBtnBlack.svg"
+          className="bg-white/70 m-auto rounded-full cursor-pointer w-12 h-12 p-2"
         />
       </div>
     </div>
@@ -357,8 +494,9 @@ export const ArrowBtn = ({ isLeft, color, onClick, custom }) => {
       onClick={!onClick ? goBack : onClick}
     >
       <i
-        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${isLeft ? "left" : "right"
-          }`}
+        className={`h1 bg-primary-1 px-[15px] py-[10px] border text-[20px] text-white hover:inset-shadow-sm hover:inset-shadow-black hover:text-shadow-sm/30 hover:text-shadow-black bi bi-chevron-${
+          isLeft ? "left" : "right"
+        }`}
       ></i>
     </div>
   );
